@@ -1,0 +1,64 @@
+So far this week,
+we've looked at a number of examples
+of source systems. But before you can ingest data, you need to first
+establish a connection to your data source and verify that you're authorized
+to read data from it. In fact, you've already had some experience doing
+this in previous labs. For instance, in
+the Dynamodb lab, you use boto3, which is the AWS software
+development kit, or SDK for Python to create a client connection to a
+table within Dynamodb, and you also connected to an Amazon RDS SQL
+instance by running this command with
+proper parameter values in the Cloud9 IDE. The endpoint and port
+information you see here are what you use to locate the
+correct database instance. The user name and
+password credentials were used to authenticate you as someone with the proper permissions
+to access the database. As you can see, there's more
+than one way to connect to a database or any
+resource for that matter. Let's take a closer
+look at this. If a source system is housed in a resource within your
+organization's AWS account, you can get the
+connection information from the management console. For example, if I'm trying to connect to an RDS
+database instance, I can navigate to the
+RDS console like this, Locate the database
+I want to connect to and find the
+connection information, including the endpoint,
+and the port number. Just as a side node, IBS is always rearranging exactly how things
+appear in the console. What I'm showing here
+might look a little different than the console
+when you're looking at it. But this basic set of steps
+will still be the same. The console can be pretty
+convenient for finding information like this or spinning up resources
+and connections. But keep in mind that doing your work from
+the console involves you navigating through
+and clicking on widgets and buttons
+to get things done. If you had to repeat this
+process in the future, it could be hard to remember
+exactly what steps you took. Like I said, by the time
+you want to do this again, AWS may have changed how things are arranged
+in the console, which could make
+things even harder. In general, operating from the console is great to get
+something done quickly, maybe when you're prototyping
+something in your system, but the process is not very
+repeatable nor traceable. As a somewhat more
+programmatic way of finding the information you need and connecting to source systems, you can run code at the
+command line interface or CLI. In this way, you can get
+the database endpoint, then you can connect
+to the database using the command syntax specific
+to the DBMS you're using. Issuing commands directly
+in the CLI like this is a common practice
+among data engineers in the connection and
+ingestion process, but it's still
+relatively manual. It's typically better for simple workloads rather
+than complicated ones. To take another step towards repeatability and automation, you can connect to a source
+system using an SDK, like boto3 by writing and
+running code in an IDE, like Cloud9, or for example, from a Jupiter notebook. For certain source systems, you can also connect them
+through an API connector. For example, you might use a Java database connectivity or a JDBC for short or open
+database connectivity or ODBC per short, APIs to connect your
+application to a DBMS, so you can query the database. You've already had some
+experience with some of these methods for connecting
+to source systems, and in the reading item
+that follows this video, you'll find materials
+that go over more of the details of
+each of these methods. After reviewing these materials, join me in the next
+video for an overview of identity and access
+management and permissions.

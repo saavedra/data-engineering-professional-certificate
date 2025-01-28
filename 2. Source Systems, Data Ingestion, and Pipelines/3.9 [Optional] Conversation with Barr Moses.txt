@@ -1,0 +1,201 @@
+Hi, Barr.
+>> How are you? >> I'm doing great. >> Great to see you, Joe. >> Yeah, good to see you again. Yeah, so we're going to talk about
+data observability and related topics, maybe some data quality stuff as well. But for the learners of this
+course who don't know who you are, would you like to give a quick intro? Happy to. My name is Bar Moses. I'm the CEO and co founder of Monte Carlo,
+a company that we created that actually is credited as the leader and creator
+of the data observability category. And just for
+sort of quick background about myself, I've been working with data and
+analytics for a long time. I studied math and stats earlier on, and
+when I started working with organizations, I noticed that oftentimes the data that
+they were working with was wrong and it was really frustrating and it was not clear to me why there isn't
+a good solution out there for it. And so started Monte-Carlo and started
+this category with the goal of helping data teams and data people around the
+world actually be able to use data, but this time use trusted and reliable data. >> That's awesome. That's a good motivation, too. But I guess to back up,
+if you were to explain data observability to somebody who doesn't know what it is,
+how would you explain it? >> Great question. So, data observability, I think the best
+way to understand this sort of a corollary to software observability. But before I even get into that, let me just talk about
+the pain point that it solves. So, for anyone who's worked with data,
+I don't know if this has happened to you, but you sort of wake up on a Monday
+morning, or maybe this is Friday afternoon, right before you're
+heading out to your weekend and you're looking at some data product. It could be a data dashboard,
+could be a machine learning algorithm. Whatever it is, you're looking at it and
+suddenly the data looks wrong. And you're like,
+you're squinting and you're like, why does data look wrong here? Something here is off. Maybe Joe calls you and says, wTF? The data looks wrong and you're like,
+man, I just started my day. But no, I'm kidding, in all of these
+instances, this is sort of the reality for data teams get inundated with
+questions about why the data is wrong. And that is a problem that plagues
+data teams of all sizes, sorts, maturity curves, etc. And so
+we set out to sort of solve that problem. Or that, in a nutshell, is what data
+observability is meant to help with. It's meant to help data teams regain
+the confidence in their data. It's really hard to have
+data that's 100% accurate. I don't think that's a realistic goal. But being able to understand
+the health of your data as a result of sort of the output of the data
+by observing the data, is what gives confidence and an
+understanding of the health of the data. And so if you sort of go back to this
+corollary of software engineering, software engineering have been building
+software products for many decades now, and the uptime and reliability of
+those products is really important. Maybe the best example here is
+if your website is down for a little bit, that's a big deal. I don't know, companies can't
+operate if their websites are down. And so imagine if your products
+are down because the data is wrong. In fact, Netflix was down for
+45 minutes in 2016 because of bad data. 45 minutes of Netflix is the full
+episode of Survivor, or whatever it is, your favorite show, and that's impactful
+on revenue, on reputation, on your brand. It could be risk, operational risk. And so in all of those instances, the way
+to sort of deal with making sure that, you handle what we call data downtime,
+periods of time when data is inaccurate or wrong or late,
+is by having strong data observability. So data observability is the ability
+to understand the health of your data systems, be able to improve it over time. >> That's super useful, too. When I got started, I had exactly
+what you described earlier happened, where numbers are wrong, and the CEO calls me into the office and says,
+you have about five minutes to fix this. >> That's stressful. [LAUGH]
+>> Or bad things happen to you. >> [LAUGH]
+>> because you had a very important meeting. And so it's really bad when executives
+end up debugging your reports for you. [LAUGH] So-
+>> 100%. And the thing is,
+you can't get away from it, because this problem actually
+is getting a lot worse. Because if you think about it,
+510 years ago, you had a very small number
+of people working with data. Today, you have a lot more data sources,
+a lot more people working with data. I like to think that the data
+state has evolved quite a bit, but the way that we manage
+the data hasn't evolved as well. And if you think about what actually
+makes up your data state today, there's three core components. The first is the data itself. So what's actually
+ingested into the system. The second is the code. The code transforms the data and
+is often written by engineers. And the third part of your data state
+is actually the system themselves. So the infrastructure that basically
+sort of running the jobs and data can go wrong in each
+of those three parts. Oftentimes, there's actually
+a problem in multiple areas. So someone might make
+a change in the code or a job might fail or
+there might be a null value. In each of those instances, there could
+be downstream repercussions where someone might be calling you and say, hey,
+you have five minutes to fix the data, and now go figure out where exactly
+was a problem and what happened. >> Yeah, that's a lot to keep track of. What are some key metrics that you suggest
+people pay attention to when they're observing their data? >> Great question. This sort of transformation, if you will,
+has really followed, I think, software engineering transformation,
+as we mentioned. And if you see sort of this journey
+that software has gone through, gone through monitoring in silo and focusing only on monitoring in
+only different pockets of systems. And then today there's this widely
+accepted understanding of software observability and recognizing that
+that's the only way to build a scalable, reliable software products. As part of that, you look at uptime, the most sort of popular metric
+is sort of how many nines, right? So 99.999% of uptime of your software. The same thing, the same rigor, and
+the same sort of methodology and principle should be applied to data. And so
+instead of maybe having a couple of, some people have just a couple of tests or
+a couple of rules or monitoring in silo, you actually need to think about your
+system holistically, or your data state holistically, have observability
+across that and look at data uptime. So, how much how many hours
+of downtime do you have? That would be the inverse of that. So that's sort of one KPI. That's a difficult KPI to start out with, because data teams oftentimes
+have very little visibility. And so one of the things that we start out
+with is simply how many data incidents do you have? Do you have one a day, ten a day? 50 a day? Where are you on number of incidents? The second KPI that data teams
+look at are time to detection. So how long did it take you to
+realize that there's a problem? Did you have to wait five weeks
+until your CEO told you, or were you aware of it the minute or within
+the hour that the data issue happen? And then the third sort of key metric,
+there is time to resolution. So, you know, I think there's been lots
+of advancements in detection in the last few years, especially around AI and ML,
+and detection has become a lot easier. But really sort of the core next
+challenge for the industry, if you will, is helping to figure out not only what
+happened, but also why it happened. So when there's a data issue,
+what is the reason that that happened? What is it upstream data
+source that caused that? Was it a problem in the data, in the code,
+in the system, or all of the above? So making that sort of transition
+is really, really important. In order to do that,
+we measure time to resolution. So how long did it take you
+to resolve an incident? Did it take you weeks, months,
+maybe years sometimes? Or were you able to resolve it same day? So those three metrics,
+number of incidents, time to detection, time to resolution, have been really
+helpful in guiding teams to make sure that they are improving
+their operations over time. >> And what are some of the success
+stories you've seen from data teams and companies that have
+implemented data observability? >> Yeah, definitely have seen today
+we support hundreds of customers. We support some of the world's
+largest organizations, including companies like Cisco,
+Intuit, Fox, many others. I'll tell a story about JetBlue. So JetBlue, if hope folks know a great
+airline, if you get on a plane, there's a couple of things that
+you're probably worried about or you're thinking about. The first thing you're
+thinking about is that, is your suitcase going to arrive on time? And how's the experience
+in terms of the support? And so the JetBlue team uses data
+to drive both of those areas, both internal operations, but
+also sort of the support system. And so JetBlue team has tons of
+flights every single day and needs to make sure that your suitcase
+is arriving on time to the right place. And so the JetBlue team has a really cool
+story of adopting observability to make sure that their data is trusted and
+reliable. And one of the ways that they measure
+this is by internal team NP's. So they actually sort of ask
+their internal customers, how happy are you with
+the data that they have? Because you think about it, they're
+serving data to their operations team, their support team, et cetera. And they've been able to drastically
+improve their internal team NP's by improving observability. Because at the end of the day,
+if there's a stronger relationship, then teams trust the data more and
+can use the data more. So at the end of the day, one of the biggest barrier to actually
+using the data is being able to trust it. And the JetBlue team has been really
+impressive in how diligent and operation focused they've
+been in using their data. >> That's super cool. NPS is a new one for me. Heard that applied to data before. That's really cool. >> Yeah. I think data leaders, at the end
+of the day, just like all of us, care about what their peers
+think about and simply asking, how happy are you with
+the services that we're offering? How reliable is data
+from your perspective? And sort of getting an understanding of
+how your internal stakeholders think about using data, I think is pretty important to
+get an understanding of where you stand. >> Yeah, and so for
+the learners of this course, too, one of the things we're trying to
+emphasize a lot is getting out there and talking to stakeholders,
+understanding what they want to build. I think all too often, engineers
+especially, they just want to engineer things sort of in a vacuum, but
+that's not how the world works. What are some suggestions you have for
+the learners who need to get out and talk to stakeholders about things
+related to observability, for example? >> This is like the most important
+advice that anyone has given me, Joe, so you've nailed it. [LAUGH] In terms of what's
+critical to get right. I think before we started the company and
+the category, actually spoke to several hundred data
+people, data leaders across the industry, to understand whether this is something
+that's so this problem of data downtime. Is that an issue that
+only I'm experiencing or other people are experiencing as well? And in those conversations, have learned
+that this is an imminent, urgent, and painful problem, but I would never learn that if I didn't
+actually speak to those people. And then the second thing is,
+when we first built our initial product, I sort of had a specific idea
+of what I wanted to build based on my experiences as a data leader. And what I learned is, actually,
+oftentimes customers don't really know. They know they can speak to their pain,
+but they are not always able to
+articulate their solution. And so actually spending a lot
+of time with customers and testing solutions with them,
+meaning building some sort of mvp and having a customer actually try it,
+is invaluable feedback. So it's not enough to just
+speak with customers. You also have to try out your ideas with
+them to get that feedback firsthand. I've been wrong so many times about
+what I think we should build, when ultimately the customer
+is always right. So I think you're spot on. There's sort of no other
+way than to learn that. I think we're also at a very interesting
+inflection point with generative AI. Now, lots of data teams and
+data people are asking themselves, what are the best practices that
+I should adopt for generative AI? What are the first use
+cases that I should build? What are the pocs that I should work with? Who should I hire to do this? And so I think there's a lot of hunger
+out there to understand best practices. And so for folks out there who
+are learners, I think kind of getting educated on those spaces and sort of
+having conversations with data leaders or trying to figure this out themselves
+as we speak instead of a great tactic. >> Yeah,
+definitely an inflection point for sure. I guess, what advice do you have for the
+learners in terms of staying flexible and continuously learning in their career? It seems like you've had some evolutions
+yourself in your thinking and your learnings, so. Yeah, so what's some advice for
+the learners here? >> Yeah, my primary advice is to
+actually not listen to advice at all. I think advice is so skewed by
+the person giving you their advice and their background. And what I've learned throughout
+this journey is that for any question that you have,
+you can probably get five people who will say something and five people
+who will say the exact opposite. And so at the end of the day, it's
+actually really important to be centered in what you believe and to talk to your
+customers and hear what they think. And I think continuing to stay curious
+about where your customers are at and what is the journey that
+they're going through. I speak with between ten to 15
+customers every single week for the last five years since
+we started the company. And I think that's critical to
+really understanding not only where your customers are, but also where the
+market is and where the market is going. I think in data,
+it's sort of where all the cool kids are. But the industry changes so often,
+we're kind of like Taylor Swift. We're reinventing ourselves
+every couple of years. And so it's actually really difficult
+to stay up to speed on everything. It's really hard, but I think leaning into
+your curiosity and what excites you and what you're passionate about
+is sort of my best advice. >> That's awesome. For learners, listen to her advice, even though she tells you
+not to listen to advice. >> [LAUGH]
+>> Awesome. Well, thanks for your time, Barr. It's been a wonderful conversation. I think the learners will gain
+a lot of knowledge from this. >> Yeah, absolutely, happy to help. I'm jealous of you all, I should probably
+listen to take the class myself. >> Awesome, maybe you should. >> I should. >> [LAUGH] Awesome.

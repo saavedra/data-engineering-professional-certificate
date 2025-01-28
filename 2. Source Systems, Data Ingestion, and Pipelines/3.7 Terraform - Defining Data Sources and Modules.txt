@@ -1,0 +1,116 @@
+In addition to the resource
+variable and output blocks that you saw in
+the previous videos, you can also declare data
+blocks in Terraform. You can use data blocks in your configuration file
+to reference resources created outside of Terraform or in another
+Terraform workspace. Terraform refers to these
+resources as data sources. You can check the
+provider documentation in the Terraform registry to see how to declare
+these resources. You'll notice that
+for each resource available in the provider, you can declare it
+in Terraform either as a resource or
+as a data source, depending on whether
+you want to create that resource or read from
+an external resource. Let's go over two examples
+that use the data block. Previous video, I created
+a configuration file that launches an EC2 instance
+inside the default VPC. But now, let's say
+you want to launch the EC2 instance inside a subnet of A VPC that you already created outside
+this current workspace. To access a subnet, I'm going to declare a
+data block as shown here. Similar to the resource block
+next to the data keyword, I'm going to specify
+two strings. The first string represents
+the resource type, which you can get from the
+providers documentation, and the second string is a name you choose to give
+through the data source. You can now refer to this name throughout the
+configuration file. Inside the data block, you need to specify
+the arguments that identify the subnet
+that you want to use. Make sure to check the
+documentation in order to know what arguments
+the data source expects. Here I am assuming
+that I know the ID of the subnet and I'm assigning
+it to the ID argument. Now that the data source
+has been declared, you can use its attributes. For instance, to use
+the ID attribute, you start with a keyword data, then specify the resource type and name for this data source, then give it the attribute
+you want to access. In this case, you can use data.aws_subnet.selected_sub.id, to get the ID of
+the desired subnet. Inside the resource block
+of the EC2 instance, there's this subnet_
+id attribute that I can specify using this expression in
+order to launch the EC2 instance inside
+the desired subnet. Now, since you already
+know the subnet Id, You could have, of
+course, just referenced it directly in the
+resource block. But here, I wanted to
+show an example of how a data block could
+be used instead. Because in some cases, you may not directly have the subnet ID, and so in the data block here, you may use other arguments to identify the desired subnet. As another example, you could
+also use a data source to automatically identify
+the AMI argument of the EC2 instance. In the first video,
+I explained that I grabbed this AMI from
+the AWS console. If I want to automate this process by asking
+Terraform to do the search on my behalf and retrieve the latest Linux AMI, I can use the
+following data block. Here I'm asking
+Terraform to find the most recent AMI owned by Amazon that has a specified
+system architecture, and that is Linux-based. Now inside the EC2
+instance resource block, you can specify the
+AMI as shown here. Again, you start
+with a keyword data. Then you use the resource type and name of the data source. Finally, you specify that you want to access the ID attribute. Let's now update the
+configuration by running the Terraform
+apply command. You see that Terraform
+is planning to destroy the previous instance to create a new one with the
+updated network settings. You can also see
+that it performed the search to find
+the latest AMI, and it found the same AMI that
+I have already specified. Now I'm going to type yes and wait for
+the updates to take place.The last topic that I'd like to cover
+in this tutorial is use of modules in Terraform. A module is a
+sub-directory inside your main directory
+that you can use to group resources that
+are used together. You can think of it as a way
+to package those resources. In this example, I'm going to
+create this website module to group together
+all the resources that are used to
+create the website. Let's move the file
+main.tf that contains the definition of the web
+server into the website module. A module is like a
+regular root directory. It also expects you to
+declare the providers, the input variables, and the
+output values inside of it. I need to move those files
+into the website module. The module acts as a folder
+that contains the resource, the input variables,
+and output values. You can't directly access this information in
+the root directory. Meaning that if you run
+Terraform apply now, it will give you
+errors because the root directory won't be able to see the values assigned
+to the input variables. To solve this, you need
+to declare a module block to call the module in the
+root directory as shown here. I chose a website as a module name and specify
+the source argument, which is the module directory. Now, inside this module block, I can include the
+input variables of that module with
+specific values. Here, I need to specify a value for the input
+variable server_name. For that, I'm going
+to create this variables.tf file in
+the main directory. Declare the
+server_name_root variable. Then back over in
+the module block, I can assign through the
+modules input variable, the value of this
+server_name _root variable. Then finally, in the TF Rs
+file of the root directory, I need to specify
+the actual value of the server _name_root variable. Finally, if you want to
+export the modules outputs server ID and server ARN also has outputs
+in the root directory, you need to create
+an outputs file inside the root directory. In this file, you declare the
+outputs and assign them to the values of the modules
+outputs using this syntax. You start with the word module, then you specify the name of the module that contains
+these output values, and then you specify the name of the output values
+you want to access. Whenever you add, remove, or modify module blocks, you need to rerun Terraform
+init to allow Terraform to install new modules or
+adjust the installed modules. Here I'm going to
+run Terraform init. Then Terraform apply. I'll type yes and wait for
+the updates to take place. That's it for this video
+series on Terraform. I know that was a
+lot, but don't worry. You can always refer back to these videos to
+review the details. I've also included some optional
+reading materials after this video that contain more Terraform
+configuration examples. I'll see you in
+the next video for a quick walk through
+of the upcoming lab.

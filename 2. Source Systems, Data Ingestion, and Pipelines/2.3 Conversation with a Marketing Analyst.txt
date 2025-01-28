@@ -1,0 +1,63 @@
+In the first course of the specialization,
+we did some requirements gathering based on conversations we had
+with various stakeholders. Including a data scientist, the chief data
+officer, a product marketing manager, and a software engineer at
+a fictitious e-commerce company. Through these conversations,
+you learned from the chief data officer that the company aims to
+expand to new markets and increase retention with
+existing customers. And you worked with these stakeholders
+to set up a data pipeline for a recommender system. Here we're going to build on that set of
+conversations and talk with a marketing analyst that's been tasked with looking
+for insights and product sales trends. And so in this video,
+I'll play the data engineer and my friend Colleen will play
+the marketing analyst. Let's jump in. Colleen number four, good to meet you. >> Good to meet you too. >> Hi, I'm Joe, new data engineer and looking forward to hearing more
+about what you're working on. >> Yeah, absolutely,
+I'm really excited to be working with you. So what I'm working on is trying to
+understand what kind of external factors might be signals that we could connect
+to customers purchasing habits and so on the marketing team, we have been
+brainstorming on what kind of things these might be, and we've come up with a few
+ideas we'd like to explore further. >> That sounds cool,
+why don't you tell me more about that? >> Sure thing. So we were thinking that perhaps,
+broadly speaking, how someone is feeling,
+like happy or sad, excited or relaxed might affect their behavior
+when it comes to shopping online. Of course, we have no way of knowing
+exactly how our customers are feeling on any given day, but
+we thought we could explore some ideas. In particular, we would like to look into
+what kind of music people are listening to across the various regions
+where we sell our products and then comparing those with product sales. I see.
+So you're thinking you would like to pull
+in public data from some external sources to get information on
+the music people are listening to. >> Yes, exactly. So I've been looking into it and it looks like Spotify has a public API
+where we could pull data on what musical artists are trending in different regions
+and people's listening trends over time. Does that sound like something you
+could potentially help us with? >> For sure I'm a big Nickelback fan,
+so I definitely like music a lot. >> Nice, must be. >> Yeah, yeah, so I'll just need to
+have a closer look at the Spotify API. And once I figure out the details, maybe
+we could talk through exactly what kind of information you would like to pull in and
+how you'd like that served up. >> Okay, yeah, that sounds fantastic. Let me know if there's anything
+I can help with in the meantime, and I'll look forward to talking more with
+you once we have the details sorted out. All right, that's great, thank you. All right, so that was an example of
+a conversation with a marketing analyst where they describe their data needs for
+a project. Focus on pulling in data from a public API
+that they would like to analyze alongside product sales data. Now, I'll acknowledge, and
+maybe you're thinking this as well, that studying regional trends in what kind
+of music people are listening to might not sound like a particularly
+brilliant approach to marketing. And you're probably right, but believe me,
+I've seen all kinds of crazy stuff when it comes to what kind of data different
+stakeholders want to get their hands on. So the point here is not to dwell on
+whether this seems like a worthy endeavor, but instead to identify
+the key requirements for the system you'll need to build. In this case, there is certainly more
+information required to know exactly what the best approach will be when it comes to
+building out the entire data pipeline for this project. But for the moment, we're going to
+stay focused on the ingestion piece. The key things you'll learn here are that
+you're going to need to ingest data from a third party API. You'll eventually need to consider other
+details like how you're ultimately going to store and
+serve the data to the analyst, and this will depend on
+what the analyst needs. In general,
+when ingesting data from an API, you'll be looking at some kind
+of batch ingestion process, but exactly how that looks will depend
+on what you aim to do with the data. In the next video, we'll take a closer
+look at the tradeoffs between the popular batch data processing
+paradigms of extract, transform, load or ETL versus extract, load, transform or
+ELT as relate to your ingestion of data. And after that,
+we'll take a look at connecting to and ingesting data from a REST API. I'll see you in the next video.

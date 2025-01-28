@@ -1,0 +1,131 @@
+In some of the previous labs, you
+provisioned and configured some resources by applying Terraform configuration
+files that were provided to you. To create your resources in Terraform, there's a consistent workflow
+that you'll always follow. You first write the configuration
+files to define your resources, then ask Terraform to
+prepare your workspace. Terraform then installs the necessary
+files that enable communication with the cloud APIs and creates an execution
+plan describing the resources it will create, update or destroy. Once you approve the plan,
+Terraform applies the proposed steps and provisions your infrastructure. In the lab this week, you'll get a chance
+to write and run your own Terraform code, so I prepared a series of tutorials
+to get you ready for that. In this first tutorial, we'll go into
+the details of how you can prepare your configuration files
+to create an EC2 instance. In the process, you'll learn more about
+the inner workings of Terraform and be ready to create any other
+resources in Terraform. And just a little warning before
+we jump into the details here. This is probably going to feel like
+a fire hose of information, but just bear with me. You don't need to master all
+the details the first time through, and you'll get a chance to practice
+all this yourself very soon. So let's say you want to
+create an EC2 instance and launch it in the default VPC of your
+selected region as shown in this diagram. In this example, I'm going to go with
+the West Virginia region or us east one. I'm choosing to launch the EC2 instance
+in a default VPC here for simplicity. But recall that in Week 1 of this course, Morgan said that you typically want to
+launch resources in your custom VPCs and reserve the default VPC for
+quick experimentation only. Let's start with creating
+the configuration file to define this EC2 instance. To write your configuration files, you
+can use any IDE of your choice, install Terraform in your environment and use your
+AWS credentials to authenticate Terraform. You can find more information about
+those steps on the Terraform website, which is linked in the resources
+section at the end of this week. In the lab,
+this will all be set up for you. You will just have to follow
+the instructions to open Cloud 9 and you'll be able to use
+Terraform right away. Here, I'm using Cloud 9 as the IDE. I already installed Terraform and
+created this folder that represents a root directory or
+I'm going to save the configuration files. So let's go ahead and create the first
+configuration file and call it main.tf. Any file that has .tf as
+its extension will be recognized by Terraform
+as a configuration file. You can structure your configuration
+files as five sections. You specify the Terraform settings and
+providers in the first two sections. Then you'll define all the resources
+you want to set up in the next section, and you can optionally define
+any input variables and output values in the final two sections. You'll then create blocks of code to
+represent entities within each section. In Terraform, a code block has a JSON like
+structure that starts with a keyword that tells you what type of block it is. Then the block can include
+labels as strings if needed, depending on the type of the block. Each block has a body delimited
+by these curly braces. Within the body, you can define
+the block arguments or further blocks. Let's start with the first section. The Terraform block you see here specifies
+the Terraform settings, including the required providers that Terraform
+will use to create your resources. I'd like to pause for a moment to say a
+little bit more about providers because I feel this can be a bit confusing
+the first time you're using Terraform. So in the language of Terraform, a
+provider is a plugin file or a binary file that Terraform needs to install in order
+to interact with external resources. You can find all the available providers
+in the Terraform registry as shown here. Some providers allow Terraform to
+interact with cloud platforms and others are utilities providers that allow
+you to use additional functionalities in Terraform. So just to be clear, in Terraform,
+the word provider is not a reference to the cloud provider where
+you're setting up resources. Instead, a provider in this
+context is that plugin or binary file that Terraform needs in order
+to interact with external resources. Let's click on the AWS provider. And again, AWS provider here is not
+referring to AWS as the cloud provider. Instead, this is the file that
+allows Terraform to interact with resources on AWS. So here, you can see the version of
+the provider, the source code, and a link to its documentation. If you click on the documentation, you'll
+see a list of all the resources available by this provider and
+examples of their usage. When working with Terraform,
+this documentation can be really helpful because it shows you the arguments that
+you need to specify in this case for any AWS resource. Now let's go back to the code. Since we're only using AWS
+resources in this example, you need to declare only the AWS
+provider as a required provider. For each provider, you need to specify
+a local name, the source location, and optionally, a version constrained. The local name is the unique identifier
+that you can use everywhere in the configuration file to
+refer to the provider. For example, here I'm using AWS as
+a local name for the AWS provider, which is the preferred name that is
+used in the AWS provider documentation. The source, which is hashicorp/aws is
+the global identifier of the AWS provider. It specifies where Terraform can
+download this provider when you run this configuration file. You can also set a version constraint for
+Terraform itself by specifying the required version within
+the Terraform block. In the next section, you can create
+a provider block to configure the providers that you just declared. So in this provider block here,
+I've specified the AWS region. Note that the name that I used next
+to the provider keyword is AWS, which is the local name I assigned for this provider within
+the Terraform settings block. I know this feels like a lot of details,
+but don't worry, you can always go to the documentation for
+your specific provider and copy the code for the Terraform
+settings and providers blocks. Next, let's define the EC2 instance. In the resource block,
+you start with the keyword resource. Then you specify what is called
+the resource type, which is a string that contains a provider and
+the resource separated by an underscore. So the prefix aws refers to the AWS
+provider we specified earlier, and the resource type aws_instance
+refers to the AWS EC2 instance that I want Terraform to manage. You can always search for the resource type in the Terraform
+documentation of the AWS provider to define the name of the desired resource
+type you want to configure with Terraform. The next string here represents the name
+you chose to give to this resource. Together, these two strings form a unique
+id which you can use to reference your resource in other blocks of
+your configuration files. For example, you can refer to this EC2
+instance using aws_instance.webserver. Now, inside the resource block, you need
+to specify the arguments of the resource. And again,
+you can find the list of the arguments for each resource in the documentation. So for example, for the EC2 instances
+you have this long list of arguments. But just like when you're
+writing Python code, you don't need to specify every single
+argument as most of them are optional. The two required arguments for
+the EC2 instance are the AMI and the instance type. The AMI is a software template that
+contains information about the instance's operating environment, such as the
+operating system and system architecture. AWS provides a long list of amis that
+you can find in the Ami catalog in the AWS console. In this example, I grabbed the id
+of the most recent Linux based AMI. For the second argument,
+I'm using t2.micro as the instance type. I also set the optional tag to give
+the instance name example server. Note that I did not specify the subnet in
+which I want to launch the EC2 instance, and this is because I want to launch
+it in any subnet of the default VPC. What you see here in this configuration
+file is enough to create an EC2 instance. So let's actually create
+this EC2 instance. In the example here, I'm going to
+start with the Terraform init command. When you run this command, Terraform installs the providers
+defined in the configuration file. So in this example,
+Terraform downloads the AWS provider and stores it in a hidden
+subdirectory named .terraform. Once Terraform has been
+successfully initialized, you can run the Terraform plan command. When you run this command, Terraform
+creates an execution plan that details what Terraform is planning to create,
+update, or destroy based on your configuration files. So in this case, the plus signs mean that Terraform plans
+to create all of these components. In other cases, you might see a minus
+sign which indicates things that will be destroyed, or a tilde symbol which
+indicates things that will be updated. Finally, you can run
+the Terraform apply command. Terraform will show you the execution
+plan again, but then stops to wait for your approval. So here, I'm going to type yes and
+wait for the creation of the EC2 instance. And there you go. Terraform just created the EC2
+instance based on these configuration specifications. If you want,
+you can check the instance in the console. So in this first tutorial, you saw how
+you can set up your configuration file with the Terraform and provider blocks. Then how you can create an EC2
+instance using a resource block. Join me in the next video to learn more
+about other blocks in Terraform and how you can better organize
+your Terraform directory.

@@ -1,0 +1,68 @@
+Before talking about how you might use
+an orchestration tool to define and run your data pipelines. I'd like to back up and just spend
+a moment describing how you might have set up your data pipelines
+before orchestration tools. Before orchestration, the simplest
+way to automate a data pipeline, or any set of software tasks for that matter,
+was to set up a series of Cron jobs. So Cron is a command line utility that
+was first introduced in the 1970s to execute a particular command
+at a specified date and time. To schedule a job with cron,
+you simply write a command or entry known as a Cron Job,
+where you specify five numbers separated by spaces and followed by
+the command you want to schedule. So the structure of a Cron Job looks
+like this, where you have the command you want to execute over here on
+the right, and then from right to left. These five numbers indicate
+the day of the week, 0 to 6, for Sunday to Saturday,
+the month of the year from 1 to 12. The day of the month from 1 to 31,
+the hour of the day from 0 to 23, and the minute of the hour from 0 to 59. You can also include an asterisk or star in place of any of these five numbers
+to indicate no restriction on that value. So, for example, this cron job that
+says 0011 echo, Happy New Year. Will print Happy New Year to the terminal
+of the computer that it's running on every year at midnight on January 1. These first two zeros indicate the 0th
+minute of the 0th hour of the day, which is midnight, and the next two ones indicate the first day
+of the first month, which is January 1. And then the star and
+the day of the week position just says you don't care what day of the week it
+is when the other conditions are met. So how would you have scheduled
+the tasks in your data pipeline? Well, for example, suppose you had a data pipeline where
+you were ingesting data from a REST API, and suppose you wanted to ingest data
+from the API every night at midnight. And you had a python script called
+Ingest_from_rest_api.py to do the ingestion step. In that case, you could have
+written a cron job like this. 00 star star star,
+python ingestion python rest_api.py. So here, the first two zeros say that you want
+this command to be executed at midnight. And the asterisks in the other positions
+just indicate that you want to do this no matter what day, month,
+or day of the week it is. Then maybe you wanted to do some in flight
+cleaning or processing to the API data. And let's suppose you had another Python
+script written to perform that step. And maybe you knew that
+it always took less than an hour to ingest all
+the new data from the API. Then you could have set up the next step, the in flight transformations to
+take place at 1AM every morning. That would look like this as a cron job, 01 star star star python
+transform_api_data.py. And then maybe you were also ingesting
+data from a database every night at midnight. So you would have written
+another cron job that says 00 star star star python
+ingest_from_database.py. And maybe you wanted to combine
+the transform API data with the data from the database. And so you would have written yet another
+cron job, maybe one that kicks off at 2 AM every morning so that it happens
+after the other jobs are complete. So that would look like
+02 star star star python combine_api_and_database.py and
+so you get the idea. And you could have written all the Cron
+jobs you needed to get the pipeline implemented, carefully timed to
+execute in a sequential manner. This is what's known as a pure scheduling
+approach, and this is how many data pipelines were automated before
+orchestration tools were available. In fact, this is still how many simple
+data pipelines are automated today. Just to be clear, I'm not suggesting
+you forego orchestration and set up your data pipelines as Cron jobs. The problem with a setup like this is that
+there are many ways in which you can fail. For example, if one task fails to run,
+or takes longer than expected, or produces some unexpected result,
+your entire pipeline can fail. And you would have essentially no way
+of knowing exactly how or why it failed without implementing tests and
+debugging to determine what went wrong. Or even worse, since you don't
+have any built-in monitoring or alerts to tell you how things are going. You might not learn about the failure
+until your downstream stakeholders come to you asking why the data looks funny. And so why am I talking about scheduling
+with Cron if I'm not recommending it? Well, first off, it can be a nice,
+intuitive way of wrapping your head around what it
+means to automate your data pipelines. And a Cron job can work great for some
+simple tasks, like a data download that needs to happen on a regular basis and
+doesn't have any downstream dependencies. Or if you're in the prototyping phase and
+testing various aspects of your data pipelines, using Cron can be
+a quick and easy way to get started. In the next video, I'll talk a little bit
+about orchestration tools in general and how they have evolved in recent years, and after that you'll get into orchestrating
+your data pipelines with airflow. I'll see you in the next video.

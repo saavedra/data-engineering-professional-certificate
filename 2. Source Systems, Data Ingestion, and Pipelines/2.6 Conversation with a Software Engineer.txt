@@ -1,0 +1,69 @@
+Now it's time to look at streaming
+ingestion in more detail. In the previous course, you worked with
+a product recommender system in the last lab, but we didn't really get into the
+details of how streaming ingestion was set up for that system. So in this video we'll do another
+stakeholder conversation where I'll talk with a software engineer about
+the ingestion details for that recommender system. After that, you'll build the system
+yourself in the next lab. So let's jump into the follow up
+conversation we'll have with the software engineer. It's good to see you again, Colleen. >> Good to see you too. >> Thank you, so I'm working on getting a
+new product recommender system set up and I'd like to work with you to better
+understand how data ingestion can work in terms of receiving real-time user
+activity data from the website. >> For sure, so the way the system
+works on the website and is that we're continuously recording
+events in the web server log. And those events include everything from
+internal system performance metrics and any errors or other anomalies that
+are generated as well as user activity. Like the buttons or links our users
+are clicking on as they browse different products or
+check out and make purchases. >> Okay, well, in an ideal scenario,
+I'd probably like to be ingesting all of the user activity data and
+none of the internal system metrics. Do you think it would be possible for
+you to separate out event records related to user activity and push those into
+a separate log for me to adjust from? >> Yeah, we can certainly do that. I can imagine a number
+of ways that might work. But if we pushed user activity messages
+into a Kafka topic or kinesis stream, you could ingest directly from
+there into your pipeline. >> Okay, great. Yeah, that sounds like a good solution. I think if you could push into a kinesis
+data stream, that would work great for me. I've been exploring how some other aspects
+of the pipeline could work using kinesis, so that seems like a good fit for now. The other question I have is
+around the data payload itself and expected message rate. Could you tell me more about what I
+can expect in terms of the format of the individual messages and the rate
+of messages arriving in the stream? >> Yeah, so
+the messages are recorded in JSON format. So the payload you can expect is
+a JSON including a session id and all the customer information
+like location as well as their browsing activity in terms of
+which products they have looked at or added into their cart with regard to
+the size of the individual messages, they vary a bit, but are generally
+around a few hundred bytes each. The rate of messages you can expect will
+vary a lot depending on how many users are on the platform at any given time. But as you can imagine, one user might
+generate several events per minute, and then we might have as many as 10,000 or
+so users on the platform at peak times. So that might translate into as much
+as maybe 1000 events per second. >> Okay, great, so let's see,
+maybe back of an envelope estimate, then we might have, say, 1000 events per second
+at a few hundred bytes each in size. That's less than one megabyte per second,
+so that should be well within
+the capacity of a Kinesis data stream. I think they can handle hundreds
+of megabytes per second, depending on the configuration. >> All right, and then the other thing
+I'll need to configure on my end is how long messages are retained in the stream. As you know, the stream will be
+essentially in a pin only log, but we'll set it up so that the messages
+are removed after a period of time. >> Right, well, of course, the idea is
+that we'll be using the data in real-time to make recommendations, and
+we'll also be saving the inputs and outputs of the recommender model for
+analysis later on. So if everything goes well, we won't
+need to reread messages from the stream. But I suppose if something goes wrong, we may want to have the ability
+to back up and replay the stream. If something breaks. Maybe we could retain
+messages in the stream for one day after they are initially written? >> Sure, so let's see. On a busy day we might be writing,
+like you said, around one megabyte per
+second to the stream. And there are sort of order of magnitude,
+around 100,000 seconds in a day. So the total size of the stream could
+grow to like, what would that be? 100 gigabytes, worst case scenario. So that seems reasonable. All right, well, is there anything
+else you would like to know or should we go ahead and
+just get going building this? >> I think that's all for now. Let's build it. >> Build it. Okay, so
+that was an example of a conversation with a software engineer who will
+be an upstream stakeholder and the owner of the source system
+you'll need to ingest data from. As I've been emphasizing at several points
+throughout these courses so far, there are a number of other things you should be
+discussing with source system owners when it comes to understanding potential
+disruptions to your data pipeline. Things like schema changes or outages. But for now, we'll just focus on
+understanding the data itself and the mechanism for
+ingestion you'll be using in this case. Join me in the next video, where we'll
+unpack some of the details of this conversation and
+look more closely at streaming ingestion.

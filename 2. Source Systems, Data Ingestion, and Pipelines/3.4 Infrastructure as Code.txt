@@ -1,0 +1,88 @@
+As I mentioned in the previous video,
+you can use infrastructure as code to programmatically define, deploy, and
+maintain your cloud infrastructure. This means you can automate the creation
+of all the resources you need for your cloud data pipelines,
+including networking, security, computing, storage, and other data management and
+analytics resources. But the concept of infrastructure as code
+actually precedes cloud computing and has much older roots in configuration
+management dating back to the 1970s. Even back then, engineers struggled
+to efficiently configure and manage a series of physical machines, and they would write BASH scripts to
+automate some configuration tasks. And looking back, you can think of this
+as the sort of primordial roots of infrastructure as code. With AWS's release of EC2 in 2006,
+anyone could easily spin up cloud computing resources
+whenever they needed them. So engineers were able to build more
+scalable applications with many components and complex dependencies. In the early 2010s, software engineers
+developed infrastructure as code tools like Terraform, CloudFormation, and
+Ansible that allowed them to provision and configure their infrastructure using
+code-based configuration files. Nowadays, you can use these tools to
+easily manage infrastructure resources on the cloud with lines of code,
+rather than manually clicking through resource setup windows or
+writing tedious bash scripts. And in fact, you already gain practice
+using infrastructure as code tools in some of the previous labs. So, for example,
+in the first lab in the previous course, you saw this architecture diagram for
+the data pipeline you were building. Behind the scenes, we use CloudFormation
+to automatically create and configure all the necessary networking
+resources, including the VPC and subnets, and the RDS database that you needed for
+this lab. And then you also ran some Terraform
+scripts to deploy other parts of this infrastructure, including the glue ETL
+job, the S3 bucket, and the glue crawler. In this week's materials, I'll focus
+mostly on Terraform because that's what you'll be using in
+the lab later this week. But it's worth noting that CloudFormation
+is another popular infrastructure as code tool, and it's native to AWS. Terraform and CloudFormation
+are both well supported tools and have great documentation. And depending on the organization you
+work in, you might work with one tool over the other, and in some cases,
+you might even use both tools, just like we have used both tools to
+support the labs in these courses. Now let's take a look at some specific
+terraform configuration files that you ran to create the glue ETL and S3 bucket
+components of your data pipeline. Let's zoom in on a part of the S3
+configuration file to take a closer look. With this first block of code,
+you set up the S3 bucket. This bucket has a unique name with the
+specified prefix based on the variables defined for you in this lab. You use a second block of code
+to configure that bucket and provide public access to it. Notice that the language used in this
+configuration file is relatively easy to interpret. It follows a simple pattern where
+you start with the keyword resource. Then you specify the resource type and
+the name you want to give this resource. So in this example here
+where it says aws_s3_bucket, you're telling Terraform you want
+to set AWS as the provider, and S3 as a resource you want to provision. You'll refer to this whole
+string as the resource type. And data_lake is the name you want
+to give this newly created resource. Then, within the curly braces, you can specify these configuration
+options using key-value pairs. This configuration file is written in
+a domain-specific language called HCL, or HashiCorp Configuration Language,
+which is named for HashiCorp, the company that created Terraform. You can use the HCL syntax with Terraform
+to manage infrastructure resources across many cloud vendors. For example,
+here's how you can use HCL to create or update a VPC and an EC2 instance in AWS. Notice this code follows the same
+pattern you saw in the S3 bucket configuration file. And here's how you could provision
+a GCP compute instance using Terraform. As you see, again,
+the code follows a similar pattern, but in this case you specify
+GCP as a provider. HCL is what's called
+a declarative language, meaning that you just have to declare what
+you want the infrastructure to look like, for example,
+what resources you want to create. What values you want
+the configuration parameters to take. And this is also known as the desired
+end-state of the infrastructure. Terraform will then figure out the exact
+steps needed to achieve this desired end-state. This makes terraform highly idempotent, which means that if you repeatedly execute
+the same HCL commands, your infrastructure will maintain the same desired end-state
+as the first time you ran the commands. For example, let's say you run a Terraform
+configuration file that creates five EC2 instances. A Terraform will first check the existing
+infrastructure to see if those EC2 instances with these specific
+configurations already existed. If they don't exist, Terraform will
+create the missing EC2 instances. If there are already EC2
+instances that exist but don't match the configurations
+you specified, Terraform will update the existing EC2
+instances to match the desired state. And if these exact EC2 instances already
+exist Terraform will do nothing and let you know that it
+didn't make any changes. This is in contrast to the imperative or procedural language used in bash scripts
+and some configuration management tools, where you need to specify the exact
+sequence of configuration tasks. Using the same example as before,
+if you repeatedly run a set of commands to provision 5 EC2 instances using an
+imperative language, then you will create five new EC2 instances each time,
+regardless of whether they already exist. And so, like I mentioned earlier, in these
+courses, we'll be mainly focusing on Terraform when talking about
+infrastructure as code, because it allows you to manage infrastructure
+across many cloud providers. And it's a very popular tool among
+software and data engineers. Just note that there are other
+infrastructure as code tools out there. In the following lesson, we'll take
+a closer look at data observability and monitoring. But before that, I'm going to walk
+you through the steps of creating your resources in Terraform,
+and then you'll get some hands-on practice using Terraform
+in the first lab of this week.

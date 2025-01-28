@@ -1,0 +1,126 @@
+In the lab, you'll work with
+a transactional database for a fictitious DVD rental
+company called Rentio. This database
+includes tables that contain information
+about Rentio's stores, staff, customers, DVD inventory,
+and rental transactions. You'll write SQL statements or queries in a Jupyter Notebook to retrieve information
+from this database in order to answer
+business questions. To query the data, you'll have to understand the
+database schema. In other words, you'll have to know the names of the tables, the columns they contain, and how the tables relate to one another through primary
+and foreign keys. This database is normalized,
+meaning that data, like addresses for
+the stores, staff, and customers are stored in
+separate tables to reduce redundancy and make it easier to update the data
+when it changes. Similarly, data
+about the films and rental transactions
+themselves are also stored in separate tables. You can refer to this entity relationship model that shows the relationships
+and attributes of the tables in Rentio's database. To walk you through
+the basics of SQL, I'll only be focusing
+on three tables. The film table that
+contains information such as the title and
+length for a list of films, the category table that contains a list of
+film categories, and the film_category table
+that shows the film_id's, along with their corresponding
+film category_id's. The most basic SQL statement
+starts with a SELECT clause, where you specify
+what data you want, followed by a FROM clause, where you specify which table you want to retrieve
+this data from. For example, let's
+say I want to explore the titles and release
+years from the film table. I can write SELECT title,
+release_year FROM film. Once I run this query, I'll get a list of all the
+titles and release years. It turns out that there are 1,000 films in
+this film table. If I don't want to
+see the whole list, I can limit the number of returned results
+using a LIMIT clause. For example, if I add LIMIT
+10 to the end of this query, I'll only get the
+first 10 titles and release years
+from the film table. But what if you want to retrieve data from all the
+columns in a table? Well, you can list
+all the column names in the SELECT clause like this, or you can use a shortcut
+and type SELECT * FROM film. This will retrieve data from all the rows and columns
+from the film table. You'll learn how
+quarries are executed behind the scenes
+in the next course. But for now, just know
+that it can take a lot of processing resources to retrieve all data from all the columns, especially if your
+dataset is very large. I recommend only using SELECT * to retrieve all the
+data in a table, where you can filter the results with some Boolean condition. For example, let's say
+you're only interested in exploring films that are
+less than 60 minutes long. You can add a WHERE clause after the FROM clause to filter the results based on
+the length column. I'll write SELECT * FROM film WHERE length
+is less than 60. This will return a list of the 96 films that are
+less than one-hour long. You can also order the results
+by any column you want. For example, I can add
+ORDER BY length after the WHERE clause
+to get the results stored in ascending order
+by the film length. If I wanted the results in descending order by film length, I can add the D-E-S-C, or DESC, keyword to the end
+of the ORDER BY clause. If I wanted to limit
+the results to, say, 10 records, I can add a LIMIT 10 to the end of this query. You just saw how you
+can retrieve data from a single table
+using the SELECT, FROM, WHERE, ORDER BY, and LIMIT clauses. What if you want to explore data from more than one table? You can use the JOIN clause
+to combine records from two or more tables based on the shared columns
+between those tables. For example, let's say I want to get a list of film titles and their corresponding
+film_category for all films that are
+under 60 minutes long. Let's modify the
+query from earlier, where I selected star FROM film WHERE length
+is less than 60. I want to combine the rows from the film table
+with the rows from the film_category table
+based on matching film_id's. At the end of the FROM clause, I'll write JOIN film_category ON film.film_id =
+film_category.film_id. This way, the
+returned results will include all the columns
+from the film table, along with the columns from
+the film_category table for each matching pair of
+film_id's in both tables. Notice that the
+film_category table only includes the category_id, but not the category name. So we need to do another join to combine these records with rows in the category table
+based on the category_id's. I'll add JOIN category ON film_category.category _id
+= category.category_id. Now the results will include all the columns from
+the film table, all the columns from the
+film_category table, and all columns from
+the category table. Since I only want
+the film title and the corresponding film_category, I can modify the
+SELECT statement to specify that I only want the film.title column in
+the category.name column. Note that by default,
+the JOIN clause combines only the records from both tables that have a matching column value
+specified in the ON statement. It will not include
+any records from either table that don't
+have matching values. For example, if the film
+table has a row with film_id that doesn't appear
+in the film_category table, then that row will not be
+included in the results. This type of join is also
+known as the INNER JOIN, and you can think of
+the join results as the middle overlapping
+part of a Venn diagram. The other types of joins
+include the LEFT JOIN, which returns all records
+from the first table, along with any
+matching records from the second table,
+the RIGHT JOIN, which returns all the records
+from the second table, along with any matching
+records from the first table, and the FULL JOIN, which
+returns all the records from both tables and combines the
+ones with matching values. Going back to the results
+from the last query, I can see that quite a
+few of the shorter films belong to the children
+or documentary category. Let's say I want to
+know for sure which is the most popular category
+for short films. I can use the GROUP
+BY command to group the rows based
+on the film_category. Then use the COUNT
+command to count the number of records for
+each of the film categories. The GROUP BY command is written
+after the WHERE clause. Here I'll add GROUP
+BY category.name. Then I'll modify the
+SELECT statement to select category.name and COUNT(*), which counts all the
+rows for each category. I will also use the AS
+command to give the output of this count the
+film_count alias name. Finally, I'll order
+the results by the film count in
+descending order. As you can see, the most
+popular category for short films under an
+hour is documentary, followed by action,
+then children. Those are some of the
+most common SQL commands. Now, you're ready to get
+started with the lab. The lab also covers some data
+manipulation operations, including CREATE, INSERT
+INTO, UPDATE, and DELETE. Make sure you read
+the instructions carefully when trying
+each of the exercises. After you finish the lab, join me to take a look
+at NoSQL databases.

@@ -1,0 +1,71 @@
+In the previous
+course, I mentioned the so-called API
+mandate that came in the form of an email
+from Jeff Bezos to all Amazon employees in 2002. The gist of this email
+was that going forward, all teams would be required
+to use service interfaces, otherwise known as application
+programming interfaces or APIs to communicate, as well as to serve
+data and functionality. The problem that came to solve was that prior to that time, teams of Amazon and at every other organization
+for that matter didn't have a consistent
+or stable way to exchange data and services, leading to inefficiencies
+by setting up APIs as a stable and predictable
+service interface between different teams. It meant that any
+individual team could provide data,
+functionality, and communications
+to other teams, no matter what kind
+of complicated mess that teams might have going
+on in their own systems. The other part of
+the API mandate was that all these
+service interfaces or APIs had to be built
+from the ground up to eventually be public-facing to developers in the outside world. This reorientation toward
+service interfaces laid the foundation for
+what would eventually become Amazon web services
+and set the direction for how companies around the world would eventually share
+data and services, both internally and externally. An API is essentially a set of rules and specifications that allows you to programmatically communicate and exchange
+data with an application. By programmatically communicate, I mean communicate
+by running code. If you've done some
+software development, you might be familiar
+with connecting to APIs. But even if you haven't set
+up API connections yourself, you're no doubt using APIs
+directly on a daily basis as you search for things online or use the apps on your phone. This is because today, APIs are built into
+the functionality of a wide range of
+software applications. For instance, social media
+apps use APIs to fetch and display data from the web
+servers to end users. APIs are also used to facilitate transactions between E-commerce websites and payment systems. Many companies provide
+public-facing APIs so that you as a developer can
+access their data and services and integrate them
+into your own applications. As a data engineer, you will use APIs to connect with and extract data
+from various sources, such as web services,
+Cloud platforms, or third-party providers
+by sending requests and receiving responses
+in a standardized format. APIs can also provide
+metadata, documentation, authentication, and
+error-handling features to facilitate data extraction. The most common type of API is what's known
+as a REST API, or REST stands for
+representational state transfer. REST APIs commonly use hypertext transfer
+protocol or what you might know more familiarly as HTTP methods as a basis
+for communication. You can think of interacting
+with REST APIs as similar to what you're doing when you
+browse the Internet. When you click on a
+link in your browser, you are sending an
+HTTP request to a server for a specific
+resource, like a webpage. The server responds by
+providing that resource. With a REST API, you're also sending
+an HTTP request for a particular resource, and the API is set up to respond based on the
+content of your request. In the conversation, we
+have the marketing analyst. We learned that they would
+like to do analysis of data that is stored on
+a third-party platform, Spotify in this case, and available via API. This is a really
+common scenario. You'll run into as
+a data engineer, where the source system you
+need to extract data from, whether an internal system or an external third party
+system is accessible via API. In the reading item that
+follows this video, I have included some of
+the technical details that you should be familiar with when it comes
+to interacting with APIs to ingest data
+from source systems. But the best way to
+get familiar with how all this works is to
+jump in and do it yourself, and that's what you'll
+do in the next lab. In the video that
+follows the reading, I'll walk you through how
+all that's going to work.

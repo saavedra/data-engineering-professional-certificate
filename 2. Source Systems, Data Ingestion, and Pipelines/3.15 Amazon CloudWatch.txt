@@ -1,0 +1,76 @@
+You've been learning
+from Joe and others this week about
+the importance of monitoring and
+observability when it comes to the health
+of your data systems. In the upcoming lab,
+you'll be using Amazon CloudWatch to
+monitor database on AWS. Here I want to show you some of the details of how
+CloudWatch works, so you'll be ready for the lab. Monitoring the
+health of your data systems means ensuring that the various components within your data system are
+operating as expected. If some component of your
+system is having issues, successful monitoring
+means that you are made aware of any problems
+as soon as they arise or even anticipate and correct issues
+before they happen. When you're working
+with resources on AWS, a lot of them automatically start posting metrics
+to CloudWatch, without you needing to
+do any sort of setup. Most of the time, these are system level metrics
+like CPU utilization, disk IO, network traffic,
+or memory usage. These metrics can provide a general understanding of how your resources
+are performing. Can help you identify potential issues before
+they become critical. Identifying issues before your
+end users do is important, and having robust monitoring in place can help you do that. While many AWS services automatically send
+metrics to CloudWatch, there are cases where you might want to send custom metrics. Custom metrics allow you to
+monitor specific aspects of your application that are not covered by default
+system metrics. For instance, you
+might want to track application specific data such as the number of
+transactions processed, the response time
+of an API endpoint, or the number of active users. You can use CloudWatch
+dashboards to visualize and monitor the metrics that you
+deem as the most important. You can aggregate metrics from multiple components of your
+system into one unified view. This view will help
+you identify and diagnose issues as they arise, but dashboards can show you
+data over time as well, so you can more easily identify
+patterns and anomalies. Now, you likely won't be sitting around watching your
+dashboards all of the time. Instead, you want a way
+to be made aware of problems as the metrics
+begin to reflect any issues. You can create CloudWatch alarms for specific metrics to do this, and you can define
+thresholds for these metrics so that when
+the threshold is breached, you can be alerted, or other actions can
+automatically be taken. Before you determine what reasonable thresholds are
+to set for your metrics, you need to establish
+a baseline. To do this, you would want to measure performance
+of your system under different loads
+and conditions at various times and
+determine what is normal. Cloud watch is
+configured to retain metric data for up to 15 months. You can collect
+metrics for a while before determining what the
+baseline is for your system. In general, acceptable values
+for metrics depend on what your application is doing
+relative to your baseline. In the upcoming lab,
+you will be monitoring the RDS instance that you've set up in the first
+lab of this week. Let's explore some of the common metrics that you
+might be monitoring for RDS. First is CPU utilization. A high value for CPU utilization might indicate that
+your RDS instance is under heavy load
+and needs to be scaled up or that queries
+need to be optimized. Consistently high
+CPU utilization, such as values over 80 to 90% can lead to performance
+bottlenecks, slowing down your
+database operations. Next, RAM consumption is another common metric to
+monitor closely for RDS. High RAM consumption can also slow down
+performance and may indicate that you
+need to scale up to an instance type with more RAM. Another metric to keep
+an eye on is disk space. If disk space is
+consistently above 85%, then you may need to look at deleting or archiving data to a different system to
+free up some space. Database connections are
+also important to monitor. This metric shows the number of active connections
+to your database. If the number of connections approaches the maximum limit, it can lead to connection errors and application failures. Keeping an eye on this
+metric helps you manage connection pooling and scale your database to handle
+more connections if needed. These are a few simple examples of metrics RDS posts
+to CloudWatch, and why you would
+want to monitor them. Apart from CloudWatch, there are other popular third party
+monitoring services as well, like Data Dog or Splunk, which you could also use
+to monitor your systems. When it comes to monitoring
+other AWS services, keep in mind that
+each AWS service posts different metrics, and which metrics are important to you is use case dependent. Have fun of the upcoming lab, and I'll see you again
+in the next week.

@@ -1,0 +1,86 @@
+One of the main features
+you'll interact with when using Airflow is the
+user interface or UI. This is where you can
+monitor the status of your dags and their
+individual tasks, get insights into your
+historical dag runs and troubleshoot issues
+with your pipelines. Let's take a look at some of the basic features
+of the Airflow UI. When you open the UI, you will first
+land on this page, which is called the Dag View. Here you can find a list of all the dags that you've
+created in your Dag directory. For each dag, you can see some basic metadata
+like the Dag ID, the tag, the owner
+and the schedule. You can also check
+when the dag was last run as well as the
+status of the Dag runs, how many dags are currently
+queued or currently running, and how many were completed
+successfully or have failed. There's also a more
+granular review for each dag where you can check
+the status of all tasks, including how many
+tasks are queued or running or successfully
+executed or failed, and also how many were
+skipped up for retry, up for reschedule, and so on. Let me show you how
+you can interact with the dags in this Dag View. Here on the left, you
+can see the toggle to pause or unpause a dag
+and here on the right, you can manually trigger a dag or delete
+it from the view. Finally, you can filter the
+dags you see on this page by the status or by custom
+tags you assign them. You can click on the Dag ID to get more detailed
+information about that dag. Let's take a closer
+look at this dag. This new view is
+called the grid view, and it gives you more
+detailed insights into each dag run and its
+corresponding task instances. On the left side, you see a bar chart of all the
+previous runs of this dag. Here the chart
+shows two dag runs. In other words, the
+dag was run twice. You can see the
+duration of each run, which is represented by
+the height of the bar. The status of each
+run is color coded, where red represents
+the failed status and green represents
+the success status. For each run, you can also check the outcome of all
+individual task instances. Here, the dag consists of two tasks for the
+dag run that failed. You can see that the first task had failed and the second one, it's orange coded,
+which means it did not start because the
+upstream task had failed. You can always refer to
+the color legend here at the top of the page to check
+what each color means. On the right side
+of the grid view, you can find four tabs, details, graph, gant, and code. The details tab displays detailed information about
+the historical dag runs, such as the total number
+of times the dag has run, the total number of
+successful runs, the total number of failed runs, and the minimum mean and max
+duration of the dag runs. You can use all of
+these metrics as indicators for the
+health of your pipeline. To access the details
+of a specific dag run, let's say the one
+that has failed, you can select it
+here in the bar and then check its specific
+information on the right. Let's check out the graph tab. Here, you can see a
+visualization of your dag, which helps you explore your dag structure
+and ensure that you have correctly configured the dependencies
+between your tasks. The Dag visualization
+you're seeing now does not correspond
+to any specific dag run. If you'd like to visualize the status of a
+specific dag run, let's say the one
+that has failed, you can click on it
+on the left side. Each task is now color coded based on its status
+within this run. Suppose you want
+to understand why the first task extract
+from API has failed. Let's click on this task. A new tab labeled Logs has
+just appeared on the top, and you can find all the
+error messages in this tab. Based on these messages, you can try to fix the
+code for this tag, and when you're done fixing it and ready to retry this task, you can also click on the clear task which
+will rerun the task. If it runs and it is
+completed successfully, then all the remaining tasks in the pipeline will run as well. Next, the gant chart tab shows
+you the cute duration in gray and the run duration for each task of a specific dag run. You may find this chart
+helpful whenever you need to identify any bottleenecks
+in your pipeline. Finally, the code tab shows a code that corresponds
+to the given dag. This is not where
+you will interact or edit your Dag
+code but you can use a tab to ensure that
+the code in the UI is in sync with your code
+in the Dag directory. There are many more
+features in the Airflow UI and more things you can do
+to interact with your dags. But in this video,
+we covered the basic UI features that you will
+use most of the time. In the next video, we'll go through
+the steps to build a simple dag. See you there.

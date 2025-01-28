@@ -1,0 +1,86 @@
+When you're building
+a data pipeline in a cloud based architecture, what you're really building is a network of
+connected resources. And so the way you
+configure that network plays a key role in ensuring that the data flows properly throughout
+your data pipeline. In the previous course,
+you looked at the basics of networking and
+how networking is really just a collection of
+connected devices that can share data and communicate among themselves and
+over the Internet. Here, I'd like to revisit
+and expand on some of those basic networking
+principles to prepare you for the problems you might encounter when trying to connect
+to source systems. When it comes to
+networking in the Cloud, the basic principles
+are roughly the same across all major
+cloud providers. Here, I'll go over the principles
+in the context of AWS, since that's where you're
+working with in these courses. But just know that the
+underlying concepts apply to whatever cloud
+you're working on. The term cloud computing can
+sound a little abstract, like computation is somehow
+happening out in the ether, but make no mistake, the Cloud in Cloud
+computing is made up of very real physical data centers that are spread out
+around the world. As you learned in
+the previous course, the AWS Cloud is a
+global network that is spread across different
+geographical areas known as regions. Each region contains clusters
+of availability zones. And each availability
+zone consists of one or more data centers with redundant power, networking,
+and connectivity. In many cloud computing
+applications, data and resources
+are replicated across regions and
+availability zones to ensure that systems keep working even if one or more data
+centers were to go down. As a data engineer, spending up new resources on the Cloud, You'll need to
+decide which region to host your resources in. In doing so, you might
+need to consider things like legal compliance,
+for example, does storing your data in a specific region
+mean it needs to adhere to unique data privacy
+or regulatory requirements? You might also need to consider other factors like
+latency and availability. In general, the
+closer your end users are to the region where
+your resources are hosted, the lower the latency, and the more availability zones, your resources are
+replicated across, the better you will be able to withstand or recover
+from a disaster. In addition to these
+considerations, the cost of resources can vary from one
+region to the next, which may be a factor
+in your decision. And so when you're actually working with resources
+on the Cloud, it can be easy to lose sight of the fact that what
+you're really doing is interacting with a network of physical devices that are
+spread out around the globe. But as a data engineer, it's important to understand how this global infrastructure is set up and how it impacts
+things like latency, cost, reliability, and availability of the
+systems that you build. Moving back to important things you need to know about
+networking in the Cloud. Within any given region, you can create custom virtual
+private Clouds or VPCs, which are smaller
+networks that span multiple availability
+zones within a region. Creating VPCs allows you to have more fine grain control over who can access what resources. You can then divide the space in your VPC and do subnetworks or subnets for short that house your actual data
+pipeline resources. Each subnet can then have
+its own security rules, known as a network
+access control list or network ACL for short, as well as routing
+configurations through an Internet gateway. This lets you create
+public subnets for Internet facing
+resources like web servers and private subnets for internal resources
+like databases. For example, in one of the
+labs in the previous course, you worked with an architecture
+that looked like this, where you had a source
+database inside a private subnet to prevent the data from being
+accessed over the Internet. Then you had an EC2 instance inside a public subnet
+that allowed it to run a web application that made analytical data available to
+customers over the Internet. In that lab, you adjust
+said the security group of the application load balancer to control public
+access to your website. Instead of keeping
+all ports open, you edited the inbound
+rules to block all ports except port 80 to all
+incoming traffic. In the real world, things can get complicated very quickly, especially when you start
+setting up multiple VPCs, subnets, gateways, and routing configurations
+between resources. It's in this context that the
+simple act of connecting to a database depends on multiple layers of
+network configurations, not to mention IM permissions. Understanding the details
+of network configuration is critical when it comes to connecting to your
+source systems. It's also required for
+successful orchestration and automation of
+your data pipelines, which we'll get into in the
+last week of this course. Up next, Morgan will
+walk you through the details of
+networking on AWS, and after that, I'll
+show you what you can expect in the upcoming lab, where you'll debug your
+connection to a database.

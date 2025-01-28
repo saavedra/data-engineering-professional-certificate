@@ -1,0 +1,96 @@
+The next basic component
+of networking on AWS, you need to learn about
+our route tables. In the last video, we ended with an architecture
+diagram like this. There is a VPC with two public
+and two private subnets across two AZs and an Internet gateway
+attached to the VPC, with EC2 instances and RDS database instances
+in the private subnets, NAT gateways deployed in
+the public subnets in HAZ, and a public application
+load balancer, which fronts the
+private EC2 instances. The next step to enable Internet connectivity is to configure the route
+tables for the subnets. Route tables are essential for directing network
+traffic within your VPC. Each subnet can be associated
+with a route table, which contains a set of rules or routes that determine where
+network traffic is directed. When you create a VPC, AWS automatically creates
+a default route table. This default route table allows internal communication
+within the VPC, meaning resources in
+different subnets can communicate with each other. However, it does not include routes for
+Internet connectivity. This is where you
+need to customize your route tables to meet
+your specific requirements. Without these
+routes, your subnets won't know how to direct traffic either to the Internet
+or within the VPC itself. For public subnets, you'll
+configure the route table to direct all
+Internet-bound traffic to the Internet gateway. This allows resources in the public subnet to
+access the Internet. For private subnets,
+you'll direct Internet-bound traffic to the NAT gateway in
+the public subnet. This allows resources in
+the private subnet to make outbound connections
+to the Internet while preventing inbound connections
+from the Internet. Let's hop into the AWS
+Management Console and build out these
+route tables and routes. First, I will create and
+associate the route tables. Then we will actually go back in and create the actual routes. Starting from the VPC dashboard, I will select route tables from the Navigation panel and then
+select Create route table. I'll create one route table
+per subnet in our VPC. The first one I will name
+public-route-table-1. Then select Project 1 VPC, and then select
+Create route table. Then I can associate
+this one with the first public subnet
+by selecting actions. Edit subnet associations, selecting public-subnet-1,
+and then save Associations. Next, we will do the same
+for the other three subnets. Select Route tables,
+Create route table, name the second one
+public-route-table-2. Select the VPC, and create. Then associate this route
+table with public-subnet-2. Now it's time to create
+the private route tables. I can name this one
+private-route-table1. Select the VPC and create. Then associate this route
+table with private-subnet-1. Finally, to create the last one, I'll name it
+private-route-table-2, select the VPC and create. Then associate this route
+table with private-subnet-2. Now that we have
+the route tables, it's time to create the routes. For this step, we
+will want to create routes for the traffic
+that will flow between the public subnets and
+the Internet gateway and routes for the private subnets that will flow to
+the NAT gateway. From the route tables dashboard, I will select
+public-route-table-1, and then select Edit routes. There is already one
+route in the table, and this route is a
+default route added to every route table
+that you create for communication within the VPC. To add the route to allow Internet traffic to be directed
+to the Internet gateway, I will select Add route. Then for the destination, this will be 0.0.0.0/0. If you remember the lesson
+about cider notation, this has a slash zero prefix, which means it can match any IP address because
+zero bits are fixed. This represents
+any IP address or in other words, the
+entire Internet. The destination is 0.0.0.0/0
+or any IP address. The route we will want to direct traffic to is the
+Internet gateway. Under target, I will select
+the dropdown and then select the Internet gateway attached to this VPC we created
+in the last video. I'll set up this
+route along with other network and configurations
+in the next video to allow instances in our
+public subnet to send and receive traffic from the Internet via the
+Internet gateway. I will now select
+Save changes and then navigate back to
+the route tables page. Let's move on to configuring the private subnets route table. I'll select a route table
+associated with one of our private subnets
+and add a new route. Again, the destination
+will be 0.0.0.0/0, but this time, the
+target will be the NAT gateway that we
+deployed to the public subnet. This ensures that any
+Internet-bound traffic from our private subnet instances is routed through the NAT gateway, allowing these instances to access the Internet for
+updates and patches while remaining isolated from direct inbound Internet traffic. To complete this, you would
+do the same steps for the other public and
+private subnets. Now, our route tables
+are configured to handle both internal and external
+traffic as required. The public subnets
+have routes directing Internet-bound traffic
+to the Internet gateway, enabling instances
+within these subnets to communicate
+with the Internet. The private subnets
+have routes directing Internet-bound traffic
+to the NAT gateway, allowing instances
+within these subnets to make outbound connections
+to the Internet securely. In the next video, we'll cover additional
+networking configurations, such as security groups
+and network ACLs. These configurations
+will further secure our VPC by defining the inbound and
+outbound traffic rules for instances and subnets.

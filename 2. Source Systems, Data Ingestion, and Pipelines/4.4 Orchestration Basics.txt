@@ -1,0 +1,71 @@
+When it comes to orchestration, there are a number of concepts and components that are common to whatever set of tools you're
+using for implementation, and that's what I'd like
+to discuss in this video. While setting up
+proper orchestration of your data pipelines does come with more
+operational overhead than civil Cron scheduling. It also comes with the option
+to set up dependencies, monitor tasks, get alerts, and create fallback plans if something doesn't
+go as expected. When we looked at Cron
+scheduling in a previous video, we had a data pipeline
+that looked like this with data flowing
+in from two sources, going through some
+transformations, and eventually making its
+way to a data warehouse. As we've mentioned a couple of times already in these courses, the sort of visual
+representation of a data pipeline
+is referred to as a directed acyclic
+graph or DAG for short. Think of each task as
+a node in the graph. Then in graph terminology, you can call these arrows
+edges between the nodes. You can see that
+data flows only in one direction between the
+nodes or tasks in the graph. There's an overall sense of direction to your data pipeline. There are no circles or cycles, and so this is what it means for the graph to be
+directed and acyclic. Remember, with Cron scheduling, we could set up a
+pipeline like this, but if one task took
+longer to run than expected and the next task kicked off before the
+previous one finished, it could break
+everything downstream. Now, with orchestration, this is where the idea of
+dependencies comes in. You could, for example, build in dependencies between
+tasks in this pipeline that require the previous task to finish before the
+next task starts. Most orchestration frameworks
+allow you to, and in fact, require you to define your
+data pipelines as DAGs. In many cases, they include a user interface where you
+can visualize your DAG, as well as debug, troubleshoot, and monitor your data pipelines. In Airflow, you will
+define your DAGs programmatically by
+writing python code that looks like this to define all the tasks and dependencies
+in your data pipeline. You can visualize
+a pipeline you've defined using the Airflow UI, which looks like this. Here you can trigger
+the DAG to run. Monitor the progress of tasks, visualize the DAG you
+defined previously in code and troubleshoot
+any issues. When you have defined
+your pipeline as a DAG, you can set up the
+dependencies or conditions on which
+the DAG should run. These conditions could be time based if you want
+to run the DAG on a particular schedule or event-based if you
+want to trigger the DAG based on an event. For example, here's how
+you could define a DAG in airflow that should run
+every day at midnight. By setting the parameter
+scheduled to daily. To make your DAG event-based, you can use the same
+parameter schedule, but define it differently. More specifically, by defining
+the name of a dataset, you can schedule your DAG to run when the dataset is updated. You could also make a
+portion of your DAG, wait for some external
+process to complete. For example, some external
+process is going to upload a CSV file
+to an S3 bucket, then you can set
+your DAG to wait for the presence of that
+file in the S3 bucket. Here's how you could define
+a task and airflow called a sensor that listens
+for a file upload event. The portion of the
+DAG that starts with this task won't run until the myfile.csv is available
+in the S3 bucket. You can also set up
+monitoring and logging as well as alerts for
+the tasks in your DAG. For example, you might
+want to get an alert if a particular task fails or monitor how long a
+task takes to run. You can also set up data
+quality checks along the way to ensure that the data
+flowing through your data pipeline meets
+your expectations. That might include
+checking for things like the null values or the range of some set of values or
+just verifying that the schema of the data you're ingesting is what you expect. Again, I'm showing all
+this right now in Airflow, but the concepts I'm
+demonstrating are the kinds of things you can expect from
+any orchestration platform. Through the next several videos, I'm going to walk you through
+the steps of setting up orchestration of
+your data pipelines and airflow. I'll see you there.

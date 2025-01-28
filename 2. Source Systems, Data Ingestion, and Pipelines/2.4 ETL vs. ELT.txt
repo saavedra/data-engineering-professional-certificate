@@ -1,0 +1,140 @@
+In the previous video,
+our marketing analysts shared their goals
+for a project they're working on to incorporate some external data into their
+analysis of product sales. For this project, it
+sounds like the analysts will mostly be looking at
+historical trends in the data, and may in the future
+want to move on to more explicit analysis
+of current data, but not necessarily in a
+real time or urgent sense. Furthermore, you know you'll be pulling the data from
+a third party API. While you will generally
+have some flexibility in terms of how often or
+how much data you pull, you'll be constrained to some
+form of batch ingestion. This is because API calls
+work similar to web requests, where you send a request for
+data and receive a response, and the number of
+requests you can make per time is typically limited. In terms of data ingestion
+for this project, you're looking at
+a batch process. In the previous course, I
+briefly introduced ETL and ELT, which stand for
+extract transform load and extract load
+transform respectively. These are two very common
+batch ingestion patterns, and while they technically
+include components of the transformation
+and storage stages of the data engineering
+life cycle, in practice, you'll need
+to be thinking about the trade offs between
+these patterns and the ingestion stage. That's what I would
+like to do right now. First, I'll say a
+bit more about what distinguishes these
+two processes and then we'll look at
+which one might be a good fit for the use case
+of our marketing analysts. ETL or extract transform
+load is really the original batch
+gesture pattern that gained popularity in
+the 1980s and '90s. The process starts
+with extracting raw data from a store system, which could be done
+by directly querying a database or using
+an API, for example. Then you transform the data in an intermediate staging area. Then you load the data into a
+target storage destination, like a database or
+a data warehouse. Back in the '80s and '90s, storage and computing power
+were extremely limited, and so it was important to
+have a plan in place for exactly what data you wanted to ingest and how you want to
+store and access that data, in what format, and so on. Data warehouses were expensive to set up and not
+well suited for running heavy queries that included complex joins
+and transformations. In those days, one had no choice but to be very
+intentional about how to transform raw data during
+the ingestion process to ensure it could
+be stored and made available in an
+efficient manner. ETL is still very popular
+today as an ingestion pattern. But now with the
+relatively low cost of Cloud storage and increased
+computational power, it's no longer the only option. In the early 2010s, Cloud storage systems
+became highly scalable, and we saw the emergence of
+data lakes built on top of object storage systems like
+S3 and Cloud data warehouses, like Redshift and Snowflake. This made it possible to sore enormous amounts of
+data relatively cheaply and to perform all of your data
+transformations directly in your data warehouse. That's when the concept of ELT or extract load
+transform came about. In the ELT process, you extract raw data from source systems and
+load it directly into the target database
+or data warehouse or even optic storage without performing any transformations. The exciting idea
+with ELT is that you don't need to decide upfront how you want
+to use your data. This could be attractive
+because in some sense, you could say that by
+applying transformations to raw data and only storing the process results
+like you do with ETL, there's some information
+that's lost in the process. But with ELT, all of the
+options remain on the table as you simply capture all the data and save
+up for later use, and then you can query and transform the raw data
+however you like, and no information is ever lost. Now, as attractive as this paradigm might
+sound, to be honest, when I first heard
+about the idea of ELT, I thought it was
+a terrible idea. Why I thought would you want
+to just pile up a bunch of raw data and storage without thinking deeply about
+how you want to use it. As I've been emphasizing
+throughout these courses, the first step in any
+data engineering project should be firmly establishing
+what your end goals are, and only then thinking about how to build a system to
+achieve those goals. Over time, however,
+I did start to see the potential
+benefits of ELT. For one thing, ELT is faster to implement
+because it doesn't require detailed
+planning ahead of time on exactly how you want
+to transform your data. It's also possible to
+make data available more quickly to end users
+albeit in raw form, because ELT removes the need for a staging server and in
+flight data transformations. With the processing power of
+the modern data warehouse, transformations
+can still be done efficiently after the data
+is loaded into storage. Beyond that, as I said before, when you want to store
+all of your raw data, you can set later to adopt different transformations
+or analyze the data in a different way that might
+have been possible if you only store transform
+data in the first place. What's the downside of ELT? Well, in short, if
+you're not careful, your pipeline can simply
+become an EL pipeline, where you extract and load enormous quantities
+of raw data into storage without
+figuring out how to transform it into
+something useful. When you don't want to
+spend time upfront, planning how you
+will use your data, you could end up with what's commonly known as a data swamp, which is a situation where your data has
+become unorganized, unmanageable, and
+essentially useless. I like to show this image when the topic of data
+swamps come up. Here you have a data engineer
+sitting in his data swamp, or he's kept absolutely
+everything he thought might be of
+some value someday. But now, of course, even if he could remember what
+all was in there, he likely wouldn't even
+be able to find it. In the early 2010s, data swamps were common as
+companies found it possible to keep literally every scrap
+of raw data just in case. Nowadays, much of
+this has been cleaned up due in part to
+regulations that require companies to store
+data in such a way that it can be audited or deleted
+in an orderly fashion, for example, a
+user requests that their data be removed
+from company systems. Well, that being said, the
+relatively low cost of storage today combined with
+the processing power of modern data warehouses and other storage abstractions
+means that both ETL and ELT can be reasonable
+approaches to batch processing. But no matter which
+approach you take, it's important to have
+a clear set of and goals in mind and manage
+your data accordingly. Let's think back to
+the conversation with the marketing analyst. For this project, you'll be ingesting data from
+a third party API. Most often, the data
+you'll receive through an API connection will
+be semi structured data, perhaps in JSON format. In some cases, you might
+also be retrieving unstructured data like
+texts and images. In this case, it seems like
+the marketing analyst aims to do some exploratory
+analysis of the data and wouldn't be able to say upfront exactly what
+transformations might be required. An ELT pipeline is probably
+the right choice for this ingestion scenario
+as it gives you more flexibility with
+the transformation and surfing stages
+for this project. The big component of
+this ingestion use case that we haven't talked about in detail yet is a part about
+ingesting data from an API. That's where we're headed next. Join me in the next
+video for a look at how you'll work with an
+API as a data source.

@@ -1,0 +1,96 @@
+When you're building data pipelines in
+a Cloud-based architecture, identity and access management, also known as IAM, is
+central to your role as a data engineer. As I said in the previous course,
+as a data engineer, you're entrusted with sensitive data. Whether that's the personal and
+private information of your clients or proprietary business information. The owners of that data are trusting that
+their information is safe in your hands. Now, security on the cloud is a vast and
+complicated subject, but for the purposes of these courses,
+we're going to focus on the basics. And that's because by simply adhering
+to a basic set of best practices, you'll be able to successfully avoid
+the vast majority of data disasters. In fact, a study in 2023 found that more
+than half of all cloud data breaches were caused by simple human error, things
+like insecure storage of passwords or other credentials, or
+IM misconfigurations. These data breaches can
+be extremely costly. So by ensuring the security
+of your data pipelines, you can help your company save money,
+sometimes millions of dollars or more, and
+protect its reputation and yours. In my own work with clients, I've been
+amazed at how many mistakes I see that could be corrected with a simple fix. I've seen people do things like storing
+confidential data in a public S3 bucket, putting access credentials up on GitHub,
+or providing essentially admin access to data
+resources for everyone at the company. These types of things are easy to fix, but
+present a major risk to your company and could cost you your job if
+disaster strikes on your watch. So my goal is to set you up for success so
+this doesn't happen to you down the road. Let's dive into the basics of how you'll
+be working with permissions in IAM as a data engineer. First off, IAM is a framework for
+managing permissions. Permissions define which actions an
+identity, like a person or an application, can perform on a specific set of
+resources, like a database or an ETL tool. IAM ensures that the appropriate set
+of identities have access to the right resources at the right time. Remember the principle of least privilege
+we talked about in the previous course? IAM is how you exercise
+this principle in practice, as it allows you to grant people and
+applications access to only the essential resources they need to do their jobs, and
+only for the duration that it's required. For example, a source system owner can
+grant a data ingestion system the ability to read data from only a specific table in
+a database for a limited period of time by not granting unnecessary access to your
+cloud resources when they're not needed. You're also preventing your team from
+incurring unnecessary cloud costs. Many cloud providers have built in IAM
+services that help users manage access and permissions to their cloud resources, for
+instance, AWS IAM is a web service that helps you manage and securely control
+access to AWS resources in your account. In fact, throughout these courses so
+far, we've been using AWS IAM to provide you with appropriate access
+to AWS resources in the labs. As a brand new data engineer, chances are
+that you won't be the person setting up IAM configurations at a high level across
+your company's cloud service account. But you will be interacting with
+various cloud resources, and you may be responsible for
+configuring IAM for the resources you deploy as
+part of your data pipelines. And so you need at least a basic
+understanding of the different IAM components so
+that you can operate securely and troubleshoot problems as they come up. And so we'll look at these iam
+components in the context of AWS Iam. But just know that these same types of
+components are common across other cloud providers like GCP or Azure, they just
+might go by different names in some cases. In AWS IAM, you'll use policies that
+grant identities permissions for actions on AWS resources. There are different
+types of AWS identities. There's the Root User who created
+the AWS cloud account and has unrestricted access to all
+resources in that account. Then there are IAM Users who are given
+specific permissions to certain resources. As a junior data engineer, it's most
+likely that you'll be assigned an IAM User account within your company's AWS account. You'll be given a set of long term
+credentials, like a username and password, or an access key that you
+can use to programmatically access AWS resources using code. Then there are IAM groups, which are collections of users
+that you can attach a policy to. A policy is just a JSON document that
+includes the details of what resources and permissions the group
+should have in this case. This streamlines the process
+of provisioning resources. For example, your company might have
+an IAM group for data engineers, where every user in that group has access
+to the resources needed to build and maintain data pipelines. And finally, there are IAM roles which are
+not associated with a specific person or application long term, but are briefly
+assumed by a user application or service to grant them temporary
+permissions to perform specified actions on your AWS resources for a limited time. For example, by default, an EC two
+instance does not have permission to read or write to s three storage, but
+you can create a rule that has read and write permissions to
+specific s three buckets and let the EC two instance
+assume this role when needed. This is a much more secure way to give the
+EC two instance permission to work with s three than, for example, storing your long term user credentials
+within the EC two configurations. If you ever get an access denied error
+message when making a request with temporary role credentials, it's good to check whether
+those credentials have expired. This is another issue that is very common
+when it comes to IAM configurations. To help you see how IAM policies work,
+let's take a look at a part of the AWS policy that gave you access to
+the resources you needed for the labs in the previous course. From the first statement here, you can
+see that the policy allows the user, in this case you, permission to access any
+s three buckets whose name begins with the DLAi data engineering. And that's because you have this little
+asterisk or star after the name, and then you are allowed to take these
+actions which include list or get. So again, these asterisks means you can
+take any action that begins with list or get in this case. These actions include listing
+the contents of a bucket or the names of buckets you have access to or
+in the case of get. These actions include getting
+objects from a bucket or information about a bucket like
+the region the bucket is located in. The second statement is similar and allows you permission to access
+the AWS Glue job associated with the lab. And this glue.star under action
+just means you can take any action with regard to that Glue job. And so during the lab, when you make
+a request to run the AWS Glue job, AWS first evaluates this policy to
+determine if you are allowed to perform this action with glue. So those are the basic components of IAM,
+you have the Root User, IAM Users, groups, roles, and policies. You'll find more details about these
+components in the reading materials that follow this video. After reviewing those materials, join me in the next video to
+look at networking in the cloud.

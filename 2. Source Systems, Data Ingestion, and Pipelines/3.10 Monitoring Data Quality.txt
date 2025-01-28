@@ -1,0 +1,60 @@
+By this point,
+I'm guessing you're feeling pretty well convinced that data observability and
+monitoring are important. But when it comes to actually doing it,
+where do you start? Well, that's what I'd like
+to talk about in this video. And like a lot of the other things we've
+been discussing so far in these courses, it all starts with what
+the stakeholders need. Practically speaking, there's a wide range
+of metrics or quality criteria you could decide to monitor when it
+comes to your data pipeline. For example, you can monitor something
+like the total number of records adjusted in each batch, or over some time interval,
+or whether the range of values in a particular column stays
+within some thresholds. Or you could count the total number of
+null values in a table, or the difference in time between now and the timestamp
+of the most recent record in your data. Or, well, you get the point. There are a whole bunch of things
+you could decide to monitor. However, rather than setting
+up monitoring and alerts for every conceivable thing you could
+measure or observe about your data, you'll want to identify the most
+important things and focus on those. If instead you try to monitor every
+imaginable aspect of your data, you can end up creating confusion and
+alert fatigue, and the really important stuff
+will get lost in the noise. And so,
+when it comes to deciding what metrics or aspects of your data to monitor,
+the first question should be what do stakeholders care about the most for
+this particular use case? For example, stakeholders might care
+most about looking at current data, maybe data that's no
+more than 24 hours old. And in this case, you'd want to monitor
+the so-called freshness of the data by measuring when the latest
+records were ingested and verifying that is within
+the expectations for the project. When it comes to the data
+being accurate and complete, it's probably fair to assume that these
+things are important for all projects. So to monitor these aspects of quality,
+you'll need to identify which components of the data are most important and
+which matter less or are safe to ignore. For example, if your stakeholders
+are interested in product sales revenue, it's critical that the purchase amounts
+recorded in the data are accurate. That you can verify that all sales
+records were successfully ingested, and that they don't contain null values. By contrast, it may be less
+important that all the product SKU numbers match
+the product descriptions, or that each product's postal
+code was recorded correctly. As you can imagine, the critically
+important aspects of your data will vary from one project to the next. Throughout these courses. I've been emphasizing that you should
+communicate with source system owners to be sure you understand what kinds
+of changes you'll need to anticipate or mitigate in the future. While there's no replacement for good
+communication, you should also take steps to build in checks or tests in your data
+monitoring to verify that things like the schema and types for the data
+you are ingesting stay consistent. If all goes well, these can just be nice
+sanity checks to ensure the data you're ingesting is still in
+the format you expect. But these checks can also help
+to identify problems early, before they are propagated
+further down your data pipelines. Like a lot of things in data engineering, there are many different ways
+to monitor your data quality. You could do some things manually, or maybe write some custom code to perform
+a set of tests or trigger alerts. Those approaches might make
+sense in certain scenarios, like when you're first setting up or
+prototyping your pipelines. But nowadays there are a number of tools
+you can use to ensure data quality and also spare you from any
+undifferentiated heavy lifting. And so, up next is a conversation with my
+friend Abe Gong, one of the creators of great expectations, which is an open
+source tool that you will use for testing data quality in the next lab. This is an optional video to give
+you more context about this tool. You can also jump ahead to get started
+using great expectations yourself. Otherwise, I'll see you in the next
+video for a conversation with Abe Gong.

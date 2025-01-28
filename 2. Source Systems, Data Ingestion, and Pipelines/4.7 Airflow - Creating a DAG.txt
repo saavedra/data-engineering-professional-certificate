@@ -1,0 +1,110 @@
+In this video, we'll go through
+the details of building a simple DAG using some
+core Airflow concepts, such as a DAG and
+operator classes. Let's take the example
+of an ETL process. The following diagram shows a DAG representation
+of such a process, which consists of three tasks : extract, transform, and load. Here I'm not going to get into the specific details
+of each task, but rather, I'll
+focus on showing you how to set up a DAG
+that has the structure. Here I'm working
+with AWS Cloud9. I have already created this
+folder in which I'm going to save the Python
+scripts of the DAG. Let's start with creating an empty Python script
+in this folder, and let's call it
+my_first_dag.py. In this script, you need
+to import some packages, starting with the DAG class
+and the datetime module. You're going to use both of them to create the DAG instance, which is the next
+thing that we'll do. To create the DAG instance, you'll use the with statement, known as the context manager, which will help you
+group and define all the tasks that
+belong to this DAG here. Now, you need to specify
+the parameters of the DAG. The first parameter
+is the dag_id. This is the name that
+you will use to identify your DAG in the DAG
+view in the Airflow UI. When you choose to use your dag_id, make
+sure it's unique. For this example, I've chosen to use my_first_dag as the DAG ID. You can also specify a DAG
+description if you wish to provide more details
+related to the DAG. The DAG description will
+appear when you hover your mouse over the DAG
+name in the Airflow UI. On the other hand,
+you can also set the tags parameter
+to be a list of tags that you can use to
+filter DAGs in the UI. For instance, now, one of the tags can be
+data_engineering_team. The next important
+parameter is schedule, which you can use to define
+when the DAG will run. You can assign the
+schedule parameter, a cron expression just 08***, which means the DAG will
+run every day at 8:00 AM. Or you can use cron presets, such as @daily, @monthly, @hourly, @weekly, etc. Or you can pass a
+timedelta object from the datetime package. For example, this
+timedelta object means that the DAG will
+run every three days. In this example, I'm going to
+set the schedule to @daily. Besides the schedule, you need to also specify
+the start_date, which is the first date your
+DAG will be executed on. Here, I'm using a datetime
+object to specify the year, month, and day of
+the start date. The last parameter that I'm going to specify
+here is catchup. This is a boolean parameter that is set by default to true. How is this parameter useful? Let's say that you pause your
+DAG for a period of time, and then unpause the DAG
+to make it active again. If you catchup to true, the scheduler will
+kick off a DAG run for any missed interval when
+the DAG was paused. Additionally, it will trigger a DAG run upon the
+first time you run the DAG at the start date of the DAG precedes
+as creation date. In this example, I'm going
+to set catchup to false. So that was a first
+step where you defined the DAG instance and
+all of its parameters. Let's now move into defining
+the tasks for the DAG. You need to use Airflow
+operators to define each task. Operators are Python classes
+that are used to encapsulate the logic of the tasks or how data should be processed
+in your pipeline. Operators are
+provided by Airflow, which you can import to
+your code and create each task as an instance
+of an Airflow operator. There are several operators
+that you can choose from. You can use a PythonOperator
+if you want to execute a Python script that contains the
+logic of your task. You can choose a
+BashOperator if you want to execute bash commands. You can use an EmptyOperator if you want to
+organize your DAGs, such as marking the start
+and end of the pipeline. Finally, you can choose an
+EmailOperator if you want Airflow to send you a
+notification via email. There's also a special type
+of operator known as Sensors, which you can use to make
+your DAGs event-driven. In the example here,
+I'm going to use the PythonOperator to define
+each of the three tasks. First, you need to import the class PythonOperator,
+like you see here. Then you'll go inside
+the context manager to define the first task, which is the extraction step. To do so, you will create an
+instance of PythonOperator, which needs two parameters. The first parameter is task_id, which you can use to specify
+the name of the task. This name will be
+used to reference a task in the Airflow UI. I've chosen to use extract as
+the ID for the first task. The second parameter
+is python_callable, which expects a
+Python function that contains what needs to be
+done in the extract step. You can define this function
+here in the same file, or you could define it in another file and import
+it into the code here. In a moment, you'll define a function called extract_data. But for now, let's assume
+that this function exists, we can set it as a second
+parameter, python_callable. Then we can repeat the same steps to define
+the second and third tasks, assuming that the two
+Python functions, transform_data and
+load_data, already exist. Now we need to go
+back and create these Python functions
+in this file. You can define these functions before the DAG definition
+is shown here, or as you'll see
+in the next lab, you can place each
+function definition next to the corresponding
+task within your DAG. Note that to keep things simple in this
+first DAG example, the task just contains a
+simple print statement. Now you have the DAG
+and the tasks defined. You just need to specify
+the dependencies between the tasks or the order in which the tasks need
+to be executed. Here's how you can
+define the dependencies using the bit-shift operator. This statement means that Task 1 should be executed and
+completed before Task 2 starts, and Task 2 should be completed
+before Task 3 starts. Note how, in this statement, I use the variables that
+represent the task instances. That's it. You now know how to build a simple DAG in Airflow. In the lab, you will get a chance to build
+another DAG on your own. Once you're done, you'll
+be guided to upload your Python script to
+the Airflow S3 Bucket, which acts as a DAG directory, and then open the Airflow UI to check and monitor this DAG. After that, I'll see you in
+the next video to look at the Airflow concepts
+you'll encounter in the second lab:
+XCom and Variables.

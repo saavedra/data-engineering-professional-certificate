@@ -1,0 +1,99 @@
+As a data engineer, the most common type
+of source system you'll interact with is a relational database, and this is because
+relational databases are everywhere. Many web and mobile applications use
+relational databases on the backend, and you will find them as well. In many corporate systems like
+customer relationship management, human resource, and
+enterprise resource planning systems, they are also commonly used for what are
+called online transaction processing or OLTP systems where you need to execute a
+high volume of transactions concurrently, like for banking or online bookings. The name relational database comes from
+the fact that this type of database is most often used to store data across
+different tables that are related to one another through a set of keys or
+common attributes. These tables are typically organized
+based on how information is structured in the business. So as a data engineer working at
+an e commerce company, for example, you might be working with a relational
+database where one table captures customer information, another table
+captures product information, and a third table captures order information. Structuring a database in this
+way reduces redundancy and makes the data easier to manage by not
+having a the same piece of information duplicated across multiple rows or
+tables in the database. To get a sense of what I mean by that,
+imagine for a moment that instead of multiple tables, you created one big table to store your
+data from each individual customer order. In this case, your table might contain
+a large number of columns, including everything about the customer, like their
+name, address, phone number, and so on. And then you would have all
+the information about the product they purchased, like the brand, SKU number,
+product description and other details, as well as the details of the order,
+things like the date and the time and the purchase amount and
+how much they paid. So in this scenario, if one customer
+placed an order for three different products, this would be recorded as three
+separate rows in your database and you would then have three rows in the table
+containing all the same customer data. Or if three different customers purchased
+the same product, then you would have three rows in the database containing
+identical information for that product. So in short, information would be
+duplicated across multiple rows in your table, and beyond that there may be
+inconsistencies with the data across rows. For example, if a customer changed
+their address, you would then have an inconsistency across rows unless you go
+back and update all the rows containing their previous address, or if the details
+of a particular product changed, you would need to go back and update all
+the rows containing the old information. When you instead separate
+the information for customers, products, and
+orders across multiple tables, then a row in the customers table
+represents a single customer and a row in the products table contains
+information about a single product. If a customer changes their address or
+the details of a product changes, then you just need to update the single
+row containing information about that customer or product. The way in which a database is organized
+into related tables like this is called the database schema. Relational databases represent these
+relationships across tables through the use of keys. A primary key is a special column or a collection of columns that uniquely
+identify each row in a table. For the customer's table, the primary
+key could be this column called Id. The relationship between the customer and the order could be established by
+having the customer_Id column and the order table reference the id
+column in the customers table. In this case, the customer id column in
+the orders table is called the foreign key and references the primary key or
+the id column of the customers table. Beyond the row structure
+in a relational database, each column has a unique name and
+a specified data type. For example, in the customers table
+you might have columns like id, first name and
+last name that contain strings, and another column called age
+that contains an integer. Each new row in a table then has to
+follow the same column structure, meaning the same sequence of columns and
+data types. This is part of the database
+schema as well. Now, in a database with
+schema like this one, to record information about a new
+order from an existing customer, you could create a new record in the
+orders table and indicate the customer's id from the customer's table and
+the product id from the products table and the details of the order, like date,
+time, and payment, and so on. And again, if that customer changes their
+address or the SKU number of the product they ordered changes, those changes would
+only affect a single row in the customers or product table, and
+the information would stay consistent. As you can imagine, there are many
+different ways you could potentially establish relationships between tables,
+and this is where the concept of data
+normalization comes into play. Data normalization is an approach
+that was developed in the 1970s to minimize redundancy and ensure data integrity by storing
+data across tables in a logical way. But now I think it's worth pausing for
+a minute to ask, why worry so much about redundancy or
+duplicated information in the first place? Like it might seem logical and orderly to structure your data
+like I've been describing. But is there any downside? Well, it turns out while a normalized
+relational database structure provides a high degree of integrity and
+minimize redundancy, it can actually be slow when
+it comes to querying the data. Nowadays, storage is relatively cheap and
+speed is often of the essence. Data integrity is so critical, of course,
+but the answer to exactly how you just store your tabular data could depend
+on what you're trying to optimize for. As a data engineer, you might be ingesting
+normalized data from a relational database system, but depending on the end use
+case you're serving, you might decide to organize the data according to a different
+model in your own storage systems. Today, there are even some use cases where
+data engineers are electing to take a so called one big table or OBT approach, where all the data is recorded in a single
+table for faster processing than will be possible if joining multiple tables
+in a traditional relational database. We'll get more into the details of data
+modeling in Course 4, specialization. When it comes to interacting
+with the database, you'll use a relational database
+management system, or RDBMS. That's a software layer that sits
+on top of a relational database. There are many popular RDBMs out there,
+including MySQL, PostgreSQL, Oracle, and SQL Server. Most RDBMS support the structured query
+language, also known as sequel or SQL for short. Some people say SQL, some say SQL. You can go with whatever you prefer. I sometimes say both myself. The important thing to know is that
+SQL provides a set of commands for performing various operations
+on the relational databases. And as a data engineer,
+SQL will be part of your everyday work. In the next video, I'll walk you through some of the SQL
+commands that you'll need for the lab. Then in the lab, you'll get a chance to
+practice querying data in a relational database using SQL queries. After that, join me in the next video,
+take a look at NoSQL databases.

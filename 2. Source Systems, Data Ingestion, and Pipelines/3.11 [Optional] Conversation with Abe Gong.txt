@@ -1,0 +1,117 @@
+I'm here with Abe Gong. You're the founder of
+Great Expectations? Co founder and CEO. Co founder and CEO. Awesome. Here's my dog, too.
+Cameo appearance. So walk me through this. We'll talk about data
+quality in a bit, but I'm also interested in Great Expectations as a project. Where did this
+inspiration come from? It came from a lot of long nights dealing with
+data quality issues. More specifically, I've been
+a part of data science, I don't even know what to call, like data science friends group with a few people, including James Campbell, who's the other co founder
+of Great Expectations. There was one month
+where I came and said, I've got this idea for
+a open source project. You should really
+be able to test data pipelines the same
+way you'd test software. James said, that's funny because I came to
+this meeting thinking I would pitch a project where you could test data
+pipelines the same. We came to this meeting
+with exactly the same idea. Oh, interesting. And actually, when we
+started off, I had, like, very similar sensibilities
+about, like, what is the right way to design this tool so that
+it'll be deployable in lots of places and easily integrated with
+data exploration. Interesting. Because I
+recall that you were running a healthcare data consulting
+company, is that right? That's right. Healthcare data for
+the learners in this course, healthcare data, I think is notoriously gnarly
+and hard to work with. I think all data data
+is gnarly to work with. In healthcare, the
+stakes are high. There's regulatory issues, and depending on the data, there might be actual
+health issues on the line. So for the learner, then, you created this tool
+and this approach sort of out of necessity. But I guess to back up, what is data quality? How do you know that
+your data is of quality? I think that's an awesome,
+like philosophical question. If you go out and look,
+you can find, like, 20 different things
+that all have the 10 dimensions of data quality and they're
+all different, and it's all over the place. Fundamentally, I think
+data quality it has to be grounded in some
+notion of fit for purpose. You're going to do
+something with the data. You're going to try ask
+certain questions of it or build a machine learning
+model or whatever it is. Data quality is whatever
+it takes to make it so that that thing works
+reliably consistently, and you know the
+results are trustable. Depending on the data system, it could be pretty different. If you have a dashboard that's
+reporting routine metrics, it's going to be
+important to make sure that the up stream data is
+being logged appropriately. It's being cascaded through and aggregated in the right way that you don't have too
+much time lag, like those are the concerns
+that will show up there. If you're training a
+machine learning model, you're going to think much
+more about distributions and bias and so on. I think you have to, there are these open ended
+discussions of data quality, and I think you can
+get good things from that, but ultimately, it's whatever makes it
+so that you can really build a reliable product or
+process on top of the data. That makes a lot of sense.
+I think what was it there was in the '90s or whatever, there was a paper that
+came out of there, what it 20 dimensions of data quality or something
+like that I can't remember. I think some people
+would like to think of that as sort
+of gospel truth, but I like what you're
+saying a lot more, which is just fit for purpose. Can I use the data
+in a believable, useful way or not. How does something like Great
+Expectations help I guess alleviate a lot
+of data problems? It's basically the
+same philosophy as software testing
+with a few twists that are specific to data. I don't think this is
+controversial at this point. If you went back 20 years,
+it might have been. But a big part of the DevOps
+movement is you need to have reliable tests for anything that you're building
+in software. If it's more than a prototype, you can't guarantee that it's going to continue
+to work unless you have the right infrastructure around to do automated testing. We did the same thing for data. Each expectation makes it so that you can assert
+something about the data that should be true at a specific moment in a
+specific place in a pipeline. For the learners in this course, we're going to be having a
+lab on Great Expectations. What are some of the main things you feel that a learner should know about how to properly
+use Great Expectations? I'm not totally sure
+where to begin there because it goes to the
+fit for purpose thing. It depends. Actually, maybe this is
+a useful thing to say. Great Expectations
+is super flexible. You can deploy it in lots
+of different places. It's actually a thing
+that has been challenging for us as the
+project has grown is providing documentation
+that will help people find their use case quickly and do the
+right thing with it. Interesting. Are there
+any anti-patterns, I suppose, maybe to
+fit the question, things that you would suggest
+people avoid or not do? Not so much an anti-pattern, but just like questions to ask yourself as you're
+getting started. We were just talking about different stakeholders
+who we're going to need to work with
+data requirements. That's actually a really
+useful segment in question. I would ask yourself, who is going to
+need to work with these expectations,
+these requirements? If it's just you and just
+your team, then very likely, you want to have that very tightly combined with the
+other tools that you have, store things and get and so on. On the other hand, if
+you're going to need to collaborate with
+other stakeholders, that they're going
+to need to give input and update things, and business process
+is going to change, and you don't want to
+be a middleman for keeping the expectations
+in sync with that, you need to find some
+other way to do that. Got it. Some teams have done
+that with Notebooks. I don't know how promotional
+I'm allowed to be here, but we're launching Great
+Expectations Cloud soon, and it'll comes with a
+lot of those things. That's cool. It'll make it a lot easier for
+teams to use then. Totally. Well, because asking somebody who might be fluent in Excel and really understand
+a business process, but who doesn't speak
+Python or SQL or JSON asking them to review things
+and get like a nonstarter. But they still need input to
+the data a lot of the time. Make sense. Cool, anything else that
+learners should know about data quality or
+Good Expectations? I'm just going to say
+if words starting off in the data world, and you haven't yet built a
+system and had to maintain it, just wait. Data quality is
+really important. It will bite you at some point if you
+don't get ahead of it. It's one of these things that
+you can neglect up front, but you don't want to? Yeah, so for the
+learners out there, data quality, take it seriously. Look forward to seeing how you like Great
+Expectations in the lab. Awesome. Well, thanks, Abe.
+It's good to chat with you, and thanks for everything. Thanks, Jack. This is awesome. Thank you.

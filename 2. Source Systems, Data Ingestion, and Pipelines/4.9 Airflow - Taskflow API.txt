@@ -1,0 +1,86 @@
+I hope you're now starting to feel comfortable with Airflow. In the upcoming
+lab, you will build a pipeline using Airflow
+that incorporates data quality tests into your DAG using
+Great Expectations, and you'll use other
+Airflow features, such as branching and the TaskFlow API to write your
+DAG in a more concise way. But before you
+start the last lab, let me introduce TaskFlow API and show you an example
+that follows this paradigm. Until now, to define your DAG, you instantiated a
+DAG object and to create your task instances
+you use Python operators. This is known as the
+traditional paradigm. Airflow 2.0 introduced
+another paradigm known as TaskFlow API. The goal of this new paradigm is not to replace a
+traditional one, but to make writing DAGs
+easier and more concise, especially when the DAG uses
+lots of Python functions. This new paradigm relies on the use of decorators
+that help with the creation of a
+DAG and its tasks and simplifies the writing
+of code at the same time. Before I show an example of how to write a DAG using
+this new paradigm, I'd like to clarify
+that the API in TaskFlow API is not
+related to REST API. You can think of TaskFlow API as an interface that provides you with a more user-friendly
+programming experience. Let's go back to the
+first DAG example you saw in a previous
+video tutorial, and we'll read-write it using
+the TaskFlow API paradigm. To define your DAG, you use the context
+manager as shown here. With a TaskFlow API, instead of explicitly
+calling the DAG constructor, you can use the decorator @dag, pass in the DAG parameters
+to the decorator, and then define the
+content of your DAG as a Python function directly
+after the decorator. In this case, the function
+name will be used as a DAG ID to identify the
+DAG in the Airflow UI. Inside this function, you define the tasks and
+their dependencies. Once you're done,
+you need to call the DAG function as shown here. Otherwise, your DAG won't
+show up in the Airflow UI. The role of the DAG
+decorator is to implicitly call the
+DAG constructor to create the DAG instance. Note that to use
+a DAG decorator, you need to import
+it as shown here. So far, you may not have
+notice a big difference between these two
+paradigms when it comes to defining the DAG. But let's see how
+creating the task is different with
+a TaskFlow API. In the traditional paradigm, you use the Python operator to create your tasks shown here. In doing so, you needed to
+keep track of the task ID, the name of the Python function, and the name of the variable
+that represents the task. With a TaskFlow API, you'll keep track
+of fewer names. Instead of explicitly
+calling the Python operator, you use the @task decorator
+to define your tasks. Here inside your DAG function, you can need the @task decorator to create the first task, which is the extraction step. Then you define the
+extract data function directly after the decorator. Similar to before, the
+function name will be used as the task ID to identify the
+task in the Airflow UI. The job of the decorator is to implicitly call the
+Python operator, which simplifies your code. To define the remaining task, you just repeat the same steps, similar to the DAG decorator. To use a task decorator, you need to import
+it as shown here. Finally, to define the
+dependencies between the tasks, you'll still use the
+bit-shift operator. But this time, you will call the functions that represent
+each task as follows. This is how you can use
+TaskFlow API to define a DAG. This is equivalent to how you defined your DAG previously, using the traditional paradigm, in terms of arriving
+at the same result. But TaskFlow API makes
+your code simpler. Let's take a look at
+one more example to see how you can use XCom
+with TaskFlow API. In the traditional approach, you call xcom_push to store the data you want
+to pass to other tasks. Then you call xcom_pull in the function for the
+task that uses the data. With TaskFlow API, you can simply include
+a return statement, as shown here in this
+extract from API function, to store the data you want to
+share in an XCom variable. Then for the task
+that uses the data, you can specify that the
+function expects an input representing the data
+shared by a previous task. Finally, when you want to define the dependencies
+between two tasks, you call the function
+of the first task, and assign the value it
+returns to a variable. Then you can pass
+this variable to a second task as shown here, or you can combine both statements into one
+statement like this. You can still use xcom_pull
+and xcom_push with TaskFlow. For example, in the second task, you can pass in the Airflow
+context to the function and use it to explicitly call xcom_pull
+inside the function. Then to define the dependencies, you can use your regular
+operator as shown here. Note that the decorator does
+not replace all operators. This is why you may
+still need to use both paradigms and maybe combine both of them
+in the same code, depending on your use case. Before you jump
+into the last lab, make sure you check out
+the reading material on branching that's
+provided after this video. It will prepare you for creating a dynamic pipeline in the lab. Then after you finish the lab, Morgan will walk you through
+some options you have for orchestrating data
+engineering tasks on AWS.

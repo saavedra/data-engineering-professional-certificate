@@ -1,0 +1,123 @@
+At the end of the last video, we had created a VPC with two public subnets and
+two private subnets. And like I said, if you
+deployed any resource like an EC2 Instance into one
+of the public subnets, it would not be accessible
+via the Internet, and it would not be
+able to establish connections to other resources
+on the Internet either. That is because VPCs and subnets alone create
+an isolated network. No traffic in or out. In this video, we
+will discuss how to make Internet connectivity
+possible using Internet gateways and network address translation
+or NAT gateways. Now, if you recall the
+scenario we are following, you would have an EC2 Instance and an RDS database in your VPC. As a best practice, both the application running on the EC2 Instance and
+the RDS database should be in private subnets and wouldn't need direct
+connectivity with the Internet. However, I want to call out two considerations we
+didn't discuss before. The first is that the
+applications running on the EC2 do need to occasionally download updates from
+resources on the Internet for things like application
+upgrades and patching. And the second consideration is that you would still
+need a way to submit requests to the application
+running on the EC2 Instance through the load
+balancer so that you can query your data on RDS. Both of these considerations
+mean that your VPC does, in fact, need Internet
+connectivity. So to do that, you need to first attach an Internet
+gateway to the VPC. To better understand what an Internet gateway
+is and what it does, I want you to think
+of your VPC in its current state like
+a house without a door. If you build a house
+around you without a door, you wouldn't be able
+to leave the house, and no one can enter the
+house from the outside. If you were in the house, you could move freely
+from room to room. But in order to get out, you would need to install a
+door to the outside world. So that's what we
+have so far here, a house without a door. And so what we will
+be doing next with our VPC is to install a
+door to the Internet. Or in other words, we will attach an Internet
+gateway to it. Internet gateways
+allow resources in your public subnets to
+connect with the Internet. They support both inbound
+and outbound traffic. Creating an Internet gateway and attaching it to the VPC is just one step in allowing
+Internet traffic to flow to and from
+the public subnets. You will also need to
+configure routes in the route tables and configure
+network security rules, and we will do those in
+the next couple videos. Now, I mentioned earlier that our EC2 Instance will
+be in private subnets. And here I am saying that
+we will be attaching an Internet gateway
+to allow traffic to flow to and from
+the public subnets. How will this help
+if our resources are in the private subnets? Well, let's recall our two
+considerations from earlier. First, the EC2 Instance
+needs to be able to download updates from
+resources on the Internet. This means that our EC2
+Instance in the private subnet needs to be able
+to make outgoing connections from the VPC. And the second, you need
+to be able to submit requests to the application
+from the Internet. Let's talk about how
+NAT gateways and an application load balancer can help us meet
+these requirements. The NAT and NAT gateway stands for network address translation, and this is a service
+that allows resources in a private subnet to connect to the Internet or
+other AWS services, but prevents the Internet from initiating connections
+with those resources. Think of it as a controlled
+doorway that only allows outgoing traffic and protects the resources inside that
+are initiating that traffic. With a net gateway in place, your EC2 Instances in the private subnet can
+download updates and patches from the Internet
+without exposing them directly to the
+public Internet. Next, we need to address
+the second consideration, allowing external users to submit requests to
+our application. This is where the
+application load balancer or ALB comes in. The ALB distributes incoming
+application traffic across multiple
+back end targets, like our EC2 Instances, which are hosted across
+two availability zones. The ALB serves as the entry
+point for external users. Handling the load and ensuring the application
+remains responsive and available while
+also allowing us to keep those EC2
+Instances private. We won't actually be building
+this part since I am focusing on the
+networking aspect of this architecture
+for these lessons. However, it's good to know when to use an ALB to allow for application connectivity
+without directly exposing your back end
+EC2 Instances. All right. So now let's create and attach
+an Internet gateway and deploy two NAT gateways to the VPC we built in
+the previous video. Here I am in the AWS Management
+Console on the Home page. And I will type in VPC
+into the Search bar. Then from the VPC dashboard, I will select Internet gateways from the Navigation panel. From the Internet gateways page, I will select the Create
+Internet gateway button. On the next page, I can give the Internet gateway Ad name. I'll name it Project 1 Gateway, and then select Create
+Internet Gateway. So now we have an
+Internet gateway, but we need to attach
+it to the VPC. Just as a note, one VPC can
+have one Internet gateway, and an Internet gateway can only be attached to one
+VPC at a time. This is a one to
+one relationship. From here, I'm going
+to select actions, then attach to VPC. On the next screen
+from the list of VPCs, I can select the Project 1 VPC, and then select attach
+Internet gateway. Now, the state of this
+gateway is attached. So we have installed the
+front door to this VPC. The next step is to
+create the NAT gateway. It's a best practice to create one NAT gateway in every AZ
+that you are operating in. So I will actually create two NAT gateways and place
+them in each public subnet. To do this from the
+navigation panel, I will select NAT gateways
+then create NAT gateway. From this screen, you'll
+configure the NAT gateway. So first, I'll give it a name. I'll call this one
+NAT Gateway 1, and then select Public
+subnet 1 from the dropdown. Then this needs to have an
+elastic IP address configured, which will provide a
+static IP address, and I will select Allocate
+Elastic IP to do this. Then I will select
+Create NAT Gateway. Then I will repeat the
+steps, but this time, place the NAT gateway into
+the other public subnet. I'll name this one
+NAT Gateway 2, and then select Public
+subnet 2 from the drop down. Create the Elastic IP address, and then finally,
+create the gateway. At this point, this is what our network looks like
+with the EC2 Instances, RDS database, and ALB included. There are a few more steps
+that we need to walk through before inbound and outbound Internet connectivity
+is working. In the next steps,
+we will walk through the process of setting up
+the necessary elements, which will include
+configuring route tables and defining security
+rules to secure our VPC. By the end of the
+series of videos, we'll have a VPC with both secure Internet
+connectivity and robust access control.

@@ -1,0 +1,46 @@
+Welcome to Week 2
+of this course. In Week 1, you looked at
+source systems in detail and got some practice
+playing with databases and object storage. In some sense, the focus of
+the last week of materials was on how you will connect to and interact with
+source systems. Because like I've been
+saying all along, these source systems are
+typically not something you set up or control directly
+as a data engineer. However, connecting to and interacting with
+source systems is really the beginning
+of the next stage of the data engineering
+life cycle, which is data ingestion. As I said before, your work as a data engineer is you
+get data from somewhere, turn it into something useful, and then make it available
+for downstream use cases. Data ingestion is
+the get raw data from somewhere
+part of your work. As you already know, that somewhere it could
+be a database, an API, a set of files, or even a streaming system. You've already been performing data ingestion in several
+of the lab so far. In the previous course, you ingested data from an Amazon RDS MySQL
+Database into S3 storage using an
+AWS Glue ETL job. You ingested data from AWS
+Kinesis Data Streams and used Kinesis Firehose to deliver the events
+to an S3 bucket. Then in the final lab of
+Week 1 in the course, you were able to troubleshoot some common connection issues when it comes to
+connecting to a database. All this is a say that you already know a lot
+about data ingestion. This week, we're
+going to add depth and detail to your
+existing knowledge. This week, we'll start
+with a closer look at the details of some batch and streaming
+ingestion patterns, which is to say
+ingestion patterns where you process data either in chunks or batches versus processing a continuous
+stream of data. Then we'll have a conversation
+with a marketing analyst, where you'll identify the
+requirements for doing batch ingestion from REST API, which is a source system we haven't spent much
+time with us far. After that, we'll
+have a conversation with a software engineer, to investigate some of
+the requirements for streaming ingestion that we lost over in the
+previous course. Things like characteristics
+of the data payload, which just means
+the characteristics of the individual messages
+you're ingesting, as well as event rates
+and how you'll need to configure the stream
+pipeline to get the data, where it needs to go. Finally, you'll get a chance to build these solutions
+yourself in the labs, namely batch ingestion
+from a REST API, and streaming ingestion
+from a web server log. Join me in the next
+video, to get started.

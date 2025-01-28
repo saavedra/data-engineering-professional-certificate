@@ -1,0 +1,67 @@
+Before you head to the
+first lab of this week, I'd like to spend some time
+introducing you to airflow. By the end of the
+series of videos, you will know how to
+build a simple DAG and airflow and be ready
+for the first lab. In this first video, we will start with the underlying
+architecture of airflow. When you write your
+DAGs and airflow, there are several components
+that work together behind the scenes to
+automatically run your DAGs, check that the dependencies
+between tasks are met and transfer the status of your DAGs to the
+airflow user interface. This figure shows the main
+components of airflow, and these include a web server where the airflow
+user interface runs, a scheduler, workers, a metadata database, and
+finally a DAG directory. When you create your
+airflow environment, whether by directly installing airflow or by using an
+airflow managed service, all of these components will
+be present in your setup. You'll mainly interact
+with the DAG directory and the user interface
+or UI for short. The remaining components will be running behind the scenes. The DAG directory is
+a folder in which you store the Python scripts
+that define your DAGs, and this DAG directory
+is connected to the web server on which
+the airflow UI runs. For any DAG that you create
+and add to the DAG directory, you'll automatically be able
+to visualize it in the UI. Not only that, you can also
+use the UI to monitor, manually trigger,
+and troubleshoot the behavior of your DAGs and
+the tasks within each DAG. But you don't always need to manually trigger your
+DAGs from the UI. You can also trigger them based on a schedule
+or with an event, or rather you can do so with the help of the schedule
+or component of airflow. The scheduler constantly
+monitors all the DAGs you defined in the DAG directory
+and the corresponding tasks. At once per minute by default, the scheduler checks whether any tasks should
+be triggered given a particular schedule or by checking if their
+dependencies are complete. Once the scheduler identifies a task that is ready
+to be triggered, it pushes the task
+to a queue and uses an executor to manage
+the execution of tasks. The executor, which is
+part of the scheduler, extracts the task from the queue and sends them to the
+workers that run the tasks. As the scheduler
+triggers a given task, you will see the status of the task changes from
+scheduled to queued. Then once the workers
+execute the task, you will see the
+status change to running and finally
+success or failed. The scheduler and the workers store the status of the tasks, as well as the state of the dags in the metadata database. Then the web server
+extracts those states from the database and displays
+them to you in the UI. That was a quick tour of the
+core components of airflow. When you choose a managed
+service for airflow, like Amazon Managed
+Workflows for Apache Airflow or
+MWAA for short, all of these components will be automatically created
+and managed for you. You can see this in the
+architectural diagram, how Amazon MWAA organizes the core components of
+airflow on the Cloud. For instance, it uses
+an Amazon S3 bucket as the DAG directory and an Aurora Postgres SQL Database
+as a metadata database. The other components are
+AWS networking components and additional AWS services that support securing your data, as well as logging and
+monitoring your environment. In the labs this
+week, you will first be guided to set up the
+airflow environment. You'll then use the Cloud9 ID to write your DAGs
+as Python scripts, upload them to the S3 bucket, and finally open the UI to
+review the created DAGs. Understanding the airflow
+environment and how components interact with each
+other will help you troubleshoot issues
+when they occur. Join me in the next video to go through some of the
+features of the Airflow UI.

@@ -1,0 +1,95 @@
+In the early 2000s,
+tech giants like Google and Amazon began outgrowing
+their relational databases. They needed to process large volumes of
+data from disparate sources that didn't fit neatly into the relational
+database model. Enforcing tabular structures
+would lead to data redundancy and performance issues at scale, and so these
+companies led the way in developing new distributed non-relational databases
+to scale their web platforms. And so in this way,
+NoSQL databases were developed to overcome the limitations of relational databases,
+trading certain RDBMS characteristics like strong consistency,
+joins, and a fixed schema for more schema flexibility,
+scalability and improved performance. Before we go any further,
+let's get one thing straight, NoSQL doesn't stand for
+No SQ, it means not only SQL. It's a category of databases
+that break away from the relational framework we
+saw in the previous video. But some non-relational databases still
+support SQL or SQL like query languages. Let's go over the basics
+of NoSQL databases. NoSQL databases have
+non-tabular structures. They can support various data
+formats including key-value, document wide-column, graph, and others. I will talk about key-value and
+document source later in this video and you will see some of these other types
+throughout the next few courses. Unlike relational databases, NoSQL databases don't require
+predefined schemas, so this means you have more flexibility when
+deciding how you want to store your data. NoSQL databases excel
+in horizontal scaling, which means automatically
+distributing data and workloads across multiple servers
+to meet increased traffic demands. When a user writes data to a NoSQL
+database that is distributed across multiple servers or nodes that write
+operation is first performed on a single node in this distributed system, which is a location where one
+version of the database is running. Then there might be a slight delay before
+those changes are propagated to all other nodes in the system. Unlike relational databases, NoSQL
+databases operate under the principle of eventual rather than strong consistency,
+meaning that the database will allow you to read from a node that has not
+received the latest write update and you may not get the most up to date data. But given enough time,
+the database will be consistent and reading data from any node
+will give you the same data. With a relational database that provides
+strong consistency, you would not be able to read data until all the nodes
+in the system have been updated. In this way, eventual consistency allows
+no single databases to prioritize speed. Which is perfect for
+applications where system availability and scalability is more important
+than real time consistency, such as social media platforms or
+content distribution networks. In terms of data integrity, not all NoSQL
+databases guarantee the principles of atomicity, consistency, isolation and
+durability, also known as ACID compliance, which we'll look at in the next video,
+but some do, for example, MongoDB. This means that if you're sourcing
+data from a NoSQL database, then you may need to take extra
+steps to ensure data integrity. Finally, NoSQL databases use specialized
+query languages tailored to their data model, which are often, but
+not always, different from SQL. Let's take a closer look at two
+common types of NoSQL databases, key-value databases and
+document databases. A key-value database stores data as
+a collection of key-value pairs, similar to what you might find in a JSON
+file or a Python dictionary structure. The key serves as unique identifier
+to retrieve the corresponding value. Both the keys and the values can be
+anything from simple to complex objects. This type of NoSQL database is perfect for
+scenarios where fast data lookup is needed, such as caching user session
+data in a web or mobile application. For example, when a user logs
+into an ecommerce application, actions like viewing different products,
+adding items to the shopping cart, and checking out can all be stored
+in a key-value database with the user session id as
+a unique identifier. Document stores are a special
+type of key-value database that store data in JSON like documents. Each document has a unique key
+that identifies a document and allows you to retrieve
+that document's data. Documents are organized into collections,
+so you can think of a collection sort of like a table in a relational database and
+a document like a row. In this example, data is stored
+in a collection called users. Each document represents a single user and the id is the key that
+uniquely identifies each user. This locality makes it easier
+to retrieve all the information about a particular user compared
+to a relational database, where the user information may be
+spread across multiple tables. However, document stores don't
+support joins, so it's harder and less efficient to combine information
+from multiple documents as compared to combining information across multiple
+tables in a relational database. The advantage, however,
+is this notion of a flexible schema. As you saw with relational databases, all
+records need to conform to a fixed schema, but with key-value databases and
+document stores, there's no fixed or
+predefined structure to data records. Document stores are commonly used for applications involving content
+management catalogs and sensor readings. Each interaction, product or
+sensor reading from an IoT device, for example, can be stored as a single
+document with a flexible schema. But be careful,
+this flexibility can have a downside. I've seen document databases become
+absolute nightmares to manage inquiry. And if you're ingesting data from a NoSQL
+document store as your source system, the flexibility of the schema
+makes it even easier for source system owners to change something
+that'll break your data pipelines. Both relational databases and NoSQL databases can be used as sort
+of a wide range of applications. When it comes to applications processing
+online transactions in areas like banking, finance and e commerce, among others,
+things are happening fast, money is changing hands, and
+products are on the move. And these types of online transaction
+processing or OLTP applications, any errors or inconsistencies in
+the data can cause major problems. In the next video we're going to have
+a look at the principles of atomicity, consistency, isolation, and durability, otherwise known as the ACID principles,
+which are critically important for your data sources and data pipelines
+when working with OLTP systems. I'll see you there.

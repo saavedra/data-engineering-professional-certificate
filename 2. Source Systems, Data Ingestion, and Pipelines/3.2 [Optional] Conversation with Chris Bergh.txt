@@ -1,0 +1,198 @@
+Hi, Chris. It's good to chat
+with you about DataOps. It's a topic that I think of an expert at
+DataOps in the field. You're the first one
+that comes to mind. So it's awesome to see you. It's awesome to see
+you. Thank you. Yeah, of course. I guess, maybe give a quick intro for people who don't
+know who you are. So, I'm Chris Berg.
+I run a company called Data Kitchen
+here in Massachusetts. And so I'm an
+engineer by training, built software for a bunch of years at different companies like a MIT Lcn Laboratory
+NASA, some Internet startups. And then I got the bright idea, like in 2005 that I
+should do data full time. And so I started to manage
+a team of, you know, what we now call
+data engineers and data scientists and people
+who did data visualization, and my life really sucked. Things were breaking. We can never go fast enough
+for our customers. And I fired a bunch of
+people. I probably shouldn't. I blamed people for
+problems when In fact, it really was a
+management problem on how I managed that team. And so the question that I've been working on for the
+past almost 20 years is, how do you get a team
+of technical people doing data to deliver
+things quickly, new insight quickly,
+how to deliver data and dashboards with
+really high quality? And then like, how to live, how to not have a painful life. And so I think it's great that you're teaching a
+course on data engineering, but we did a survey
+with data dot world two years ago with
+700 data engineers, and something like 78% wanted their job to
+come with a therapists. And I guess maybe I'm cynical, but I was like, Oh,
+that's a little low. And I think it is a very difficult career to have caught between the Rock and Hard place of sort of
+insane customer demands and data and infrastructure that's just hard to live with. And so I came to them sort of ideas of DataOps sort of
+from that background. Interesting. I guess,
+for the learners, what is DataOps? How
+would you describe it? So, it's think of it as a
+method to make yourself or your team deliver insight to your customers where they can trust the data
+and the insight. And then you can make changes to that insight very
+quickly with low risk. That's really the idea is, can you build a factory and push out new datasets
+and new insights, that's perfectly perfectly good and change things in the
+factory as fast as you want? It seems to take inspiration
+in lean, it sounds like. Yeah, I think that's
+one of the things that surprised me when I started
+to do data in analytics, I was a sophomore guy,
+I'm like, Oh, I'm great. This data thing will be easy. And then you really are running a manufacturing line
+in a lot of ways. And if you think
+about a data set coming in and being
+put in a bucket in a database in multiple
+levels and then being used in a model and a
+visualization and then governance. There's each step along the way. You could kind of think of it
+as a manufacturing station. And then, you know, you don't have one, right?
+You have lots of them. And so how do you get that
+manufacturing line to put out Toyotas and not
+Pacers from the '70s? And that's a hard problem. That wasn't really in
+my software background, like how to run a
+manufacturing line. And then the other
+weird part of it is that people are always going
+to ask you for new things. You know, your job's done. And the best way to
+deliver new insight to a customer is get it 80% done, get some feedback, and
+then iterate on it. And months building something when you can get
+some feedback early. That helps very opposite things. Build a really good
+assembly line, but change the assembly
+line really quickly. And those are hard to do. Right. But if you go back
+to places like Toyota, they were able to swap out manufacturing in
+their sues in days, not months, which is the old mass manufacturing way
+of doing stuff, right? Yeah, there is. And I think that's
+how did they do it? They didn't do it by like
+buying fancy robots. I mean, they have robots, right. But the solution to that is really about how do you think
+about what your job is? And what things optimize. And so a lot of teams
+try to optimize on getting things done.
+Like, I have to get my work. Yeah. And the definition of done is really
+interesting, right? I've done my work, I've
+got my SQL. I'm done. And does it matter
+if someone used it? Does it matter if it
+breaks next week? I don't know. Done my job. And so, really, it comes
+down to it's about Toyota. But Toyota also has
+focuses on the customer. And how do you make
+customer successful? And unfortunately, the customers are not happy
+with data and analytic teams. And that's the you know, the dirty little secret is that most projects in data
+and analytics fail. And to me, it's not because
+we don't have cool tech. And it's not because the
+people aren't smart. It's because the systems that
+people work in are flawed. And so these principles
+that come from software and manufacturing,
+I think really apply. And they're not rocket science. They're just ideas
+that are laying there that you can
+pick up and use. Absolutely. So if
+somebody's new to data, so how should they think
+about this in their job? Well, I think about
+the thing that you do. I'm building I do some s. Then think about
+the thing around it. So number one, as
+I build some SQL, how do I build a test or a validation to prove
+that that works, right? And I get some new data
+in it. How do I know? Now, why do you want to do that? Because tests are the gift that you give to
+your future self. If you don't do that, you end up owning your piece
+of code forever. And you have to and if
+something goes wrong, they call you maybe
+on your vacation, or you get stuck owning
+more and more code. And it's really tempting when you first
+start to be a hero. To like, I'm a hero. I wrote all this stuff.
+I keep writing it. I respond really fast
+to my customers, and you go into full hero mode. And what happens is over time, you get burnt out,
+and you get unhappy, and you want a therapist. And so in one lesson of
+DataOps is be a hero, maybe two, 3% of the time. But the rest of the time, build a system so you don't
+have to be a hero. Right? And that's
+what it's about building a system
+next to your code, testing observability
+deployment. It's all things that are
+the environment around that squishy little
+cool code that you're writing that can make
+your life tractable. And then let's talk about
+the DataOps manifesto. So what inspired that? Like, seven, eight years ago, we went to a conference, and no one knew what we
+were talking about. And I explained I DataOps and
+they're like, what's that? I was like, Oh, man, this sucks. No one really gets what
+we're talking about. And so we had to so I
+wrote on the plane, I wrote the first version
+of the manifesto. I mailed it around
+to some people, got some feedback, I wrote
+the Wikipedia article. And we've had to
+write a lot over the years to talk
+about what DataOps is. We have a free certification. You can listen to me for
+three hours on our website. But really, it's this, This idea that that building
+systems of work is really important and solving your team for kind of a couple problems. Like, if you look at it, you hire a new
+23-year-old in your team? They're new to data engineering, maybe they have a CS degree. What do you want to
+do with that person in their first two weeks? I think a good organization
+says, number 1, if something goes
+wrong, they should be able to find the
+source of the problem. Is it data? Is it the integrated data? Is it the model? Is it the Iz?
+Where's the problem? Or number 2, like, could
+they write some small could they tweak
+something like anything? Fix a bug, and get that
+into production quickly. And those things are really hard in a lot of
+data engineering teams. You have to learn things and it almost
+becomes an apprentice. And so, like, I think
+of what DataOps is. You've got two
+23-year-old problems, how fast the 23-year-old
+can find a problem, how fast the
+23-year-old can fix and deploy a problem into
+production with low risk. And then there's also probably
+a 46-year-old problem, which is like, how do
+you measure your team? And to me, DataOps is about
+those set of problems, which really they don't really have to do with
+data engineering, they have to do
+with how you manage a group of data engineers
+working together. And that's where I come from. And there is a whole
+engineering task. I mean, writing a good data quality validation
+test is important. Deployment speed is important, doing DevOps, managing
+environments, test data. All those things are
+really important. So there is skill in that. One question I'm sure the
+learners will have is, how does DataOps
+differ from DevOps? So I think In a lot of ways,
+they're the same idea. They're all like, how
+do you get a group of technically nerdy people to deliver things quickly
+with high quality? And you certainly can
+do it badly both ways. And so what Devops idea is is that you should deliver
+your work in small chunks. Like, don't work for
+months on something. Because if you do that, you're most likely going to miss what your customer wants. And so the main idea that's similar between
+DevOps and DataOps is, if your customer asks
+you for 10 things, and it's going to take
+you three months, deliver one of those
+things in a week. Don't wait and get
+all 10 things done, because most likely
+what's going to happen is you're going to get
+four things that they want. They're not going
+to want six things, and then they're going to
+say, no, I want three more. And so you have this waste of doing all this work
+that didn't really matter. And so I think the
+idea of DevOps is, how do you manage short
+cycle times of delivery, and how do you automate that? And I think there is a
+observability error reduction and production in DevOps. But I think with DataOps or whatever word
+you want to put on it, it's the same idea. It's that, you know,
+run things with flow errors and change it
+quickly and measure your work. And they're very
+much the same ideas. So, whether you call Lean
+or whether you call it TQM or whether you call it DevOps or DataOps, they're
+all the same thing. How do you get nerdy
+people to be productive? And to do that, you actually
+have to do some things. It's not just It's not just
+words. It's actually work. You have to build some stuff. You have to build the thing
+next to your environment. You have to build the
+manufacturing line. You have to build the machine
+that makes the machine. Well, thanks. It's
+been very educational. I guess to cap it off, is there anything that you wish you would have known about DataOps that you could tell your younger self and maybe
+the learners for this course? Is hope and heroism
+is like number 1, what I said before,
+don't be a hero. You're not doing
+yourself any favors. And then the second part is, don't hope that
+things will work. Like, just don't maybe
+it sounds paranoid, but don't trust your
+data providers, don't trust your servers. Measure and prove
+that things work, because both of which I've had so many problems
+with in my career, just hoping things will work
+or trying to be a hero. And you can build
+systems around that. So you can do, you know, have a little hope,
+have a little heroism, but it's better to build a high functioning
+organization that can do that. And if you do, your just life's
+going to be a lot better. And you don't want to end
+up in a situation where You're like that 80% of the people we surveyed
+and said, My job sucks. You know, are you a
+therapist, I'm so stressed. Well, thanks for
+the class, Chris. I we're very helpful for
+the learners. So thank you.

@@ -1,0 +1,74 @@
+The simplest type
+of streaming system I can think of is a log. In fact, the log isn't
+even a system at all. It's just a record of information about
+events that can serve to track the activity of a
+system or an application. In the previous course,
+I mentioned that it used to be common
+for developers to regard the data coming
+from software applications as an exhaust or a byproduct, not necessarily having any
+intrinsic value on its own, but useful for monitoring
+or debugging a system. The specific data that is most commonly regarded
+as exhaust is the data contained in logs produced by
+software applications. When a developer deploys
+a product or a platform, like a website or mobile app, they'll set it up such
+that all activity that occurs within the application
+is recorded in a log. The log might include
+a user activity, like a user logging in, or navigating to a
+particular page. It might also include a record
+of events on the back end, like an update to a
+database or an error that was generated when trying to
+run a particular procedure. Logs are most commonly
+used in practice as a means of monitoring
+the health of systems. Engineers will use logs to
+trigger alerts or to debug, what went wrong when
+an error occurs. In this sense, logs
+can seem boring and the characterization of logs as application exhaust
+might seem appropriate. However, logs are a rich
+source of data that can be useful for much more than just monitoring the
+health of an application. As such, they can be an
+important source system. You'll ingest data from in
+your work as a data engineer. At its core, a log is an
+append-only sequence of records ordered by time capturing information about events
+that occur in systems. For example, if you're the data engineer for
+an e-commerce company, your web server logs can capture detailed
+user activity data that could be used to support downstream analysis of
+user behavior patterns. Many database systems will have logs that you could use
+to track changes in the database process known as change data capture
+or CDC, for short. You could use those changes
+to trigger your ingestion processes so that they run based on the arrival of
+new data in the database. Or you might ingest log data for use in certain machine
+learning applications, like anomaly detection, if, for example, you're ingesting log data from security systems. Logs play a crucial
+role in tracking what happened in many of the upstream software systems
+you'll work with. This makes them a rich data
+source that can support downstream use cases
+like data analysis, troubleshooting issues,
+monitoring performance, machine learning
+applications, and automation. As I mentioned before, log is a record of
+information about events. In general, the data you'll find recorded first
+for each event in a log is the person system or service account that's
+associated with the event, like a user ID and
+their IP address. Next, you'll find a record of the event that happened
+along with its metadata. For example, a user added a specific product
+to their cart, along with the status
+of that action. Finally, you'll find a record of the timestamp of the event. Log data may be recorded as simple unstructured text
+or in JSON or CSV format, or even as binary encoded data. In addition to the
+data describing the time and substance
+of an event, logs will also often
+include a tag to categorize the event by assigning what's known as a log
+level to each record. Log levels might include
+tags like debug, info, warn, error, or fatal
+that let you know what kind of information a
+particular record contains. For example, a record containing basic activity information would be assigned the info log level. Well, a record containing an error message might be
+assigned the error log level, or if something more
+serious happens, like major systems have failed
+and need urgent attention. This might carry the
+fatal log level as a tag. We'll talk more about log
+levels later on when you start building logs into your own
+data pipeline applications, instead of monitoring
+for your own systems. As a data engineer, it's important that you
+understand how to work with logs, their types, formats,
+and applications. Logs will be an important
+source of data for the work that you do and can help
+you troubleshoot issues, monitor performance, and serve lots of downstream use cases. Join me in the
+next video to take a look at some of the
+streaming systems.

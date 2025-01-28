@@ -1,0 +1,71 @@
+Orchestration has long been a key capability for
+data processing. But until the past decade or so, orchestration was really only accessible to the
+largest companies. And this is because
+open source or managed orchestration
+tools did not exist yet, and it was complicated and expensive to build your
+own in house solutions. In the late 2000s,
+things began to change. Facebook developed a tool called Data Swarm for internal use, which they still use today. Another tool called Apache Oozie became extremely
+popular in the 2010s. But it's designed to work
+within a Hadoop cluster and was more difficult to use in a more heterogeneous
+environment. Inspired by these earlier
+tools, particularly Data Swarm, Airbnb introduced
+Airflow in 2014, which has become the industry standard orchestration tool. Today, there are many other orchestration tools
+under development and the landscape of
+orchestration will no doubt continue to
+evolve in the future. Now throughout these courses
+we have for the most part, actively avoided discussing
+any particular tool or technology too extensively. Instead, I have been aiming
+to focus on the skills and the knowledge that will
+be broadly applicable no matter where you work
+as a data engineer. In certain cases, however, I'm going to make an exception
+for a tool or technology that you will very likely use in your job as
+a data engineer. And one such tool is Airflow. Right now when it comes
+to orchestration, more teams are using Airflow
+than any other tool, and so it's a skill set that
+recruiters are looking for. With that being said, Airflow is not without its shortcomings, and I'm excited about some of the other newer
+open source tools that are emerging in the
+orchestration space. And so I'll mention
+a few of those too. Airflow was developed by Maxime Beauchemin and other
+collaborators at Airbnb. They were primarily
+interested in serving their own internal data
+orchestration needs. However, from the
+very beginning, they built Airflow as a noncommercial
+open source project with the vision that the
+tools they were developing to serve Airbnb's
+internal needs would also be useful to other teams
+solving similar challenges. The framework quickly grew significant mind share
+outside of Airbnb becoming an Apache incubator project in 2016 and a full Apache
+sponsored project in 2019. Today, Airflow offers many advantages as an
+orchestration platform, largely because of
+its dominant position in the open source marketplace. Airflow is written in Python, making it accessible to almost
+any use case imaginable. Beyond that, the Airflow open source project is
+very active with a high rate of commits and a quick response time for
+bugs and security issues. As of many open source
+tools and data engineering, Airflow is also available as a managed service through
+a number of vendors, including AWS, GCP, and astronomer.io for anyone who is looking for more
+comprehensive support. With all that being
+said, Airflow is certainly not the only
+orchestration tool out there. In terms of things
+like scalability, ensuring data integrity, and streaming pipelines,
+Airflow either does not solve for these issues or there are significant
+room for improvement. Many other interesting open source orchestration
+projects exist, such as Luigi and Conductor, and newer tools like Prefect, Dagster, and Mage have been getting traction as
+they aim to mimic the best elements of
+Airflows core design while improving on
+it in key areas. For example, Prefect provides more scalable orchestration
+solutions in Airflow, while Dagster certain Mage provide built in
+capabilities for data quality testing and data transformations
+among other things. Still other tools are
+focused on providing better orchestration support
+for streaming pipelines. I think it's entirely
+possible that one or more of these newer orchestration
+tools will become widely used in the coming years as alternatives to Airflow. It's also possible that one of these alternative
+tools could serve your needs better depending on what pipelines
+you're setting up. With that being said,
+my recommendation is to learn Airflow for now because Airflow is what many people
+are using today, but also keep learning about
+other tools and keep up on new developments in the
+field of orchestration so you can stay current as
+things continue to evolve. Join me in the next
+video to dive into the details of
+orchestration and practice.

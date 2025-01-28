@@ -1,0 +1,57 @@
+In this video, we're going to look
+at the automation pillar of DataOps. And as I said in the previous video,
+DataOps emerged from DevOps. And while there are significant
+differences between the requirements for delivering high quality software
+applications and those for delivering high quality data products,
+there's still a lot of overlaps. And so here, we'll be looking at some of
+the concepts that DataOps borrows from DevOps when it comes to automation. Within software engineering, one key
+aspect of automation is the practice of continuous integration and
+continuous delivery, or CI/CD for short. In the context of software, the CI/CD
+process involves setting up systems for automatic review and testing of new code. And then the automatic delivery or deployment into production of code
+that has been reviewed and tested. When it comes to DataOps, the practice of
+CI/CD can be applied directly to code and data within your data pipeline, much
+as it would be for a software product. And so whether that's code for applying a
+particular set of data transformations or populating a database or the data itself. You can maintain it just like
+you would any other piece of software application code. When it comes to the automation of
+actually running your data pipelines, as I talked about in the previous course, this is something you could do
+in a number of different ways. For example, have no automation and just run all the processes in
+your data pipeline manually. Or you could set up the stages of your
+pipeline to run according to a particular schedule. Or you could orchestrate your pipeline by
+defining it as a directed acyclic graph, or DAG,
+using an orchestration tool like Airflow. We'll look at DAGs and
+the automation of testing and deployment more closely next week
+when we get into orchestration. Now, one key underpinning of
+any CI/CD system, whether for a software product or
+a data product, is version control, where each new code version
+of the code is recorded. This makes it possible to easily revert
+back to a previous version if for some reason the current version isn't working
+as expected or other problems occur. You might already be familiar with version
+control in the context of your own code, maybe using a platform like GitHub. And so within DataOps, the concept of
+version control also applies to data. Just like you can track changes in your
+code and roll back to a previous version, with DataOps, you can track changes in
+the data moving through your pipelines. And be able to roll back to a previous
+version of the data if you run into problems. Another concept that DataOps
+borrows from DevOps in terms of automation is
+infrastructure as code. Whether you're building software
+applications or data pipelines with cloud platform resources, it's possible to
+maintain the design of your infrastructure as a code base, just like you would for
+any other application code. You can run that code to
+deploy your infrastructure, or modify the code to redefine
+your infrastructure, and then run it again to deploy
+the updated infrastructure. Now, by defining your infrastructure
+programmatically using code, you can then maintain version control
+over your entire infrastructure, just like you would for
+any other piece of code or for your data. And that way, if you need to roll back to
+a previous version of your infrastructure, it's as simple as rolling back to
+a previous version of your code. And so there are a number of ways in which
+DataOps automation practices will be part of your work as a data engineer. You can start to see how DataOps begins to
+overlap with the other undercurrents of the data engineering lifecycle. So for example, DataOps is closely related
+to software engineering in the sense that many DataOps practices
+are directly borrowed from DevOps. And when it comes to the DataOps practice
+of maintaining version control over your data, this ties directly with
+the undercurrent of data management. In the sense that it allows
+you to deliver control and enhance the value of data
+throughout its lifecycle. Next, I'd like to dig deeper into
+infrastructure as code in the context of DataOps automation. Then in the next lab, you'll get a chance to practice writing
+code to define your own infrastructure. So join me in the next video for
+a closer look at infrastructure as code.

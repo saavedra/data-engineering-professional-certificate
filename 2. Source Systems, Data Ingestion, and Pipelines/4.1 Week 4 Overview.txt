@@ -1,0 +1,46 @@
+Welcome to the fourth and
+final week of this course. This week is all
+about orchestration. But really,
+orchestration is closely intertwined with many of the concepts you've
+already been exploring. In the previous weeks materials, we focused on the
+DataOps pillars of automation and observability
+and monitoring. You got some practice using the infrastructures code
+framework, Terraform, and you set up data quality
+checks and monitoring of your data pipelines using great expectations
+in CloudWatch. Orchestration, you'll be doing more work within each of
+these areas of DataOps. You'll automate
+individual tasks in your data pipeline and
+move from the concept of infrastructure as code
+to the concept of pipelines as code using the Airflow
+orchestration platform. With airflow, you'll build in data quality checks and
+additional monitoring as well. You could say that
+orchestration is really a part of DataOps
+in the sense that orchestration has
+everything to do with at least two of the three
+key pillars of DataOps. Orchestration is also closely related to other
+undercurrents of the data engineering
+life cycle like data management and
+software engineering. However, when my co
+author Mott House and I were thinking about the
+Data Engineering Lifecycle, we decided that orchestration
+was important enough to be called out as a
+separate undercurrent of the Data
+Engineering Lifecycle. It is given how central it is to your work as a data engineer. This week, we're going
+to take what you learned about DataOps in the previous week
+and build on it. We'll start by taking a
+look at how pipelines were set up before
+orchestration tools existed. Then we'll cover the evolution of orchestration
+tools that led us to where we are today and where that evolution might
+lead to in the future. After that, we'll dig into the details of
+orchestration and discuss at a basic level how to implement orchestration
+in your data pipelines. There are a number of different orchestration tools
+on the market today, and many of the
+concepts we'll be covering this week
+are tool agnostic. However, the Number 1 tool being used in industry
+today is Airflow. So after we get
+through the basics, we're going to focus on the details of
+orchestration using Airflow since that's what you're
+most likely going to be using on the job today
+as a data engineer. Airflow is also what you'll
+be using in this week's lab. Join me in the next
+video to get started.

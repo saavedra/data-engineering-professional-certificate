@@ -1,0 +1,87 @@
+At various points
+throughout these courses. So far, we've been looking at
+the differences between batch and stream processing as you will encounter
+them in your work as a data engineer. And as I've said before,
+in some sense, you can think of nearly all data as representing
+a continuous stream of events. These events might be things
+happening out in the real world, like a stock price changing, or your
+favorite sports team scoring a goal, or a user clicking a button on a website. And for the purposes of these courses,
+we care about the digital data that is generated when code is run and
+these events are recorded. And so when it comes to data ingestion, the way I like to think about it is that
+whatever system you're working with. You have data being generated somewhere
+as a continuous stream of events that is unbounded. And by that, I mean that the stream doesn't have
+any particular beginning or end. If you ingest those events individually,
+one at a time as they're generated, then that's an example
+of stream ingestion. If instead you impose some boundaries on
+that stream and ingest all the data within those boundaries as a single unit,
+then that's batch ingestion. You can, of course, think of a number of
+different ways you could decide to impose boundaries on a stream of data. You could, for example, bound your
+data by a certain size threshold, say, for example, into ten gigabyte chunks. Or by the total number of records, like ingesting every 1000
+events as they are generated. Or more commonly,
+you can bound your data by time. So you might decide to ingest all
+sales order data from the past week. Or you might choose to ingest data more
+frequently, like daily, in which case you're just imposing a different set of
+boundaries on the initial stream of data. And of course, you could continue
+this exercise and say, well, if you want to retrieve new data from
+a source system once every hour, or every minute or every second. >> What do you think will happen as you
+continue to increase the frequency of ingestion? At some point with super high
+frequency batch ingestion, you would have essentially made your
+way all the way back to streaming. And so
+the point here is that really batch and streaming are not too completely
+separate approaches to data ingestion. Instead, they exist along a continuum. And where your data pipeline sits along
+that continuum will depend on what kind of source system you're working with and the end use case you're
+ultimately aiming to serve. Traditionally speaking, batch processing
+has usually implied moving and processing large chunks of bounded
+data together as a single unit. And for a long time,
+this was really your only option now. As tools and technologies have become
+more powerful and flexible, running batch processing more frequently on smaller
+chunks of data has become possible. And in recent decades, so
+called micro batch processing tools have emerged that begin to blur the lines
+between batch and streaming. There's no rule or industry standard for where the official cutoff is between
+what you call batch or micro batch. Or exactly how close to real time data
+needs to be processed in order to be considered streaming. In practice, your approach to
+ingesting data in batches or in a stream will depend
+on the business use case. Identify it from gathering
+stakeholder requirements and the type of source system
+you're interacting with. For some databases,
+you can use connectors like JDBC or ODBC, as we looked at briefly last week. Or you could set up ingestion
+to occur at regular intervals or as soon as a certain amount
+of new data is recorded. Or you could opt for a serverless
+ingestion tool like AWS glue ETL that can be configured to connect
+to a source database and ingest data on a regular basis. If you're ingesting data from an API,
+as you'll do in the first lab this week, you'll be required to set up a connection
+based on that API specific protocols. And you'll be subject to that
+API's various constraints and limitations when it comes to how much
+data you can ingest in one go Orlando, or how frequently you can call the API. At this point in time there
+is no universal standard for data exchange over APIs. So this can be a somewhat frustrating
+process that involves reading documentation, communicating
+with external data owners. And writing and maintaining your
+own custom API connection code. With that being said, we are seeing
+trends in the industry now toward vendors providing API client libraries that remove
+much of the complexity of API access. And there are more and more managed
+data connecting platforms out there that provide simpler connectivity
+to many data sources. So if you find yourself looking
+to ingest data from an API. My recommendation would be to use
+existing solutions whenever possible and reserve your custom connection work for
+times when there's no other option. When it comes to files as a source system,
+as we looked at last week, you might be working with an object
+storage system as your data source. But you might also encounter scenarios
+where ingestion of files can't be completely, completely automated,
+which is to say. You simply need to manually
+download a file and get someone to send it to you directly. File transfer protocols you can use
+the command line like SFTP or SCP, which stand for
+secure file transfer protocol or secure copy, respectively or
+other common ways you may ingest files. If you want to ingest IoT device or
+sensor data from a streaming system. Regardless of whether you ultimately aim
+to do batch or streaming processing, you may have no other choice but
+to set up a message queue or other streaming system to
+ingest this type of data. In any case, I think the only way to
+get comfortable with all the various considerations and caveats around
+different ingestion patterns is to dive into some practical use cases. We've set up this week of materials
+primarily as two case studies, one for batch ingestion from an API and
+another for streaming ingestion from
+a Kinesis data stream. In the reading item that follows this
+video, you'll learn a bit more about ingestion from different source systems
+we touch on so far in this course, as well as some that we haven't. After that, join me in the next lesson
+to have a conversation with a marketing analyst who needs to ingest
+external data from an API.

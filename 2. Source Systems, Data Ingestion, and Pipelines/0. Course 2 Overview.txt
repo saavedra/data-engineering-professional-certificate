@@ -1,0 +1,26 @@
+Welcome to week one of this course
+on source systems, ingestion, and data pipelines. This week, we're going to get started
+by looking at different types of source systems and
+how you can interact with these systems. As you saw in the first course of the
+specialization, data generation in source systems is the first stage of
+the data engineering lifecycle. And as a data engineer,
+you are typically not responsible for generating this data yourself or
+maintaining these source systems. But ingestion from source systems is
+where all your data pipelines will begin. So it's important that you understand
+how this data is generated, where and how it's stored. And some of its characteristics so
+that you can build robust data pipelines with these upstream
+systems as your data source. And so in this first week of this course, we'll dive into some of the details of
+some common source systems, including the different types of databases,
+object storage, and streaming sources. In the labs, you'll get to work
+with these source systems on AWS. Then in the second week, we'll focus on setting up different
+types of ingestion from source systems. After that, in week 3 of this course, we'll take a look at
+the DataOps under current. You'll use infrastructure as code to
+automate some of your pipeline tasks, and you'll use various tools
+to monitor data quality. And then finally, in the fourth and
+final week course, we'll get into orchestration to coordinate
+the tasks in your data pipelines. You'll be setting up directed acyclic
+graphs, or DAGs, using airflow, working with infrastructure
+as code frameworks, and implementing monitoring solutions for
+your data pipelines. So we're going to cover a lot
+of ground in this course. Join me in the next video to get started
+with a closer look at the different types of source systems.

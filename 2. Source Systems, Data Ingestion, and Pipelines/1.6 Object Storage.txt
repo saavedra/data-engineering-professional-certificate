@@ -1,0 +1,61 @@
+>> As I said earlier this week, files are
+one of the most common source systems that you will deal with every
+day as a data engineer. And you might be receiving or accessing these files from a file
+system like Google Drive or an object storage system like s three,
+or simply as an attachment to an email. While files may come at you
+from many different places, object storage is arguably the most
+important mechanism for file storage and retrieval in your work as a data engineer. Object Storage treats data,
+files in this case, as individual objects and stores them in
+a flat structure that doesn't adhere to a traditional file system hierarchy. This means that while you might be
+accustomed to storing files in a hierarchy of folders and subfolders on your local
+computer, Object Storage has no hierarchy. Now, just as a side note, this flat
+structure thing can be confusing. If you go into Amazon S3 for example,
+there is a Create Folder button, and you can go ahead and create folders and
+subfolders to your heart's content and happily store your files in what looks
+very much like a hierarchical file system. However, it turns out this is just
+a feature of the user interface to keep things looking organized in
+a way that looks familiar. The actual storage mechanism is flat, meaning that even though it might
+look like you have folders and subfolders in the UI, all all files are
+actually stored right at the top level. And this is by design because it allows
+quick and straightforward access to all objects without worrying about
+the overhead of a folder structure. Anyhow, I digress. So objects can be anything from CSV,
+JSON, text, video, image, or audio files,
+to machine-readable binary data. This versatility makes Object Storage the
+perfect repository for semi-structured and unstructured data, which can be useful
+when supporting applications like serving data for training machine learning models. Object storage plays a crucial
+role as a data source. In later weeks and courses,
+you'll see how object storage is also integrated throughout the entire
+data engineering lifecycle. But for now, let's take a look at some
+of the key components of object storage. In Object Storage, each object is
+assigned a Universal Unique Identifier, or UUID, which is a sort of a key. This key is required for accessing and
+managing the corresponding object. Each object also has associated metadata,
+which is additional information about the object, like the creation date,
+file type, or owner. It's worth noting that after the initial
+write, objects technically become immutable, and they don't support
+random write or append operations. In this sense, a file in Object Storage is
+not like a table in a relational database or a document in a non-relational database
+that you can update or append to. To change the data stored in an object,
+you must rewrite the full object and have the uuid point to this new object. With object storage,
+you can enable object versioning, which allows you to add metadata to
+an object to specify its version. So when you update an object, instead of
+overwriting the old object under the same uuid, you can keep multiple
+versions of that object. So why use object storage? Well, Object Storage allows you to store
+files of various data formats without a specific file system structure. This removes the complexity associated
+with hierarchical folder systems and databases. In a cloud environment, object storage
+can easily scale out to provide virtually limitless storage space for
+massive amounts of data. In terms of availability, the data
+in cloud object storage is typically replicated across several availability
+zones, meaning that data is replicated across multiple physical data
+centers that are isolated from each other. This makes the data highly durable and available even in the case
+of natural disasters. For example,
+as I mentioned in the previous course, Amazon S3 offers 11 nines of data
+durability, which means Object Storage on S3 can withstand concurrent device or
+data center failures. Also, Object Storage is often
+cheaper than other storage options, especially if you're storing data that you
+don't need access to on a regular basis. Cloud Object Storage is used in many
+applications and is the underlying storage for newer architecture designs such as
+data lakes and data lake houses because of its flexibility, high scalability,
+cost-effectiveness, and durability. Next, you'll get a chance to work
+with Amazon s three object storage. You'll create an s three bucket
+query data from the bucket, and work with object versioning. After the lab, join me in the next
+video to take a look at application logs as streaming system data sources.

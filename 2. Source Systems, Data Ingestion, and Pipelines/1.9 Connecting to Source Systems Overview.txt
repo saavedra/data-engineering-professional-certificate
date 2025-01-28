@@ -1,0 +1,53 @@
+In the previous
+lesson, we looked at some of the
+practical details, some common source systems you'll work with as
+a data engineer. In the labs, you got some
+practice manipulating data in relational
+and no SQL databases, as well as in object storage. When it comes to
+actually connecting to source systems and your
+work as a data engineer, it's relatively
+common to run into unforeseen issues that block you from accessing the data
+you're interested in. These issues can be due
+to things like having improper identity and access management
+or IM definitions, broken networking
+configurations, or even just having the wrong
+set of access credentials. These might at first sound like relatively trivial issues, but in my own experience, running into these problems happens all the time
+in data engineering, and they can be major
+blockers if you don't know how to debug and
+solve them properly. In fact, I think that solving
+issues like these are a core skill for data engineers that when I interview
+new data engineers, I like to take a
+working data pipeline that can connect to the
+intended source systems, and maybe break some of the IM or networking configurations, and then ask the candidate
+to solve the problems. This shows me how well
+prepared they are to troubleshoot these
+issues on the job. In this lesson, I'll start
+by going over some of the details of how you connect to different
+source systems. I'll demonstrate this in AWS. But the principles
+we'll be looking at also apply to other
+Cloud platforms. In the context of IAM
+roles and permissions, we'll look at the importance
+of security in the Cloud, where IAM is the key to controlling and
+managing access to Cloud based data sources and other components within
+your data pipelines. Finally, we'll get
+into networking. I'll start you off with
+a high level overview, and then Morgan will
+walk you through the details of
+networking on AWS, including VPCs and subnets, gateways, routing,
+security groups, and more. So in this lesson, you'll
+build on your knowledge of basic networking concepts that we looked at in the
+previous course. After this lesson, you'll
+put your skills to the test. Just like I do with data engineering candidates
+in the interviewing process, I've set up a challenge for
+you in the next lab exercise. There you'll find a data
+pipeline that should look familiar from one
+of the previous labs, but now I've broken it. In that lab exercise, you'll get a taste of
+what it's like to work as a data engineer tasked with connecting to a source
+system on the Cloud. I promise you, this won't
+be like your standard hello world exercise where
+everything works as expected. Set, you'll be thrown into a scenario where just
+like in the rural world, things don't work
+the way you'd hoped. Your job will be to troubleshoot and figure out the cause of the problem and then solve it to connect to the data
+sources you need. Join me in the next video, where I'll give you a
+high level overview of ways to connect
+the source systems.
