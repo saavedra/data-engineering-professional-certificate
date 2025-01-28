@@ -1,0 +1,108 @@
+In the first lab of
+the previous course, you use SQL quarries to apply crud operations on a
+relational database, where CRD stands for create, read, update, and delete. You learned how to create
+a table and new records. You use select statements
+to read a set of records, as well as update and
+delete existing records. You also get a chance
+to apply a predicate to filter your data
+using the were clause, combine data from different
+tables using joins, and apply aggregate
+functions such as count sum average Min and Max. In the next lab, you'll work with more advanced
+eQL statements. These include select
+distinct SQL functions to manipulate strings and
+dates, case statements, SQL Boolean expressions, common table
+expressions or CTEs, sub queries, and SQL
+window functions. Before you jump into the lab, let's go through these
+advanced SQL statements. Here's the entity
+relationship diagram or ERD of the data you'll
+be working with. It contains the
+same information as the DVD rental database you
+worked with in Course 2, but here it's organized into what's known as a star schema. You'll learn more
+about this data model in the next course. The middle Fact table
+called Fact Rental contains information for each rental transaction
+made by a customer, such as the rental date, return date, amount paid, the ID of the rented firm, it's category ID, the idea of staff that serve the
+customer, and so on. Other surrounding
+dimension tables contain more detailed information
+about the customers, films, film categories, actors, as well as the stores
+and the staff. To walk you through these
+advanced eQL statements, I'll only be focusing on the rental fact table and the dimension tables
+for the customer, staff, film, and film category. Let's say you're
+interested in knowing which staff member
+served which customer? From the fact rental table, I'll select the staff
+ID and the customer ID. This queria returns all pairs
+of staff and customer IDs. But since the customer could be served by the same staff
+member multiple times, the result can contain
+repeated pairs of staff and customer IDs. You can add the SQL
+keyword distinct to the select statement here to ensure that the result contains only unique pairs of
+staff and customer IDs. Now, let's include the first and last name of
+the staff member, which you can find in the
+staff dimension table. I'll join the fact
+rental table with the Dim staff table based
+on the staff ID column. I'll add the staff
+first name and staff last name to the
+select statement here. You can concatenate the first and last names into one string. Depending on the database
+management server, the syntax for string concatenation
+might look different. Here I'm working with a MS
+SQL database where I can use the Concat function to combine
+the first and last names. But this concat function
+will return the full name of the staff member without
+any spaces in the name. To make it easier to read, let's add a single space between
+the first and last name. I'll label this
+column as staff name. Other than concatenating
+two strings, you could also
+apply other string manipulation functions such as lower to convert the string to lower case or upper to
+convert it to uppercase. You can also use the
+substring function to extract a part of a string. For example, to return the
+first letter of the last name, I'll apply the substring
+function to the staff last name. This function expects
+two arguments, the start position and the number of
+characters to extract. Since I only want
+the first letter, the start position and number of characters would both be one. Here are the results with
+the updated last name. Now, let's say you
+want to check whether a customer made an
+on time payment, meaning that they paid
+for the DVD rental before they returned the DVD. In the fact rental table, you can compare the
+payment date and return date columns for
+individual records. But to make this
+easier, let's use the SQL case statement
+to create a column that contains a one if
+the payment date is before the return date
+and a zero otherwise. The statement starts
+with a case keyword and finishes with
+the end keyword. In between these two keywords, you can use the one keyword
+to specify the condition and the then keyword to specify the result you want to
+associate with that condition. After you list all
+the conditions, you can use the ls
+keyword to specify the result to return if none of the listed
+conditions are met. Let's use the statement to
+create the indicator column. From the fact rental table, I'll select the customer
+ID, the rental ID, and then I'll write
+the case statement and specify the on time
+payment condition, which is when the payment date is less than the return date. Then the result is one,
+else the result is zero. Then I'll finish the statement
+with the end keyword. I'll label this column
+as on time payment. Let's limit this query to only show the first five
+rows of the result. Are the results of this query? All these five customers have zero in the on time
+payment column, meaning that they have paid for the DVD rental after they
+have returned the DVD. Let's filter these results so that you can only
+see the results for customers who are located in the United States and Canada, and for any rentals that
+occurred between May 24th, 2005, and July 26th, 2005. To get the country
+of the customer, I'll join the fact
+rental table with the customer dimension table
+based on the customer ID. You'll need to use the
+were statement to filter the results based on
+country and then by date. First, let's check
+if the country of the customer is
+the United States, or if the country is in Canada. Or you can write this expression using the in operator
+and check if the country of the
+customer is in the list containing the
+United States and Canada. I'll go with the
+in operator here, which could be handy when you're interested in more
+than two options. Next to check the date, you can use the between operator to check if the rental date is between 2005-05-24, which is May 24th, and 2005-07-26,
+which is July 26th. All right end between these
+two Bulion expressions here since I want both the country and the date
+conditions to be true. Now I'll run the query
+to see the results. We discovered the select
+distinct statement, some SQL string functions, bleion expressions, and
+the case statement. Join me in the next video, to go over some more advanced SEL techniques that
+you'll see in the lab.

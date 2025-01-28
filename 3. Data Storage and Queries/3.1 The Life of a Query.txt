@@ -1,0 +1,84 @@
+While running a query might seem like a simple task
+where you write code, run it, and get the results. A lot's going on
+behind the scenes. Multiple components inside your database management
+system work together to translate your query into a set of detailed action steps. Even the simplest
+select query statement goes through these pages
+in order to be executed. Let's go through the
+life of a query so you can see how it's
+executed in a database. Here's a typical architecture for a database
+management system. In Week 1 of this course, we discussed the details
+of the storage engine. Here, I'll be focusing
+on the other components. When you send your
+query to the database, your request arrives through
+the transport system, which hands a query over
+to the query processor. The processor has
+two main components, the Query Parser, and
+the query optimizer. The Query Parser breaks down
+the query into query tokens, which are the basic building
+blocks of the SQL query, including keywords
+like select and from, table and attribute names, operators, and so on. Then the Parser checks
+for proper syntax and validates the
+query by ensuring that all table and
+attribute names referenced in the query actually
+exist in the database. Control checks are also
+performed to ensure that you or whoever ran the query have the appropriate access
+to these attributes. Then the Query Parser converts the SQL code into byte code, which expresses the
+steps needed to execute the query in an efficient
+machine readable format. The byte code is then passed
+to the query optimizer, which analyzes the
+query and devises an execution plan to retrieve the results
+from the storage layer. Since a query can be
+executed in multiple ways, the query optimizer attempts
+to find a suitable strategy that uses available resources
+as efficiently as possible. To do this, the query
+optimizer generates various execution plans based on factors like the types
+of operations required, the presence of indexes, and the data scan size. Then it calculates a cost
+value for each plan, which can include several
+components such as the IO costs for transferring
+data from disk to memory, as well as a computation
+and memory usage cost. In the end, the query optimizer picks the least expensive plan, and so query optimizers are fundamental to your query
+performing as well as it can. Once the execution
+plan is created, the execution engine
+carries out the sequence of operations outlined in the plan and produces a query results. While all the
+details of executing a query are generally
+abstracted from you, you can access the execution
+plan of any query statement. To understand its performance
+before it's executed or troubleshoot the cause of a slow query after
+it's executed. For instance, with
+relational databases, you can add the
+explained command before your SQL statement to
+display the sequence of steps the database will
+take to execute the query. This will also show you the
+various resource consumption and performance statistics
+in each query stage. Let's take a look at an example. Here's the customer table of the DVD rental database that you saw in a lab in
+the previous course. Let's say that I
+sort of the data in a postgress database, and I want to select all records
+from the customer table. I can add the
+explained command in front of this simple
+select statement to fetch the execution plan created by the postgress
+query optimizer. The return plan specifies that it's going to perform
+a sequential scan, meaning a full table scan. It also shows two cost values. The first is the start up cost for any processing
+needed before outputting the results and the second is a total cost for the execution to retrieve the query result. Additionally, the plan also outputs the estimated number of rows that will be returned and the expected row
+width and bytes. In this example,
+the full table scan will have a start up
+cost of zero cost units, but a total cost of 14.99 cost
+units to return 599 rows. Let's say you want to
+run this select query again, but this time, you decide to use this were clause to filter the
+records in the queries so that only records
+with customer ID equaling three will be returned. The return plan now
+specifies that it's going to use the index on
+the customer ID column to look for the specified
+row that matches the wear condition instead of
+scanning the entire table. Recall from Week 1 that an index is a special data
+structure that you create as a way to
+keep some metadata on the side to help locate the data you want
+more efficiently. You'll notice that with
+this index based strategy, the total estimated cost is less than the cost of
+the full table scan. We'll get into the details of the database index
+in another video. You can use this
+explained feature whenever you want to understand
+your query's performance. This feature is not exclusive
+to relational databases, you can also use it with
+no SQL databases as well as data warehouses
+or Data lake Houses. Join me in the next video for a quick introduction to
+the first lab this week.

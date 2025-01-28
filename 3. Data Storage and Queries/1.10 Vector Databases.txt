@@ -1,0 +1,69 @@
+Another type of database that's
+gained popularity with the rise of machine learning applications
+is the vector database. Vector databases enable you to efficiently
+query data based on semantic similarities. This is called similarity search, and
+it has applications from recommendation systems to anomaly detection
+to text generation. For example, if you wanted to
+recommend a product to a customer, you might query a vector database to
+identify products that are similar to those that the customer
+has purchased in the past. Or you can query a vector database to
+identify transactions that are dissimilar to other transactions in
+order to detect anomalies and potential fraudulent activities. These databases are optimized for
+storing and processing vector data, which consists of numerical
+values arranged in an array. So you could use a vector database for storing any kind of data that is in
+the form of numbers in an array. For example, an array of numbers
+representing the amount of rainfall recorded each day over
+the course of a year. Or you could store numerical data that
+could be rearranged into a vector, like image data, where you can unroll the RGB dimensions
+of the image into an array of numbers. However, the importance of vector
+databases today is really about storage and retrieval of what
+are called vector embeddings. The core idea with vector embeddings is
+to take an item like a text document or an image and capture its
+semantic content using a vector. The way this works is that you pass
+the original data, say, a piece of text, through a machine learning model that
+has been trained to convert text to vector embeddings. You can then convert an entire
+database of documents or other text content into such embeddings
+and store them in a vector database. The advantage of storing vector
+embedding representations of other types of content is that it's
+much easier and much faster to find and retrieve similar items based on their
+vector representation than it would be to compare across the original data items. So, for example, suppose you have
+an item like a piece of text, and you want to find items in your vector
+database that are similar to that text. Then to query the database, you first
+need to compute the embeddings for the query item. Then the database can measure
+the similarity between any two vectors and return those that are most similar. Vectors that are similar to one another
+semantically, will be closer to one another in the high dimensional vector
+space the vectors are represented in, and by closer I don't only
+mean closer to one another in terms of the euclidean distance you
+see here, which measures the length of the line segment between
+the endpoints of two vectors. You can also determine the closeness
+of two vectors by using other types of distance measures. Like the cosine distance, which determines the closeness based
+on the angle between the two vectors. Or by Manhattan distance, which is based
+on the distance between the vectors measured along their axes,
+as well as other metrics. And so there are many
+algorithms available to you for performing a similarity search over
+a database of vector embeddings. Let's take a closer look at one
+of the more popular algorithms, k-nearest neighbors, or KNN search. Say you want to find the k most
+similar items to a given item. The KNN algorithm will do an exhaustive
+search over all the vector embeddings of all items to compute the distance
+between those items and the given one. You can imagine that as the size
+of the vector database increases, this algorithm becomes less efficient. There's also the challenge of what's
+called the curse of dimensionality. Which is to say, because the high
+dimensional vector space may be sparse, distance measures might not reflect
+the accurate distance between them. To overcome these challenges, you can use
+a different set of algorithms known as ANN, which stands for
+approximate nearest neighbors. These algorithms rely on finding a good
+guess for the nearest neighbors to a given item rather than calculating the exact
+distance from all the items. So even though they may result in
+slightly less accurate results, they are a lot more efficient. In fact, vector databases are built to
+support ANN algorithms to enable you to perform efficient similarity search. When storing your vector
+embeddings in a vector database, the database applies an ANN
+algorithm to represent your data in a data structure
+that enables faster search. Then, when you query the vector database
+to perform a similarity search based on the given item, the database uses its
+specific ANN algorithm to traverse the data structure to return the items
+that are approximately the closest. I included an optional reading item
+about a popular ANN algorithm known as hierarchical navigable small world,
+or HNSW, after this video. Feel free to read more about the algorithm
+if you're interested to learn more. Then in the next video I'll walk you
+through how to use the cypher query language to query data in a Neo4j graph
+database to get you set up for the lab.

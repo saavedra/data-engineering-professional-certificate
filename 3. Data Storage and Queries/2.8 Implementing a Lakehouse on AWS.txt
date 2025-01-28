@@ -1,0 +1,146 @@
+In the previous video, I gave you a high-level overview of how various AWS services
+can be combined into a series of layers in a
+data lakehouse architecture. As a reminder, here's how
+that architecture looks. You have the source and ingestion layers on
+the left over here, then the storage processing and catalog layers
+in the middle, and finally, the consumptions layer over here on the right. I'd like to start
+off with a focus on the storage and
+catalog layers. Using S3 for storage is
+common for data lakes. For data lakehouses, it's common to use both S3 and Redshift as
+the storage layer. Typically, S3 provides
+storage for structured, semi-structured, and
+unstructured data, whereas Amazon Redshift
+stores highly curated, structured or
+semi-structured trusted data that fits into
+predefined schemas. This dual storage
+approach leverages the cost efficiency and
+scalability of S3 for large, structured, and
+unstructured datasets, while utilizing Redshift for high performance analytics
+on more structured datasets. Part of the reason for creating a data lakehouse is that
+you want to be able to analyze the data that
+is stored across S3 and Redshift
+at the same time. You could, of course,
+write ETL jobs that move data from S3 to Redshift
+on a recurring basis, but creating a data pipeline
+for this effort might be costly over time and can
+lead to data redundancy. It also creates
+an opportunity to introduce bugs or
+issues into the data. Anytime you are moving
+and transforming data, you are opening the door
+for mistakes to be made, which can impact data
+quality and availability. With that being said, it would be nice if
+you could somehow integrate your data lake with your data warehouse natively. This is where Amazon
+Redshift Spectrum comes in, which works as an
+integration between S3 and Redshift
+for querying data. This is represented here
+in the storage layer, but it is a key part of the consumption layer for
+a data lakehouse on AWS. Redshift Spectrum allows you to run queries on data stored in S3 without having to load
+it into Redshift first. This is great because it
+eliminates the need for complex ETL pipelines to move data between your data lake
+and your data warehouse. This helps you make a
+data lakehouse possible by integrating these two
+data storage systems. Using something like Redshift Spectrum to be able to query data in both the
+data lake storage and the data warehouse storage is definitely a preferred
+method over moving data out of S3 using ETL processes into
+Redshift for querying. More on this when we get
+to the consumption layer. Next up, we'll move on to the layer above
+the storage layer, which is the catalog layer. A central data catalog is
+used to provide metadata for all datasets in
+your lakehouse in a single place and make
+it easily searchable. This is extremely important for self-service discovery of
+data in your lakehouse. You learned earlier
+about a data swamp. You don't want
+your data users to be wading through murky waters. Instead, you want to
+be able to provide clarity about the data
+in the lakehouse. In this case, we're
+using Lake Formation, which uses Glue behind the scenes to create
+the data catalog to store metadata for all datasets hosted
+in the lakehouse. Lake Formation coordinates Glue crawlers to
+identify datasets, and then it persistently
+stores metadata, including schema information,
+partition information, and data location in
+the Glue data catalog. Now, it's important
+to remember that it's common for datasets
+in the storage layer to have evolving schemas and increasing data
+partitions over time, so populating the
+metadata catalog isn't a one-and-done job. It's something that has to be maintained and kept up to date. To automatically keep
+the catalog up to date, you can configure AWS Glue to
+periodically crawl through the lakehouse storage
+layer to discover new or updated datasets and
+extract their metadata, which is then stored in
+a table in the catalog. While Lake Formation
+and Glue are great for managing and cataloging
+your data, handling, evolving schemas
+and large datasets efficiently is where Apache Iceberg tables
+may come into play. You learned in an
+earlier video about iceberg tables and how they
+make it easier to make changes to your
+data schema without disrupting existing processes
+or underlying data. This is made possible in part through schema and
+data versioning, which allows users to track
+changes to data over time. With versioning, you can use the time travel feature
+to access and query historical versions
+of data and analyze changes to data between
+updates and deletes. Lake Formation also
+supports Iceberg tables, and you can create
+Iceberg tables that use Parquet format in the
+AWS Glue data catalog. Next up, we'll move on to
+the consumption layer. I want to spend some
+more time covering Redshift Spectrum
+and Amazon Athena. You'll have an
+opportunity to use Athena in the upcoming lab. Though you won't
+be using Spectrum, it is commonly used in
+data lakehouses on AWS, so you should
+understand the basics. Redshift Spectrum enables
+Redshift to present a unified SQL interface for
+data consumers that can accept and process
+SQL statements where the same query can reference and combine datasets hosted in the data lake or S3, as well as the data warehouse
+storage or Redshift. This means that by using
+Redshift Spectrum, you can reduce data latency. In other words, by
+querying data in place, you can get insights
+faster without waiting for data to be
+moved or transformed. Redshift Spectrum queries use massive parallelism to run queries against large datasets, and a lot of the processing occurs in the Redshift
+Spectrum layer. That means most of the
+data remains in Amazon S3. After your Redshift Spectrum
+tables have been defined, you can query and join
+the tables just as you would with any other
+Amazon Redshift table. Multiple Redshift
+clusters can also query the same dataset
+at the same time in Amazon S3 without the need to make copies of the
+data for each cluster. Using Redshift Spectrum, you can do things like keep large volumes of historical
+data in the data lake and ingest a few
+months of hot data into the data warehouse
+using Redshift Spectrum, or you can create
+enriched datasets by processing both hot
+data from Redshift and historical data from S3 without needing to move
+data in either direction. You can also more easily
+offload volumes of large historical data from
+the data warehouse into S3, which provides more
+cost effective data lake storage
+while still being able to easily query the data as a part of Amazon
+Redshift queries. Then there is Amazon Athena. Athena makes it possible
+to query data in S3 directly using standard SQL. There is no need
+to load the data into another system to
+query it using SQL. Instead, you can create tables using Athena and
+query it directly. Athena is serverless,
+so there is no infrastructure to
+set up or manage, and you pay only
+for the amount of data scanned by the
+queries that you run. You will get a chance to try this out in the upcoming lab. Athena also supports something
+called federated queries, which allow you to query
+data that's outside of S3. It supports a wide
+range of data sources for federated queries,
+including Redshift. The Amazon Athena Redshift
+connector enables Athena to access your
+Amazon Redshift tables. You can write queries that pull in data from
+your data warehouse. For consumption using SQL, you can query your
+datasets in S3 and Redshift using Athena
+and/or Redshift Spectrum, which both can use the
+schema stored in the Lake Formation catalog
+and apply it by following the schema
+on read approach you learned about earlier
+in the course from Joe. That's an example of a data
+lakehouse architecture on AWS using AWS Lake Formation
+and other services, including Amazon Athena and
+Amazon Redshift Spectrum. In the upcoming lab, you'll get hands on with some
+of these services. Have fun, and I'll see you soon.

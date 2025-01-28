@@ -1,0 +1,54 @@
+You can think of a data
+lakehouse architecture as a data lake with
+additional features built in to create an experience that is
+similar to a data warehouse. It aims to combine
+the flexible and low cost storage benefits
+of a data lake with the superior
+query performance and robust data management
+of a data warehouse. This enables analytics and
+reporting applications, as well as machine learning and big data processing use cases. Let's take a closer look at the key architectural components and characteristics
+of a data lakehouse. At its core, a data lakehouse is very similar to a data lake. It uses a single storage
+layer built on top of object storage to store large amounts of
+data of any type. You can organize a storage
+layer into different zones, like you saw in the
+previous video, to facilitate data governance and ensure better data quality. Databricks, which is
+the company that first introduced the notion
+of a data lakehouse, refers to a storage
+layer organized by data zones as the
+medallion architecture, labeling the raw
+data zone as bronze, the clean data zone as silver, and the curated data
+zone containing modeled and enriched
+data as gold. Transform data is stored in
+the silver and gold zones, and written in an
+open file format, typically parquet for more
+efficient storage and allow analytics and
+query engines of all kinds to access
+the data directly. In addition to the data
+lake characteristics, lakehouses include the
+data management features found in data warehouses. They enforce schemas at the storage level to
+ensure that the data you load adheres to specified
+formats and quality standards, and they also support
+schema evolution. Data lakehouses typically
+adhere to ACID principles, meaning that
+transactions are atomic, consistent, isolated,
+and durable. This enables your data users to concurrently read, insert, update, and delete data, while ensuring it's reliable
+for analytical processes. Lakehouses also have built-in data governance and
+security features, such as robust access controls, data auditing capabilities,
+and data lineage tracking. You can also connect
+to a data lakehouse using connector APIs, then use SQL to perform incremental updates and
+deletions to your datasets. These are critical features
+that enable compliance with data regulatory
+and privacy rules. Since lakehouses
+retain old versions of files and metadata, you can also roll
+back to or access any version of your
+historical data as needed. By integrating the
+best capabilities of data warehouses
+and data lakes, data lakehouses provide a unified architecture
+that supports everything from SQL applications to business reporting
+to machine learning. Since the inception of
+the data lakehouse, various cloud and
+software providers, along with open
+source organizations, have been creating
+new products to help organizations move toward a
+data lakehouse architecture. Join me in the next video to take a closer look at some of the details of data
+lakehouse implementation.

@@ -1,0 +1,76 @@
+Storage is arguably the
+most complicated component of the data engineering
+life cycle. That's because you'll
+store data many times as it moves
+through the life cycle, and the storage solutions you choose will impact
+everything from the cost, to the performance, to the end user experience
+of your data systems. Data storage really spans all the stages of
+the lifecycle from the source systems
+that are out of your domain of control as a
+data engineer to ingestion, transformation, and
+finally serving data to your end users. In this course, we'll
+focus on the storage you'll directly handle
+as a data engineer, from ingesting data on
+through to serving. To choose the proper
+storage solutions for your data architecture, you need to know the
+characteristics of your data, including things like
+its type, format, size, and how it will be
+accessed and updated by various stakeholders at
+different points in time. Recall that you can think of storage as a sort of hierarchy. At the bottom layer, you have the raw ingredients that
+comprise any storage system. These are components
+like the magnetic disks, solid sate drives, and memory that use a
+physically stored data, along with the processes needed to store and transmit data, such as networking,
+serialization, and compression. You typically don't
+interact directly with these physical storage
+components or processes. Instead, you interact with the storage systems
+that are built from these raw ingredients. A storage system consists of an internal
+management system that organizes your data and allows you to interact
+with the stored data. You already learned about some
+of these storage systems, such as databases
+and object storage in the context of store
+systems in Course 2. Back then, we mainly discuss OLTP systems for
+processing transactions, which focus on performing read and write queries
+with low latency. However, storage
+systems that support transactional processing
+are different from those needed to support online analytical
+processing or OLAP systems. These are systems that
+focus on applying analytical activities on
+data like aggregation, and summarization to
+make business decisions. Nowadays, we have
+storage systems like graph and vector databases that are more specialized
+and can support machine learning
+analytical use cases. At the top of the
+storage hierarchy, storage systems are assembled
+into storage abstractions, including Cloud data warehouses, data lakes, and data lakehouses. In Week 1 of this course, we'll focus on these
+first two layers, the raw ingredients,
+and storage systems. You'll dive deeper into
+the characteristics of physical storage technologies and look at the
+technical details of serialization and
+compression algorithms. Then we'll explore the cloud
+storage paradigms of block, object, and file storage. We'll also cover distributed
+storage systems. Finally, we'll discuss
+the details of data storage in various
+types of databases. You'll compare the
+performance between row and column-oriented
+databases to understand their use cases
+in OLTP and OLAP systems. Then you'll explore
+how data is stored in NoSQL graph and
+vector databases. Similar to what you
+did in Course 2, when exploring relational and NoSQL databases as
+source systems, in Lesson 2 of this week, you'll gain hands-on
+practice using the Cipher language to
+query a Neo4j database, which is a graph database with vector search capabilities. The theme of this first
+week is to assess the trade offs between storage
+costs and performance at the raw ingredient and storage system levels so that you can start to make informed
+storage decisions when designing your
+data architectures. In Week 2, we'll focus on the top layer,
+storage abstractions. You'll learn to choose the
+appropriate abstractions for storing the data
+your stakeholders need through the ingestion, transformation, and
+serving stages. In the last week of this course, we'll look at how queries
+work to retrieve stored data, how the different storage solutions
+affect query performance, as well as techniques for
+improving query performance. Even though this course
+has only three weeks, we have a lot to cover. Join me in the next video
+to get started with the raw ingredients
+of data storage.

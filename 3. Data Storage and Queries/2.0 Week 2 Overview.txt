@@ -1,0 +1,29 @@
+Last week we looked at the details
+of the raw ingredients of storage. You saw how, as a data engineer,
+understanding the characteristics, performance, and cost of the different
+storage mediums and processes. Can help you better evaluate tradeoffs
+in your storage solution decisions. Then we explored different storage
+systems, including object storage and common types of databases. This week,
+we'll move up in the storage hierarchy and explore different storage abstractions. We'll start by looking at the data
+warehouse architecture and the transformative shift towards
+modern cloud data warehouses. We'll then dive into the rise of data
+lakes as a response to the growing storage needs in terms of data volume,
+data types, and use cases. We'll also examine the challenges
+associated with this architecture. And finally, we'll look at
+the data Lakehouse architecture, which aims to combine the advantages
+of both data warehouses and data lakes. I've set up this week as a sort of journey
+through the history of data storage abstractions. As we move through each paradigm,
+you will consider the pros, cons, and possible use cases for each one. The goal here is to give you enough of an
+understanding behind each architecture so you can choose the most appropriate
+storage solution based on your use case. In this week's lab exercises,
+you'll use AWS glue and Athena for efficient data retrieval in a data lake. Then you'll get a chance to experiment
+with creating a data lake house with something called a medallion architecture
+using AWS, lake formation and Apache iceberg tables. Before we get into the details of each
+of the storage abstraction paradigms, I want to give you the opportunity
+to hear from Bill Inman. Who is widely recognized as
+the father of the data warehouse and one of the most knowledgeable
+people in the field of data. The next video is optional, and if you'd
+rather jump right into the details of data warehouse architecture,
+you can feel free to skip ahead. But otherwise enjoy the upcoming
+conversation with Bill Inman. I'll see you after that to dive
+deeper into data warehouses.

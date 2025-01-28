@@ -1,0 +1,59 @@
+Welcome to the third and
+final week of this course. In previous weeks, you
+learned how data is stored in storage systems such as
+databases and optic storage, and how storage abstractions add additional management layers
+on top of storage systems. This week, we're going to look at how the way
+data is stored and managed has a direct impact on the speed of data retrieval, meaning how fast you
+can query the data, as well as how
+queries can impact the performance of the
+storage systems themselves. In your work as a data engineer, you'll be writing
+queries to extract data from internal and
+external systems, as well as setting up data storage solutions that your stakeholders
+can query directly. You need to understand
+how your data storage and management choices can impact query speed and
+system performance. To do that, you need
+to understand how queries actually work in detail. A query is a statement
+that you write in a specific query language to retrieve data or act on data. For instance, in the
+previous course, you wrote SQL statements
+to interact with a relational database
+management system or RDBMS. But queries are not only
+limited to tabular data. In another lab in that course, you use SQL like statements to retrieve data from
+Amazon object storage. In the first week
+of this course, you use Cypher to query
+relationships and node properties from a
+Neo4j graph database. Query languages or
+declarative languages, meaning that when you
+write your queries, you only have to describe to the DBMS what data
+you want to retrieve or what you want to do with
+the data without worrying about the exact steps that are needed to execute your query. These details are
+abstracted from you and handled by the DBMS. So with the DBMS
+handling the details, it might be tempting to think that you don't
+have to understand exactly how queries are
+processed behind the scenes. But if you don't
+really understand how queries work, one day, you might end up running
+a query that brings down a critical database for
+a few days or more. Believe me, that's no good. Even if you're already good at writing efficient
+queries yourself, understanding how queries are processed can help
+you model the data so that it's easier and faster to retrieve by
+your stakeholders. This week, we'll
+explore the journey a query takes to be
+executed from the moment you write a query to when it's parsed through the creation
+and implementation of an execution plan
+to finally when the results are returned or the desired
+action is executed. Then we'll cover
+techniques you can use to improve SQL
+query performance, like creating a database
+index that can help optimize a search for specific
+records in a database. We'll be focusing on SQL
+this week because it's an extremely popular and
+well established language. Many of the techniques
+that we'll cover are applicable to other query
+languages, as well. We'll also look at aggregations, revisit our discussion for
+row versus column storage, and discuss queries
+on streaming data. In the labs this
+week, you'll get hands-on experience with
+advanced SQL statements, compare the execution time of an analytical query performed on a row storage versus
+columnar storage, and finally, use Amazon Managed
+Service for Apache Flink to perform time-based windowed
+queries on streaming data. Join me in the next video to
+examine the life of a query.

@@ -1,0 +1,86 @@
+In addition to knowing how queries are processed
+behind the scenes, understanding strategies for working with complex queries, such as query caching and
+comment table expressions, as well as other database
+maintenance techniques like vacuuming can help you improve the performance
+of your queries. Let's assume you're working
+with the DVD rental database. You saw in the previous course, and you want to calculate the total amount spent on
+three film categories, the family, drama and
+comedy categories. You can start by selecting the sum of the payment amounts
+from the payment sable. Then to get the
+names of the film categories from the
+category table, you'll need multiple joins. You need to join the
+payment table with the rental table based
+on the rental_id. Then you'll join
+the results with the inventory table based
+on the inventory_id. Next, you'll join with the film table based
+on the film_id. Then you'll join this with
+the film category table based again on the film_id. Finally, you'll join this with the category table based
+on the category_id. Once you've done
+all these joints, you'll be able to select
+the category name. Since you only care
+about the family drama and comedy categories, you'll filter the results
+using this ware clause. Then you'll group the
+results by the category name so that you can calculate the aggregated total spend
+for each film category. You can also order
+the results by the amount to sort
+the total spendings from lowest to highest. Running this query frequently on a large database containing this data could be very costly. To avoid rerunning the
+same query repeatedly and incurring significant
+charges, many databases, especially Cloud
+all app databases, allow you to cache
+query results to make them available for instant
+retrieval later on. By leveraging query caching, you can reduce a load on
+your database and enhance the user experience for queries that are executed frequently. Another piece of
+advice for writing complex queries is to
+prioritize readability, just like you would
+with any code. Readable queries are less
+likely to contain errors, simpler to debug and
+easier to collaborate on. You can enhance
+the readability of your queries by using
+Common Table Expressions or CTEs to create a
+temporary result set that you can reference
+elsewhere in your query. This is a concept you practiced in the first lab of this week. For example, let's
+say you want to get the names of the actors that acted in the film, Rocky War. You can create a CTE or a temporary table called
+selected_film that selects the film_id from the film table where the
+film title is Rocky War. Then you can create another
+CT called film actors_id that selects the actor_ids
+from the film actor table. Where the film_id is the one you got from the selected film CTE. Finally, you can write
+a main query to select the first and last names
+from the actor table, where the actor_id
+is the one you got from the film actor_id CTE. Compared to writing many
+nested sub queries, CTEs can help you structure complex queries in a
+more readable way, which makes it easier to understand the flow
+of your queries. Along with optimizing
+the queries themselves, you also want to optimize
+the use of DBMS resources to execute the query as efficiently and
+quickly as possible. Certain databases are
+designed to allow concurrent access to data while the data is being updated. When you delete or update a
+record in these databases, they create new records while physically retaining on disc the outdated data as pointers to the last
+state of the database. This can also help the
+transaction roll back to its previous date in
+case of any failure. However, as these
+outdated records accumulate and are no longer
+needed to be referenced, they can lead to table bloat. This is where the data
+space occupied on the physical disc far exceeds
+the actual data size. In addition to the
+wasted disc space, the database has to skip
+over many blocks to retrieve the required data,
+slowing down queries. Since a query optimizer relies
+on the internal statistics of the data on disk to generate
+query execution plans, outdated records
+can also lead to suboptimal or inaccurate plans. Similarly, indexes
+can also become inefficient as they accumulate
+entries for outdated data. And so to free up
+space for new records and allow for better query
+and index performance, you should remove
+these dead records using a process
+called vacuuming. You can vacuum a single table, multiple tables, or all
+tables in a database. Vacuuming is more critical
+for relational databases, such as Postgres and MySQL, because large numbers of
+transactional operations can cause a rapid accumulation
+of dead records. When you work in these systems, you need to familiarize
+yourself with the details and
+impact of vacuuming. With that, you now have more strategies to optimize
+the performance of equeries. We covered lots of ground
+with querying batch data. I'll see you in
+the next lesson to take a look at quering,
+streaming data.

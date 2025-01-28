@@ -1,0 +1,132 @@
+You've been learning
+about queries, indexes, and various strategies and tips for writing efficient
+SQL queries. Now, let's talk about some architectural
+factors that affect query performance for data
+warehousing workloads running on Amazon Redshift. Here, we'll look at how Redshift queries data and
+some considerations to keep in mind for table design that can optimize
+query performance. Redshift is designed to be a highly efficient data
+warehousing solution, and it achieves this
+through a combination of different internal
+architectural features, including columnar data storage, massively parallel processing, and data compression
+encoding schemes. Redshift is a columnar database, which means that it stores data column-by-column together on
+disc rather than row-by-row. This storage method
+is particularly efficient for
+analytical queries and OLAP workloads that require aggregating data over many rows, but only need to access a few columns for any
+particular query. By storing data in
+this columnar way, Redshift can quickly scan and retrieve the necessary data, significantly speeding
+up query performance. This is part of the reason why Redshift is especially well suited for data warehousing and large scale data analytics, where fast query performance
+over large data sets, and cost efficiency
+are important. Columnar storage also allows
+for better data compression. When you run a query,
+Redshift reads the compressed data into memory and decompresses
+it as needed, which means it can use more memory for actually
+analyzing the data, and that means your
+queries can run faster. You can save on
+storage space and cut down on the amount of data
+being read from the disc. Redshift also uses massively
+parallel processing or MPP. Which you've already learned a bit about last week with Joe. Let's quickly go
+over that again. Redshift is made up
+of a cluster that has multiple compute nodes
+and a leader node. Data associated
+with a workload is distributed across
+these compute nodes, and each node is responsible for storing a
+portion of the data, as well as processing
+queries on that data. Compute nodes are partitioned into what are called slices. A slice uses a portion of the compute nodes memory
+and disc space to process a portion of the
+data assigned to the node. With MPP, these compute nodes
+work together to handle query processing with each slice running the query on different
+portions of the data. When you submit a
+query to Redshift, the leader node
+parses the query, develops execution plans, and generates a series
+of necessary steps. It then compiles the code
+needed to perform the task and distributes it to the
+compute nodes for execution. Each slice processes
+its assigned portion of the data in parallel. Once a compute node is
+done with the work, it sends the results
+back to the leader node, which then aggregates
+the results into the final result set. This parallel approach ensures that queries are
+executed quickly. However, the performance of your queries may also depend on the number of nodes or node types you have
+in the cluster. Now, all that being said, to optimize for efficiency
+and performance, you can't rely on these
+built in factors alone. There are multiple
+key factors to consider related
+to table design. When you create your
+table, you can optionally define a sort key and
+distribution style, which will heavily influence
+overall query performance. Let's dive into the details around distribution style first. I've alluded to this one
+already when we talked about how MPP works
+with Redshift. The data gets divided
+amongst the compute nodes, and how that division
+happens is controlled by defining a distribution
+style for the table. There are two main goals when defining an appropriate
+distribution style. The first is to
+have a uniform or even distribution of the
+data across the nodes. Uneven distribution,
+otherwise known as data distribution skew, may result in some nodes doing a lot more work
+than other nodes. Since your query
+would be waiting on one node to churn through
+a large amount of data, it can lead to poor performance. Having an uneven distribution of data like this means
+that you can't take full advantage of the massively parallel processing capabilities
+Redshift offers. The other goal is to minimize data movement across the nodes. If a query running on a node
+involves joining tables or aggregating data that is distributed across multiple
+other compute nodes, some of the data may need to be redistributed between
+nodes over the network. This cross node data movement can result in increased
+network traffic, which in turn may slow down query performance and
+increase your query cost. To minimize this,
+it's important to carefully select a distribution
+style for your tables. A reasonable data
+distribution across the nodes ensures that related data is
+collocated on the same node. Reducing the need for this
+cross node communication. This optimization helps balance the workload and improve
+query efficiency by keeping as much processing as possible localized to
+each compute node. When you create your table, you can choose from the
+distribution styles, auto, even, key, or all. Key will let you choose
+a specific column, and then use that
+columns values to distribute the rows of
+data among the nodes. The leader node will
+distribute rows with the same key value
+to the same node. You may be a tempted to define a specific key for
+every table you create. But this requires some thorough
+analysis of the dataset, and you might not know exactly which column would
+make the most sense. In this case, you may
+instead want to use auto, which will let Redshift assign an optimal distribution style based on the size
+of the table data. If you can't provide a value
+for distribution style, it will default to auto, or you can use the even
+distribution style. Redshift will have the leader
+node distribute the rows across the nodes using
+a round robin approach, regardless of the values
+in any particular column. Even distribution is most
+appropriate when a table won't really need to have
+joins run against the dataset. Then there is also
+the all option. With all, a full copy of the entire table is
+distributed to every node. When using even or key, Redshift places a portion of the table's row on each node. But when you use all,
+Redshift ensures that every row is collocated for every join that the
+table participates in. This is nice for cases
+where you frequently join smaller tables with
+much larger tables. By having a full copy of the
+small tables on every node, you eliminate the need for data shuffling across nodes
+during join operations. However, the all distribution multiplies the storage required to store the table data by the number of nodes
+in the cluster. It takes much longer to load, update, or insert data
+into multiple tables. For this reason, Using
+the all distribution is really only appropriate for relatively slow moving tables. Now let's move on to sort keys and how that impacts
+Query performance. Redshift stores your
+data on disc in sorted order according to what you define as the sort key. When you submit a
+query to Redshift, the query optimizer uses the sort order to determine
+the most optimal query plans. The sort key you choose for a table impacts
+query performance because it determines
+how the data is physically organized on disc. When your queries filter or
+join data based on sort key, Redshift can more efficiently
+locate the relevant data, reducing the amount of data that needs to be scanned from disc. Choosing an appropriate sort
+key can minimize disc read operations and speed up
+overall query execution. For example, if you frequently query a sales table
+by order date, defining the order date as the sort key allows Redshift
+to efficiently scan only the necessary portions of the table that match the
+date range in your query. Similarly, if you often
+filter by customer ID, setting customer ID as a sort key can optimize
+those queries. You can think of
+this like how OLTP databases use indexes
+to speed up queries. In a similar way, OLAP
+databases like Redshift, use sort keys to
+speed up queries. Those are some considerations to keep in mind for table design. Up next, Joe will walk you through the upcoming
+lab where you'll compare performance between
+Row and Columnar databases, and I'll see you again soon.

@@ -1,0 +1,59 @@
+In the previous
+video, you saw that by creating a proper
+index for a table, you can avoid doing
+a full table scan, which can be very costly. It turns out, however,
+that you can actually do even worse than simply
+doing a full table scan. That's when you write a query that not only
+scans the entire table, but also returns everything. When you run SELECT *
+with no predicates, meaning no wear clause
+to filter the results, the DBMS need to scan the entire table and retrieve
+every row and column. This could be costly for
+the source database because large amounts of data needs
+to be transferred from disk, and the data might need
+to be further processed. I remember a time
+when a new analyst at a large grocery store chain
+that I was consulting for, ran a SELECT * command on
+a production database, and that brought
+down this entire critical inventory database
+for three whole days. The company had to spend a lot of money fixing this problem, and things didn't look good
+for that poor analyst. Running SELECT * on your
+Cloud pay-as-you-go database or data warehouse
+can also be very expensive. You'll be charged for reading all the bytes from
+the entire table and for utilizing any
+compute resources while the query is running. This is why, in
+general, you should avoid running SELECT * with no where clause
+to filter the results. As a rule of thumb, you should query only the data you need. If you'd like to
+explore the data, consider using a technique
+called pruning to exclude irrelevant data from
+being scanned in your query. One of the most common pruning techniques is row-based pruning, where you filter out rows that don't meet your
+wear condition. For example, like
+you saw earlier, you can select all
+the records from the payments table where the
+rental ID column is one. When filtering your results, you can further improve your
+query performance by using indexes in traditional
+row-oriented databases, or by using sort or cluster
+keys in columnar storage, such as BigQuery or
+Amazon Redshift. As you saw in the
+previous video, you can create an index
+called rental_idx on the rental ID column and the payment table to
+speed up this query. Pruning techniques also include column-based pruning where you specify in the query statement, only the columns you need. For example, instead of
+selecting all records, you can select only
+the customer ID and rental ID columns
+from the payment table. This way, the database
+won't have to scan all the other
+irrelevant columns. There's also partition pruning, where you only scan
+specific partitions that contain relevant data instead of scanning the entire table. This type of pruning is possible when you work with a data store that allows you to partition your data based on
+a partition key, such as date or location. For instance, with big query, you can take this table
+here that's not partitioned and partition the records
+based on the order dates. You can then further order
+each partition by the country. Let's say user queries
+this data and filters by a specific order
+date of April 1st, and country value of USA. The database only has to scan the records in the
+April 1st partition, then look for records
+with USA as a country. To avoid incurring any
+surprising expenses or degrading the performance
+of the source data storage, you should always make sure to only read the data
+that you need. Another factor that
+has a huge impact on query performance is the way you join data from different tables. We'll discuss the challenges
+that come with table joins in the next video.
+I'll see you there.

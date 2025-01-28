@@ -1,0 +1,136 @@
+In the previous video,
+you saw how you can apply the select
+distinct statement and some SQL string functions to
+query the unique pairs of staff and customer IDs from
+a DVD rental database. Then you use the case statement
+to create a column that indicates whether a customer paid for the DVD rental on time, and you filtered
+the results using Boolean expressions
+in the WHERE clause. In this video, I'll
+show you how to apply some advanced
+SQL techniques, including common table
+expressions, subqueries, SQL window functions, and some SQL date functions
+to your queries. Let's say you want to perform some additional computations on top of each of the
+previous two queries. For instance, in
+the first example, you might need to know
+the total number of customers that were served
+by each staff member, or in the second example, you might want to compute for each customer the
+average of the on-time payment column to get
+the percentage of on-time payments
+for each customer. In both examples,
+I don't want to store these results
+in a separate table. I just need to be
+able to reference these temporary results to
+perform my computations. You can use common table
+expressions or CTEs to define these
+temporary result sets that can be referenced
+elsewhere in the query. Let's take a look at the
+first example and compute the total number of customers that were served by
+each staff member. To define the CTE, you start with the with keyword. Then you specify a
+name for the CTE, which we'll call
+staff customer pairs, followed by as keyword
+and the query that represents the temporary results enclosed between
+two parentheses. Within these parentheses, I'll
+write the query you saw in the last video that got you the unique staff
+and customer pairs. Once you define your CTE, you can query it in the same
+way, you query any table. I'll write a regular query to select the staff name and count the customer IDs from the staff customer pairs CTE and then group
+by the staff name. You can see that there are
+only two staff members, and they both served the
+same number of customers. Now, let's move on to
+the second example to compute the percentage of on-time payments
+for each customer. I'll define the CTE called customer payment info and
+write the query you saw in the last video to get the
+on-time payment indicator column from this
+customer info CTE. I'll select the customer ID and compute the
+average of the on-time payment indicator column to get the percentage of time each
+customer paid on time. I'll then group by
+the customer ID. The results show zero as the percentage of time each
+customer paid on time. You can verify that
+this is true for all customers by
+defining this as a CTE and then finding the maximum of the percent
+on-time payment column. After the first CTE, I can type comma and
+specify the name of the second CTE as customer
+percent on-time payment. Then I'll surround the second
+query with parentheses. After these two CTEs, I'll select the max value
+of the percent on-time payment column from the customer percent
+on-time payment CTE. Indeed, I do get a
+max value of zero. It looks like no
+customer paid on time, and you might want to
+investigate this further. For now, let's continue exploring more advanced
+SQL statements. With CTEs, you saw that you can define your temporary
+results using the with keyword and you can query from the CTE similarly to how
+you would from any table. You can also incorporate some temporary results within your main query
+using subqueries. Let's focus on the
+film dimension table. You can see that each film
+has a certain length, and let's say you're interested
+in getting the IDs of the films that have length greater than the average length. You can start by getting the
+average length of the film by selecting average
+length from dim film. This query returns
+a single number, which represents the
+average of the film length. You can then incorporate this
+query as a subquery within the main query to return the IDs of the film with length
+greater than this average. Here, I'll select film ID and length from the dim film table, where length is greater
+than the average. I can get this average by writing the subquery
+that returns the average length of the films and enclose it
+within parentheses. You can see that
+the return movies have length greater than
+the average length. The last type of
+query I'd like to go over are SQL window functions. This type of query
+allows you to apply an aggregate or
+ranking function over a particular window
+or set of rows. Similar to performing
+aggregation using group by but instead of considering
+all rows at once, it applies the aggregation
+to a subset of rows, and it also doesn't group rows
+into a single output row. Each row remains separate. Let's start with a
+ranking function. To define the window,
+you use the over clause, which expects two
+pieces of information. The column, you want to
+partition the rows by, and the column, you want
+to rank the rows by. To rank each row in each window, you can choose from
+several ranking functions such as rank and row number. Let's go over an example. First, I need a
+query that I can use as a CTE to apply
+the window function. Let's write a query that computes the average
+duration and days that a customer
+spent on a film category. I'll focus on the
+rental fact table and the category
+dimension tables. From the fact rental
+table joined with the dim category table
+based on the category ID, I'll select the customer
+ID and the name of the film category and
+then I'll compute the average of the
+difference between the rental date and return
+date using date diff, which is a function that finds the difference in days
+between two dates. Finally, I'll group the
+results by customer ID and category name and order by the customer ID and the
+average rental days. Here are the results which
+show for each customer the average number of days
+spent on each category. Now let's add a
+column to this result that shows for each customer the rank of each category
+based on the rental days. First, I'll define this query as a CTE called customer info. Then I'll select the
+customer ID. Category name. And average rental days
+columns from the CTE. Then I'll add the ranking
+column using the rank function. I'll define the window using the over keyword and specify
+that I want to partition the rows by the customer ID and order them by the rental
+days in descending order. I'll label this
+column rank category. Then finally, I'll
+order the results by the customer ID
+and rank category. You can see that the records
+are grouped by customer ID. Within each customer ID, the film categories that have the highest rental
+days are also shown. The rank function assigns the same rank to the rows
+where there's a tie. The row number function,
+on the other hand, assigns different ranks
+when there's a tie. For the same window function, if instead of the
+rank function you use any aggregate function such as the sum of the
+average rental days, it will return the running
+sum over each window. In the results here, you
+can see that you have the customer IDs and the
+category names like before, but now the running
+sum column shows the total average
+rental days for this film category along with all the film
+categories before it. There are other window
+functions such as lead and lag that you can check out in the optional part of this lab. Now it's your turn
+to try out the lab. After that, join me
+in the next series of videos to see how some of
+these SQL statements are processed behind the
+scenes and explore strategies you can use to
+improve their performance.

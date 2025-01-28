@@ -1,0 +1,131 @@
+Like I said before, the
+raw ingredients used to physically store data are at the heart of all data
+storage systems. As a data engineer, you need to be aware of the
+characteristics, performance, data durability, and cost
+of these raw ingredients in order to select
+the storage system that is appropriate
+for your end use case. As data works its way
+through the data pipeline, it frequently passes through persistent storage mediums or disk like magnetic disk
+drives or solid-state drives. Also passes through
+volatile memory, like RAM and CPU cache. In this video, I'd
+like to compare these different raw
+ingredients to help you understand the
+differences between them. Magnetic disks often referred to as hard disk drives or HDDs, use rotating platters coded in magnetic film to store data. Magnetic disks work like
+old record players, where you need to move
+the stylus or needle back and forth to locate the
+right track on the record. As the record spins, the stylus reads the vibrations from the grooves
+to generate music. With magnetic disks,
+each platter contains circular tracks
+that are broken up into storage units
+called sectors. Together, the track and
+sector number create a unique address to
+organize and locate data. When you perform a
+write operation, a read/write head
+magnetizes the film to physically encode
+binary data at a particular address by
+changing the magnetic field to point in one direction to store a bit representing a one, and in the opposite direction to store a bit representing a zero. When you read the data, that same read/write
+head detects the magnetic field at the specified address and
+outputs a bit stream. Solid-state drives or SSDs, on the other hand, store data as electrical charges in
+flash memory cells. A charged cell represents a one bit and an uncharged
+cell represents a zero bit. Since they eliminate
+the mechanical parts of magnetic disks, SSDs can read and
+write data much faster through purely
+electronic means. How do magnetic disks compare to SSDs in
+terms of performance? The latency or total
+time it takes to fetch data on a magnetic disk
+depends on the seek time, which is the time it takes for the read/write
+head to physically locate the appropriate track
+and the rotational latency, the time it takes for
+the write sector to rotate under the
+read/write head. Both of these
+mechanical operations have physical limitations. At the time of this recording, a typical commercial
+magnetic disk drive rotates at around 7,200
+revolutions per minute, which implies an average of four milliseconds of
+latency when fetching data. A magnetic disk drive can
+only perform a maximum of several hundred IOPS or input/output
+operations per second. It's much faster to read data through electrical
+charges in an SSD. Newer SSDs can typically perform up to tens
+of thousands of IOPS with a data fetch latency
+of about 0.1 milliseconds. This makes SSDs better
+for random access, meaning they can read or update data from any location
+very quickly. In terms of the actual
+data transfer speed, magnetic disks can
+read and write up to 300 megabytes of data from disk to memory or
+RAM in a second, while SSDs can be more than
+10 times faster than that. You can achieve even better
+read and write performance through distributed
+storage systems and parallel processing. For example, you can
+distribute data across many magnetic disks and clusters and read from these
+clusters simultaneously. In this case, your
+transfer speed will primarily be limited by the network performance
+and less so by the physical limitations
+of the disk itself, or you can scale SSDs by slicing storage
+into partitions with numerous storage controllers
+running in parallel to handle more data
+transactions simultaneously. With a parallel
+processing approach, SSDs can reach a transfer speed of many gigabytes per second. We'll dive into
+distributed storage and parallel processing
+later this week. Now that we've compared
+magnetic disks and SSDs in terms of
+their performance, let's consider their costs. Commercial magnetic disks
+are typically 2-3 times cheaper than SSDs for storing
+the same amount of data. That's why even with slower data transfer speeds and
+higher latency, magnetic disks still form the backbone of the bulk
+of data storage systems. When considering
+the choice between these two storage mediums, my advice is to choose magnetic disks as a more
+cost efficient option if you require infrequent
+data access in blocks of one megabyte
+or more at a time, and where your
+applications don't need super fast read
+and write speeds. On the other hand, SSDs are commonly used in
+commercial deployments of OLTP systems because they allow relational databases to handle thousands of
+transactions per second. However, SSDs are not always the best option for
+analytical storage because of their higher costs. Let's switch gears to take a look at the volatile
+memory ingredients, namely random access memory
+or RAM and CPU cache. In order for the CPU
+to process data, you need to transfer the data from persistent disk storage, such as SSDs and
+magnetic disks to RAM. RAM is typically
+attached to a CPU, so it's very fast
+and can better match the processing speed of CPU
+than that of disk storage. Now, the exact performance
+metrics for RAM move fast, no pun intended, and they
+can change very quickly. But at the time of
+this recording, RAM offers a data transfer speed of about 100
+gigabytes per second and a very low
+data fetch latency of about 0.1 microseconds, which allows it to
+perform millions of IOPS. Now, these metrics can
+vary significantly based on hardware and configuration
+specifications, but RAM is not all powerful. Because it's attached to a
+CPU, it's more expensive. As of now, RAM is usually 30-50 times more expensive than
+SSD per unit of stored data. It's also volatile, meaning that if you were to lose power, the data stored in RAM could be lost in less than a second. You usually only use RAM to
+store the code that the CPUs execute and the data that's
+code directly processes, and nothing that needs
+to persist over time. This makes RAM good for caching, data processing, or indexing, which we'll discuss
+later in this course. Several databases treat RAM as a primary storage
+layer because it allows very fast read
+and write performance. In these applications,
+you should always keep in mind
+the volatility of RAM, even if data memory is
+replicated across a cluster, a power outage that brings down several nodes could
+cause data loss. Another type of
+memory that's even faster than RAM is CPU cache, which is located directly
+on the CPU processing chip. You want to use
+CPU cache to store frequently accessed data for ultrafast retrieval
+during processing. Because of its location, it has a data fetch latency of
+about one nanosecond, and a super high
+data transfer speed of about one
+terabyte per second. Caches are not only
+used for CPU cache, but you can also use them in multiple applications to sore frequently and
+recently accessed data in a fast access layer. For example, you can use
+a browser cache to store downloaded web resources so that you can load
+a web page faster. You can also use a
+database cache to store the results of
+frequently used queries. With that, we cover the
+performance and cost trade offs between the different
+ingredients that physically store data. As a data engineer, having a solid understanding of these trade offs can
+help you evaluate different storage technologies
+to ensure that they meet the performance requirements of your data processing workloads. Join me in next video,
+where we'll take a look at other components
+and processes like serialization and
+compression that are critical for storing data
+and modern data systems.

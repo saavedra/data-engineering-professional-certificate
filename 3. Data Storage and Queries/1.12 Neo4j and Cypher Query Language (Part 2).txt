@@ -1,0 +1,109 @@
+Let's explore the graph you
+saw in the previous video. You'll use the match statement to retrieve
+information you want from a graph. This statement enables you to specify
+the pattern that you want neo four j to search for and return to you. It's similar to the select statement
+you use with a relational database. It always has this format, match pattern return result where you
+need to specify the pattern end result. So let's say you want to
+retrieve all the nodes. In cipher,
+you use parentheses to denote a node. Then inside the parentheses, you can specify the information
+of the node you want to retrieve. So I'll write match parentheses. Since I want all the nodes to be returned, I don't need to specify
+any further information. I just need to use a variable
+like n to denote the node, and then I'll ask neo four j to return n. This statement returns all the nodes. Now let's say you want to get
+the total number of nodes. Again, I'll use match (n),
+but in the return statement, I'll write return count (n). You can also explore what node labels you
+have in the graph by using the labels function. In the return statement, I'll write
+match n, then return distinct labels n. The distinct keyword ensures that
+the returned labels are not repeated. So the nodes in this
+example have these labels, which is consistent with
+the graph model you saw earlier. If you want to count the number of
+nodes that have a specific label, say the ones with an order label,
+you can specify the label name inside the match pattern, like match n
+colon order, then return count n. You see that the graph
+contains 99 order nodes. You can also explore the properties
+associated with each node type by calling the properties function on
+the node variable in the return statement. For example, I can match the nodes
+based on the order label, then return the properties
+associated with any order node. This statement returns the properties for
+all order nodes. You can limit the number of
+results using the limit keyword. So here I'll specify that I want
+the properties of the first node. In all the examples you've seen so far, we
+explored the information about the nodes in the graph, but you can also explore
+the information about the edges or the relationships between those nodes. You can use square brackets
+to denote a relationship. Then inside the brackets,
+you can specify a variable so you can reference relationships. Now, since a relationship
+exists between two nodes, the way you can relate a relationship r to
+its source and target nodes is like this. This pattern represents a directed path
+from a source node to a target node. Let's say you want to count all the
+directed paths that exist in this graph. You can write a match statement
+like this where you're looking for any relationship r that goes from
+any source node to any target node. Then you can return count r. Since I don't need to reference
+the nodes in the return statement, I don't have to specify any variable for
+the nodes in the parentheses. You can see that there are 518 directed
+relationships in the graph and you can modify the return statement to see
+the distinct types of relationships in the graph. You can also specify the type of
+relationship that you want to investigate by specifying the label for
+the relationship. For example, I can specify the orders
+label after the relationship variable r. Now, instead of just returning
+the count or type of relationship, you can also return its properties. So for the orders relationship,
+say you want to find the average price for orders, you can return the average
+of the order price which you can get by multiplying the quantity
+property by the unit price property. If you want to more easily
+refer to the return value, you can use the as keyword to create
+an alias for the return value. So here I'll label the return
+value as average_price. Now let's say instead of getting
+the average price for all orders, you want to get the average price for
+all orders grouped by product category. You can start with the query for
+overall average_price for all orders and add another path to the MATCH
+statement to get the node category. So the pattern this query matches
+includes all orders relationships denoted by r that are a part of
+a specific category denoted by c. Then in the return statement
+you can add C category name, which is a list of names
+representing each category. The last type of statements that I'd
+like to cover are filtering statements. You can filter the results
+using the where statement, which is similar to
+the SQL where statement. So let's say you want to
+retrieve the product name and product unit price of all products that
+belong to the category Meat/Poultry. First, you need to specify the path where
+a product node is part of a category node. Note that I assign variables to
+the product and category nodes, but not to the part of relationship. This is because I need to
+reference these nodes but not the relationship in the rest
+of the query statements. Next, you need to specify
+the condition you want to filter by, which is where the categoryName
+property equals Meet/Poultry. And finally, you need to specify the properties of
+the products that you want to be returned. In this case, I'll specify
+the product name and its unit price. Instead of specifying a desired
+node property in a where statement, you can instead clarify the property
+inside the node parentheses. So in this case, in the category node,
+you can use curly brackets like this to specify the category
+name you want to filter by. Now let's say you want to retrieve the
+product name of all products ordered by the customer with customerID QUEDE. You'll start with a customer node which
+ill give it a variable name of c1 and specify that the customerID is QUEDE. Then youll chain the purchased and orders
+relationship to reach the product node. And finally I'll return the product names. Note that for the purchased relationship
+I didn't have to specify a variable for the target order node because I don't
+need to reference that variable in the rest of the query statement. So here are the products
+ordered by the customer QUEDE. Now let's say that for
+the same customer QUEDE, you want to get the ID of other customers
+who ordered the same products as QUEDE. So again I'll start with the customer
+QUEDE, then chain the two purchased and orders relationships to
+get the product node. Now I'll specify the path in
+reverse by chaining the orders and purchase relationships using the left
+arrow to go from the product node to another customer node. I'll use a variable c2 to represent this
+customer who ordered the same products as QUEDE. And then finally I'll return
+the customer id of the second customer. Let's do one more search over this graph. Let's say you want to retrieve the orders
+that contain at most two products. Let's think about this step by step. First, let's get the total number
+of products for each order. So I'll start by specifying the orders
+relationship from order nodes to product nodes, and then I'll return
+the orderID and the count of products. This statement is equivalent to
+using the SQL groupby statement to group the orderIDs, then counting
+the number of products for each orderID. Next, I need to add a where statement to
+filter the orders that have at most two products. To do this, ill replace
+the return statement with a with statement which allows you to access
+the id and count prod outputs. After the with statement, I'll add the filter statement where
+countprod is less than or equal to 2. Then finally ill return
+the filtered results. In the next lab you'll get the chance
+to use the match statements and learn more about other statements
+such as create and delete. You'll be guided to open up the Neo four
+J graphical interface if you'd like to visualize the graph. But to complete the lab, you'll
+mainly be working in JupyterLab where you'll write queries in the code cells. Your queries will be wrapped in Python
+that automatically connects the graph database provided in the lab. You'll also learn how to interact with
+Neo4j not only as a graph database, but also as a vector database.

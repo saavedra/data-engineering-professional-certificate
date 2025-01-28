@@ -1,0 +1,41 @@
+When building a system for
+analytical workloads, you have to support
+aggregating large datasets. Aggregate queries are used to compute
+a summary value of a column, such as the sum, average, maximum, minimum, and
+count of the values in that column. Here's a query where you select
+the min price from the orders table. In role oriented databases, aggregate
+queries like this one can be computed by a full table scan, where you scan
+each row in the table, looking for the row with the minimum
+value in the price column. Or you can speed up this query by using
+an index structure if it's available. So, for example, if you have a b tree
+index on the price column like this, then the query optimizer can
+decide to use the index and traverse this tree to reach the leftmost
+leaf node to return the minimum price. When working with aggregate queries, you
+can also use a GROUP BY clause to group query results by specific columns and return the summary values
+within each group. So, for example, you can add GROUP BY
+country to your query to get the minimum price for orders placed in each country. In this case, the table must be first
+partitioned into groups where each group includes just one country. Then the minimum price is computed for
+each group. The partitioning is usually executed using
+a sorting algorithm or a hash function, and could be avoided if an index
+exists on the grouping attribute, which is the country column in this case. In any case with aggregate queries, you are performing operations
+on columns rather than rows. Remember that with row oriented databases, you store all the values within the same
+row next to each other on disk. This means that to get
+the price value from each row, you have to transfer all the rows in
+their entirety from disk to memory, so you end up transferring more data than
+you need to execute the analytical query. This could work just fine with small
+data sets, but with large data sets, performing analytical queries and
+role oriented storage becomes much slower. On the other hand, columnar storage
+stores all the values within the same column next to each other on disk. So in this case, if you needed all
+the values from the price column, you just need to transfer
+the data from the first price value through the last price
+value that's stored on disk. So performing analytical queries on
+columnar storage is much more efficient because you only need to transfer
+the relevant columns of data for your analytical query from disk to memory. In the upcoming lab,
+you'll get a chance to compare the query performance between row and
+columnar storage. You'll run an analytical query on a role
+oriented database hosted on Amazon RDS, and then you'll run the same
+analytical query in Amazon Redshift, which is a cloud data warehouse
+that leverages columnar storage. And finally, you'll compare the execution
+times of both of these queries. In the next video, Morgan will walk you
+through the details of Amazon Redshift. Then after that, I'll give you
+a quick walkthrough of the lab.

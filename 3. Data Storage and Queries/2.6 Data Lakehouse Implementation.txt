@@ -1,0 +1,106 @@
+Ever since the inception
+of the data lakehouse, we've seen an interesting
+fusion happening with Cloud data warehouses
+and data lakes. Cloud data warehouse providers
+have started integrating features typically
+associated with data lakes and meanwhile, data lake technologies
+have started embracing characteristics typical
+of data warehouses, like enforcing and
+managing schemas, as well as SQL functionality. In this video, we'll look at Data Lakehouse Implementation
+using open table formats. In the next video,
+Morgan will walk you through how you can implement
+a lakehouse on AWS. When it comes to
+lakehouse implementation, a number of open table formats
+have been developed to support the idea of a more
+transactional data lake. These open table formats
+include Databricks Delta Lake, Apache Iceberg, and Apache Hudi, which stands for Hadoop
+Update, Delete, Incremental. Open table formats
+like these are specialized storage
+formats that add transactional features
+to your data lake house. This allows you to easily update and delete
+individual records in the storage layer
+that's built on top of an optic
+storage data lake, while supporting
+the ACID principles traditionally found
+in a data warehouse. How do open table
+formats work exactly? Well, in short, they provide a logical abstraction that says on top of your store data. When you perform an operation
+on your data tables, such as inserting, updating, or deleting a record, the open table formats track those changes
+and store them as a series of snapshots
+that reflect the state of the data
+at a given time. These snapshots enable a
+feature known as time travel, where you can any
+previous version of a table by
+specifying a timestamp, as well as roll back the
+table to a previous version to recover from any incorrect
+changes made to a table. This also supports schema
+and partition evolution, meaning that you'll still
+be able to query the data, even if you make schema changes, like adding or
+deleting a column, or changing how you
+partition the datasets. Since open table formats
+are open source, they also enable different
+quarry engines to access the data stored
+in the data lake house. You can use whatever
+processing tools you like that are suitable for your use case without
+having to duplicate the data and restructure
+it into another format. In your work as a data engineer, you might encounter
+Databricks Delta Lake, Apache Iceberg, and Apache Hudi. These technologies all offer the same features of schema
+evolution and time travel, but they usually
+differ in terms of the underlying
+implementation details. For example, here's
+how Iceberg works. Similar to a data lake, there's a data catalog
+and a data storage layer, which contains files written in Parquet for efficient storage but then there's a
+metadata layer that says between the catalog
+and the storage layer. Whenever you update or
+create a data file, Iceberg creates a new manifest
+file to keep track of these data files and
+additional details about the metadata of each file. Then a new manifest list is
+created to keep track of the information about the
+location of the manifest files, which snapshot, each
+manifest file is a part of and
+partitioning information. Finally, a new meditative file
+written in JSON format is created that contains
+a new snapshot that points to the
+new manifest list. These files include information like the current table schema, partitioning
+information, snapshots, and which snapshot
+is the current one. Within the Iceberg catalog. There's a pointer for each
+table stored in the lake house that references the table's
+most current metadata file. This pointer gets
+updated whenever a new metadata file is created. When you run a
+query, the pointer in the catalog tells
+a query engine which metadata file is the current one based on the
+table that is being queried. The query engine then retrieves a manifest list for the current snapshot in the metadata file, then the relevant
+manifest files, and finally, the
+relevant data files. This metadata layer helps Iceberg determine
+which data files need to be read and it ignores files that are not
+relevant to the query. This significantly speeds
+up query performance. When it comes to
+choosing between a data warehouse, a data lake, or a data lakehouse, it's really about choosing the right storage abstraction to support your
+organization's needs. If you're at an early stage
+company that only needs to process small amounts
+of structured data for analytics and reporting, you might be able
+to get away with connecting your BI tools directly to a read replica
+of your production database. However, as the volume
+and sources of data grow, you'll want to use a Cloud data warehouse to bring together structured and semi
+structured data from multiple sources and allow your data users to query current and historical
+data for analytics and reporting without adding too much extra load on
+your production databases. If your organization requires
+massive amounts of data, especially if it's unstructured, say for machine
+learning applications, then you might want to
+consider implementing a data lake architecture
+to save on storage costs. In this case, you can choose to evolve your storage architecture
+into a data lake house by adding on data management
+and discoverability features to enable both machine
+learning applications and low latency
+analytical quarries. As you've seen, the
+technical architectures of Cloud data warehouses and data lakes have
+started to converge. I think this trend of
+convergence will only continue. The data lake and
+the data warehouse will still exist as
+different architectures, but in practice, their
+capabilities will blend together. So in the future,
+instead of choosing between a warehouse or a lake, you will have the
+option to actually choose a converged data platform based on your specific
+circumstances and data use cases. Next up, Morgan will walk you through how you can implement
+a data lake house in AWS using AWS lake
+formation and after that, I'll give you a walk through of the upcoming lab where you'll get a chance to create your own data lakehouse
+architecture.

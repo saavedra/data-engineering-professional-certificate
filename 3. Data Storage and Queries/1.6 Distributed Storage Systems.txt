@@ -1,0 +1,142 @@
+As your data storage
+needs increase and the data access patterns
+become more complex, you'll inevitably outgrow
+storage on a single machine and move to distributing data
+to more than one server. In fact, distributed storage is the default way to store
+data in the Cloud, whether you using block, file, or object storage. In this video,
+I'll build on what you've previously
+learned and dive deeper into the details of how a distributed storage
+architecture works. In a distributed storage system, you distribute and replicate
+data across multiple servers known as nodes that are
+connected by a network. Groups of nodes make up
+what's called a cluster, and these clusters collectively make up the distributed
+storage system. Each node contains
+storage mediums, such as magnetic disks or SSDs to physically
+store the data. The storage capacity of
+your distributed system is the total capacity of
+all the individual nodes, and each node typically has processing capabilities to
+handle data management, replication, and access control. Storing data this way
+allows you to easily scale your storage
+systems horizontally, meaning you can add more nodes
+to clusters to accommodate growing data volumes and
+tackle increased workloads. In the single machine
+storage architecture, you can only achieve
+vertical scaling, which means you can only upgrade the storage capacity
+of a single server. By spreading data across multiple nodes and replicating
+it across clusters, you can also ensure
+a higher level of fault tolerance
+and data durability. Which is to say your data
+will persist over time even in the event of failure to one or more components
+of the system. This goes hand in hand
+with high availability. If a node becomes unavailable due to hardware or
+software failure, network outages or
+other disruptions, you can still access the data from another node
+that's not impacted, maybe because it's in a
+different geographical location. In terms of performance, distributed storage systems
+divide large processing tasks into smaller sub tasks that are handled by
+individual nodes. This helps the
+system process many read and write
+operations in parallel. Since data is replicated
+across multiple nodes, the system can also
+serve read requests from the nearest or least
+congested replica node so you can access
+the data faster. Because of these advantages,
+many storage solutions, including object storage,
+Cloud data warehouses, Hadoop Distributed
+File System or HDFS, Apache Spark, and many more rely on distributed
+storage architecture. As a data engineer,
+you'll find there are two common ways to distribute
+data across multiple nodes. Through replication
+or partitioning. With replication, you keep a copy of the same data on
+several different nodes, potentially in different
+geographical locations. This redundancy results in higher availability and
+helps improve performance. Partitioning, also
+known as sharding, splits a big dataset into smaller subsets called
+partitions or shards, and then different partitions can be assigned to
+different nodes. In practice you'll likely use a combination of these
+methods to distribute data. You partition a large dataset and distribute the shards
+to different nodes. Then you'll replicate
+those nodes to create a good level
+of redundancy. Most databases can
+automatically partition and replicate your data in a way that's
+abstracted from you, or you can specify replication and
+partition parameters for more control over your
+distributed storage system. One challenge with
+distributed storage is that it takes time to replicate
+changes across nodes. When you're trying to access data from a node
+that's being updated, you can either wait
+for the update to complete before
+accessing the data, or you can access
+the recent data that's currently
+available in that node. This trade off is summarized by something called
+the CAP theorem, which states that any
+distributed system can only guarantee two out
+of three properties, consistency, availability,
+and partition-tolerance. Strong consistency means that every read reflects the
+latest write operation. Note that this is different from the consistency component in the ACID principle
+you saw in Course 2, which says that any changes to the data made within
+a transaction must follow the set of rules or constraints defined by
+the database schema. The ACID consistency
+principle ensures that the database will
+transition from one valid state to another, which is a condition that is facilitated by the strong
+consistency property. Availability means
+that every request will receive a response, even if it's not necessarily
+the most recent data. Partition-tolerance
+means that the system continues to function even when the network experiences
+disruptions or failures that isolate
+some nodes from others. Since some distributed
+system is safe from network failures or
+unforeseen disruptions, network partitioning usually
+has to be tolerated, which is to say,
+building systems that guarantee partition-tolerance
+is usually a given. You usually have
+to choose between consistency or availability
+because remember, the CAP theorem states that
+any distributed system can only guarantee two out
+of the three properties. This means that in the
+scenario where you're trying to access a node
+that's still being updated, you can either design
+your system to cancel the request, which
+decreases availability, but ensures consistency, or you can configure the system to proceed with a read operation, which provides
+high availability, but risks inconsistency. Database systems such as an
+RDBMS that are designed to be asset compliant will choose consistency over availability. Whereas NoSQL database systems that are not ACID-compliant, we'll typically choose
+availability over consistency. In contrast to the
+asset principles, there's actually a set of
+principles called BASE that you can use to design and evaluate your distributed
+data systems. Base stands for,
+basically available, meaning that consistent data is available most of the time. Soft-state, meaning
+it's uncertain whether the transaction is
+committed or uncommitted, and eventual consistency,
+meaning at some point, reading data will return
+consistent values. As a data engineer, you need to understand how your database
+handles consistency, which can be determined by the database technology itself, the database
+configuration parameters, or the consistency configuration at the individual query level. Once you understand the
+technical limitations and business use
+cases for your data, you might need to negotiate consistency requirements
+with other stakeholders. Let's revisit the
+scenario from Course 1, where you needed to serve sales data to the data scientists so they can update an analytics dashboard for the
+marketing team. The software
+engineers have set up a read replica of the
+production database, so you can ingest,
+transform, store, and serve the required sales
+data to the data scientists. Suppose that the database is implemented using
+Amazon RDS Aurora, which is a distributed
+relational database service. With this database, there's a
+main database instance that supports strict read after write consistency, meaning
+strong consistency. But if the data scientist values immediate
+access to sales data, even if it's not the
+most up to date data, then you can set up
+read replicas and RDS. These read replicas will
+track all changes made to the main database instance and update their own
+copies of the data. Then on a query by query basis, you can decide to read from the main database instance that supports
+strong consistency, or you can read from one of the read replicas that supports
+the eventual consistency. Next up, I've included
+an optional reading item about database partitioning
+that you can go over if you want and it covers how a database is distributed
+across different nodes. After that, I'll
+walk you through the lab where you'll
+get a chance to work with the object block and file storage
+systems in the Cloud, which all rely on the distributed
+storage architecture. You'll also compare
+these systems to memory storage systems that store data primarily
+in RAM rather than on disc. I'll see you in the next video.

@@ -1,0 +1,66 @@
+In response to the shortcomings of the
+original data lake 1.0 that I described in the previous video, engineers developed
+approaches to more efficiently manage and find data stored in their data lakes. In this video, we'll take a look
+at some of these approaches, specifically data zones,
+partitioning, and data catalogs. To better manage data stored in a data
+lake, you can organize it into different zones, where each zone houses data that
+has been processed to varying degrees. Although there are no set rules for
+the number of zones or the naming of these zones, a common
+design pattern is to have three zones. The first zone is usually known
+as a landing or raw zone. When you load raw data into a data lake,
+it lands in the zone so that you can have a permanent record of
+the raw data ingested from source systems. Then, after you apply transformations to
+clean, validate, and standardize the data, as well as remove or mask any PII
+information, a copy of this transform data will be written to a second zone, commonly
+known as the cleaned or transformed zone. Next, you model the data by
+imposing business logic and applying further transformations to it. Then you write the transformed data to
+a third zone, known as a curated or enriched zone. Data in this zone should abide by the
+organization's standards and is ready for consumption. You typically store data in the cleaned
+and curated zones using open file formats like Parquet, Avro, or ORC to
+make storage on disk more efficient. Since these formats are open source,
+they also allow a wide range of analytics engines and machine learning systems
+to directly access the data. Like I said, the number and
+naming of these zones can vary. You might design a data lake with
+only the raw or curated zones, or maybe you need to perform more complex
+transformations to the data to comply with strict regulations,
+in which case you might have four, five, or more zones to handle
+intermediate storage stages. In any case,
+organizing data into different zones allows you to apply appropriate data
+governance policies on each zone and ensures that data users are consuming data
+at the appropriate level of quality and readiness for their specific needs. Now, to improve query performance with
+data lakes, you generally want to take the data from cleaned or
+curated zones and sort it as partitions. Data partitioning is a technique where
+you divide a dataset into smaller, more manageable parts based on some
+sort of criteria, like time, date, or location recorded in the data. That way, when you query the data,
+the query engine only needs to scan the partitions that contain
+the data relevant to the query, resulting in faster query performance. Finally, to address a challenge of
+data discoverability with data lakes, you can create a data catalog, which is a
+collection of metadata about the datasets. This centralized metadata
+allows data users to search for database on things like the data owner,
+data source, partitioning information, business definitions for
+the columns, and much more. The catalog also records and
+maintains a schema of the datasets, including changes over time. And so the data catalog is a critical
+feature that provides everyone in the organization a common understanding
+of the data structure and meaning. So with these enhanced data
+management features and search capabilities,
+you can use a data lake to store, manage, and process large amounts of
+data of many different types. Despite these efforts to make data
+lakes more organized and searchable, historically, organizations still needed
+multiple storage systems to meet their business needs. They wanted to leverage the low
+cost storage of data lakes to store large amounts of data for
+machine learning applications. And they also wanted to leverage
+the superior query performance of data warehouses for analytical use cases. So they would first ingest and
+process data in a data lake so that there's a single source of truth for
+all the data. Then they would take a subset of the data
+that needs to be queried frequently and loaded into a data warehouse to
+support low latency query performance. But this solution is expensive because you
+have to continuously move data with an ETL pipeline from your data lake
+into your data warehouse, which have higher storage costs. And each step of the ETL process
+can introduce bugs or failures, causing issues with data quality,
+duplication, and consistency. To solve these challenges, a new storage architecture known as
+the Data Lake House was created. This new architecture aims to combine
+the benefits of a data warehouse and a data lake into one unified architecture. Before we take a look at this new
+architecture, I'll walk you through the upcoming lab, where you'll get some
+hands-on practice partitioning data and creating a data catalog to improve
+data retrieval from a data lake. Then, after the lab, join me in the next video to take a closer
+look at the data Lake House architecture.

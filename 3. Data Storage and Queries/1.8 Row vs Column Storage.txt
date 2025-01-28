@@ -1,0 +1,78 @@
+There are many types of databases
+used to sort the kinds of data you'll be working with as a data engineer. In previous courses, you've already
+seen how relational databases, key value stores, and
+document databases store data. And later this week, you'll learn how data
+is stored in other types of databases, like graph and vector databases. In this video, I want to focus on two
+common ways to store structured tabular data in semi structured data that's
+commonly used in data engineering. First, you can store this data in
+a row-oriented storage system, or second, you can sort it in
+a column-oriented storage system. As a data engineer, you'll choose between
+these two storage patterns based on your data access pattern, which is to say how
+the users and the system access your data. Traditional relational database management
+systems use row oriented storage to store data row by row. Each row represents a complete record. If you zoom in on the physical storage
+medium, you'll find that each row, or in the case of semi structured data, each object is stored as a consecutive
+sequence of bytes on disk. This way of storing related data next to
+each other makes row storage perfect for OLTP systems that need to perform read and
+write operations with low latency. Say you want to query the data to locate a
+particular record based on the id column, since all the data for
+that record is stored together. Once you have located that specific id,
+you you can efficiently read and update that data. But what if you want to perform
+an analytical query that requires you to operate on the values of an entire column? Analytical queries focus on summarizing or aggregating columns to answer questions
+like what was the total revenue? Which product was sold most frequently? Or what was the average quantity? Let's take a look at how these
+queries perform on row storage. Let's say your row storage contains
+data with 1 million rows, 30 columns, or each entry is 100 bytes. Suppose that the second
+column represents price, and you want to find the sum
+of all these prices. So I'll write a query that selects
+the sum of the price column from a table called mytable. To execute this query, you need to first
+transfer all the rows one by one from the persistent disk storage to ram. Then these rows will
+be sent to the CPU for processing, where the price from each row
+will be extracted and added together. So the total data size you need to
+transfer to ram is 1 million rows times 30 entries per row times 100
+bytes per entry, which is 3GB. If the disk you're using has a data
+transfer speed of 200 megabytes per second, how long would it take
+to read all the data to memory. Well, that would take 3GB, which is 3000 megabytes divided
+by 200 megabytes per second, which is 15 seconds to read all the data
+from disk to RAM, that's not too bad. So the row storage pattern works fine for
+performing analytical queries on small data sets in the short term,
+but it's not scalable. Imagine that instead of 1 million rows,
+you actually had 1 billion rows of data, so your data size would be 3000gb
+at the same transfer speed. That would take you just over 4 hours
+to transfer all the rows with all their columns from disk to ram. So to accommodate such
+large-scale data transfers, engineers designed another storage
+pattern, the column-oriented storage or column-oriented database,
+which is a type of NoSQL database. When you store data in column storage,
+the data from each column is stored together on disk, so all the data from
+the first column is stored together. Then the data from the second column
+is stored together, and so on. And so this allows you to read
+full columns of data all at once, rather than having to scan each row for
+the data in a single column. Let's take a look at the analytical query
+performance of column storage using the same example as before. Say you want to again find the sum of all
+the values in the price column of a large dataset containing 1 billion rows,
+30 columns, where each entry is 100 bytes. Since column storage stores
+the data from each column together, to execute this query, you'll only have to transfer the data
+from the second column from disk to RAM. That means the size of the data you need
+to transfer is the 1 billion entries from the second column times 100
+bytes per entry, which is 100gb. Suppose we have the same data transfer
+speed as before, 200 megabytes per second. Then how long would the transfer take? Well, it will take 100gb,
+which is 100,000 megabytes divided by 200 megabytes per second,
+which is just over eight minutes. Comparing this to the 4 hours it
+would have taken with row storage, you can see that column storage is
+much more efficient when it comes to analytical queries on large datasets. That's why column-oriented
+database are more suitable for OLAP systems that focus on applying
+analytical activities on data. However, for exactly the opposite reason,
+column storage is terrible for transactional workloads because you can't
+easily access the individual data rows. If you want to read a particular record, you have to reconstruct the row by
+reading data from several columns. And if you want to update one
+field in a particular record, you need to deserialize the columns modify
+them, then write it back to storage. As a data engineer, it's important that you understand
+the difference in how row storage and column storage work so that you can choose
+the right approach for your use case. Namely, using row storage for transactional workloads like
+the production database for your sales platform, and using column
+storage for analytical processing. In the next two optional reading items,
+you can learn more about the parquet format that combines both row and
+column-oriented storage approaches, followed by a reading on
+wide column databases. While Parquet is a popular and
+common format in data engineering today, wide column databases are less common,
+but can be well suited for transactional workloads. In the video after that, we'll take a look
+at graph databases that have gained attention alongside the growth of machine
+learning and generative AI applications. I'll see you there.

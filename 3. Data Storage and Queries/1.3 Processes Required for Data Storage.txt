@@ -1,0 +1,91 @@
+So far,
+when talking about the storage hierarchy, we've been focusing on the bottom layer, the raw storage ingredients that
+are used to physically store data. But the bottom layer also consists
+of other components and processes that are required for storing and
+transmitting data in modern data systems. And so in this video, I'd like to take
+a moment to go over how networking, CPU serialization, and compression
+play a part in your storage systems. In the cloud era, storage systems
+are increasingly distributed. This means that your data can be split up,
+replicated, and spread out across many connected servers
+to enhance read and write performance, data durability, and availability. So you can consider networking and the CPU required to handle
+the details of servicing read and write requests, things like aggregating
+read results and distributing writes across many servers as part of the raw
+ingredients of storage solutions. You'll learn more about distributed
+storage systems later on. Regardless of whether you're
+storing data on a single server or across a distributed storage system, when
+you store data in a file or database or send it over to a network, you need to
+transform it into a different format. That's because data stored in
+memory has different representation than the data that's stored in disk. In system memory, you will store
+data in data structures that are optimized to be efficiently
+accessed and manipulated by the CPU. But that format is not suitable for persistent storage in disk or
+transmission over a network. So you need to use a process known as
+serialization to translate the data into a standard format, usually a sequence of
+bytes that can be efficiently stored or shared over a network. And when you want to read the data, you'll
+use a process known as de-serialization to reconstruct the original data
+structures from the serialized format. You can serialize data using a row or
+a column-based approach. In row-based serialization, you encode and
+sort tabular data record by record so that a consecutive sequence of
+bytes represents one row of data. If you're encoding semi structured data,
+you encode the data object by object or document by document, so
+that data representing a single object or document is represented as a consecutive
+sequence of bytes on disk. This is ideal for transactional operations where you need
+to access data from an entire row. In column-based serialization, you encode
+and store data column by column so that a consecutive sequence of bytes in
+a serialized format represents a column. And if you're encoding column oriented
+semi structured data, the values for a single key across all the objects is
+stored as a consecutive sequence of bytes. This is perfect for analytical queries where you need to
+perform operations on specific columns. As a data engineer, you'll likely encounter a wide range
+of data serialization formats. From human readable text formats like CSV,
+XML, and JSON that are widely used to exchange data between systems and
+applications, to binary formats like avro and parquet that are even more
+efficient for storing and querying data. CSV is a popular row-based format that's
+actually quite prone to error because it doesn't support a defined schema. So it's up to the application to define
+the meaning of each row and column. If an application adds a new row or
+column to its data, you have to handle that change manually. So if possible, you should avoid using
+this format in your data pipelines. XML or extensible markup language
+was popular when HTML and the Internet were new, but it's now viewed
+as a legacy format because it's generally slow to serialize and deserialize for
+data engineering applications. XML has largely been replaced
+by the JSON format for plain text object serialization. Nowadays, JSON is viewed as a new
+standard for data exchange over APIs, and it's a very popular format for
+data storage. In terms of binary formats, parquet is
+a column based format that's designed for efficient storage and big data processing,
+and avro is a row based format that uses a schema to define its data structure,
+and it supports schema evolution. You'll learn more about row versus
+column-based storage in databases and about the popular parquet
+format later this week. The decisions you make as a data
+engineer around serialization and how you store data in files and databases
+can impact overall query performance. Recently, as I was
+working with a data team, we discovered that by simply switching the
+serialization format from CSV to parquet, they were able to improve job
+performance by a factor of 100. Now, let's say that you've serialized your
+data so that it can be stored on disk or transmitted over a network. As your data volume grows, you might
+want to enhance storage efficiency and speed up the transmission of your data. Data compression is a way to
+reduce the number of bits needed to represent the data, and
+it's a critical component for modern data applications that
+require increasingly large datasets. With compression algorithms, instead of directly encoding
+the data into a sequence of bits, you use sophisticated mathematical
+techniques to identify redundancy and repetition in your data, then re encode
+the data in a more efficient way. For example, traditional compression
+algorithms that you can apply to text-based data formats such as CSV,
+JSON, and XML, identify the characters
+that occur most frequently and encode them differently than
+the characters that occur less frequently. Instead of mapping each character to
+a sequence of bits of fixed length, these algorithms match common
+characters to shorter bit sequences and less common characters, so your compressed data file takes up
+fewer bits in total to store on disk. And the ratio of the compressed file size
+relative to the original uncompressed file size is called the compression ratio. In addition to reducing disk space,
+compression also improves query performance because it
+reduces the input and output, or I/O time needed to load the necessary data from
+disk to memory when processing a query. In recent years, engineers have created
+a new generation of compression algorithms that prioritize speed and
+CPU efficiency over compression ratio. These algorithms are frequently used
+to compress data in data lakes or columnar databases to optimize for
+fast query performance. In the optional reading item
+that follows this video, I've included some examples of
+these new compression techniques. Now that you've seen how these components
+make it possible to store data, let's move on from the bottom layer of
+the storage hierarchy to the next layer, the storage systems that are built
+from the raw storage ingredients. Again, the next reading item
+about compression is optional. After that, we'll explore three
+cloud storage options, file storage, block storage, and object storage. I'll see you there.
