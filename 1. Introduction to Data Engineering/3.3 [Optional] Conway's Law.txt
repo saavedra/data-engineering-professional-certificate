@@ -1,0 +1,35 @@
+Throughout these
+courses, I want you to keep in mind that
+the various principles and architecture
+patterns that we discussed will apply to
+different scenarios. Depending on the type of
+architecture and systems that you're building to support your organization's objectives. But there is one very important guiding
+principle that has affected every architecture and system I've ever encountered. I want to introduce you to
+what's known as Conways law. Conway's law was best described by its
+author Melvin Conway, who stated that any organization that designs a
+system will produce a design who structure is a copy of the organization's
+communication structure. Now, that might sound like a very strained
+assertion to make, but here's how it
+works in practice. Imagine a company with four
+different departments, sales, marketing,
+finance, and operations. Now, if these departments operate in relatively
+isolated silos, their communication patterns, will be isolated
+and siloed as well. When it comes to building data
+architectures and systems, they will inevitably build four relatively isolated
+and siloed systems. In other words, sales will develop one data
+system, marketing, will build another finance third and operations, yet
+another system. You get the idea. If instead, the four departments in the same organization
+communicate cross functionally, share ideas and collaborate
+between departments, then the data systems
+they build will reflect the culture of cross functional collaboration
+and communication. Again, I realize this
+might sound strange, but as odd as it may seem, Conways law is remarkably consistent across all
+types of organizations. The main takeaway for you as a data engineer is that when
+it comes to understanding, what kind of data architecture is going to work for
+your organization? You first need to
+pay attention to and understand the communication structure of the organization. Even say, you attempt to build a data architecture that clashes with your company's
+communication structure, you're bound for trouble. If you're interested in learning
+more about Conways law, I have included a link in the resources section
+at the end of the week. Join me in the next video
+to have a closer look at the key principles of
+good data architecture.

@@ -1,0 +1,84 @@
+This lesson has been all about requirements gathering
+and how to make sure you have a detailed
+understanding of how the systems you build will add value for your stakeholders. Now I can imagine this
+might not have been exactly what you're
+expecting from a first course on
+data engineering. You might have
+expected a course that focuses on the tools
+and the technology, data engineers used to build
+really large fancy systems. Well, I appreciate you sticking
+with me up to this point, and I can assure you that your time has been
+very well spent. In my own experience, I've seen data engineering
+done wrong and more times, I've seen it done right. I just want to make
+sure that you're set up for success with the data
+systems that you build. And don't worry, we're
+going to go very deep into the tools and technologies throughout
+the rest of these courses. The main takeaways from this lesson include
+the following. Before you set out to build
+or modify any data systems, you need to identify the stakeholders you will
+serve and understand their needs in the context of the broader goals
+of the business. The way to do this is by talking to lots of people in
+your organization, and maybe everyone from company leadership right down to those you work alongside, like data scientists,
+and software engineers. It's important to ask
+open ended questions in these conversations to gain an understanding of
+current systems, potential problems
+with the systems. And what action the stakeholders plan to take with the data. It's also important to
+document all of your findings. Having proper documentation
+of the requirements you've gathered will allow you to
+confirm with stakeholders, whether the system you're planning to build will
+serve their needs, as well as the needs
+of the business. In short, once you understand what your
+stakeholders need, and you've written down a set of functional and non functional requirements for your system, you'll be well on your way to delivering value for
+your organization. So far, we've been focused
+on figuring out how to build data systems that optimize for serving
+stakeholder needs. Something we haven't talked
+about yet this week is about how to evaluate trade offs in
+requirements gathering. For example, your
+stakeholders might want you to build a data system
+as quickly as possible, or when it comes to costs, you might be working within a limited budget for
+the systems you build. In reality, of course, timeline and budget
+constraints will be part of any
+project you work on. Your conversations with
+stakeholders will need to include a discussion on
+what's the most important. The features of the system or the timeline to
+deployment or the cost. There's a concept that emerged
+from project management, known as the iron triangle, where you have three
+aspects of any project that are fundamentally in
+tension with one another. These are the timeline
+of the project, the scope of the
+work, and the cost. What I mean by intention
+with one another is that you can think of each of these things pulling
+in a different direction. For example, if you increase the scope of work for a project, then either the timeline
+or the cost or both must increase or say that you want to complete the project
+in a shorter timeline, then that could
+require increasing the cost or reducing
+the scope or both. There's even an old saying that developed
+around this concept, which is good, fast or cheap. You only get to pick two. In other words, if you want
+something good and fast, then it won't be cheap, or if you want something
+fast and cheap, then it won't be
+good. And so on. In reality, every company
+wants projects done well, and they typically want
+them done as quickly as is reasonably possible and within certain
+budget constraints. What do you do? Well, as many authors
+have pointed out, since the emergence
+of the iron triangle, the idea that you
+can't simultaneously optimize for all three of these things is
+really a fallacy. I won't get into the
+details right now, but I would encourage
+you to do a search for the fallacy of the iron triangle or something similar,
+and see what you find. This isn't to say
+that you can avoid the need for making
+trade offs between cost, scope and timelines in
+the systems you build. In short, the way to break the iron triangle is
+through the application of principles and processes like those we've been talking
+about throughout this course, things like building
+loosely coupled systems, optimizing for two
+way door decisions and deeply understanding
+the needs of stakeholders. By applying these
+principles and processes, you'll be better able
+to build and maintain high quality data systems on a predictable
+timeline and budget. We'll get into the consideration of trade offs more
+in the next lesson, where you'll look at
+some of the actual costs and capabilities of different tools and
+technologies that you could use to build your
+systems. I'll see you there.

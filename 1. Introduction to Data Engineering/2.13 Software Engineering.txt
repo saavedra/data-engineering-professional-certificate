@@ -1,0 +1,61 @@
+In this lesson so far, we've been talking
+about some pretty complex stuff when it comes to the undercurrents of
+the data engineering lifecycle, things like security, data architecture,
+operations, and management, as well as the orchestration
+of data pipelines. Of all the undercurrents, perhaps
+the most straightforward one to wrap your head around is the last one,
+software engineering. What I mean by that is,
+as a data engineer, you need to know how to read and
+write code. It's as simple as that. So I don't just mean hacking together some
+code that does whatever you need it to do right now, but instead to write
+production-grade code that's clean, readable, testable, and deployable. And so software engineering is the design,
+development, deployment, and maintenance of software applications. And they're not too distant. Past there was no such thing as data
+engineering as an official profession. There were just software engineers who
+occasionally dealt with data in their own work. Eventually, as businesses recognized the
+value of data, software engineers began taking on various aspects of data
+engineering as part of their work. With a growing diversity and
+volume of data in the recent decades, the data-oriented component of software
+engineering became much more intensive and eventually emerged as its own field. Over the years, those software engineers
+doing data engineering built a variety of fantastic solutions,
+such that nowadays, as a data engineer, you have access to a wide
+range of managed services and applications that allow you to
+more efficiently get the job done. And this is a good thing. It allows you to spend more of your time
+focused on the most important aspects of adding real value to your organization. In a sense, these existing services and applications allow you to move
+up the value chain, so to speak. This also means that as
+a data engineer today, you are often required to write much
+less code than your software engineering oriented ancestors of a decade or two ago. This doesn't mean, however, that coding is not important
+in your work as a data engineer. In fact, it's more important than ever
+that you can write great code and that the code you'd
+write is of top quality. For example,
+you'll be required to write core data processing code at all stages of
+the data engineering lifecycle. From ingestion to transformation and
+serving, you'll need to be proficient in frameworks and
+languages such as SQL, Spark, or Kafka. You're also likely to encounter Python or
+maybe Java virtual machine languages like Java or Scala, as well as Bash,
+for operating at the command line. You may be required to work in other
+languages as well, like rust or go. But if you focus on building strong
+foundational software engineering skills, you won't have much trouble
+moving between languages. In this specialization. We'll focus mostly on SQL, Python,
+and bash in the lab exercises, since these are the most common ways
+you'll interact with data as a data engineer also as a data engineer, you are likely to get involved in
+the development of open source frameworks. The way this tends to happen is that you
+adopt a open source framework to solve a particular problem, and you end up
+further developing the framework for your specific use case. As long as you write good code,
+you can make a pull request and add your contributions to the open source project
+to help others solve similar problems. Other efforts you'll be involved in or
+in the development of so called infrastructure as code, or pipeline as code solutions, which we'll
+talk about later in these courses. Apart from these specific instances of
+where you'll write code in your role as a data engineer, you'll also need to
+write code for everyday general-purpose problem-solving at all stages of
+the data engineering lifecycle. So, as I said right at the top of
+this video, as a data engineer, you'll need to know how to read and
+write code. Coding will be part of your everyday work,
+and your ability to write clean, readable, testable, and deployable code
+will translate into value for your organization. It's well worth your time to make friends
+with the software engineers in your organization and
+learn from them how to write great code. And with that, we finish this lesson on the undercurrents
+of the data engineering lifecycle. At this point, I'm sure you've had quite
+enough of all this theory stuff, and you're ready to roll up your sleeves and dive into applying some of these
+concepts in some practical exercises. Join me in the next lesson to take a look
+at how the data engineering lifecycle and undercurrents come to
+life on the AWS cloud.

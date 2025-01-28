@@ -1,0 +1,56 @@
+Okay, before we get started here,
+I just want to come out and say it. Regulatory compliance is probably
+the most boring topic in these courses. I don't think anyone really wants
+to talk about laws and regulations, especially when we could be talking
+about working with data and working with cool technologies, right? So I agree, and I also feel I'd
+be letting you down if I didn't spend at least some time
+talking about how regulatory compliance fits into your
+role as a data engineer. And this is primarily because one of the
+most spectacular ways your data systems can fail is to run afoul
+of regulations and cause your organization to get sued and
+incur large fines. This does happen. So what kind of regulations am I
+talking about with regard to data? One big regulation is
+the General Data Protection regulation, or GDPR, that was enacted in
+the European Union in 2018. In short, the GDPR is all about
+the protection of privacy and personal data for individuals. But what constitutes personal data
+under the GDPR is relatively broad, including not only personal identifiable
+information, or PII, but also other information that could collectively
+be used to identify an individual. To be in compliance with a GDPR, you need
+to ensure that you have the appropriate consent from the individuals
+you're collecting data from, as well as the ability to delete
+the data in a timely manner. If an individual wants to have their
+data removed from your systems now, you might be thinking,
+what if my company isn't based in the EU? Or what if we don't serve
+customers in the EU? Well, technically, yes, the location
+of your company and your customers will at least play some part in determining
+whether the regulations apply to you. However, since the enactment of the GDPR,
+dozens of countries around the world, as well as individual states within
+the US, have adopted similar regulations. As a data engineer, you'll be responsible
+for building systems that not only comply with today's regulations,
+but also those of tomorrow. And those could be new laws that
+are enacted where you currently operate or regulations already in place in
+the areas your company expands to. In the future. It'll be your responsibility to
+keep your systems up to date, to stay in compliance with the set of
+regulations that apply to your business. The smart approach is to build systems
+that are in compliance with modern data protection regulations, like GDPR, even if
+your local regulations are less stringent. And to build flexible, loosely coupled systems that allow you
+to adapt to with regulatory changes. Apart from the location of your
+company and your customers, the industry you operate in might also
+come with its own set of regulations. If you work with healthcare
+data in the US, for example, you'll be required to adhere to
+the Health Insurance Portability and Accountability Act, or the HIPAA law,
+regarding sensitive patient data. Similar laws have been enacted regarding
+medical data in many countries around the world. Or if you work with financial
+data in your organization, you would need to adhere to the Sarbanes
+Oxley act in the US or similar laws elsewhere that mandate certain financial
+reporting and record keeping practices. So the main takeaway here is that
+no matter where you're located in the world or what industry you're in,
+there are laws and regulations that will apply to
+the systems that you build. As a data engineer,
+one way you can deliver value for your organization is to
+avoid the lawsuits and fines that come with failing to
+adhere to the necessary regulations. We won't be spending much time on
+the details of regulatory compliance in the rest of these courses, but I wanted to
+at least make you aware of this aspect in your role as a data engineer so you can
+keep it in mind along with the other principles of good data architecture. In the next lesson, we'll look at
+choosing the right technologies for your architecture. I'll see you there.

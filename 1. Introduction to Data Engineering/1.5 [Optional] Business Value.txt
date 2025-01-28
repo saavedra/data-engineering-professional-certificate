@@ -1,0 +1,63 @@
+My goal in creating these
+courses is to set you up for success in your work as a data engineer. So let's pause for a minute and
+visualize what success looks like. Any company that hires you as a data
+engineer does so because they believe you will add value for the organization just
+the same as any other employee, really. I recently spoke to my friend Bill Inman,
+who's one of the thought leaders and most knowledgeable people
+in the field of data. When I asked him about what advice he
+would give someone who is starting out in the industry, he emphasized the importance
+of finding and delivering business value. Here's what Bill said,
+what advice do you have for somebody who's getting
+started in the field of data? >> I'm going to give them the same
+advice as if they were a bank robber. Go to where the money is if
+you want to have long term, great success in our industry,
+find business value. Don't get hung up on every
+technology that comes out. Every new fangled thing that comes out,
+go to where there's business value. Because at the end of the day, business value drives
+everything we do in technology. And it's easy to get lost and
+hung up on technology. And there's nothing wrong with technology. Heck, I'm a technician myself,
+I love technology. But the number one thing you
+need to think about now, if you don't care about success and
+you want to go off and do some fancy stuff that looks interesting
+and whatever, then go ahead and do it. But don't expect to have any great
+reward for what you've done. So, like Willie Sutton said,
+in terms of why did he rob banks? Because that's where the money is. Why do you do with technology,
+you look for business value. Okay, so as a data engineer,
+you need to look for business value. But what does it actually mean
+to add value as a data engineer? Well, in my experience,
+business value is somewhat, you might say, in the eye of a beholder. And what I mean by that is, for example,
+suppose your organization is hoping that your work as a data engineer
+can help with revenue growth. In this case, if your manager or
+those in leadership perceive your work as contributing to the growth of revenue for
+the company, then congratulations, it's highly likely you'll be recognized
+as adding value for the organization. On the other hand, if your work as a data
+engineer is perceived as simply costing large sums of money with little or
+no return on investment, then you might need to start looking for
+another job. But in many cases, business value is
+not just as simple as profit and loss. It takes many different forms,
+as we looked at in the previous video. In your work as a data engineer,
+you'll interact with various stakeholders. Oftentimes, it'll be those
+stakeholders who decide for themselves whether you're adding value. And in general, that means whether or not they perceive you as helping
+them achieve their goals. Notice that in all these examples,
+I'm talking about how your work is perceived rather than what
+it is that you actually do. The amount of value you provide for
+the business and the stakeholders, will be determined by those to
+whom you are providing that value. And so in general, when you're fulfilling
+stakeholder needs, you're providing them with value, whether that comes
+in the form of increased revenue, cost savings, work made more efficient,
+or something else, like helping with
+a successful product launch. With all that being said, once you
+successfully identified all the data needs of stakeholders in your organization,
+it's not uncommon to discover that their collective needs far exceed the capacity
+or resources you have to create solutions. And so you'll need to prioritize, figure
+out which projects are more feasible and how long they might take to implement,
+among many things. Now, realistically, I think figuring out
+exactly what to focus on and how to best spend your time as a data engineer could
+be the subject of an entire other course. So I won't go further into the details
+here, but if you're curious, you can check out the link in
+the resources section at the end of this week to a podcast that Matt Housley and
+I did with our friend Sol Rashidi. Where she provides insight and perspective as a data executive on
+what business value really means. But for now, we're going to move on. Assuming you figured out what
+sort of system you want to build, the next step is identifying
+the requirements for that system. Join me in the next video for
+a look at gathering system requirements.

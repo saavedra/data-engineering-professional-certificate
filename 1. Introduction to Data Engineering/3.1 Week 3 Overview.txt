@@ -1,0 +1,17 @@
+Last week, we took a brief look at data
+architecture and how, in your work as a data engineer, you'll be most successful
+if you can think like an architect, even if data architect is
+not technically your role. This week, we're going to dive deeper into what it
+means to build good data architecture. We'll first take a look at how data
+architecture fits within the broader context of enterprise architecture,
+which is to say, the architecture for your entire organization. After that, we'll look at some
+specific architecture examples and how you can start to think about
+translating stakeholder needs into technology choices for your data systems. I'll also share with you some guiding
+principles you can keep in mind as you're learning to
+think like an architect. In the lab this week, you'll be evaluating the trade-offs when
+it comes to things like cost, performance, scalability and security for an actual
+data architecture on the AWS cloud. You'll also get a chance to explore
+the AWS well architected framework, which is a complimentary set of principles
+that can help you design robust and effective data systems. By the end of this week, you'll be armed
+with a set of tools that will serve you at all stages of your data
+engineering journey. Join me in the next video to get started.

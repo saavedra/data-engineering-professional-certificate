@@ -1,0 +1,87 @@
+As a data engineer, you'll
+build architectures that begin with the step of ingesting data from source systems, which means moving raw data from source systems into your data pipeline for
+further processing. In my experience, source
+systems and data ingestion represent the
+biggest bottlenecks of the data engineering
+life cycle. If you started, as I recommended in the
+previous video by working directly with source
+system owners to understand how
+those systems work, how they generate data, how that data may be subject
+to change over time, and ultimately how
+those changes will impact the downstream
+systems you build. Then you'll be well
+positioned to avoid common pitfalls in
+the ingestion phase. One of the critical
+decisions that you need to make when designing data ingestion processes is how frequently you need
+to ingest the data, meaning how often
+you need to move data from these source systems
+shown here on the left, into your data pipeline
+for further processing. You might choose to ingest data every so often in batches, like once every
+hour or once a day. Another approaches
+becoming increasingly common is to ingest data as a constant stream of
+events in near real-time. In this video, I'll
+focus on introducing these two major data
+ingestion patterns, batch versus streaming. You can think of data
+being produced as a continuous series of events. Those events might be
+clicks on a website or sensor measurements
+or something else. Out in the world, events like these are happening
+continuously. In a sense, you could think of nearly all data as being
+streamed at its source. Batch ingestion is just
+a convenient way to process the stream of
+events in large chunks, either on a predetermined
+time interval or as data reaches a
+pre set size threshold. For example, you could handle an entire day's worth of
+data in one single batch. For a long time,
+batch processing was the default way
+to ingest data. There are more options
+for ingestion today. Batch processing remains a practical and popular
+way to ingest data, particularly in
+cases where the data is used in analytics
+and machine learning. With streaming ingestion,
+on the other hand, you're ingesting and
+providing data to downstream systems in a continuous near
+real time fashion. Now, when I say you're ingesting
+data and near real time, I mean you're making
+it available to downstream systems a short
+time after it's produced. Possibly less than
+one second later. In this case, you need
+to use specific tools, such as an event
+streaming platform or a message queue to continuously
+ingest streams of events. With these tools becoming
+more ubiquitous, streaming ingestion has become more accessible and popular. However, streaming ingestion
+is not necessarily the best choice
+for all use cases and there are
+significant trade offs to consider when deciding
+whether streaming ingestion is an appropriate choice
+over what might be considered the simpler
+approach of batch ingestion. For working on a stream
+processing solution, you should be asking yourself, things like what
+actions can you take on real time data that would be an improvement
+over batch data? Would streaming ingestion costs more than batch
+in terms of time, money, maintenance, and
+potential downtime? How will choosing stream
+ingestion over batch ingestion or vice versa influence the
+rest of your data pipeline? Batch ingestion is an
+excellent approach for many common use cases, like model trading
+and weekly reporting. My advice is to adopt a streaming ingestion system only after you've
+taken the time to identify a business
+use case that justifies a trade offs
+of using it over batch. It's also important to note that streaming ingestion generally coexists with batch processing. For example, machine
+learning models are usually trained
+on a batch basis. But that same training data might have been
+originally ingested via streaming because of
+some separate goal of your architecture like real
+time anomaly detection. Rarely do data engineers
+have the option to build a purely streaming data pipeline with no batch components. Instead, you'll choose where the boundaries between batch
+and streaming will occur. Beyond just deciding between a batch versus
+streaming approach, there are other important
+nuances to the ingestion sage, like how you might use
+change data capture or CDC, for short to trigger certain ingestion
+processes based on data changes in
+the source system, and whether you'll be adopting
+a push or pull approach, which is to say whether a
+source system will be pushing data to you or you'll be actively pulling it
+from the source. We'll get into all these details and more throughout
+the specialization. But for now, join me in the next video to
+look at data storage, which is really part of every stage in the data
+engineering life cycle.

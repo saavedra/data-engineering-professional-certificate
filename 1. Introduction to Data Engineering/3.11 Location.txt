@@ -1,0 +1,43 @@
+Not that long ago, maybe just two decades
+or so in the past. Building on premise
+data systems was really your only choice for any kind of data storage
+or processing needs. This was simply because
+modern Cloud data platforms didn't exist yet. On-premises system is one
+where the company owns and maintains the hardware and software for the
+entire data stack. This means that a company is operationally responsible
+for provisioning, maintaining, and updating and scaling their hardware and
+the software that runs on it. Nowadays, many companies build their entire data
+systems on the Cloud. With Cloud data systems, the Cloud provider,
+like aws, for example, is responsible for
+building and maintaining the hardware and data centers
+to serve client needs. If you are building your
+data systems on the Cloud, you are essentially renting the compute and storage resources
+needed for your system. The nice thing about
+Cloud computing and storage is that you can easily scale to meet demand or scale back down to save on
+costs when you don't need it. You don't need to maintain
+or provision any hardware, and you can change your mind
+relatively easily about exactly what kind of tools or technologies you want
+to use in your system. Well, many companies
+are now choosing to build data systems
+entirely on the Cloud. Other still maintain
+on premises systems, or some kind of
+hybrid system with some components on premises
+and others on the Cloud. The momentum in the industry is definitely in
+the direction of more companies choosing Cloud over on premises data systems. Or migrating from on
+premises to the Cloud. This is because of all
+the obvious advantages the Cloud offers in terms of
+flexibility and scalability. However, there are some
+companies that either choose to or are
+required to keep some or all their data systems on premises due to the nature of their business or regulations or security and client
+privacy concerns. As a data engineer today, it's possible that you'll work at a company that has some on premises systems
+or one that is in the process of migrating from
+on premises to the Cloud. In these courses,
+we'll be focused exclusively on building
+data systems on the Cloud. This is because for
+the vast majority of business use cases today, building your data systems on the Cloud is the best choice. The industry is moving
+in the direction of more Cloud and less on premises. As an aspiring data engineer, I believe your time
+will be best spent learning about building
+data systems on the Cloud. Join me in the next
+video to learn more about another trend in
+software and data engineering, the move from monolithic
+to modular systems.

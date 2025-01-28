@@ -1,0 +1,143 @@
+When we spoke with
+the data scientists, they mentioned that they
+would occasionally get stuck because the data is unavailable
+for a period of time, or a schema change breaks
+their processing scripts. As I mentioned in the
+second week of this course, these disruptions
+to the data flow or changes in the data
+format are very common, and the things that you
+should be anticipating as a data engineer when you ingest data from
+source systems. The best thing you
+can do to mitigate these issues is to open
+lines of communication with the source system owners
+and discuss how to best anticipate and deal with disruptions or changes in
+the data when they occur. That's exactly what we're
+going to do in this video. I'll be having a
+conversation with the software engineer
+responsible for the development and maintenance of the
+sales platform that we're hoping to set up an
+ingestion data pipeline to. When you talk to
+source system owners, you can still use the
+first two key elements of the requirements
+gathering process to help guide the conversation. You can ask a system owner about the existing system that
+generates the data needed by your downstream stakeholder
+and talk to the owner about any problems your stakeholder currently has with the solution. In the next course,
+you'll learn more about source systems and what to consider when working with
+source system owners. Let's jump into the
+conversation. Hi. I'm Jove. Hi. It's good to meet you. Nice to meet you too. I met with a marketing
+manager and a data scientist, both of whose name was Colleen, and you look a lot like
+those other two people. I don't know what you're talking about. I heard they're
+great, though. They are great. Yeah, for sure. Well, I'm looking forward to talking with you
+about how I can best set up some data ingestion
+from the sales platform. Definitely, let's talk about it. I think it's great
+that the company is taking a more serious
+approach to data, and looking forward to seeing how we can work better together. Great. I think to start with, I'd like to learn more
+about what you've been doing so far to provide
+data to other teams, and maybe then we can
+take it from there. Well, to be honest, it feels like we're just
+getting started exploring how to best share data with
+others in the company. For instance, the
+marketing team has been interested in analyzing
+product sales data, and so we've been
+providing data to our data scientists
+on a daily basis, so they can provide some
+metrics to the marketing team, but it sounds like they're
+looking to do something that's a little closer
+to real time analytics. I've spoken with both
+the data scientist and the product marketing
+manager to learn more about what they're
+hoping to accomplish, and that definitely sounds like more continuous access to the data would be good for
+what they're trying to do. One of the problems we face is that we aren't
+able to give them direct access to the
+production database because that would present a
+risk to the sales platform. That's what led us to what
+I guess you could say is the sub optimal solution of just providing them files for
+download on a daily basis. Right, that makes sense. Have you thought
+about other ways in which you could
+provide access to the data without presenting a risk to your
+production systems? Well, yes, in fact, what I think would
+work is if we set up a read replica of the
+production database, where we would push a copy
+of everything that's stored in the product database
+immediately after it's recorded. We could then set up an API so that you or anyone
+else for that matter, could query the data in the read replica without disturbing the
+production system. That sounds like it could
+work pretty well, actually. The other thing that
+the data scientists mentioned was that occasionally, they would have to wait longer than expected for the data. Do you think that issue
+will be mitigated to some degree with the new read replica database setup
+that you just described? Well, yes and no. I think it's fair to
+say that sometimes we don't get the regular
+data deliveries out because we are running
+maintenance on our own systems
+and fail to export the regular set
+of files on time. With a read replica database
+being updated continuously, that should not be a
+problem going forward. However, we do
+occasionally experience server or data center
+failures that cause our platform or database to
+go down for a period of time. We're working to build
+in redundancies and minimize our exposure to these
+types of system failures. But if that thing happens, then the data could be unavailable while
+the system is down. I think the best we
+could do is send an automatic notification to downstream data users to
+alert them of the outage. That makes sense. If
+your systems that are generating and storing
+the raw data go down, then the best any downstream
+data consumer could hope for is a notification
+to let them know about it. I also heard that sometimes
+the database schema changes, and that could cause problems with the processing scripts. Can I understand there
+are times when you need to change the schema
+for one reason or another? Could you say more
+about your process around those schema changes? Sure. We're constantly working to improve the sales platform, and often that means adding new features for customers
+to interact with. The user interaction data we're recording changes with
+each new feature we add, effectively changing the
+schema of the database. We're also expanding
+into new regions and new product lines on a
+pretty regular basis, and sometimes we
+realize we need to add or remove or combine
+various elements of product and purchase records
+just to keep up with the changing
+collection of things we're selling and where
+we're selling them. That makes sense. How far in advance would
+you say you usually know when you're going to make a change to the data schema? Well, it varies,
+but we're usually pretty careful about
+it since we don't want to introduce
+any breaking changes to our own systems. I would say we typically
+know about a week in advance before we're going
+to deploy any new changes. Well, right now, I'm gathering requirements
+for the data pipelines, we need to provide data for
+the marketing teams projects. I think it would be great if we could figure out
+a way for me to stay in the loop about any upcoming changes
+to database schema, such that I can anticipate those changes and modify
+my pipelines accordingly. I can also build in
+automatic checks in the data ingestion process to verify whether the data conform to a particular schema. But it would be ideal if I
+could get notified as soon as you'll be planning
+some schema change. For sure, we can definitely
+keep you in the loop. We certainly don't
+want to be pushing any changes that break
+things downstream, so we can make sure you get
+notified well in advance. We could also think
+about ways to make the read replica database more stable than the
+production database. For example, if you know exactly what data you need in terms of customer activity or purchase history for
+downstream use cases, we can aim to provide that in a consistent manner via the
+API for the read replica, or in the event that we can't avoid changing something there, we can at least give you
+plenty of advanced notice. Cool. I think with advanced
+notice of any changes and some degree of stability in the database we're
+ingesting data from, we should be in good shape. Well, I think it's all
+I need to know for now, but please let me know when you get the read replica
+database set up, and I'll start building some
+data pipelines for testing. We'll do. Thanks Jove. I like your glasses, too,
+they are pretty cool. That was an example of
+what a conversation might look like between
+you, the data engineer, and a software engineer
+who is responsible for the source systems you're
+playing to ingest data from. Like I said before,
+open communication with your source system
+owners can go a long way when it comes to building
+robust data systems. As you saw here, it's
+often the case that source system owners will be happy to
+collaborate with you. Now once they understand
+what you need from them, join me in the next video
+to continue the process of documenting requirements
+and looking at what some of the non functional requirements of the
+system might be.

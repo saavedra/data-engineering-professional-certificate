@@ -1,0 +1,113 @@
+When you think of the
+word orchestration, what comes to mind? Maybe a conductor, guiding
+an orchestra or a choir, the signaling when
+various instruments or voices should be featured and shifts and things
+like tempo and intensity, all in an effort to
+make good music. Like an orchestra, a data
+pipeline has a lot of moving parts that must be coordinated to get
+a good result. As a data engineer, you are the conductor in
+charge of coordinating and managing the tasks
+in your data pipelines. We touched on
+orchestration briefly in the previous video as its a central
+component of data ops. Here, I'll just say a few more words about
+how orchestration plays a key role as an undercurrent of the data
+engineering life cycle. As I mentioned in
+the last video, if you're just getting started, maybe as the first data
+engineer at a small start up, or in the prototyping stages of a new project at any
+size organization, you might initially set up a
+data pipeline where you're manually executing each of
+the tasks at each stage. We looked at a pipeline
+like this where you're ingesting data from
+multiple sources into your storage systems, while applying some in
+flight transformations. Then downstream, you have more processes to
+transform, store, and serve the data
+to downstream users for machine learning and
+analytics use cases. Annual execution
+of all these steps in your data pipelines, meaning manually
+triggering each step to run when you need it to, might be something
+that can help in prototyping various
+aspects of your system. But in the long run, this is not a sustainable method
+for data processing. Once you know what tasks you need to run in your
+data pipeline, you might take a pure
+scheduling approach to have those tasks run automatically at
+particular times of day or at particular
+frequencies. For example, you might
+schedule your ingestion and initial storage test to start
+at the same time each day. Then you might schedule
+the transformation steps to kick off an hour after you expect all
+the ingested data to be present in
+your storage system. Pure scheduling is an
+approach that has been widely used historically for various data processing tasks. However, you can run into
+problems with this approach. For example, if the scheduled ingestion task
+failed to execute, this could cause downstream transformation tasks
+to fail as well. Or if this transformation
+task simply takes longer than expected and the next
+transformation task kicks off before the
+previous one finishes, you can end up
+with incomplete or stale or otherwise
+problematic data being propagated
+through your pipeline. Not that long ago, orchestration frameworks that were
+more sophisticated than pure schedulers were
+really only available to large enterprises where they had the resources to build
+their own custom solutions. But nowadays, there are a number of open source orchestration
+frameworks that make it possible for you to build sophisticated orchestration
+into your own data pipelines, no matter what size team or
+company you're working with. The most popular framework
+right now is Apache airflow, but several other newer
+open source frameworks such as Dagster, Prefect, and Mage, are
+gaining traction as well. What these frameworks
+allow you to do is automate your
+data pipelines and build in complex
+dependencies and monitoring capabilities. You could do time
+based scheduling, if you like, but you
+could for example, build in a dependency
+that verifies that this first transformation
+task has been completed before starting the
+next transformation task. Or instead of predefining a particular time of
+day or frequency, you want to start a task, you could have tasks that
+are triggered by events. For instance, you can trigger this suggestion
+step to start when there's a certain
+amount of new data available in the
+source database. You could set up
+monitoring within your orchestration framework and trigger alerts to
+let you know if, for example, this
+transformation task fails to execute or hasn't been
+completed by a certain time. Many orchestration
+frameworks require you to set up your
+data pipeline, as what's known as a
+directed acyclic graph, which is really just an
+overly complicated term to describe how data flows
+through your data pipeline. Let's take a look at what a directed acyclic graph or DAG, for short would look like for this pipeline we've
+been talking about. In some sense, you could say
+this is already a DAG where each of these icons represents a different task
+in your pipeline, and the arrows show how data moves from one task to the next. But now I'm going to
+modify the visual here just to make it work
+explicitly like a DAG, as you'll see them
+represented elsewhere. It's called the source
+systems, source 1, source 2, source
+3, and source 4, and we're ingesting
+or extracting data from all of these sources, and there's a
+transformation step happening in flight
+from source 4 here. Then you store all of the
+extracted data into storage. After that, your
+pipeline splits, where along this top branch, you have two more transformation
+steps followed by storage that will serve the machine learning
+end use case. On the bottom branch, you
+have a transformation step and then storage to serve
+the analytics end use case. The word directed end directed
+acyclic graph indicates that the flow of data goes
+only in one direction. Acyclic indicates that
+there are no loops. Data doesn't flow back
+to a previous step, and it can be
+described as a graph because it's composed
+of nodes and edges. You can think of a
+DAG as a flow chart for how data moves
+through your pipelines. You'll construct and deploy DAG within your orchestration
+framework of choice. As I mentioned, you'll be
+able to specify criteria and dependencies for how
+each task should be triggered and what monitoring and alerts you want to set up. You'll get plenty of practice setting up and running DAGs for some data pipelines and some popular frameworks
+later on in these courses. For now though, the main
+takeaway is that orchestration is an undercurrent that spans the entire data
+engineering life cycle, as well as key
+aspects of data ops. Join me in the next video, take a look at how
+software engineering, the last undercurrent relates to your role as a data engineer.

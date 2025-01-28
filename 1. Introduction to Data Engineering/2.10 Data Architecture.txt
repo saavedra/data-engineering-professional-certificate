@@ -1,0 +1,124 @@
+You can think of
+data architecture as a roadmap or blueprint
+for your data systems. In the first week
+of this course, we talked about requirements gathering and how to
+think about taking stakeholder needs and
+turning those into specific requirements
+that you can use to make design and
+technology choices. In order to map requirements to a successful design
+for your system, you need to think
+like an architect. Now, just to be clear, in your role as a data engineer, depending where you work,
+you may not actually be directly responsible for making architecture and design choices. Your organization may have someone in the role
+of data architect. Who is responsible
+for establishing the design and passing that
+on for you to implement. However, in my experience, being able to think like
+an architect will make you more successful in your
+role as a data engineer. In some circumstances, like if you're working
+at a small startup, you may in fact be both the
+architect and the engineer. In any case, I wish someone had taught
+me how to think like an architect when I was getting started with
+data engineering. In this video, I'll
+briefly introduce some of the key principles that are part of thinking
+like an architect. Throughout these
+courses, we'll be revisiting these
+principles so you can feel confident in
+your abilities to design and build
+robust data systems. In our book fundamentals
+of Data Engineering, Matt Housley and I defined data architecture as the design of systems to support the evolving data needs
+of an enterprise, achieved by flexible and
+reversible decisions reached through a careful
+evaluation of trade offs. Let's take a minute to
+unpack that definition. First off, you'll notice that
+data architecture needs to support the evolving data
+needs of the organization. This means that a
+good design supports not only the data needs of
+today but also tomorrow. In practice, this means that data architecture is
+an ongoing effort, rather than something you just
+do once and be done with. The next part of this
+definition says that a good design is
+achieved through flexible and
+reversible decisions. This is calling
+out the fact that the data needs of your
+enterprise may evolve in ways you hadn't
+anticipated and that you'll need to update
+your architecture over time. If your initial design choices were flexible and
+reversible to begin with, then you'll have a much
+easier time evolving your architecture to meet the
+needs of the organization. Finally, you'll see that in this last part
+of the definition. All this is achieved through a careful evaluation
+of trade offs, these might include trade
+offs in performance or cost or scalability
+or other parameters. Now, I think it's
+worth mentioning at this point that back
+when essentially all data architectures were
+build as on premises systems, making flexible and reversible
+decisions was much harder, in some cases impossible. For example, if you
+decided to purchase and install millions of dollars
+worth of server hardware. You're likely to be
+committed to that system for some number of years,
+whether you like it or not. Nowadays, with most
+data architectures being built in the Cloud. You can in some sense, change your mind as
+often as you want about the technology choices you've made for
+your architecture. Provided you've
+made flexible and reversible decisions
+to begin with. To expand on these
+ideas a little more, let's take a look at a
+set of principles of good data architecture that we'll be revisiting
+throughout these courses. Before I get into these, I'll just say that you
+don't need to worry about memorizing any of
+the stuff right now. I just want to give you a
+preview of what's to come in these courses and get you started thinking
+like an architect. Principle number one, choose
+common components wisely. Common components are the parts of your architecture
+that will be used by multiple individuals and teams across your organization. A good choice of
+common components is one that provides the
+right set of features for individual projects
+and simultaneously facilitates collaboration
+between teams. Principle number two,
+plan for failure. This means exactly what it says. A good architecture
+is designed not only for the case where everything
+is working as expected, but also for when things break. Principle number three,
+architect for scalability. Scalable systems can scale
+up to meet demand as needed and scale down to minimize
+costs when demand receds. When you build scalability
+into your architecture, you can be responsive to
+a changing demand and optimize for cost at the same time.
+Principle number four. Architecture is leadership. Now, while the principle of architecture as leadership may not directly apply to you in your role as
+a data engineer, if you work towards
+thinking like an architect and seek mentorship
+from data architects, you will be better able
+to lead and mentor other team members
+as your skills develop and you
+become more senior. Eventually, you may occupy the data architect
+role yourself. Principle number five,
+always be architecting. As I said before,
+architecture design is not something that
+happens only once. Instead, you'll be constantly evaluating your systems against the evolving needs of your organization and re architecting on
+an ongoing basis. Principle six and seven, build loosely coupled systems and make reversible decisions. A loosely coupled
+system is one that is built from individual
+components that can be easily swapped out
+for other ones without having to re
+architect the whole system. Choosing to build with easily interchangeable
+components like this. You're making a set of
+reversible decisions, which is to say if you change your mind or the needs of
+your organization evolve, you can easily reverse your prior set of
+decisions and swap out components of your architecture to meet your new design specs. Principle number eight,
+prioritize security. We've already looked at
+some security principles like the principle
+of lease privilege, and later in our discussions
+of architecture, we'll get into others like
+the zero trust principle. The main takeaway with all
+these principles is that security is central to your
+role as a data engineer. Principle number
+nine, embrace FinOps. The cost structure of data has evolved dramatically
+in the Cloud era. FinOps is a movement
+to bring together the business priorities
+of finance and DevOps, or in this case, DataOps. On the Cloud, most data systems are pay as you go and
+readily scalable. By embracing FinOps, you can design your systems
+to be simultaneously optimized for cost and
+potential revenue generation. That's a quick look at the key principles of
+good data architecture. Next week in this course,
+we'll look more closely at these principles and good
+data architecture in general. But for now, let's move on to the next undercurrent of the
+data engineering life cycle. Join me in the next video
+to take a look at DataOps.

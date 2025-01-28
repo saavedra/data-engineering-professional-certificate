@@ -1,0 +1,102 @@
+Okay, first off, I just want to
+emphasize one thing, data is everywhere. It comprises the building
+blocks of information. And data could come in the form of words
+or numbers, or something more ephemeral, like photons coming from a distant star or
+the wind blowing in your face. These various forms of data
+can be recorded, for example, as memories in your brain, or writings
+on a piece of paper, or in digital form, like the recording of this video
+I'm making for you right now. So in some sense, you could say that
+data has existed in one form or another since the beginning of time. However, when I talk about
+data in these courses, I'm referring to digitally recorded data, the kind of data that can be stored on
+a computer or sent through the Internet. The story of digital data begins in
+earnest in the 1960s with the advent of computers. It was then that the first computerized
+databases were introduced. Then in the 1970s, relational
+databases emerged, which led engineers at IBM to develop the structured
+query language, or SQL for short. In the 1980s, my friend Bill Inman
+developed the first data warehouse for the purpose of transforming data into
+a form that could support analytical decision making. In the 1990s, as data systems grew,
+businesses needed dedicated tools and data pipelines for reporting and
+business intelligence. It was in this context
+that Ralph Kimball and Bill Inmon developed their respective
+data modeling approaches for analytics. The Internet went mainstream
+in the mid 1990s, creating a whole new generation of
+web first companies such as Amazon. The subsequent dotcom boom led to
+rapid growth in web applications and to the emergence of backend systems
+to support them, namely servers, databases, and storage solutions. Fast forward to the early
+2000s following the boom, the dotcom bust left behind a few
+survivors, such as Yahoo, Google, and Amazon, who grew into
+powerful tech companies. Initially, these companies continued
+to rely on the traditional relational databases and data warehouses of
+the 1990s, but these systems were not able to handle the explosion
+of data they were now faced with. And with that, the big data era had begun. The Oxford Dictionary defines big data
+as extremely large datasets that may be analyzed computationally to reveal
+patterns, trends, and associations, especially relating to human behavior and
+interactions. Another famous and succinct description
+of big data is the three Vs of data, velocity, variety, and volume, which is to
+say that big data comes at high velocity, in wide variety, in large volume. In 2004,
+Google published a paper on MapReduce, an ultra-scalable data
+processing paradigm. This publication constituted a big
+bang moment for data technologies and the cultural roots of data
+engineering as we know it today. The Google MapReduce paper and
+related publications inspired engineers at Yahoo to develop and
+later open source Apache Hadoop in 2006. It's hard to overstate
+the impact of Hadoop. Software engineers interested in large
+scale data problems were drawn to the possibilities of this new
+open source technology ecosystem. As companies of all sizes and types saw
+their data grow into many terabytes and even petabytes,
+the era of the big data engineer was born. Around the same time, Amazon had to keep
+up with its own exploding data needs and created a scalable and flexible computing environment known as Amazon Elastic
+Cloud Compute, or EC2 for short. They also created infinitely
+scalable storage systems, including Amazon's simple storage service,
+also known as S three. They developed a highly scalable NoSQL
+database as well, Amazon's DynamoDB, and many other core data building blocks. Amazon elected to offer these services for
+internal and external consumption through
+Amazon Web Services, also known as AWS, which became the first
+popular public cloud. AWS developed into an ultra-flexible,
+pay-as-you-go resource marketplace. Now, instead of purchasing hardware for
+a data center, developers could simply rent compute and
+storage from AWS. As AWS became a highly profitable growth
+engine for Amazon, other public clouds would soon follow, including the Google
+Cloud platform and Microsoft Azure. The public cloud as a medium for building
+data systems is arguably one of the most significant innovations of the 21st
+century and spawned a revolution in the way software and data applications
+are developed and deployed. The early big data tools and
+public cloud laid the foundation for today's data ecosystem. The data landscape of today and data engineering as we know it now would
+not exist without these innovations. At this point in the late two thousands
+and early 2010s, for the first time ever, small startups had access to the same
+bleeding edge data tools used by the top tech companies. Another revolution occurred at that time
+with the transition from batch computing, which is to say processing and analyzing data in chunks or
+batches, to event streaming, where it became possible to handle data as
+a continuous flow of individual events. And with the transition came
+a new era of big, real time data. Despite the term's previous popularity, so-called big data as
+a thing has lost momentum. Even with the power and sophistication
+of open source big data tools, managing them was a lot of work and
+required constant attention. Often, companies employed entire
+teams of big data engineers, costing millions of dollars
+to babysit these systems. Big data engineers often spent excessive
+time maintaining complicated tooling and, arguably, not as much time delivering
+business insights and value. Today, data is moving faster than ever and
+growing ever larger. But big data processing has become so accessible that it no longer
+merits a separate term. Every company aims to work with and
+derive value from its data, regardless of actual data size. In other words, big data engineers
+are now simply data engineers. The 2010s saw the emergence of CloudFirst,
+open source, and third-party products. This made working with data at scale
+far simpler than in the big data era. At the same time, data sources and
+data formats continue to grow, both in variety and size. Data engineering is increasingly
+a discipline of interoperation and connecting various technologies like Lego
+bricks to serve ultimate business goals. And that brings us to today. The role of the data engineer today is
+further up the value chain than it's ever been in the past and continues to rise. And what I mean by that is, as a data
+engineer today you have the opportunity to stand on the shoulders of giants and build
+powerful, scalable data systems using tools and technologies that have been
+developed by those who came before you. You also have the opportunity to
+contribute to the development of many of these tools and technologies and
+build the data solutions of tomorrow. Building robust data systems is now at the
+center of business strategy across a wide range of industries, and so
+as a data engineer, you can directly be a part of achieving business goals and
+delivering value for your organization. In the next few videos, we'll start to
+explore how this looks in practice. Things like where data engineering
+fits in with other roles and stakeholders in an organization,
+how to identify your end users and what their needs are,
+how this relates to business value, and how to translate stakeholder needs
+into requirements for your systems. Join me in the next video to take a look
+at how data engineering fits into the rest of your organization.

@@ -1,0 +1,56 @@
+In a previous video, I mentioned the idea of
+one-way and two-way doors, where one-way doors represent
+those decisions that you make that are difficult
+or impossible to reverse, while two-way doors represent
+reversible decisions. Systems built around
+reversible decisions allow you to always
+be architecting. To mention another concept
+that came out of Amazon, the so-called API mandate
+that came in the form of an email from Jeff Bezos to
+all Amazon employees in 2002. You can read more about the
+details of this mandate by following the link in the resources section at
+the end of this week. But the gist of this
+mandate was this. All teams must use
+service interfaces, otherwise known as application
+programming interfaces or APIs to communicate as well as to serve data
+and functionality. The mandate also ended by Jeff Bezos saying that those who don't follow this
+mandate will be fired. You can tell how seriously he took this notion
+of APIs at Amazon. What this meant was that
+no matter what kind of complicated mess
+any particular team had going on in
+their own systems, they would be
+required to provide any data, functionality, and communications
+to other teams, through a stable and
+predictable service interface. This allowed teams at Amazon
+to function together as a loosely coupled system where individual teams
+plugged into one another through these
+service interfaces, and any reconfiguration
+or retooling within given team did not
+affect the other teams. The other part of the
+API mandate was that all of the service
+interfaces or APIs had to be built from the
+ground up to eventually be public facing to developers
+in the outside world. This reorientation toward
+service interfaces laid the foundation for
+what would eventually become Amazon web
+services or AWS, which much of the world now
+uses as a cloud platform. In this next group
+of principles, I have make
+reversible decisions, build loosely coupled systems
+and always be architecting. As you already know, those
+reversible decisions are your two-way doors, The decisions that
+you can easily undo if you don't
+like the outcome. One key way to ensure your
+decisions are reversible is to build your data system from loosely coupled components. By loosely coupled in the
+context of architecture. I mean components that
+can be swapped out relatively easily without having to redesign your whole system. With a system built from loosely coupled components
+and reversible decisions, you will always have the ability to always be architecting. As we've already touched on, data architecture
+need to support the evolving data needs
+of your organization, and that means data architecture itself must also
+be able to evolve. As a data engineer, your job is not only
+to build systems that serve the data needs of
+your organization today, but also to have an eye toward
+the future so that you can constantly be adapting to the changes and
+business requirements, as well as available technology. Join me in the next video to look at the last
+group of principles, focus on best practices when it comes to understanding the cost, security, scalability, and failure modes for
+the systems you build.

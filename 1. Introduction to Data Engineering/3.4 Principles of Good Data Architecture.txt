@@ -1,0 +1,63 @@
+Last week, I briefly
+mentioned nine principles to keep in mind in your
+approach to data architecture. Here they are again
+to jog your memory. We'll be revisiting
+these principles throughout the specialization. This week is all about
+data architecture. And so I'd like to spend a little more time on
+the details of each of these principles before we get into some specific
+architectures. In some sense, these principles are all related to one another. But for the purposes
+of this discussion, I'd like to break them up into three groups, which
+you can see here. To me, what these two principles in the first group have in
+common is that they both relate to how data
+architecture impacts other teams and individuals
+in your organization. The second group
+of principles are all about the fact that
+data architecture is an ongoing process and that you can expect your architecture
+to evolve over time. This third group is a set of unspoken but
+understood priorities that underlie any
+data architecture, namely that you need to be thinking about things like cost, security, scalability,
+and failure modes for any system you build. Of course, there are
+other ways you could think about combining or
+relating these principles. But here, I'll discuss them
+in these three groups. In this video, I'll talk about the first pair of principles
+that relate to how data architecture
+impacts other teams and individuals in
+your organization. In the next couple of videos, we'll take a look at
+the other two groups. Here I have choose common
+components wisely, and architecture is leadership. One of the primary jobs
+of a data architect, and potentially
+part of your job as a data engineer is to choose common components
+and practices that can be used widely
+across an organization. Common components
+can be anything that has broad applicability
+within an organization, including things
+like object storage, version-control
+systems, observability, monitoring and
+orchestration systems, and data-processing engines. Cloud platforms
+are an ideal place to adopt common components. For example, the separation of computed storage in Cloud data systems
+means you can serve data to different teams
+in organization with a shared storage layer
+that allows users to query the data for their
+particular use case. When you choose common
+components wisely, they become part of the
+fabric of the organization. Facilitating team collaboration
+and breaking down silos. This is not to say that
+there will always be common components that can provide the right
+solution for every team. Making a wise choice
+of common components means identifying use
+cases where teams can benefit from using the same data tools and
+practices while not creating obstacles to productivity
+by blindly applying a one-size-fits-all approach
+in your data systems. As a data engineer,
+you can practice architecture leadership
+by identifying the right common components in consultation with members
+in your organization. As you become more senior and take on more
+responsibilities, you might be the one
+to mentor others and provide proper training around
+these components as well. As I said before, as a data engineer, I also recommend you
+seek mentorship from data architects in
+your organization or elsewhere because eventually, you may well occupy the
+role of architect yourself. Join me in the
+next video to take a look at the second
+group of principles, which are all about building flexibility into
+your architecture.

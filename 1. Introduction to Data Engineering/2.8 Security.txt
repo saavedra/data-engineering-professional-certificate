@@ -1,0 +1,91 @@
+Before getting into how security applies to your role
+as a data engineer, I'd like you to think
+for a moment about how security concerns apply to your own personal
+data every day. For example, you
+probably don't give out your bank account
+information to just anyone, and you don't publish
+the passwords to all your online accounts
+where others can see them. Similarly, you wouldn't
+give the keys to your house to someone
+you don't know in trust. In your role as a data engineer, you're entrusted
+with sensitive data, whether that's the personal
+and private information of your clients or proprietary
+business information. The owners of that data are trusting that'll keep
+their information safe. It's important to
+recognize your role in bringing together the
+right set of principles, protocols, and
+cultural practices to ensure security in
+the systems you build. In this video,
+I'll cover some of those foundational
+principles and best practices for
+data security. When you're managing
+a data pipeline and serving data to end users, you'll need to give access to the data and system resources to other users or applications. Key security principle to
+keep in mind when doing so is the principle
+of lease privilege. This means you give users
+or applications access to only the essential data
+and resources they need to do their jobs and only for
+the duration that's required. You need to apply the
+principle of lease privilege, not only to others
+in your organization but also to yourself. That means, for example,
+just like you don't give everyone a team
+administrator access, when it comes to your own work, don't operate from
+the root shell when it's not necessary
+and don't use administrator or super
+user permissions unless it's
+absolutely essential. When you think about how to best secure data in your work, you need to be thinking
+not only about data access but also
+data sensitivity. Adhering to the principle of
+lease privilege means making sensitive information visible to users only when it's
+absolutely necessary. Beyond that, the best way
+to protect sensitive data is not to ingest it into your
+system in the first place. If you don't have a
+clear purpose for ingesting and storing
+sensitive data, simply don't do it, and
+you'll have entirely removed the risk of
+accidentally leaking that data. In today's Cloud centric world, security takes on yet
+another dimension, one that requires
+you to understand things like identity
+and access management, or IM Rals, encryption methods,
+and networking protocols. You'll see more on these topics throughout the specialization as we'll delve deeper into ensuring the security
+of your data pipelines. Beyond that, security
+is not just about principles and protocols,
+it's also about people. Security starts
+and ends with you, the individual, as well as other individuals across
+your organization. When it comes to security, you should adopt a
+defensive mindset. Always be cautious
+when asked for credentials or for sensitive
+and confidential data. Imagine potential attack
+and leak scenarios and design your data pipelines and storage systems
+with them in mind. When it comes to real
+world data leaks, individual people
+have been the source of many of the biggest
+security breaches. People ignoring
+basic precautions, like sharing their passwords
+insecurely with others, people falling victim
+to phishing attacks, where an attacker tries to
+steal of sensitive information by impersonating an authority
+figure or so many trust, or people otherwise acting irresponsibly while working in the company's systems and data. When it comes to security
+and data engineering, it never ceases to
+amaze me how often I see data engineers
+leap save in AWS, S three bucket, a server, or database exposed to the public Internet when
+that was not the intention. There are some simple fixes to prevent this from happening. But I often see
+this happen because the data engineer simply doesn't know security best practices, or they accidentally forgot
+to apply these practices. When it comes to security at
+the organizational level, I've seen that all too often, organizations are set up
+with a facade of security. Maybe a set of checklist
+to show they're compliance with regulations
+or compliance standards, but a deeper spirit of security is lacking in the
+organization's culture. This approach of adhering to the letter of security without a culture and spirit of security is what I
+call security theater. Security emerges
+from a culture where every team member recognizes
+the role in protecting data and everyone
+from top to bottom embraces security as a
+priority and a habit. On your journey as
+a data engineer, remember that while
+principles and protocols, as well as tools
+and technologies, are your allies
+when securing data. A true security culture emanates from a shared understanding of responsibilities and vulnerabilities across
+the organization. As we progress in
+the specialization, you'll get hands
+on experience with security considerations as they apply to all aspects of
+your data architecture. In the upcoming video, we'll take a look at the next under current in the data engineering life cycle, Data Management.

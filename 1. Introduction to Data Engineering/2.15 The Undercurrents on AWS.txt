@@ -1,0 +1,85 @@
+The undercurrents of the
+data engineering life cycle that you've been looking
+at this week are security, data management, data ops, data architecture,
+orchestration, and software engineering. When it comes to how these
+undercurrents appear on AWS, there are some
+aspects that are more conceptual and others that
+are more tool oriented. For example, security
+as a concept will appear in many forms
+in your work on AWS, while something like
+orchestration is more about choosing the right tool or
+service to meet your needs. So in this video,
+I'll say a bit about each undercurrent as it will
+relate to your work on AWS, so you can start to
+connect these ideas. So let's start with security. Last week, I mentioned the
+shared responsibility model, as it relates to
+security of data systems or other applications
+built in the AWS Cloud. In short, the shared
+responsibility model says that AWS is responsible for security of the data centers and
+services they provide, and you are responsible
+for the security of the systems you build
+with those resources. For example, if you store
+your data on Amazon S3, it is AWS's
+responsibility to make sure the S3 service
+itself is secure. Then it's your
+responsibility to make sure the access permissions
+are set correctly, so your data is only
+available to people and applications that
+should have access to it. Speaking of access permissions, one key security concept
+on AWS is what's known as Identity and
+Access Management or IAM. Through IAM, you can
+set up roles and permissions which control
+access to AWS resources, ensuring that users
+and services have the necessary access to
+perform their tasks securely. Within your data pipelines, you'll use IAM roles, which give users or
+applications access to temporary credentials
+that automatically rotate and provide appropriate
+AWS API permissions to various tools or
+data storage areas. Network security is also
+crucial for security on AWS. You'll need to be familiar
+with services and features like Amazon Virtual
+Private Cloud or VPC, as well as security groups, which are instance level
+firewalls that are another key aspect of implementing
+secure data pipelines. With the undercurrent of data management, in these courses, you'll use AWS Glue crawlers
+and Glue data catalogs, which allow you to
+discover, create, and manage metadata
+for data stored in Amazon S3 or other storage
+and database systems. You will also get familiar
+with lake formation, which helps you
+centrally manage and scale fine grain data
+access permissions. All of these are also
+related to security, but I'm listing them here
+under data management because they have to do
+specifically with data privacy and discovery. For data ops, in
+the next course, you'll work with a service
+called Amazon CloudWatch that collects metrics and provides monitoring features
+for cloud resources, applications, and even
+on premises resources. Then there is also
+Amazon CloudWatch Logs, which can help you store and
+analyze operational logs. In Course 2, you
+will also work with Amazon Simple Notification
+Service or SNS, which provides a means of
+setting up notifications, either between applications
+or via text or email that are triggered by
+events within your system. There are also many open
+source observability tools you might use in your own work, like Monte Carlo or Bigeye. With orchestration
+in these courses, you'll work with Airflow, which is an orchestration tool
+that you can implement as an open source tool or use
+a managed version from AWS. Airflow is currently
+the industry standard, but you should be aware of newer orchestration
+tools like Dagster, Prefect, and Mage that aim to solve some of the issues that
+Airflow isn't designed for. When it comes to architecture, we'll take a look at the AWS well-architected
+framework next week, which is a set of principles
+and practices developed by AWS that can help you build systems with an eye towards
+operational efficiency, security, scalability,
+and sustainability. With regard to
+software engineering, in these courses, you'll use the Amazon Cloud9
+IDE for development. Cloud9 is hosted on Amazon EC2, so this service is
+essentially a VM that has an IDE installed on it that
+you can use in your browser. In your own work,
+you may also use tools like Amazon's CodeDeploy, which allows you to
+automate code deployment, as well as various CICD tools. You'll also handle version
+control with Git and GitHub. That's a quick overview of some of the tools you'll be using as they relate to the undercurrents of the data engineering
+life cycle. Next up, Joe's going to walk you through the
+first live exercise, where you'll spin up an end
+to end data pipeline on AWS.

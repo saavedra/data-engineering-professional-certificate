@@ -1,0 +1,106 @@
+The transformation stage of the data engineering life
+cycle is really where you, as a data engineer,
+start to add value. This is because the stage that comes before
+transformation, namely ingesting and storing raw data from source systems, doesn't directly add any value from
+downstream stakeholders. As I said before, in your
+role as a data engineer, the big picture is that you
+get raw data from somewhere, turn it into something useful, and then make it
+available to end users. Transformation is the turn it into something useful stage. In terms of what
+useful looks like, imagine, for example,
+a business analyst as your downstream user. Let's say they're
+tasked with reporting on daily sales across
+a range of products. They might need information
+like customer IDs, product names,
+prices, quantities, times of sale, and so on. While data analysts are
+often fluent in SQL, they'll be relying on you
+to transform the raw data and provide it to them in a format that is quick
+and easy to query. As another example, imagine a data scientist or machine learning engineer
+as your downstream user. In addition to SQL, they
+might even be fluent in many potential approaches
+to data transformation, but their core
+function is really in using the data for
+predictive analytics, and you can provide them with tremendous value by handling
+the transformation of data into structures and
+features that can be used directly for their
+model training or analysis. We call this part of the data engineering life
+cycle transformation. But in reality, the stage
+is made up of three parts : queries, modeling,
+and transformation. I include queries and modeling as separate from
+transformation here because these are critical components of any data pipeline that really add value when done well and present risks
+when done poorly. To illustrate this point,
+let's start with queries. When you query data, you're
+issuing a request to read records from a database
+or other storage systems. For example, you
+may need to query tabular and semi-structured data that's sitting in a
+cloud data warehouse. There are many languages
+you can use to query data, but in these courses, we'll focus on structured
+query language or SQL for short, which remains a popular and
+universal query language. Your query may involve cleaning, joining, and aggregating
+data across many data sets. You may use SQL
+expressions to filter the data so that only specific
+records are retrieved. Don't worry if
+you're not already familiar with the SQL commands
+you see here on the slide. In later courses, you'll
+have a chance to learn the basics of SQL
+through hands-on labs. There's more than one
+way to write a query, and poorly written queries could have negative
+consequences, like impacting the
+performance of a source database or cause a situation known
+as row explosion, where a query that
+includes what's known as a join between tables produces many more records
+than you anticipated, which can bring down your
+storage infrastructure. In other circumstances, poorly written queries
+may just be slowed or broad and cause
+downstream delays in reporting or analytics. In practice, it turns out that most data engineers can
+read and write SQL, but are unfamiliar with how
+queries work under the hood. This can have
+unforeseen consequences in the architectures they build. We'll get into the details
+of exactly how queries work in the third course
+of the specialization. The next thing I want to
+talk about is data modeling. A data model represents the way data relates
+to the real world. Data modeling
+involves deliberately choosing a coherent structure for your data and
+is a crucial step in making data useful
+for the business. For example, looking
+again at the case of the business analyst that needs to create product sales reports, you might have ingested
+so-called normalized data from an upstream relational
+source database that contains separate tables for things like product information, order details, customer
+information, and so on. This data often has complex
+relationships between them. To serve this analyst's needs, you might need to
+do what's called denormalization of this
+data to model the data in a way that allows the
+analysts to quickly and efficiently query and get the data they need
+for the reports. A good data model is designed to best reflect your
+organization's processes, definitions,
+workflows, and logic. For example, the
+term customer might mean different
+things to different departments in your company. To be successful
+with data modeling, you need to work
+with stakeholders to understand their terminology, like what the word
+customer means to them, as well as the business
+goals for the data. You'll learn more about
+data modeling and normalization in the fourth
+course of the specialization. Apart from querying
+and modeling the data, data must also be
+transformed, which is to say, manipulated, enhanced, and
+safe for downstream use. As I mentioned before, you
+will be typically transforming data multiple times throughout the data engineering life cycle. For example, data may be transformed before
+you even touch it, like having a time
+stamp added to a record while it's still
+on a source system, or you might apply
+transformations while your data is in
+flight during ingestion, then immediately
+after ingestion, it may set up basic
+transformations to map data to correct types, and put records into
+standardized formats. You might enrich a record within a streaming pipeline with additional fields
+and calculations before it's sent to
+a data warehouse. Even further downstream,
+you might transform the data schema and
+apply denormalization, large scale aggregation
+for reporting or featurized data for machine
+learning model training. Throughout these courses,
+you'll be engaged in plenty of hands-on exercises
+involving querying, modeling, and transforming data. For now, though, let's
+move on to the next video, where we'll take a look at the final stage of the data
+engineering life cycle, serving data for
+downstream use cases.

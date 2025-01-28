@@ -1,0 +1,96 @@
+In the previous video,
+we had a conversation with the marketing department
+about their needs. In some ways, this
+conversation included a confirmation of the things you already learned from
+the data scientist. But now with more details on exactly what the
+end users needs are. In this video, we'll go over
+what we learned and take a look at starting to document the requirements
+you've gathered. The way I like to document
+requirements is using the hierarchy that we looked
+at in a previous video. This way, it's easy to visualize the connections from system requirements here at the bottom, all the way up to the high
+level business schools. Right here at the
+top, I can start by writing down the business
+schools as I understand them. In this case, the business schools that we
+learned about that the company aims to continue
+on their growth trajectory, throw a focus on customer
+retention and loyalty, as well as an expansion to new markets and new
+product offerings. In these efforts, they are aspiring to be data driven
+in their decision making. Underneath the business goals, we can now add
+stakeholder needs. For the moment, I'll just
+consider the data scientist and the product marketing
+manager together here as the stakeholders
+that we've talked to so far. At this point, we know
+they need two main things, some analytics dashboards
+and a recommender system. Let's first take a look at
+the analytics dashboards. Both the data scientists and the product marketing
+manager stated they need "real time" or "current data" presented
+in the dashboards. Through digging a
+little deeper and asking what action they
+plan to take with the data, we learned that the
+marketing team would like to be aware when
+demand spikes occur. For particular
+products so they can react to additional
+promotional campaigns. Given that the duration of these demand spikes
+is expected to last from several hours
+to one or two days, it looks like hourly
+dashboard updates would be sufficient and
+marketing confirmed, and this would serve
+their needs just fine. So there you have a
+stakeholder need, and you might capture the related functional
+requirement for the data system like this. The data system needs to serve transformed data that is
+no more than one hour old. When it comes to the
+recommender system, it sounds like the current
+solution is just to display a few popular products on the page when someone
+is checking out. What the marketing team
+would like to have instead is a system
+that provides product recommendations that are customized based on someone's browsing
+or purchase history, as well as what they have
+in their card at checkout. There you have another
+stakeholder need, and when it comes to a
+functional requirement for your data system
+to serve that need, you could write down something like the system first
+needs to provide the appropriate
+training data for the development of the
+recommender model. Then be able to
+ingest, transform, and serve user data to the
+trained recommender model, and then return
+the model outputs perhaps in the form
+of product IDs back to the sales platform. Now, I'd like to
+pause for a moment and highlight the
+fact that translating stakeholder needs into
+functional requirements for your system can
+be a little tricky, as you can see here with
+the analytics dashboard, what the marketing team actually needs are the
+dashboards themselves, and so it might be
+tempting to write down some details about the
+dashboard features or metrics to be displayed. But really building the
+dashboard is going to be the responsibility
+of the data scientists. To provide those
+features and metrics, the data scientist
+needs access to data that is no more
+than an hour old. When it comes to
+your data system, as long as you're able
+to serve data that the data scientist needs
+in a timely manner, then your system is achieving this
+functional requirement. For the recommender system, the marketing team needs to make customized product
+recommendations. To do that, there will be multiple people and
+teams involved. The data scientists will need to train and deploy a
+recommender model, and the platform team will
+need to be able to receive product recommendations
+from the model to display on the platform. When it comes to
+your data system, you'll need to provide
+training data to the data scientists
+to development model, then you need to be able to pass customer data from
+the platform to the model and then send the model outputs
+back to the platform. Here we have documented one functional requirement for each of these data systems. In practice, you could have many functional requirements
+for any given system as well as more detail than we've listed here for each
+functional requirement. To keep things simple
+for now, though, let's leave it at just these
+two functional requirements. This is how you might
+get started with documenting your
+functional requirements. Coming soon, we'll also get into documenting non
+functional requirements. But before doing that, we're going to have some more
+stakeholder conversations. Join me in the next video
+for a conversation with the software engineer who
+maintains a sales platform, which is the source system
+you'll be ingesting data from.

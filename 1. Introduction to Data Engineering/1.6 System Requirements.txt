@@ -1,0 +1,69 @@
+The way to be sure
+you're delivering value for stakeholders is
+first understand their needs and then translate those needs into requirements
+for the systems you build. Before we start writing any code or spinning up
+resources on the Cloud, I'd like to spend some
+time talking about what it means to gather
+requirements for your system. First off, the word requirements
+can mean a number of different things in the context of business and engineering. You can have business
+requirements, for example, that define the high level goals
+of the business. Business requirements might
+broadly include things like growing revenue or
+increasing the user base. Stakeholder requirements,
+on the other hand, are the needs of individuals
+within the organization, namely those things they need
+to get their job done well. When it comes to
+data engineering or software development
+in general, Engineers need to define system requirements that
+describe what a system needs to be able
+to do in order to meet the business and
+stakeholder requirements. System requirements are often
+split into two categories, functional and non
+functional requirements, which you can think
+of loosely as the what and the
+how requirements for your system respectively. Functional requirements
+or the what, meaning those things that the system needs to be able to do. In the context of
+data engineering, these might be things
+like providing regular updates to a
+database that serves analytics dashboards or alerting a user when there's an
+anomaly in the data. By contrast, you can think of non functional requirements as how your system will accomplish
+what it needs to do. This could include things like technical specifications
+for ingestion, orchestration, or storage
+that you plan to use within your data pipelines to
+meet the end users' needs. To build any data system, you need to start with a set of requirements for that system. These could include
+everything from high level business and
+stakeholder requirements, to features and attributes of the data products
+you provide, right down to the memory
+and storage capacity you need for your computation
+and database resources. You'll also have
+cost constraints, as well as security and regulatory requirements
+to consider. The first and most
+important step in any data engineering project is to gather the requirements
+for your system. In general, those requirements will come from your
+downstream stakeholders, those that hope to achieve their goals as a
+result of your work. The problem is your stakeholders
+will most often not be speaking to you in the form of concrete system requirements. Instead, what they have on their minds are business goals, and it's your job to figure out how to translate
+their needs as they relate to the
+business goals into the requirements
+for your system. Requirements gathering
+is going to look a little different for
+every system you build. But this process always starts with having conversations
+with your stakeholders. The way you go about having these conversations
+will vary depending on the stakeholders technical
+level when it comes to data and data systems and the role within
+the organization. In the next video,
+I'll introduce you to my friend, Sol Rashidi, who has held the role of a Data Executive at
+many large companies. She'll share some advice for new data engineers and how to communicate with
+different stakeholders who have different
+technical backgrounds. Then, you'll hear
+from Jordan Morrow, who is known as the
+godfather of data literacy, having built one of the world's first data literacy programs. He'll share some suggestions
+for how to go about requirements gathering when talking to different
+stakeholders. Both of these videos
+are optional, and you won't be assessed on the contents of
+these conversations. If you'd like, feel free to skip ahead to the
+video after that, where we'll look at what
+requirements gathering might look like in the scenario we dropped you into at the
+beginning of this week. You're a new Data Engineer
+at an e-commerce Company, and the data scientists
+needs your help.

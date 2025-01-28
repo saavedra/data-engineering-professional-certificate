@@ -1,0 +1,79 @@
+Once you've ingested, transformed,
+and stored your data, you're ready for the final stage
+of the data engineering lifecycle. Serving data this stage is about more
+than just making data available. It's really when you give stakeholders
+the opportunity to extract business value from data. And like I mentioned last week, value means different things
+to different stakeholders. Generally, data has value when it's
+used for practical end use cases like analytics, machine learning,
+reverse ETL, or other use cases. In this video, rather than discussing
+specific mechanisms for serving data, we'll instead take a brief look at each
+of these end use cases to provide more context on how serving data might look
+different for different scenarios later. In course four, we'll get into the
+specifics of how exactly you will serve data for each of these use cases. So let's start with analytics, which is the process of identifying
+key insights and patterns within data. As a data engineer, you're almost
+guaranteed to serve data that powers one or more of the three most common forms
+of analytics, business intelligence, operational analytics,
+and embedded analytics. Business intelligence, or BI for short,
+is where analysts explore historical and current business data
+to discover insights. As a data engineer, you'll serve data that
+ultimately gets presented in the form of reports or dashboards that help users
+make strategic and actionable decisions. For example, analysts on sales and
+marketing teams will use BI reports and dashboards to spot patterns and trends and
+to monitor things like marketing campaign engagement, regional sales,
+and customer experience metrics. Or imagine a scenario where
+an analyst observes a sudden spike in product returns. They might then investigate
+existing reports or dashboards to compare this
+phenomena with historical trends. They might also pull more data by running
+SQL queries against the database you provided or ask you to serve up
+additional data for ad hoc analytics. In contrast to the reflective or
+insight driven nature of BI, operational analytics is about monitoring
+real time data for immediate action. For example, an e-commerce platform team
+might need to monitor a dashboard with real time performance metrics for
+the website. If the website goes down for some reason,
+whether that's because of a spike in user traffic or a data center going offline,
+they need to know immediately so they can triage the situation and
+get the site up and running again. And in this case, your role as a data
+engineer would be to ingest, transform, and serve event data from
+the website's application logs to populate the platform
+team's dashboard. While BI and operational analytics
+are internally focused data practices that have been in use for many decades,
+a somewhat newer trend is external or customer facing embedded analytics. You've most likely interacted with a
+variety of embedded analytics applications yourself. For example, your bank might provide you
+with dashboards that show you historical trends in your spending or
+how your purchases break down across different categories like food,
+retail and utilities. Or maybe you have a smart thermostat in
+your home that's connected to a mobile application. The application might show the current
+temperature inside your home, as well as historical metrics
+like temperature over time. When it comes to embedded analytics, as
+a data engineer, your job would be serving real time and historical data for
+use in user facing applications. With the rise of machine
+learning in recent decades, it's quite likely that your role as a data
+engineer will involve serving data for machine learning use cases. And these courses will treat machine
+learning as separate from other serving use cases simply because it can involve
+additional complexities that we'll want to look at in detail. For example, with a machine learning
+use case, you may be responsible for serving feature stores of data that
+facilitate model training, and you might also need to serve data for
+real time inference, or support metadata and cataloging systems
+that track data history and lineage. We'll take a closer look at all these
+scenarios later in these courses. Apart from analytics and machine learning,
+another common use case for serving data is what's at least
+today called reverse ETL. With reverse ETL, you'll take transformed
+data as well as analytics and perhaps machine learning model output and
+feed it back into source systems. For example, let's say you've ingested
+data from a customer relationship management or CRM system, and
+this might include information like names, contact info, form data, or other relevant
+client information, and you've then transformed the data into the appropriate
+format and stored it in a data warehouse. Analysts can then retrieve the data
+to train a lead scoring model, which is a model that attempts to say
+which clients are the most promising for various engagements or product offerings. The model results could then be
+returned to the data warehouse and then pushed back into the CRM as an enhancement
+of the client data already stored there. Now, I'll just say that the name
+reverse ETL for this process is not so much an attempt to describe
+what's going on as it is for just a lack of a better name to describe
+this pretty longstanding process. In any case,
+this practice is increasingly common, and in your work as a data engineer, you're
+likely to be engaged in reverse ETL, or whatever it happens to be called in
+the future as part of your role. And with that, we've taken a quick look at all the phases
+of the data engineering lifecycle, including source systems, ingestion,
+transformation, storage, and serving. In the next lesson, we'll shift our focus
+to the undercurrents of the lifecycle to touch all of these phases. I'll see you in the next lesson.

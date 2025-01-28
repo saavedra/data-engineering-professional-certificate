@@ -1,0 +1,84 @@
+Like I said in the
+previous video, this week is all about pulling together the various aspects of the thinking like you did engineer framework that we've been exploring throughout
+this course so far. Now, remember that framework begins with identifying
+business goals and stakeholder needs through the process of
+requirements gathering. At this point, I'd like you
+to start thinking about requirements as a
+hierarchy of needs. At the top of this hierarchy, you have the goals and
+objectives of the business. These are the things that describe what success looks like for the
+business as a whole. These might be objectives around growing revenue or
+market share or user base or something else that represents an optimal
+outcome for the business. The next thing down on the hierarchy is
+stakeholder needs. Now, you'll hear me
+say stakeholders a lot in these courses. But in this case, you can think of
+these stakeholders as the individual employees
+of a business, and each of them plays a role in delivering on the high
+level business objectives. To do the work successfully,
+stakeholders have needs. They need things like
+proper resources, tools, and management,
+among other things. For the purposes
+of these courses, you can assume that
+they also have a need for robust data systems. Below stakeholder needs
+in this hierarchy, you have system requirements. In principle, this
+could be any system, but here we're talking about the data systems you
+will build to maintain. This is a set of requirements
+that your data systems must satisfy in order to
+serve stakeholder needs. Well then, separate
+system requirements into functional and non
+functional requirements. Functional requirements are those system
+requirements that can be expressed in terms of a
+specific functionality namely, what the system will be able to do to meet the needs
+of stakeholders. For example, a functional
+requirement for a data system that monitors
+bank transactions for a fraudulent behavior
+might be the system is able to immediately report potentially fraudulent
+transactions. Non-functional requirements,
+on the other hand, are those system
+requirements you could think of as
+characteristics or attributes of the system that allow it to
+function properly. These could be
+characteristics or attributes related to
+things like latency, scalability, reliability,
+cost, or security. For example, a
+non-functional requirement in terms of scalability for a streaming pipeline
+and adjusting data from an e-commerce
+platform might be, the system must be able
+to scale up to ingest data from 10,000 users
+shopping at the same time. There you have it. This is
+a hierarchy of needs for business as it relates to
+your work as a data engineer. The main takeaway here is that like we've been
+talking about all along, your work in building data systems is
+directly connected to the work of others in your organization and to the overall goals
+of the business. This is why it's so important
+to understand the needs of your stakeholders
+and the objectives of the business for
+the work that you do. That brings us back to
+requirements gathering. In the first week
+of this course, we started by having
+a conversation with the data scientists to
+understand their needs. You could think of that
+exercise as requirements gathering that started somewhere in the middle of this hierarchy. Ideally, though, you'd
+like to start at the top. That means talking to leadership about the goals of the company. If you work at a small company, you might even be able to have a conversation with the CEO. I would definitely
+recommend that. If you're at a
+bigger organization, you just need to go up
+as far as you can up the chain of command to get oriented with the
+goals of the business. In the first week of the course, you saw a conversation
+I had with Soul, who's been the
+chief data officer at many large organizations. Now, not all organizations
+are going to have a CDO, but most will have a chief
+technology officer or CTO, who is the technology
+executive in a company. The CTO is responsible for leading the engineering
+department to use technology to
+improve products and services with a goal of
+growing the business. In the next video,
+I'll introduce you to a friend of
+mine, Matt Housley, who has a lot of experience interfacing with C-suite execs, including CTOs, and he's also my co-author for the book
+Fundamentals of Data Engineering. He'll share some
+advice on how to get started in data
+engineering and how to engage with business leaders to come up with solutions
+to business problems. Then we'll see if
+we can get him to join our requirements
+gathering game this week, where he plays the
+role of CTO at the company you've just been
+hired at as a data engineer. Join me in the next
+video to meet Matt.

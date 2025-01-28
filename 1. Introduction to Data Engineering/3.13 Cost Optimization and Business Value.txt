@@ -1,0 +1,120 @@
+As I said before, at every stage of the data
+engineering life cycle, you'll have multiple
+tools and technologies to choose from in order
+to get the job done. Each of these choices
+comes at a cost, and I'm not just talking about the price tag and the software or service you're
+subscribing to. There's also a cost associated
+with implementation, namely paying a team to spend the time it takes to stand up and maintain the system, and there's also
+opportunity costs, meaning in choosing one tool, you are at least for a time for going the opportunity
+to choose another. And so your tool and
+technology choices will significantly
+impact your budget. As a data engineer,
+your job is to provide a positive return
+on the investment your organization makes
+in its data systems. In this video, we'll look at costs through three main lenses. I'll first focus on the
+total cost of ownership, or TCO for short. After that, we'll
+take a quick look at the total opportunity cost of ownership or TOCO
+or TOCO for short. Finally, we'll revisit FinOps, which we touched on
+briefly last week. The total cost of
+ownership, or TCO, is the total estimated cost of a solution project or initiative over its
+entire lifecycle. The term TCO is not specific
+to data engineering, but rather it's a
+general business term used to describe the total
+investment in some project, including the direct
+and indirect costs of the products and
+services you're using. This includes things
+like the acquisition of hardware and software, the cost of management, maintenance and repairs, as well as any
+required training. And so when it comes
+to data systems, direct costs or the tangible, easy to identify costs
+that are directly attributed to the development
+of a data product. For example, your direct costs include the salaries
+of the team working on the initiative or the AWS bill
+for all the services used, as well as any fees or licensing costs of
+software subscriptions. Your indirect costs, almost
+known as overhead or expenses that are not directly
+attributed to the development of
+a data product. For example, this could be the costs incurred due
+to network downtime, ongoing IT support, or the loss of productivity
+of certain team members. It's important to include
+indirect costs when estimating TCO because these costs
+can be significant. When it comes to the cost
+of hardware and software, these expenses generally
+fall into two big groups. The first group is capital
+expenses or CapEx for short. CapEx is the payment made to purchase long term fixed assets. This type of expense
+for data systems was common before the existence
+of Cloud platforms. Companies would make
+an upfront payment to purchase hardware
+and software, and then install them
+in data centers. These upfront investments, commonly hundreds of thousands
+to millions of dollars or more would be treated as CapEx assets that would
+slowly depreciate over time. Nowadays, with the
+shift to the Cloud, many companies are
+building data systems with essentially zero CapEx. The other major type of costs is operational expenses
+or OpEx for short. OpEx is an expense associated with running
+the day to day operations, so it spread out over time. In data systems, OpEx often appears as a pay as
+you go expense in the form of recurring
+subscription fees or the cost of using a
+particular Cloud service. In the context of building on premises versus Cloud
+based data systems, building on premises generally
+incurs a large CapEx cost. Well, Cloud based systems
+can be almost entirely OpEx. Now, before Cloud
+platforms existed, an OpEx first approach
+wasn't really an option for large
+data projects. This is now changed with
+the advent of the Cloud as data platform services allow you to pay on a
+consumption based model. Long term hardware
+investments for data projects will inevitably become obsolete, so I suggest that you take a Cloud centric OpEx
+first approach by choosing flexible pay as go technologies for
+your data pipelines. By contrast to TCO, what I call the total
+opportunity cost of ownership or TOCO, TOCO for short, is the cost of lost opportunities
+that you incur in choosing a particular
+tool or technology. Can be harder to quantify, but it essentially means
+that any choice you make inherently excludes
+other possibilities. If you choose data stack A, which includes a certain set of technologies to build
+your data pipelines, then you've chosen
+the benefits of data stack A over all
+the other options, effectively excluding,
+say, data stack B, C D, and so on. In this case, the
+total opportunity cost of ownership is the
+cost of being held captive to data stack A while no longer benefiting
+from other data stacks. In the event that data
+stack A turns out to be the best possible choice,
+then congratulations. Total opportunity cost of
+ownership is essentially zero. In reality, however, data engineering tools and technologies are
+evolving very rapidly. Even if you make the best
+possible choices today, you still need to evolve your
+data systems in the future. If some components
+of data stack A, which were the best
+choices for yesterday, have now become obsolete, then there will be a cost
+associated with switching to a different components or a
+different stack entirely. In order to ensure
+that your total cost of ownership is minimized, you'll need to
+build flexible and loosely coupled systems
+that are easy to update as your data
+needs change and the landscape of tools
+and technologies evolves. One way to do this is
+to recognize upfront which components of
+your data pipelines are most likely to change. In other words, separate the immutable technologies from the transitory
+technologies. Immutable technologies are those that have stood
+the test of time. In Cloud storage,
+these are things like object storage and networking. Or as another example, SQL as a query language has been around for decades and isn't
+going away any time soon. Transitory technologies, or at least those that are most
+likely to be transitory, are those that are new at
+the cutting edge and in areas of the data stack
+that are rapidly evolving, like stream processing,
+orchestration, and AI, for example. When it comes to thinking
+about technology choices in the context of
+cost optimization. FinOps as a concept is closely
+related to TCO and TOCO. FinOps is about
+minimizing the costs associated with your
+data systems, your TCO, and your TOCO, while simultaneously maximizing your opportunity for
+revenue generation. How do you do that? In short, you could choose Cloud
+based services that allow you to take an
+OpEx first approach with flexible pay as you go
+technologies as well as modular options that
+allow you to iterate, improve, and grow quickly. Next up. We'll zoom in a
+little closer on the topic of choosing the right tools and technologies while
+optimizing cost. Join me in the
+next video to take a look at the trade
+offs between building your own data system components versus purchasing off
+the shelf solutions.

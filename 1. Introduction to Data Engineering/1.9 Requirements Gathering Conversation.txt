@@ -1,0 +1,137 @@
+Like I said in the previous video, the first step in any data engineering
+project is requirements gathering to give you a taste of what the step
+could look like on the job. Throughout these courses, we'll be featuring a number of
+conversations between myself and the role of data engineer talking
+to different stakeholders. The point of these simulated conversations
+is to show you how I might go about the requirements gathering process,
+for some example, data systems. And so in this video, I'm going to
+demonstrate what a conversation might look like between you, actually me,
+in this case, the data engineer. And a key stakeholder, in this case,
+my friend Colleen, who will play the data scientist that needs your help getting
+the data they need for their work. In real life Colleen is a data
+professional with lots of experience having stakeholder
+conversations in her own work. And so she's going to help me with a
+number of these stakeholder conversations throughout these courses. But before we jump into this one, I'll
+just take a moment to introduce you to Colleen, and then we'll get
+started with the conversation. How's it going, Colleen? >> Good, how are you? >> Good, thank you. So today we're going to be
+talking with Colleen Foch. She is a senior technical manager. And I guess that means that you're
+a data scientist, marketing analyst and a software engineer. >> Just all of them? >> Yeah, what do you actually do? >> Yeah, so I specifically work
+with our marketing team and so I handle a lot of our
+marketing technologies work. So day to day I'm in Snowflake a lot,
+DBT building out data models, so doing a lot of data engineering. So your book has helped me, a son. Thank you.
+>> Awesome, and in a past life, you also did some interesting stuff. >> Yeah, I was in athletics for
+a really long time, swam growing up, went to Cal Berkeley,
+won the national championship or two, American record holding relay,
+and then decided to do CrossFit. Did that professionally for a few years, went to the CrossFit Games
+individually in team. And then did bobsledding for a few years,
+made the US national team, and then, as the natural progression goes,
+went into data after that. >> I literally did the same
+thing in my career. >> That's how we met. Yeah, joking. >> Well, awesome. So we're going to be doing a mock
+stakeholder interview where Colleen will play the role of a data scientist and
+I'll play the role of a data engineer. So let's get started. Hi, I'm Joe, and I just joined
+this week as a new data engineer. I'm really excited to get started working
+on data projects with you, and I thought it would be great if we could discuss what
+you're working on and now I can help you. >> Yeah, absolutely. It's really great to meet you and
+have you at the company. I actually just started here as
+a data scientist a few months ago and it has been hectic to say the least. >> Hectic? Tell me more. Yeah, so our marketing team is asking for a real time analysis of our
+product sales by region. So they want to be able to look at things
+like which products customers bought and where the customers are located
+themselves, amongst other things. So right now,
+all of our product sales information and data is located in our production
+database for our sales platform. The software engineering team doesn't want
+to give me direct access because they're in a risk I might break something. So because of that, they've been
+giving me a data dump once a day, which I do a manual pull on. So I see, so you're getting
+the information you need, but it's a little cumbersome because
+you need to download it manually. Well, I guess you could say that I'm
+getting the information I need, but I'm also getting a lot
+of stuff I don't need. So I'm spending a lot of my
+time sifting through this data. It's about 90% of the stuff
+that I don't need, and I need it stored in various CSV and
+JSON files. So I need to run a series of
+processing steps to extract what I need from each file,
+clean it up, aggregate the stuff, and then save it in a format that I
+can actually use to build my towards. >> Okay, so it sounds like you're spending
+a fair amount of time processing the data before you're able to use it for
+your analytics, is that right? >> Yeah, so for sure, I'm probably
+spending about 80% of my time cleaning and processing the data. Oftentimes my processing scripts
+crash because there are anomalies or unexpected entries in the files
+provided by the software team. A few times the software team has actually
+changed the format of what they're sending me. And I've only found out I when none of
+my processing scripts would run and I had to refactor those things
+to work with a new format. It's not uncommon for me to spend
+an entire day getting the data into a format that is usable for
+the dashboards. Meanwhile, like I said, the marketing team wants their
+regional sales analytics in real time. And often by the time I'm pushing updates,
+the information is already two days old. >> Okay, so that sounds like a pretty
+painful process, I can understand that. It's been hectic for you. So in terms of being able
+to deliver results faster, it sounds like one issue is that you're
+only getting data dumps maybe once a day. And then also the data cleaning and
+processing steps are laborious and a little unpredictable, so that might add
+some time to your work, is that right? Yeah, right now I feel
+like it would be hard for me to deliver faster results at
+all under the circumstances. But the marketing team really
+wants current metrics, not ones that are two days old. So I'm hoping you can help with that. >> Yeah, for sure. So you mentioned they
+want real time updates. What are they hoping to
+do with that information? >> Well, in the work we've done so
+far, they've been focused on better understanding the effectiveness
+of their marketing campaigns. As well as observing short and
+long term trends in product sales so they can time their campaigns better. We've also been working on a
+recommendation engine for the website that suggests products to customers when
+they're browsing or making a purchase. Interesting. So it sounds like maybe a few
+distinct use cases there. So right now you're providing
+them with dashboards and a recommendation engine that
+addresses some of these needs. Is that what you're doing? >> Well, yes and no. At the top level, the dashboards I'm
+providing show product sales by category and region over the past 30 days in
+aggregate with 30-day totals as well as timeline plots showing daily numbers. This was requested so they could see broadly what kind of trends
+are happening from region to region. They can also double click into any
+particular region to see a finer breakdown by individual product or on a finer time
+cadence like hourly instead of daily. But like I said, the data is
+typically at least two days old, so it's not showing current numbers. And then for the recommender,
+I'm just doing some analysis to determine which products have been
+most popular over the past week or so. And then passing those product ids to
+the software team so they can then serve recommendations of a few popular products
+to everyone browsing the website. So it's not really customized
+to individual customers yet, just showing popular products. I've currently been working on training
+a model to do personalized recommendations using a content filtering method,
+but haven't deployed anything yet. >> Okay, so it sounds like for the product recommendation system you
+might need more data for training. And then once you have a model that you're
+actually ready to deploy, you'll need some kind of system that serves user activity
+data from the sales platform to the model. And then passes the output product
+recommendations back to the platform to be shown to the user as
+they're browsing, is that right? >> Yes, that's the plan. So just like you might see on
+any e commerce website or app, as the user is browsing or
+checking out and making purchases. They will see other products recommended
+based on what they've been looking at or what they put in their carta. Okay, that makes sense. And then for the dashboards
+you're providing to marketing, you said that they want current data,
+not data that's like two days old. Do you have a sense of what actions
+marketing hopes to take based on current data that they can't do with the data
+that's maybe two days older or older? >> Well, they've talked about being able
+to target their ad campaigns based on current data. And I suppose that might mean looking at
+what customers are doing currently in terms of purchases or
+other activity on the sales platform. But I guess I'm not sure whether that
+means they need to know what customers are doing right this second or within the
+past hour or just more generally today and not yesterday. >> Okay, no worries. I'll see if I can follow up with the folks
+on the marketing side to get a better sense of what they're hoping to do. If I can get a handle on what action
+they plan to take based on the data, that'll help me zero in on exactly
+how it needs to be served up and how much latency they can
+tolerate in the system. >> Yeah, that makes sense. Let me know if there's anything else I
+can do to help out with all of this. >> Okay, great. Well, this has been really helpful. If I've understood correctly,
+then it sounds like what would really help you is if we could figure
+out a way to do more direct and timely ingestion of data from
+the database where sales are recorded. Then if we can figure out
+a better way to automate and orchestrate the transformation and serving
+of that data into the format you need for your dashboards and the recommender. Then we'd be heading in
+the right direction. Does that sound correct? >> Yes, definitely. That would be a massive help. If the ingestion and processing of
+the data could be handled automatically such that it's stored in
+a format that I need. That would make my life a lot easier and help me focus on the thing that I'm
+best at, which is analyzing data. Okay, great. >> Well, thanks, Colleen. And I think a good next step would
+be to check in with the folks in the marketing team to better
+understand their needs. >> Yeah, that sounds great. Thank you, Jeff. >> All right, thanks. Okay, well, that was fun. So that was an example of what an initial
+requirements gathering conversation might look like now. Of course, in the real world,
+a conversation like this might not be so brief or
+straightforward as we portrayed here, and each situation is going to be unique. Beyond that,
+there will be more conversations to have. But at this point you can already start
+thinking about things like what were the main takeaways there? How might you start to parse the
+information into actual requirements for the system you'll eventually build? Join me in the next video to look at the
+important components of the conversation we just had and what key information you
+can extract from a conversation like this.

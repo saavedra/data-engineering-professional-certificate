@@ -1,0 +1,31 @@
+Welcome to Week 2. This week, you'll dive deep into the data engineering life
+cycle and undercurrents, which we introduced
+in the previous week. As you saw in Week 1, the life cycle begins with data generation
+from source systems over here on the left, which is really a
+stage that happens before your job as a
+data engineer begins. Then we'll look at ingestion,
+transformation, storage, and serving of data for multiple use cases like
+analytics and machine learning. Or in simpler terms, we'll be looking at
+how in your job as a data engineer you'll work to get raw data
+from somewhere, turn it into something
+useful and then make it available for
+downstream use cases. In the second lesson
+of this week, we'll look at the undercurrents of the data engineering
+life cycle, security, data
+management, data ops, data architecture,
+orchestration, and software engineering. Now, just to be clear, I want to emphasize
+that this week, just like the previous
+week of materials, is more focused on a high
+level mental framework for data engineering
+than it is about actually building
+data infrastructure. This is because I believe
+it's really important to get that mental framework in place
+before you start building. This will make you
+more successful in all aspects of your work
+as a data engineer. But with that being
+said, this week isn't all about theory. At the end of the
+week, we'll look at how this mental framework comes together in practice
+on the AWS Cloud. In the lab activity, you'll be working with
+your first end to end Cloud data pipeline. Join me in the next
+video to begin by looking at data generation
+and source systems.

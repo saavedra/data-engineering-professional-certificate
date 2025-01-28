@@ -1,0 +1,99 @@
+In the previous video, you saw an example
+of what an initial requirements gathering conversation might look like between you,
+the data engineer, and one of your key stakeholders,
+a data scientist in this case. Now, I deliberately didn't give you a
+whole lot of direction on what exactly to be looking for in terms of
+takeaways from that conversation, but that's what we're going to do here. In this video, we'll take a closer
+look at each of the things the data scientist said,
+as well as the questions I ask them. And the goal here is a layout and
+approach you can use for conversations like these to extract
+the requirements for your data systems, as well as identify other
+stakeholders you'll need to talk to. In short, the key elements of any requirements
+gathering effort will be the following. First, learn what existing systems or
+solutions are in place to deliver the data your stakeholders need to accomplish their
+tasks, and also what the pain points or problems are with those systems. Next, learn what actions stakeholders plan
+to take based on the data you serve them. And after that, repeat what you learned
+back to your stakeholders to confirm that you understood everything correctly. And finally, identify any other
+stakeholders you'll need to talk to if you're still missing information on
+existing systems or planned actions. And so here I'd like to take a look at how
+each of these key elements requirements gathering came into play in our
+conversation with the data scientists. The first thing the data scientist said
+was that the marketing team needs real time analysis of product sales by region,
+but they are only getting a daily data dump from the software team to avoid
+compromising the production database. This is clearly a suboptimal solution, but
+as it happens, not using your production database for analytics or other projects
+is generally considered good practice. This is because if you're running complex
+queries against a production database at the same time you're writing new
+information to that database to record actual customer activity, it's possible
+to bring the whole system down, and that's not good. The data scientists also mentioned that
+sometimes they experience problems due to schema changes or
+other anomalies in the data. When it comes to data schema changes or
+other disruptions to your source system, you could be thinking about how to build
+in automatic checks on the data you're ingesting to ensure that it looks
+like everything meets expectations. But ideally, you would like to
+know about these changes or disruptions before they happen. You should communicate directly with
+the source system owners who are serving that data. And so at this point, after confirming
+what you learned about the existing solutions and pain points,
+you've also identified the need for further stakeholder conversations
+specifically, this is another part of the conversation you'll need to have
+with the software engineers who maintain the source system and
+database you'll be ingesting data from. In those conversations, you'll aim to
+understand what an ingestion solution might look like that is better
+than the daily data dumps, as well as what kind of disruptions or
+changes you can expect and how you might be given advanced notice
+of when to anticipate those changes. The next thing on the data scientist's
+mind was the cumbersome nature of data cleaning and processing. In some sense, the stakeholder need
+is clear right from the start, and it's really just for someone else, that
+someone else is you, the data engineer to automate the ingestion and transformation
+of data into the format they require. So in this case, you have
+identified a functional requirement in that the system needs to ingest,
+transform and serve the data in the format
+your data scientist needs. The non functional requirements for
+this aspect of your system might include things like a latency requirement
+about how fast the data needs to be made available relative to when
+it was recorded in the source system. And that brings us to another key piece
+of information that came up in our conversation on several occasions. The data scientist stated that
+the marketing team needs the data in real time. What you'll tend to find out in the real
+world is that people use terms like real time rather loosely. I've had clients who claim
+they needed real time information when they actually just needed
+a particular report on a monthly basis. In other cases,
+real-time might imply daily, hourly, or actual sub second latency in a system. So I want to highlight a key tactic in
+requirements gathering, which is to ask your stakeholders what action they plan
+to take based on the data you serve them. And I want to point out that asking
+what action they plan to take is not the same as asking what they need. Oftentimes, stakeholders will be inclined
+to tell you what they need directly and sometimes having done their own
+translation of their needs and the functional requirements of the system. Now, it's possible they did a fine job of
+this and have identified the right set of functional requirements, but it's critical
+that you first understand exactly what your stakeholder hopes to do with
+the data product you provide. You can then map their
+plans to their needs. In many cases,
+once you've understood their needs, you'll discover there are different or
+additional functional requirements they haven't yet identified, and getting
+aligned on those will be the next step. And so in this case asking what action the
+marketing team plans to take a help to get clarity on the end use cases of making
+decisions about marketing campaigns based on the analytics, dashboards and serving
+product recommendations in the platform. For the recommender system, it's clear
+that the product recommendations will need to be provided in near real-time,
+meaning probably seconds or less to customers browsing the platform,
+and so you can start thinking about functional and non-functional
+requirements for that system. For the dashboards on the other hand,
+it's not yet clear exactly what action
+the marketing team plans to take, and so talking to the marketing team to learn
+more about what they're hoping to do will be required to clarify what real-time
+means to them in that case. So there was a lot packed into that brief
+conversation we have the data scientist. And at this point you've learned about
+existing solutions and pain points, started to identify some of
+your system requirements and identified additional stakeholders
+you'll need to talk to, including the marketing team and
+the software engineering team. And so to recap, the key elements of
+any requirements gathering conversation are going to identify existing systems and
+pain points, ask what actions your stakeholders
+plan to take with the data, confirm what you've learned, and identify
+any additional stakeholders to talk to. You'll see more examples of each of
+these aspects of requirements gathering in the fourth and final week of this
+course, where we have those follow up conversations with
+additional stakeholders. And then once you have all your
+requirements in hand, it's time to choose the tools and technologies that
+will allow you to meet those requirements. Join me in the next video to take a closer
+look at how these pieces fit together within a framework that you can use to
+approach any data engineering project you work on.

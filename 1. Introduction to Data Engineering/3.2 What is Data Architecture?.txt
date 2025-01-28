@@ -1,0 +1,77 @@
+Before getting into the details
+of data architecture, I'd like to zoom out for a moment and
+look at how data architecture fits within the broader context of
+what's called enterprise architecture. Which can admittedly be a somewhat
+vague and abstract concept. In terms of a definition for enterprise
+architecture, there's no clear consensus out there and different groups
+have defined it differently. But here's a definition we settled on in
+the fundamentals of data engineering book. Enterprise architecture is the design
+of systems to support change in an enterprise, achieved by flexible and reversible decisions reached through
+a careful evaluation of trade-offs. Now, you might be thinking, hey,
+wait a minute, haven't we already seen this definition in the context
+of data architecture last week? And yeah, you'd be right. And in fact, the definition of data architecture that
+you saw last week was data architecture is the design of systems to support
+the evolving data needs of an enterprise. Achieved by flexible and reversible decisions reached through
+a careful evaluation of trade-offs. Given the similarity between
+these two definitions, you can see that data architecture
+is very well aligned with and fits within the context of
+enterprise architecture. In fact, enterprise architecture
+encompasses various domains, and you can think of these domains
+as including four main areas. The first is business architecture,
+which applies to the product or service strategy and
+business model of an enterprise. The second is application architecture,
+which describes the structure and interaction of key applications
+that serve business needs. Third, you have technical architecture,
+which relates to the software and hardware technology components that
+are required to support the deployment of business systems and applications. And finally, there's data architecture,
+which, as you've already seen, is all about supporting the evolving
+data needs of the enterprise. So you can think of data architecture as
+an element of enterprise architecture, and in this way you can start to see how
+your work as a data engineer ties in directly with the highest level goals and
+the structure of your organization. As the structure of an organization
+may change over time, this leads to another important concept,
+change management, which is right at the heart of
+enterprise and data architecture. You can expect the needs of your
+organization to be constantly evolving in your data architecture will
+need to adapt to those changes. Jeff Bezos, the former CEO of Amazon,
+is credited with the idea of one way and two way doors as it applies to any
+decision that is made in an organization. A one way door is a decision that
+is almost impossible to reverse. The door shuts and locks behind you,
+and there's no way to get back. As a simple example of this concept,
+you can think of it maybe in this way, say if you crack an egg to cook it,
+you can't change your mind later and uncrack the egg. So breaking an egg is
+a one way door decision. Or as this concept relates
+to an organization. Amazon, for example, could have
+decided at some point to sell AWS and all of its cloud services,
+or just shut it down. And after taking such an action,
+it would be nearly impossible for Amazon to rebuild a public cloud
+with the same market position. On the other hand, a two way door is
+an easily reversible decision, so you can walk through the door, and
+if you like what you see, you can proceed. Or if you don't like what you see,
+you can walk back through the door. For example, when it comes to choosing how
+you store your data in an object storage system like S three, you can choose
+from a range of storage classes based on your performance,
+data access, and cost requirements. An example of a two way door decision
+would be if you chose to store your data in the standard storage class in S three. Then later, if your storage needs change, you can transition to any
+other storage class for a fee. So this decision is reversible. Since the stakes attached to each two
+way door decision are typically low, organizations can easily make more of
+these types of reversible decisions, rapidly iterating and improving on how
+they collect, use, and store data. Flexible and reversible decision
+making is central to enterprise and data architecture. In aiming for two way door decisions
+wherever possible in your architecture, you'll be better able to handle change
+as it comes to your organization. If you find yourself faced with what
+looks like a one way door decision, see if you can break it down into
+a series of smaller decisions where each individual decision
+is a two way door. And so architecture is not simply
+about mapping out business IT or data processes and vaguely looking
+toward a distant utopian future. Architects need to be actively
+solving business problems and creating new opportunities. If you're thinking like an architect
+in your role as a data engineer, you'll build technical solutions that
+exist not just for their own sake, but in direct support of business goals. Next up, we'll be looking at
+the principles of good data architecture. But before we do that, I want to highlight
+a very interesting phenomenon known as Conway's law that affect
+the architecture of all data systems. The next video is optional, and I'm not
+going to test you on Conway's law, so if you want to skip ahead,
+that's perfectly fine. But I feel that I'm going to do you
+a disservice if I don't at least mention Conway's law in these courses, because I
+can guarantee that this will influence the types of systems that you build.

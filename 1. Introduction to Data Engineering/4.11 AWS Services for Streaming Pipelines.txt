@@ -1,0 +1,127 @@
+In the last video, you
+learned about some of the AWS services
+you have to choose from when it comes to
+building batch pipelines. In the lab this week, in
+addition to a batch component, your system will also have
+a streaming component. In this video, we'll look at
+streaming services on AWS. As you've learned from Joe, streaming data could
+be coming to you from a number of
+different sources. These could be IoT devices or click-stream data from a
+website or mobile app. Your streaming
+source could even be a database in the sense
+that you could be continuously
+streaming any changes or updates to the data in the database through
+a process called change data capture or CDC. And just like for
+batch data processing one way you could potentially
+ingest streaming data would be to spin up an
+EC2 instance and write some custom scripts
+to perform CDC or connect to whatever
+other streaming source. Then transform the data and set it downstream to
+wherever it needs to go. Just like with batch processing, this EC2-based
+approach means you'd be responsible for
+installing software, managing security, and
+all the complexity that comes with deploying
+a server on the Cloud. Following the same ideas we discussed with
+batch processing, you could also consider
+Lambda functions as a serverless option to create
+your own streaming system. But, again, this comes with writing custom code for
+whatever you need to do and the potential
+limitations of Lambda for your
+particular use case. On top of that, interacting
+with streaming sources can be more complex than
+running batch workloads. I can say that you
+probably shouldn't build your own custom streaming
+solutions with EC2 or Lambda. Unless you are 100% certain that your use case cannot
+be solved with existing open source
+or managed tools. Let's take a look at some of the AWS services that can
+support streaming workloads. First up is Amazon
+Kinesis Data Streams. This is a popular AWS service that enables real
+time data ingestion. The way it works
+is that you have data producers that
+are sending data to Kinesis Data Streams and this could be log data
+from web servers, data from IoT devices, or click stream data
+as a few examples. Kinesis itself is not picky about the type
+of data that you send. It's data agnostic. So you can send JSON, XML, structured or unstructured
+data to a data stream. The data gets posted to the
+stream by the producers, and then data is stored in Kinesis for a configurable
+amount of time. The default and minimum
+retention time is 24 hours, but it can also be extended. The stored data can then be pulled by consumers
+of the data stream. Multiple consumers can pull the same data and process
+it in different ways. It's common for
+Kinesis consumers to either take the data and
+place it somewhere else, such as a storage service
+or data warehouse, or consumers might be performing some real-time analysis of the data that is passing
+through the stream. These consumers could be
+software applications that are pulling data from
+the stream and processing it, and that application
+could be running on compute services
+like EC2 or Lambda. Apart from Kinesis, another option you have is Amazon Managed Streaming
+for Apache Kafka, otherwise known as MSK. MSK is a service that
+provides much of the same functionality
+as Kinesis Data Streams. Apache Kafka itself is an open
+source streaming platform, that is a popular choice for many different
+streaming use cases. MSK is a fully managed service that makes it easier to build and run applications that use Apache Kafka to process
+streaming data. MSK runs open-source
+versions of Kafka, which is useful because
+any existing applications, tooling, or plugins from the Apache Kafka
+community are supported. The way MSK works is that you first create an
+Apache Kafka cluster, and the MSK service
+manages the heavy lifting of provisioning and operating the nodes that run
+Kafka for you. This allows you to avoid that undifferentiated
+heavy lifting and focus more time on your
+customized application logic. Then you, as the user, interact with what's called
+the Kafka data plane that MSK manages for
+you to create topics, produce, and consume data. Data producers and
+data consumers then connect to the cluster to
+send and receive messages. Both Kinesis Data Streams and
+MSK can scale up to handle petabyte-level data
+volumes coming from multiple data sources
+with millisecond latency, which enables real-time
+processing and analytics. When it comes to choosing
+one versus the other, just like when it comes
+to choosing between similar tools for other
+aspects of your data systems, it will depend on your use case. But at a high level, you could think of this again as a trade-off between
+control and convenience. If you're brand new to data
+streaming architectures, Kinesis is often recommended for its relative user-friendliness and reduced
+operational overhead. On the other hand, if you're already running a Kafka cluster or maybe you have existing Kafka technical
+experience in-house, or if you're looking
+for a higher degree of flexibility and control, then MSK might be
+the better choice. With regard to the
+use case of reading the data from a stream and
+storing it somewhere else, the next service I
+want to tell you about is Amazon Data Firehose. For a little context on why the Data Firehose service
+exists in the first place, it turns out that
+Kinesis came first as a service for
+streaming data systems. AWS realized that a lot of
+users of Kinesis Data Streams, we're simply taking
+the stream data and storing it in S3
+or somewhere else. But to work with
+Kinesis in this way, you need to write
+custom code that creates the connection
+with the data stream, reads the stream, chunks the
+data, and then stores it. To make that whole
+process easier, AWS created the Amazon
+Data Firehose service, which can integrate with
+Kinesis Data Streams and is designed to
+allow you to get data from a stream
+and store it in a destination like
+S3 or Redshift, or send it to HTTP endpoints or third party service providers
+such as Data Dog or Splunk. The main takeaway
+with Data Firehose is that it helps you more
+easily read data from a stream and move it to storage
+without needing to write custom code or create any difficult
+integrations yourself. Beyond Kinesis Data Streams, Data Firehose also
+integrates with more than 20 other ADS sources
+to ingest streaming data, including MSK and others. As with all the other
+ADS Cloud topics we've discussed in
+this course so far, there is a lot more
+to know when it comes to streaming resources
+and services. But I think you have
+what you need now, so it's time to get hands on with these services yourself. In the upcoming quiz, you will determine which services
+to use for the batch and streaming components of
+the data pipeline for the product
+recommendation system you've been looking at
+throughout this course. Then after that, Joe will walk you through the lab
+exercise for this week, where you'll implement this
+batch and streaming pipeline. Have fun, and I'll see
+you in the next course.

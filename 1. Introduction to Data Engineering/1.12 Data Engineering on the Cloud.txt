@@ -1,0 +1,62 @@
+This specialization is all about data engineering and so far in this first
+week of materials, we stayed pretty high level. We've looked at the overall data engineering life cycle
+and undercurrents, some of the history
+of data engineering, as well as what it
+means to work with stakeholders and deliver
+value for your organization. Now, like I said, right up
+at the top of this week, I realized this
+might not have been exactly what you expected when you signed up
+for these courses. But like I said before, that high level mental
+framework and way of thinking like a data engineer is important for
+everything that follows. Is something we'll be revisiting throughout
+these courses. As a data engineer, the actual set of tools
+and technologies you work with could be quite different from one
+company to the next. As I talked about in the video on the history of
+data engineering, with the advent of
+the public Cloud and a proliferation of open source and proprietary tools available, companies of all sizes and
+across all industries now have access to the same set of high performance tools
+and technologies. Many companies today
+are choosing to build their data systems
+entirely on the Cloud. But not that long ago, the only option was for
+companies to build and to maintain their own data
+infrastructure in house, otherwise known as
+on premises systems. Today, there are still
+companies that maintain some or all of their data
+infrastructure on premises, and in certain cases
+that could be due to regulatory constraints or just that the company has
+some legacy systems, they prefer to
+maintain on premises. As a data engineer out
+in the wild today, it's possible that you
+could be at a company that has some on premises systems, or you may even be tasked with migrating and on premise
+system to the Cloud. It's becoming increasingly
+likely, however, that you'll work
+as a data engineer will take place
+exclusively on the Cloud. Although AWS was the first
+popular public Cloud and remains the most
+widely used today, you may encounter other cloud providers depending
+on where you work, such as Google Cloud Platform, Microsoft, Azure, among others. In the specialization,
+we won't dwell on the nuances or
+considerations you might encounter if you
+need to work with an on premise system or migrate from on
+premises to the Cloud. Instead, we'll be taking a Cloud first approach
+to prepare you for the scenarios you're most likely to encounter
+as a data engineer. We've partnered with AWS in the development
+of these courses, and so in the lab exercise, you'll be building
+data pipelines and architectures on the AWS Cloud, using the same tools and technologies that
+are being used by thousands of companies worldwide in their own data
+infrastructure. By the end of this first course, you'll be able to take a set of technical requirements
+for your system, like we talked about
+in the last lesson and stand up a data pipeline with the appropriate set
+of Cloud based tools and technologies to meet
+those requirements. The AWS Cloud comprises an expansive set of
+resources and tools. In this specialization, my
+aim is not to teach you all there is to know about data
+engineering on AWS, instead, we'll be taking a
+just in time approach where you'll learn how to use specific tools for each lab directly as
+you encounter them. In this way, there's no
+prerequisite knowledge of Cloud computing required to be successful in these courses. With that being said, however, having some broader familiarity with Cloud computing basics and terminology will help you build context as you proceed
+through these courses. To introduce the tools
+and resources of AWS, I'll be joined by Morgan Willis, who is a principal Cloud
+technologist specializing in teaching people how to be
+successful on the AWS Cloud. Join me in the next
+video to meet Morgan.

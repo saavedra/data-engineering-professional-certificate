@@ -1,0 +1,106 @@
+Throughout these
+courses, I'd like you to picture yourself in a
+particular scenario. You've just been hired
+as a data engineer at an exciting new company. Let's say in the commerce space. First, congratulations
+on the new job. In fact, this company first hired a data scientists
+because they were interested in doing analytics to learn more about their
+customer interests, behaviors, and
+purchasing habits. They also wanted to develop
+machine learning tools using large language
+models to automate various aspects of
+customer support. However, when this poor data
+scientists got started, they discovered that none of the data infrastructure
+they needed to tackle the analytics or machine learning tasks
+even existed yet. They quickly started
+studying up on data architectures
+and systems to try to help build the
+infrastructure they needed. But also explain to those
+in leadership that building data infrastructure was not their forte and
+optimize for success, the company should also
+hire a data engineer. That's where you come in. Now, this might sound a
+really silly story, but I can't tell you how
+many times I've seen this exact scenario
+played out in real life. In fact, I was one of
+those data scientists who got hired by a company just
+like the one I described. I found myself thrown into a
+situation where I needed to quickly learn how to build various aspects of
+data infrastructure, just to get the company's data and systems into a
+state where I could begin working on the
+data science projects, I'd been hired to do. That was a while ago,
+many years ago, actually, and back then, the role of data engineer didn't
+even exist yet. Maybe the company that hired
+me as a data scientist could be forgiven for not knowing
+what they really needed. And as I dove into designing
+and building data systems, I was both overwhelmed and excited by what I was learning. I discovered that the
+set of core skills to build robust data infrastructures
+was largely the same, no matter what sort of downstream
+tasks you're trying to accomplish when it
+comes to things like data science and
+machine learning, as well as other
+things like delivering embedded analytics to
+users within applications. Over time, that
+core set of skills has come to be known
+as data engineering. Back to our scenario here. You've just been hired
+as a data engineer, and your company is
+looking for you to build data systems that can
+deliver on their goals. To accomplish this, you'll need to be able to
+translate the needs of the stakeholders in your company into system requirements and then choose the
+right set of tools and technologies to
+build that system. Now, that might sound
+relatively straightforward. But all too often, I've seen data engineers dive straight into the
+implementation of a system, choosing tools and
+technologies before they deeply understood
+how their systems will deliver value
+for the organization. Taking such an approach
+can lead to disaster, like wasting time,
+resources at your company, and could even cost your job. Rather than diving straight into implementation here,
+in these courses, particularly in
+this first course, we'll be spending
+a fair amount of time looking at the big picture. Talking about a set of
+principles that will apply to all of your data
+engineering projects. Informing that mental
+framework for building successful data systems,
+and don't worry. We'll also get into the
+implementation side of things. The lab exercises
+in these courses, you'll be working with cutting edge tools and
+technologies to build out data systems on the AWS
+Cloud. Here's the plan. In the first week of materials, we'll be taking a
+high level look at the field of
+data engineering. We'll start with the
+data engineering life cycle and a bit of history, as well as where data
+engineering sits within the context of other roles and stakeholders
+in your company. After that, we'll take a
+look at what it means to add value to the business
+as a data engineer, and then we'll discuss how to gather stakeholder needs and translate those into requirements
+for your data systems, which is a theme, we'll be revisiting throughout
+these courses. Now, I want to just
+pause for a moment. Be super clear with you right up front as we start
+this first week. You're not going to be
+writing any code this week. You're not going to be using
+any Cloud tools this week. I said, this week is all about how to think
+like a data engineer. It's probably going to feel a little different from
+what you might have been expecting signing
+up for a course like this, but trust me on this one. Being able to think
+like a data engineer is really step one to being
+successful in this field. That's why it's a focus of
+the first week of materials. With the right amount of high level knowledge and mindset. All the rest of successful data engineering
+becomes possible. Without it, really no amount of technical know how or
+coding skills can save you. And like I said before, we will definitely
+be going deep on the technical side throughout
+the specialization as well. Don't worry that's coming. In the second week
+of this course, we'll take a deep
+dive into each of the stages of the data
+engineering life cycle. That second week of materials also contains
+a lot of theory and high level orientation
+to a field of data engineering.
+Brace yourself. We'll be building on
+your knowledge of how to think like a data
+engineer in week 2. Then you'll get hands
+on practice with Cloud data pipelines on AWS in the lab at
+the end of the week. In Week three, we'll focus
+on the principles of good data architecture,
+and in week 4, we'll pull it all together
+to design and build out a data architecture that delivers value based
+on sake holders needs. Join me in the next video
+to get started with a closer look at the Data
+Engineering life cycle.

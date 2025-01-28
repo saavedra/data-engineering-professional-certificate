@@ -1,0 +1,386 @@
+WEBVTT
+
+1
+00:00:02.160 --> 00:00:07.154
+So I've got a very special guest for
+you, my co author and best friend,
+
+2
+00:00:07.154 --> 00:00:08.278
+Matt Housley.
+
+3
+00:00:08.278 --> 00:00:09.014
+It's good to see you.
+
+4
+00:00:09.014 --> 00:00:10.022
+>> It's great to be here, Joe.
+
+5
+00:00:10.022 --> 00:00:11.414
+>> Thank you.
+>> Thank you for the invitation.
+
+6
+00:00:11.414 --> 00:00:12.278
+>> Absolutely.
+
+7
+00:00:12.278 --> 00:00:14.340
+>> So yeah, we wrote this book together,
+
+8
+00:00:14.340 --> 00:00:17.950
+and that was kind of the starting
+point ultimately for this course.
+
+9
+00:00:17.950 --> 00:00:20.822
+Maybe you could talk a bit about
+what motivated us on the book.
+
+10
+00:00:20.822 --> 00:00:25.016
+>> Yeah.
+So, fundamentals of data engineering was
+
+11
+00:00:25.016 --> 00:00:30.029
+written from a place of noticing
+a gap in the book space and
+
+12
+00:00:30.029 --> 00:00:33.360
+the education of data engineering.
+
+13
+00:00:33.360 --> 00:00:38.652
+The materials were largely focused on
+tools and technologies and didn't really
+
+14
+00:00:38.652 --> 00:00:44.173
+take a step back and attempt to define the
+field of data engineering itself, the more
+
+15
+00:00:44.173 --> 00:00:49.288
+provide a mental framework for how to
+operate and think like a data engineer.
+
+16
+00:00:49.288 --> 00:00:54.858
+And so, really, that's the perspective
+that we entered into writing the book
+
+17
+00:00:54.858 --> 00:00:59.931
+from, is that we didn't really want
+to write a tutorial on technology,
+
+18
+00:00:59.931 --> 00:01:03.422
+X, Y, or Z or cloud provider ABC or
+whatever, but
+
+19
+00:01:03.422 --> 00:01:08.732
+really provide a first principles look
+at the field of data engineering.
+
+20
+00:01:08.732 --> 00:01:13.662
+>> Yeah, fundamentally, I think our
+starting audience, our core audience for
+
+21
+00:01:13.662 --> 00:01:17.023
+the book was people who had
+a technical background but
+
+22
+00:01:17.023 --> 00:01:19.580
+wanted to move into data engineering.
+
+23
+00:01:19.580 --> 00:01:22.108
+We also kind of had various
+secondary audiences.
+
+24
+00:01:22.108 --> 00:01:25.986
+So, for example, if you were a product
+manager who was somewhat technical and
+
+25
+00:01:25.986 --> 00:01:29.511
+needed to work a lot with data engineers
+on data products or data that was
+
+26
+00:01:29.511 --> 00:01:33.630
+embedded into your application, we also
+thought this book would help you a lot.
+
+27
+00:01:33.630 --> 00:01:36.718
+Maybe not every piece of it, but
+you would have a lot to learn there.
+
+28
+00:01:36.718 --> 00:01:40.350
+And I think the idea that the audience for
+this course is very similar.
+
+29
+00:01:40.350 --> 00:01:44.383
+People moving into data engineering, but
+also people who can benefit just from
+
+30
+00:01:44.383 --> 00:01:48.390
+a better understanding of the concepts and
+a little bit of hands on exposure.
+
+31
+00:01:48.390 --> 00:01:53.044
+>> So we talked about the book, and
+the learner's taking a course, obviously.
+
+32
+00:01:53.044 --> 00:01:55.956
+So how do these things tie together?
+
+33
+00:01:55.956 --> 00:02:01.188
+I think that fundamentally, the book and
+this course complement each other.
+
+34
+00:02:01.188 --> 00:02:05.129
+You've already learned about
+the data engineering lifecycle and
+
+35
+00:02:05.129 --> 00:02:10.051
+the undercurrents, but this course allows
+you to apply that mental framework with
+
+36
+00:02:10.051 --> 00:02:14.340
+hands on examples that you're likely
+to encounter in the real world.
+
+37
+00:02:14.340 --> 00:02:20.058
+And so for this course, we're using tools
+and technologies and a very popular cloud,
+
+38
+00:02:20.058 --> 00:02:24.443
+AWS that will give you the hands
+on experience to really tie again,
+
+39
+00:02:24.443 --> 00:02:29.299
+the concepts that you learned in the book
+with a practical know how of hands
+
+40
+00:02:29.299 --> 00:02:30.942
+on labs and practice.
+
+41
+00:02:30.942 --> 00:02:36.470
+So we often get questions about
+how to get into data engineering.
+
+42
+00:02:36.470 --> 00:02:39.183
+Maybe you can talk a little
+bit about some advice for
+
+43
+00:02:39.183 --> 00:02:41.750
+people who want to get
+into data engineering.
+
+44
+00:02:41.750 --> 00:02:43.862
+>> Yeah so I think, first of all,
+
+45
+00:02:43.862 --> 00:02:47.848
+it's very helpful to learn
+just core data at concepts.
+
+46
+00:02:47.848 --> 00:02:51.698
+I think we frequently find that
+even if you're coming from like,
+
+47
+00:02:51.698 --> 00:02:56.248
+a software development background,
+you may not have enough experience with
+
+48
+00:02:56.248 --> 00:03:00.064
+kind of how analytics data is
+used to immediately jump into it.
+
+49
+00:03:00.064 --> 00:03:03.210
+And so it's helpful to start with
+just playing around with data,
+
+50
+00:03:03.210 --> 00:03:07.271
+even in something like Microsoft Excel, so
+you know what tabular data looks like and
+
+51
+00:03:07.271 --> 00:03:09.558
+what kinds of things you
+consume with data, and
+
+52
+00:03:09.558 --> 00:03:12.280
+then you can sort of expand
+the circle from there.
+
+53
+00:03:12.280 --> 00:03:15.615
+I think one thing we always want
+to emphasize is that getting into
+
+54
+00:03:15.615 --> 00:03:17.962
+data engineering, getting your first job,
+
+55
+00:03:17.962 --> 00:03:21.012
+is not just about learning
+a particular stack of tools.
+
+56
+00:03:21.012 --> 00:03:24.987
+Rather, in those early stages,
+it's good to get experience with a lot of
+
+57
+00:03:24.987 --> 00:03:27.836
+different tools to develop
+general competence.
+
+58
+00:03:27.836 --> 00:03:31.420
+And then when you start getting into
+roles, you're going to really focus down
+
+59
+00:03:31.420 --> 00:03:34.788
+on the tech stack within the company
+where you're working, right?
+
+60
+00:03:34.788 --> 00:03:38.896
+>> Yeah, and I think that's where a book
+like fundamentals of data engineering
+
+61
+00:03:38.896 --> 00:03:43.255
+really helps, is it provides you with the
+mental framework to start thinking like
+
+62
+00:03:43.255 --> 00:03:44.348
+a data engineer.
+
+63
+00:03:44.348 --> 00:03:49.700
+And when you have that mental framework,
+then you can basically put whatever
+
+64
+00:03:49.700 --> 00:03:55.400
+tools into the proper buckets and you'll
+be able to function as a data engineer.
+
+65
+00:03:55.400 --> 00:03:59.592
+Well, Matt, this has been a great
+discussion about the book and the course.
+
+66
+00:03:59.592 --> 00:04:01.271
+Maybe if you're up for it,
+
+67
+00:04:01.271 --> 00:04:05.067
+we can do a mock conversation where
+I will be a data engineer and
+
+68
+00:04:05.067 --> 00:04:09.666
+we're going to talk to you, who is going
+to play the role of a chief technology
+
+69
+00:04:09.666 --> 00:04:14.706
+officer at this fictitious e commerce
+company that I've been hired to work at.
+
+70
+00:04:14.706 --> 00:04:18.703
+>> Joe and I, running ternary data
+together and doing consulting,
+
+71
+00:04:18.703 --> 00:04:23.935
+had the privilege of working with a lot of
+different companies from various domains,
+
+72
+00:04:23.935 --> 00:04:28.805
+ranging from technology companies to
+operational and logistics companies and
+
+73
+00:04:28.805 --> 00:04:31.929
+in scale,
+all the way down to ten person startups,
+
+74
+00:04:31.929 --> 00:04:35.490
+all the way up to like big
+multinational enterprises.
+
+75
+00:04:35.490 --> 00:04:39.808
+And so in that process, we learned a lot
+about the kinds of things that sea level
+
+76
+00:04:39.808 --> 00:04:44.522
+executives in general and chief technology
+officers specifically care about when it
+
+77
+00:04:44.522 --> 00:04:47.296
+comes to engineering and
+when it comes to data.
+
+78
+00:04:47.296 --> 00:04:48.304
+>> Well, thanks Matt.
+
+79
+00:04:48.304 --> 00:04:52.053
+Why don't we jump into the mock
+conversation with the chief technology
+
+80
+00:04:52.053 --> 00:04:54.000
+officer and me, the data engineer?

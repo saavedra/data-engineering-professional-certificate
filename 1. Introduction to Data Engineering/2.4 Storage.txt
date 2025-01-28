@@ -1,0 +1,129 @@
+I'd like you to
+think for a moment about all the different ways you interact with data storage
+systems on a daily basis. On your laptop, for example, you might create
+or delete files, or move files between
+different folders. Doing this, you're
+changing how things are stored on your hard disk
+or solid state drive. When you open applications, you're loading them into
+random access memory or RAM, which is simply another type of storage that allows
+for faster access, or you might download new
+files or applications from the Internet or have some of your files automatically
+backed up to cloud storage. With your smartphone as well, you might be sending
+or receiving messages or
+interacting with apps, effectively moving
+data around between different storage components on your device as well
+as in the Cloud. With almost any action you take on a digital device or online, you're interacting with
+data storage systems, and you might run
+into the limits of the storage systems like
+running out of space to store pictures on your phone or attempting to send
+files that are too large. The function, performance,
+and limitations you encounter will have a lot to do with how those
+systems are set up. Similarly, in your work as a data engineer, the
+function, performance, and limitations of the systems
+you build will have a lot to do with the storage solutions you choose to support
+those systems. To begin with, let's
+take a look at some of the raw hardware
+ingredients of storage. In your day to day life, you've probably
+become familiar with various forms of
+solid sate storage, like flash memory cards
+or solid Sate drives, your laptop or smartphone. By contrast, you probably haven't read data from
+a floppy disk recently. You could be forgiven for thinking that the
+world has moved on from magnetic disks as a
+data storage solution. However, the truth is
+that magnetic disks still form the backbone of modern
+day storage systems, and that's primarily because of the low cost of disk storage. At the time of this recording, disc storage is about 2-3 times cheaper than
+solid state storage. RAM, commonly
+referred to as memory is another form of physical storage you might
+be familiar with. RAM offers much faster
+read and write speeds and solid state drives or discs, making it a critical
+component of many applications
+and architectures. However, RAM storage
+could be 30-50 times more expensive than
+solid state storage. It's also volatile in the sense that if your
+system loses power, most of the time, depending
+on the type of ram you use, memory is lost instantly. In most modern architectures, data will pass through
+magnetic storage, solid state drives and
+memory as it works its way through the various
+processing phases of [inaudible] pipeline. However, the physical
+components of storage are just one aspect of how data storage is implemented
+throughout your architecture. Modern and Cloud data
+storage systems are commonly distributed across multiple
+clusters and data centers. This means that things
+like networking, CPU, serialization, compression,
+and caching are all critical raw ingredients for storing data in
+modern data systems. Don't worry about
+it if you aren't familiar with all the
+things I just mentioned. We'll get more into
+the details of each of these elements of storage and the third course of
+the specialization. As a data engineer,
+you typically won't be responsible for managing
+the granular details of how your data moves
+and is stored across a network of data centers and
+physical storage devices. Instead, you'll work with
+storage systems like database management systems or object storage platforms
+like Amazon 3. Depending on the requirements
+for your architecture, you might also be working with systems like Apache
+Iceberg or Hoody, cache and memory based
+storage systems. Or streaming storage. All of these data storage
+systems are built on top of the physical and other
+wrong ingredients of storage that exist inside
+servers and clusters, allowing these
+systems to ingest and retrieve data using
+different access protocols. Finally, in your work
+as a data engineer, it's likely that you will not only work with individual
+storage systems, but combinations
+of storage systems arranged into storage
+abstractions, like a data warehouse,
+a data lake, or the more recent combination
+of these concepts, the data lake house. With the storage
+abstraction tools, rather than worrying
+about the details of how the underlying
+components are arranged, you'll choose various
+configuration parameters that
+allow you to meet your system requirements
+in terms of latency, scalability, and cost. If you were to think about
+storage as a hierarchy, how would you arrange the
+different aspects of storage? Well, at the bottom, you have the raw ingredients
+of data storage, including the various physical
+components like disc, RAM, and solid state storage, as well as the
+various non physical raw ingredients of storage, like networking
+and serialization. Then on top of that, you have storage systems that are built from these raw ingredients, and these include
+database systems, object storage, and much more. Then finally, at the
+top of the hierarchy, you have storage abstractions, which are combinations of storage systems that
+allow you to achieve your high level data
+storage needs without worrying about as many of
+the low level details. As a data engineer, it's entirely possible that
+you will spend much of your time operating at or near the top of
+this hierarchy, meaning that you
+won't be required to think about the
+details of exactly how your data is moving between different storage
+components and systems. However, you will be most
+effective in your work. If you take the
+time to understand the inner workings
+capabilities and limitations of your
+entire storage solutions right down to the
+wrong ingredients. The truth is that many practicing
+data engineers today do not deeply understand
+the details of the storage
+systems they build. This leads to
+unfortunate consequences when it comes to things
+like performance and cost. As it happens, I
+was consulting for a team once that failed to
+consider these details. They needed to move a large data set into their data warehouse, and they unwittingly chose
+to use an approach of doing direct row inserts for each
+individual row of data, meaning they were
+ingesting and writing one row at a time into
+the data warehouse. This turned out to not
+only be very slow, but also very expensive, since direct row inserts are generally charged on
+a per usage basis. In the end, they
+discovered their error and moved to a bulk
+congestion approach, but only after they had
+wasted significant time and burned through half
+their annual data warehousing budget in
+the span of a week. Anyhow, it'll be to
+your advantage to be storage savvy as
+a data engineer. That's why we'll be
+exploring the details and implications of various
+storage solutions throughout these courses. Next up, we'll look
+at the next stage of the data engineering life
+cycle, data transformation.

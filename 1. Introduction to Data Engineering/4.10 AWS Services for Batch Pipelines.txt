@@ -1,0 +1,154 @@
+You've talked with
+stakeholders and gathered your system
+requirements. Now it's time to translate
+those requirements into tool and technology
+choices for your system. There are many ways to combine different Cloud
+tools and services to get our two form solutions. In the process of converting system requirements to
+actual data systems, you need to be familiar with what different services
+it can be used for. I think Joe actually illustrates this point well in his
+book with the example of choosing a vehicle
+for the purpose of traveling from one
+place to another. Imagine for a moment, if instead of a data system, you were tasked with solving the problem of transporting all of the members of your data team from one place to another. Which of these two options
+would be the best choice? So first, you have a jumbo jet which provides a range of
+10,000 nautical miles, top speed of 1,100
+kilometers per hour, capacity for 250
+plus passengers, and a cost of $225,000,000. And next, you have
+a Tesla model S with a range of 360 kilometers, top speed of 320
+kilometers per hour. Room for four passengers and
+a cost of around $70,000. Which of these vehicles would you choose to
+transport your team? Well, that's pretty clearly
+a ridiculous question. Of course, you
+would need to have a clear sense of
+your requirements. In this case, like,
+where do you need to go? If it's New York to Paris, maybe you do need the plane. Also, how big is your team? If instead, you're only going from New York to Boston
+with four people, maybe the Tesla would work, but what if you're in a hurry? Do you need a
+helicopter or if you're on a tight budget
+maybe four bicycles. Well, I think you get the point. In addition to requirements
+for your system, you need to be familiar with the technologies you
+have to choose from, what they can be used for, and how you can combine them
+to do what you need to do. So for the data system you'll
+be working with this week, it looks like
+there's going to be a batch component and
+a streaming component. In this video, I'll
+walk you through the basics for some
+of the AWS services that can support
+batch workloads on AWS and then in the next video, we'll look at AWS services that can support
+streaming workloads. As you saw last week, a common approach to batch data processing is what's known as an extract transform
+load or ETL pipeline. In this week's exercise, you'll need to ingest data
+from a source system, apply some
+transformations to get it into the format that your
+data scientists needs, then load it into storage and
+provide them access to it. So in this case, the ETL
+paradigm seems like a fit. The data you'll be
+ingesting is tabular data. So let's assume that the source system you'll
+be working with is Amazon Relational Database
+Service or ARDS for short. As Joe mentioned
+earlier in the course, databases are a very
+common source system you'll be working with
+as a data engineer. And in general, you aren't in control of
+the source system. So we won't spend time here on comparing different source
+systems for tabular data. Instead, we'll assume
+the choices you need to make are in the
+downstream components. For the next steps of
+ingestion and transformation, there are a number of different approaches
+you could take. For example, you
+could simply spin up an EC2 instance and write a bunch of scripts to
+connect to the database. Ingest and transform the data, then send it onto
+storage somewhere. This could certainly work,
+but keep in mind what Joe said about avoiding
+undifferentiated heavy lifting. With an EC two based approach, you'd be responsible for
+installing software, managing security, and
+all the complexity that comes with deploying
+a server on the Cloud. So in this case, creating
+your own custom solution for a relatively straightforward
+ETL pipeline might not be the best
+use of your time. In the comparison of serverless, traditional server, and
+container options for services, Joe's recommendation was to look at serverless tools first, and then, if you can't
+get what you need, consider container
+and server options. I would agree with that advice. And so let's take a look at the serverless options
+you have in this case. AWS Lambda was one
+of the first and remains one of the most popular
+serverless tools on AWS. With Lambda functions, you can have code run in response to a trigger or event and for
+your ETL pipeline this week, you could certainly
+consider using a Lambda function to extract
+data from the source system, apply transformations,
+and send it onto storage. However, Lambda functions
+come with limitations. Things like a 15 minute timeout for each function call and limitations around memory and CPU allocation for each
+function among others, which might mean you need
+to break up your task and do smaller chunks to stay
+within these limitations. Beyond that, writing
+Lambda functions requires you to write custom
+code for your use case, which in this case, again, might not be the best
+use of your time. In terms of serverless
+tools that are specifically for batch
+processing of data, there are two services
+I'd like to talk about. These are Amazon Glue ETL
+and Amazon EMR serverless. In some sense, you could say that there is
+a fair amount of overlap between the things these two services
+can be used for. And really, it may come
+down to the nuances of your specific project that determine which tool can
+best serve your needs. But at a high level,
+the difference between the two comes down to the trade offs between
+control versus convenience. Simply put, EMR serverless gives you more control
+over what you can do, while Glue ETL provides a
+more convenient experience. But let's dig into the details of it so you can see
+what I mean by that. EMR was designed as a big
+data tool that supports a wide range of frameworks like Apache Spark and Apache HIVE. So if you're part of a team doing petabyte scale analytics, maybe using Hadoop or requiring the flexibility to incorporate your own custom components, then EMR or EMR serverless
+might be the right choice. Glue ETL can also handle
+big data workloads, but the real advantages are the additional features
+you have access to. For example, when you
+connect to a source system, Glue uses something
+called crawlers, which automatically
+discover and classify data creating metadata
+in the process, including things like table
+definitions and schemas. This metadata is then used to populate the Glue data catalog, which is a central repository containing information about
+all of your data assets. With this information
+about your data now in your data catalog, you can use the Glue
+Visual ETL tool to design your pipeline using
+a graphical interface in the AWS management
+console that will automatically generate
+the Spark code you need to run
+in your pipeline. When you run your pipeline, the servers will maintain the Glue data catalog to track the transformations
+you apply, and that catalog can
+be used downstream to more easily integrate
+with other AWS services. There are other options you
+could consider for building the ingestion and
+transformation portion of your ETL pipeline on AWS, but those are the main options I wanted
+to share with you. In the reading item
+after this video, you'll find more details
+about the services we've touched on here,
+as well as others. When it comes to the
+storage and serving aspects of the batch pipeline you're working with this week, your choice would
+depend mainly on what downstream use
+case you're serving. For example, if you're ingesting
+normalized tabular data, then applying transformations to model it in a star
+schema for analytics, then one option you
+could choose would be to store and serve it in
+another RDS instance. Or if you wanted to run
+complex analytical queries on massive datasets
+and take advantage of other features that
+data warehouses offer, you could choose to store and serve the data in
+Amazon Redshift. Which is a powerful data
+warehouse solution, albeit at a significantly
+higher cost than RDS. This week, you'll be serving
+a machine learning use case, where the data will be used for training a recommender model. When your downstream
+data consumer is another technical
+data professional who's planning to
+manipulate the data and incorporate it into
+their own systems, oftentimes, the best and
+cheapest storage and serving option is object
+storage on Amazon S3. Out in the real world for
+data systems built on AWS, it's relatively common for
+S3 to serve as a sort of staging area like this
+because S3 is flexible, scalable, and relatively
+cost effective. It allows you to store
+virtually any kind of data that easily integrates
+with other AWS services. In S3, you store
+data in buckets, which are containers
+for objects. When building data pipelines, you may have multiple S3 buckets
+that are used throughout different stages
+of your pipeline depending on the task at hand. Well, I could say a lot more about all the services
+we've looked at here. But at this point, I think
+you've got what you need in terms of information for
+this week's exercise. In the next video, we'll take a look at streaming
+tools. I'll see you there.

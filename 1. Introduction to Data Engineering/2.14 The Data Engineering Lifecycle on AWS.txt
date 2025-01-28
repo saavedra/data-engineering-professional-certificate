@@ -1,0 +1,69 @@
+Hi again. I hope you've been enjoying the lesson so far on the data engineering lifecycle and
+undercurrents. I'm excited to share with you how these
+concepts come to life with tools and technologies on the AWS cloud. In this video, I'll step through each
+of the stages of the data engineering lifecycle, as well as the undercurrents
+that Joe has presented so far, and connect them to these specific cloud tools you'll
+be using to build your data systems. When it comes to source systems on AWS,
+as Joe mentioned previously, the most common source systems
+you'll interact with are databases. And so in several labs in these courses,
+including the one this week, you'll be working with Amazon Relational
+Database Service, or RDS as its called. RDS is a service that provisions
+database instances with the relational database engine of your choice,
+like MySQL or PostgresSQL. RDS simplifies the operational overhead
+involved with provisioning and hosting a relational database, as well as taking
+care of tasks like patching and upgrading. In the next course, you'll also
+be working with Amazon DynamoDB, which is a serverless
+NoSQL database option. With DynamoDB, you create
+standalone tables, and these tables are virtually unlimited in their total
+size across all items in the table. DynamoDB has a flexible schema and
+is best suited for applications that require low-latency
+access to large volumes of data, such as gaming, IoT, mobile apps,
+and real-time analytics, where the data model can evolve over time
+without the need for complex migrations. In terms of streaming sources,
+in the last week of this course, you'll get a chance to work with
+Amazon Kinesis Data Streams that set up as a source system streaming real-time user
+activities from a sales platform blog. And although you won't be using
+message queues as sources in the labs, you might find yourself using something
+like Amazon Simple Queue Service, or SQS, to handle messages when building your own
+data pipelines outside of these courses. Another popular option for streaming
+source systems is Apache Kafka, which is an open-source streaming platform that
+you can either implement on your own or use Amazon's Managed Streaming for
+Kafka, or MSK, service, which makes it easier
+to run Kafka workloads on AWS. Because the underlying
+infrastructure is managed for you. You won't be using Kafka in the labs, but you will learn the details
+of Kafka in course two. When it comes to ingestion,
+if you're ingesting from a database, you might use Amazon's Database Migration
+Service, otherwise known as DMS. With DMS, you can migrate and replicate data from a source to
+a target in an automated way. But for the labs in these courses, you
+will mostly use the AWS Glue ETL service, which offers features that support
+data integration processes. And when it comes to ingesting
+data from a streaming source, you'll use Amazon Kinesis Data Streams and
+Amazon Data Firehose in the labs. But out in the wild, you could use one
+of the other streaming ingestion tools that I mentioned earlier,
+like SQS, Kafka, or others. With cloud storage, you'll get practice
+using traditional data warehouse options, including Amazon Redshift as
+well as object storage for a data lake on Amazon Simple Storage
+Service, which is known as S3 for short. We'll also look at how you can combine
+services into what's known as a lakehouse arrangement for seamless access to
+both the structured data in your data warehouse and unstructured data
+in an object storage data lake. For the transformation
+stage in these courses, you'll be working with AWS Glue as well as
+Apache Spark and DBT, which are tools that you can use in combination with Glue or
+as alternatives, depending on your needs. When it comes to serving data, we'll be
+looking at the two main potential use cases, which are, first,
+the business intelligence or analytics use case, and second,
+an AI or machine learning use case. For analytics, you'll use tools
+like Amazon, Athena or Redshift for querying structured and unstructured data. You'll also get some experience working
+with a dashboard in a Jupyter Notebook in this week's lab. And depending on the company and team you
+work with, you might also use dashboard tools like Amazon QuickSight as well
+as Apache Superset and Metabase, both of which are open-source options. For the AI and machine learning use cases,
+you'll serve batch data for model training, and
+work with some vector database options for serving data for product recommenders,
+and use with large language models. It's important to keep in mind that for
+each stage of the data engineering lifecycle, there are numerous other
+open source and managed service options. But I wanted to name a few specific ones
+here so you can start to connect some of the concepts you've been
+learning about to the tools and technologies you'll be practicing
+with in these courses. In the next video, I'll relate each of
+the undercurrents of the data engineering lifecycle to concepts and
+technologies on AWS. I'll see you there.

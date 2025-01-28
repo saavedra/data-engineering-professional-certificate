@@ -1,0 +1,109 @@
+ Around 2007, a framework called DevOps
+emerged in software development to break the silos between software
+development teams who write and test code and the software deployment
+teams who deploy and maintain code. DevOps borrows from other well-known
+methodologies including lean and agile, to accomplish things like the removal of
+bottlenecks, the reduction of waste, and the quick identification of problems,
+as well as rapid iteration. The DevOps movement has resulted
+in increased release cycles and enhanced quality for software products. As the data field has matured,
+we've adopted a similar approach, known as DataOps,
+to the development of data products. Similar to how DevOps improve
+the development process and quality or software products, DataOps aims to
+improve the development process and quality of data products. DataOps is first and
+foremost a set of cultural habits and practices that you can adopt. These include things like prioritizing
+communication and collaboration with other business stakeholders, continuously
+learning from your successes and failures, and taking an approach of rapid iteration
+to work toward improvements to your systems and processes. These are also the cultural habits and
+practices of DevOps, and they're borrowed directly from the agile methodology,
+which is a project management framework. Focus on delivering work in
+incremental and iterative steps. In terms of the technical elements of
+dataOps, there are three key pillars. The first pillar you see here
+on the left is automation. Then the second pillar is
+observability and monitoring. And finally the last pillar
+is incident response. These are similar to the core components
+of DevOps, where the end goal is to provide specific functionality and
+features in a software product. But in data Ops, the goal is to
+provide high quality data products, where you can think of a data
+product as any data or data system that you're
+providing to end users. And so let's take a closer look at each
+of these three pillars of data ops. In terms of automation, one of
+the DevOps practices that accelerated the software build lifecycle is what's
+known as continuous integration and continuous delivery, or CI/CD for short. With CI/CD, developers are able to
+automate many of the manual processes required to build, test, and deploy code. This automation results not only in
+faster review and deployment cycles, but also fewer errors, ultimately making
+software teams more efficient and effective in building high
+quality software products. And DataOps employs a similar automation
+framework to data processing as DevOps applies to software development. Within dataops, the high level goal of automated change
+management remains the same, for example, when it comes to managing changes in code,
+configuration or environment. In addition, DataOps is focused
+on change management when it comes to data processing pipelines and
+the data itself. To get a sense of how automation
+applies to data processing, let's imagine that you just got
+started at a small organization. And you've been tasked with building
+a data pipeline that starts with ingesting data from multiple source systems. So maybe you're ingesting from a database
+as well as some files and an API or a data sharing platform. Then perhaps you're performing
+some in-flight transformations during the ingestion process, then storing
+the ingested data in a storage system, perhaps a database. And then let's say you've got two end
+use cases you're serving, one for analytics and one for machine learning. So next, let's suppose you're performing
+some further transformations, maybe modeling and
+aggregating the data before pushing it to another storage system and
+making it available to end users. And so you've got essentially two
+pipelines for the transformation and serving stages here. If you're the first data
+engineer at this organization and you're in the early stages of
+developing your data systems, you might choose to manually execute
+the various tasks in this data pipeline, like manually starting each
+of these ingestion processes. Then once those are complete, manually
+executing each of the subsequent steps in the transformation,
+storage and serving stages. This could be a reasonable approach
+to get started quickly and prototype some aspects of your
+data pipeline in the long run. However, this sort of multistage manual
+execution will be prone to errors and be inefficient because it requires you
+to manually run each task with a minimal level of automation. You might choose to take a so called pure
+scheduling approach, meaning that you would set each task in your pipeline
+to start at a particular time of day. So maybe you start all these ingestion
+tasks at midnight every night. Then you would estimate how long it takes
+for all the data to be ingested and loaded into your storage system. Then you could schedule the downstream
+transformation tasks to start after that, and so
+on through all the tasks in your pipeline. So this is called scheduling because you
+create a schedule to automatically start each of the tasks in your data pipeline. To take things to the next
+level of DataOps automation, you could adopt an orchestration
+framework like Airflow. Orchestration frameworks check
+the dependencies between tasks within your data pipeline before each task is run. So you can decide the time and frequency you want the first
+task of your pipeline to start. Then the orchestration framework
+will automatically start subsequent tasks once the previous ones have
+been completed successfully. The orchestration framework can also
+notify you when there's an error with any of the tasks. So that the downstream tasks that are
+dependent on the previous ones don't start when they're not supposed to. Many orchestration frameworks not only
+automate the execution of tasks in your data pipelines, but they also enhance the
+development of these pipelines by enabling automatic verification and deployment
+of new aspects of your data pipeline. Similar to the CI/CD process for
+software deployment. When it comes to the next pillar
+of observability and monitoring, the main thing you need to keep in mind is
+that any data pipeline you set up is bound to fail eventually. To quote Werner Vogels,
+the CTO of Amazon Web Services, everything fails all the time. This means that if you're
+not closely observing and monitoring your data systems,
+you'll be caught unaware when they fail. In a worst case scenario, you might only
+become aware of these system failures when your downstream stakeholders discover
+these problems on their own, for example, in their reports or analytics dashboards. In my own work with clients, I've seen countless cases of bad
+data lingering in reports for months or even years due to undiscovered
+failures in data processing systems. These sorts of failures can
+be a waste of time and money, lead to ill informed decisions, and ultimately could cost you your job if
+stakeholders lose trust in your work. So observability and monitoring are crucial aspects
+of the data systems you build. The third pillar of DataOps
+is incident response, which is about using the observability and
+monitoring capabilities you set up to rapidly identify the root causes of
+an incident and resolve it as quickly and reliably as possible. As I said before, things will break and it's only a matter of
+time before they break. With incident response,
+it's not just about the technology and tools you use to identify and
+respond to an issue. It's also about open and
+blameless communication and coordination of the efforts of members of
+the data team responding to the incident, as well as others across the organization. As a data engineer, you should be
+proactively finding issues before they are reported to you by other
+stakeholders in your organization. DataOps is a relatively new set of ideas
+that is still a work in progress, and not all organizations have
+adopted DataOps best practices. In your work as a data engineer, you might
+find yourself in an organization where DataOps is fairly mature or somewhere
+that has not yet embraced DataOps. Next up, we're going to take
+a closer look at orchestration, which is a key component of DataOps. And such a critical component of modern
+data architectures and pipelines that we consider it as a separate undercurrent
+of the data engineering lifecycle.

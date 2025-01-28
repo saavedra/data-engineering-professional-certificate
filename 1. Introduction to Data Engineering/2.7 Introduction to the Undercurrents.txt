@@ -1,0 +1,22 @@
+We've been looking at the
+data engineering life cycle and how you'll ingest
+data from source systems, transform it, store it, and serve it to end users. As a field, data engineering
+is rapidly maturing, whereas just a decade ago, the role of a data engineer was primarily focused on
+the technology layer. The continued abstraction and simplification of tools has expanded the scope of the role. Data engineering now encompasses far more than just
+tools and technologies. In other words, the field is
+moving up the value chain, which is great news for
+you as a data engineer. Modern data engineering
+incorporates traditional enterprise practices
+such as data management, and cost optimization,
+as well as newer practices like DataOps. When it comes to work
+as a data engineer, there's a set of such
+practices that will apply to your work across
+the entire life cycle. In the fundamentals of
+Data Engineering book, we describe these practices as the undercurrents of the
+data engineering life cycle. These undercurrents include
+security, data management, DataOps, data architecture, orchestration, and
+software engineering. The next several videos, we'll take a closer look at
+each of these undercurrents. After that, you'll begin exploring how the data
+entering life cycle and undercurrents take
+shape in real life on the AWS Cloud.
+Let's get started.

@@ -1,0 +1,58 @@
+Another concept in
+data engineering that I want to touch
+on briefly here, while we're talking
+about systems that contain hard
+dependencies and limited flexibility versus those that are closely
+coupled and flexible, is the idea of monolithic
+versus modular architecture. Monolithic systems are
+self-contained systems that are made up of tightly
+coupled components. In software development, monolithic
+architectures have been a technology mainstay
+for decades, where large teams work together to deliver a single
+working code base. All the components of that
+software product code base would be built and deployed
+as a single application. One advantage of a monolithic
+system is simplicity. It has all the
+functionality in one place. This means that it's easy to understand a
+monolithic system. Instead of dealing with dozens or hundreds
+of technologies, you have just one technology and typically one principal
+programming language. Monoliths are an excellent
+option if you want simplicity and reasoning about your architecture
+and your processes. However, monoliths are also very hard to maintain
+as they grow, since a monolith consists of
+tightly coupled components, if you need to update
+one component, you may have to update
+other components as well. Oftentimes a whole application
+has to be rewritten. For example, I once worked
+at a company that had a monolithic ETL pipeline that took at least
+48 hours to run. Now, if anything broke
+anywhere in this pipeline, the entire pipeline process
+had to be restarted. Meanwhile, anxious
+business users downstream were waiting
+for the reports, which were already two
+days late by default, and often arrived much later. The team responsible
+for this pipeline desperately wanted to
+replace this pipeline, but it would have required weeks of downtime for
+the entire system. They limped along and accepted sub optimal performance because updating the system was just too daunting and
+expensive of a task. By contrast, modular systems consists of loosely
+coupled components. Instead of relying on a massive monolith that combines all the functionalities
+of an application, modular systems rely on breaking the application into self
+contained areas of concern. In software development, truly modular systems emerge with the rise of micro services. With micro services instead of combining the components that correspond to multiple services into a single deployable entity, each service is deployed
+as a single unit. Modern data engineering. Data processing technologies
+have shifted toward a modular model by providing strong support
+for interoperability. This means that most
+data processing tools available today can be easily integrated with
+tools that support the other stages of the data
+engineering life cycle. For example, data stored in object storage in a
+standard format such as Parquet can be paired with any processing tool that
+supports the Parquet format. The ability to swap out tools as technology changes
+is invaluable. It helps you build good data
+architecture by enabling flexible and
+reversible decisions and continuous improvement. Through the rest of this lesson, we'll talk through
+the details of the various choices you'll make to implement your architecture. Things like cost optimization, whether to go with
+open source or mana solutions and
+everything else. Again, I'll be presenting
+these ideas from a Cloud first and
+modular perspective because these are the directions that data engineering
+as a field is going. Join me in the next video to take a look at
+cost optimization.
