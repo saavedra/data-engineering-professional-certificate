@@ -1,0 +1,94 @@
+>> Here's the plan you saw in the last
+video to prepare tabular data for training a classical
+machine learning algorithm. Let's start with splitting
+the data into training and test sets using SciKit -Learn's train test
+split method, which I'll import here. I then need to specify the features,
+labels and test size. The random state parameter ensures that
+you can reproduce the splitting when you run this code again at a later time,
+so I'll just set it to 42, but you can use any integer you want. This method returns the features denoted
+by X and the labels denoted by Y for the train and test sets. Now that we have our training and
+test sets, let's focus on preprocessing
+the training dataset first. Then I'll apply these same steps at
+the end of this video to the test set. Starting with the numerical columns, since
+I want to scale these features first from the SciiKit-Learn pre processing module,
+I'll import the standard scalar class. I'll create a list called numerical
+columns to specify the age, tenure, usage, frequency, support calls, payment delay,
+total spend, and last interaction columns. Then I'll create a dataframe called
+x_train_numerical to extract just the numerical columns from
+the training features dataset. In order to use the functionalities
+of the standard scalar class, I'll instantiate a standard scalar object. With this object I can call
+two methods fit and transform. The fit method computes the mean and standard deviation of each
+numerical column, and the transform method uses the computer statistics
+to scale the values of each column. So, I'll call the fit method
+on the numerical dataframe And then ill call the transform
+method on the same dataframe. The transform method returns
+the scaled columns as a numpy array. Since I'll need to concatenate the process
+numerical and categorical columns into a pandas dataframe, I'll first convert
+this numpy array into a pandas data frame so it'll be easier to create
+the final pandas data frame later on. So using the pandas dataframe constructor,
+I'll pass to it the scaled features, the index of each training data frame to
+ensure each row in the output dataframe maps to the correct row of
+the original training set. And finally I'll pass to it
+the names of the numerical columns. So now you have a data frame containing
+the scaled numerical columns. Here are the first five
+rows of this data frame. As you can see, all the features have been
+scaled to lie within a similar range. Let's set this aside for now and
+move on to the categorical columns. Since I want to convert these columns into
+numerical columns using OneHotEncoding, from the sklearn preprocessing module,
+I'll import the OneHotEncoder class, similar to what we did before, I'll create
+a categorical columns list to specify the subscription type and
+contract length categorical columns. Then I'll create a data frame
+called x_ train _categorical. To extract the categorical columns
+from the training features data set. To use the OneHotEncoder class
+on this categorical data frame, I'll first instantiate it. With this encoder, you can also
+call the fit and transform methods. The fit method, will check the unique
+values within each categorical column to know how many columns need to
+be created for each feature. And it'll prepare the labels
+of the output columns. So I'll call the fit method of the encoder
+on the categorical data frame. And finally we'll call the transform
+method of the encoder on the same categorical data frame. The transform method returns the encoded
+columns as a compressed matrix. So if you try to get its type you
+will see that it is a sparse matrix stored in a compressed sparse row or
+CSR format. A sparse matrix contains a lot
+of zeros which is what happens when you use OneHotEncoding. So instead of storing the entire matrix, only the locations that
+contain a one are stored. You can see this information when
+you print this compressed matrix. To convert this matrix into a regular
+matrix, you can use the two dents method. So these are the encoded columns for each category of the original
+categorical columns. To know what each column represents, you can use the encoder method
+called get features names out. So you can see that the first three
+columns represent subscription type and the last three columns represent
+the contract length type. Now let's convert this matrix
+into a data frame that represents the encoded categorical columns. Again I'll use the pandas
+DataFrame constructor. This constructor expects a regular matrix. So first I'll convert the encoded outputs
+from the compressed matrix to a regular matrix using the too dense
+method you saw earlier. Then I'll pass it the index
+of the training dataframe. And for the name of the categorical
+columns, I'll use the encoder method, get features names out. So that creates a data frame with
+the encoded categorical columns. Here are the first five
+rows of this data frame. You can see that these categorical
+features have all been converted into numerical values. Now I can use the pandas concat method to
+concatenate the customer Id, the scaled numerical features and the encoded
+categorical features into one data frame. The parameter access equals one specifies
+that it's a horizontal concatenation. Here are the first five rows of the data
+frame that represents the process training data. Finally, ill apply these same steps for
+scaling the numerical features and encoding the categorical
+features on the test set. So first ill scale
+the numerical columns and then transform the scaled
+columns into a pandas dataframe. Then ill encode
+the categorical columns and then transform the encoded
+columns into a pandas DataFrame. Finally, ill concatenate the customer id
+column with the process numerical and encoded categorical columns. Its important to note that I
+did not refit the scalar and the encoder on the test set. I simply use the same scalar and encoder that I previously
+fit with the training set. That's because you want to ensure the same
+scaling is applied to the numerical features, meaning the same mean and standard deviation are used to
+scale each column in the test set. And finally, to save the training and
+test features as parquet files, I'll call the method to parquet as
+shown here and there you have it. We just applied scaling on all
+the numerical columns of the training and test datasets and applied OneHotEncoding
+on the categorical columns for both training and test sets. You would then pass these datasets
+to the machine learning engineer or data scientist to train and evaluate
+the various machine learning algorithms. For the first lab of this week, you'll
+revisit the lab from course one, but this time you'll use sklearn to process the
+data used to train the recommender system. After that, join me in the next video to
+discuss how you can process images before using them to train machine
+learning algorithms.

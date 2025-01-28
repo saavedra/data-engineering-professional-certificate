@@ -1,0 +1,143 @@
+When you serve data for training classical machine learning
+algorithms, typically, the data is expected to be in a tabular form containing
+only numerical values. When you model the data
+for these use cases, you need to decide what features to include and
+what label to use. The decisions are
+usually made by the machine learning
+or data science team. Depending on the project
+and the level of iteration, you might just serve raw data to the team if they are interested
+in exploring the data, or you might need to process the data and
+convert the features and the labels into a
+numerical tabular form before serving it to them. Let's go through some
+basic pre-processing steps to prepare tabular
+data for training. Back to the customer
+turn example that I introduced in the
+previous video, here's what the raw
+dataset might look like. Each row corresponds
+to a customer showing the number of
+purchases they've made, the date of their last purchase,
+the customer's income, the time they spent
+on the platform, their account type, and whether
+they have churned or not. Depending on the project and the team you're
+working with, you may be expected to
+serve raw data like this, or you might be asked
+to process the data and convert it into a
+numerical tabular form, which might look
+something like this. Notice that I've separated
+the churn column into a vector that contains
+the labels for each customer, where one means that
+the customer has churned and zero means
+that they have not. You can see there are
+no missing values or duplicate rows, and each column consists of numerical values that are
+within a similar range. Moreover, notice
+that I've created a new purchases
+per minute feature by dividing the number
+of items purchased column by the minutes
+on platform column. Combining or modifying
+existing columns to create new
+features is something that's typically decided by the machine learning team
+and communicated to you. This numerical
+tabular data is what most classical machine
+learning algorithms expect to receive
+as training data. In machine learning,
+when you process a raw column or
+create a new feature, that's called
+feature engineering. This process includes
+operations like handling missing values,
+feature scaling, converting categorical
+columns into numerical ones, and creating new columns by combining or modifying
+existing ones. Let's take a closer look at these common feature
+engineering operations. You'll likely encounter missing values when working with data. You should first understand
+why the values are missing then determine the most appropriate way
+to handle this issue. The simplest approach
+is to delete either the columns or the rows that contain the missing values. But you might unintentionally lose important data this way. Only delete rows or
+columns when there's no risk of losing valuable data. Another approach
+would be to impute the missing values with some summary statistics
+from the column, such as replacing the missing
+values with a mean or median of the column or with a value from
+a similar record. However, when you impute
+the missing values, you might introduce noise
+or bias to the data. In our customer turn example, the third row had
+mostly null values. Suppose I spoke with the machine learning engineer
+and determined that the non-null value that we have isn't
+particularly valuable. I decided to delete that row. For the missing
+customer income value, I decided to replace it with a value from a similar record. There's no single perfect way
+to handle missing values, and you'll usually work with the machine learning
+team to select the best approach
+that doesn't impact the performance of the
+machine learning system. After dealing with
+any missing values, you want to scale the
+numerical features so that the values of each feature end
+up within a similar range. Without going into the
+technical details, machine learning
+algorithms are essentially optimization algorithms that use training data to
+calculate a set of parameters that result in
+the most optimal outputs. If the feature values
+vary drastically, it might take a long time for
+the algorithms to converge. Moreover, certain machine
+learning algorithms are based on distance metrics, so their accuracies
+can be affected by the different ranges
+of the feature values. In our customer turn example, the range of values for
+the number of items purchased feature will be much smaller than the range for
+the customer income feature. To scale the values
+for each column, you can apply standardization
+or min-max scaling. With standardization, you take each value within a column, subtract the column mean, and then divide by the
+column standard deviation. The standardized values in
+the column will have a mean of zero and a variance of one. With min-max scaling, you take each value within a column, subtract the minimum
+column value, and then divide
+by the difference between the maximum and
+minimum column values. This way, the
+normalized values in the column will be
+between zero and one. Let's say the customer income
+feature has a minimum value of $0 and a maximum
+value of 100,000. What values would you
+get if you were to apply min-max scaling to
+these first two values in the customer income column? For the first value, you
+would get 50,000-0/100,000 , which is 0.5. Then, for the second value, you would get 40,000-0/100,000,
+which is 0.4. Now, what if your raw dataset contains non-numerical
+categorical values? For example, suppose that the account type can
+either be basic, family, or platinum,
+like you see here. Since classical machine
+learning algorithms expect each feature
+to be numerical, you need to apply a
+pre-processing step to convert this categorical
+feature into a numerical one. One way to transform
+this column into a numerical one is to apply a method called
+one hot encoding. With this method, you replace the account type column
+with three columns, the first one
+representing basic, the second representing family, and the third
+representing platinum. Since the first customer here
+has a family account type, I will denote the
+family column with a one and the other
+two columns with zero. You do the same for
+all of the other rows. The converted columns
+are easy to interpret, but if the number of unique
+values in a column is large, it can increase the number of columns in the dataset
+significantly. Another encoding approach
+is to use ordinal encoding, which is useful when there
+is a natural ordering between the unique values
+of the categorical column. Suppose that the account
+types can be ordered by their subscription fee with
+basic being the cheapest, family falling in the middle, and platinum being the most
+expensive account type. Then you can replace
+basic with a one, family with a two, and
+platinum with a three. This way, you can convert
+a categorical column into an numerical one without adding columns to your dataset. There's also other methods such as hashing where you apply a mathematical hash
+function to replace a category with a
+calculated hash value, or you can create embeddings, which is something I'll
+go into later this week. Again, you will work with the machine learning
+engineer to figure out what method to use
+depending on your use case. These are some of
+the pre-processing or feature engineering
+steps that you might apply to prepare data for training and machine
+learning algorithm. You should always work closely with the machine
+learning team to decide on the steps and methods that are most appropriate
+for the given project. Next up, I'll go
+over a short demo to show you how to apply these feature
+engineering steps to an actual dataset using Pandas. If you aren't already
+familiar with Pandas, you might want to check out
+the Pandas tutorial link and the resource section
+at the end of this week. Before we dive into that demo, I also included
+an optional video where I speak with
+West McKinney, the creator of Pandas. If you'd rather skip that video, I'll see you in the
+demo after that.

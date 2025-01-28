@@ -1,0 +1,102 @@
+Let's go through some basic
+machine learning terminology and concepts that you should be
+familiar with as a data engineer. In this video, I'll cover topics such as
+supervised versus unsupervised learning, classification versus regression,
+and training versus testing. I'll also go over the different phases of
+the machine learning project lifecycle to give you a framework for
+thinking about how data is used throughout the development of
+a machine learning system. So if you're already familiar with
+these machine learning concepts, this video should feel more like a review
+for you and feel free to skip ahead. But if you're new to machine learning, this video should cover what you need
+to be ready for this week's materials. Let's say you work as a data engineer at
+an e-commerce company that's interested in developing three machine learning systems. The first system aims to predict customer
+churn, in other words, whether a customer will stop purchasing from the company
+over a specific period of time. Suppose you have access to a historical
+customer demographic data, their browsing and purchase history, and the past ten
+years worth of customer churn data. The company wishes to learn from
+this data and create a rule or formula that can take in
+a customer's information and predict whether they will churn or
+not within a specific time period. Instead of manually looking at the data to
+figure out this rule, which will likely be very complex, the company can train
+a machine learning algorithm to automatically learn the rule through
+a technique called supervised learning. It learns from the characteristics
+of historical customer information, which are also called features, and
+the value that needs to be predicted, meaning whether or not a customer
+will churn, which is called a label. This type of machine learning is called
+supervised learning because the labels supervise what needs to be
+learned from the features. So when you create a data
+pipeline that serves data for supervised machine learning use cases,
+you would need to work with the machine learning team to learn what features and
+labels they want the data to contain. The second system the company wants to
+develop aims to predict the sales of products for the next new year holiday. This is also a supervised machine learning
+problem because the machine learning algorithm is learning to predict future
+sales from a set of features and labels, with the features being characteristics
+of historical product and sales data and the labels being historical
+holiday sales amounts. But the type of labels used in this second
+system, meaning the kind of values we're aiming to predict,
+is different from the first system. In the first case,
+the label is categorical and only takes on a limited number of values. The customer will either churn or not. This type of supervised learning is
+called classification you are classifying a customer as a customer who will churn or
+a customer who will not churn. In the second case,
+the label is numerical, representing the value of sales. This type of supervised
+learning is called regression. So as a data engineer, the type of labels
+you will serve will be different for classification and
+regression machine learning use cases. The third system the company wants to
+develop aims to segment customers into groups based on their
+purchasing behaviors. Although you have lots of
+historical customer data, this data is not labeled for this purpose, meaning that it does not contain specific
+information about the groups themselves, such as the number of groups or the
+characteristics that separate the groups, and it does not indicate which
+group each customer belongs to. This is what the company would like
+to know by applying what is called an unsupervised learning algorithm. In this case, there are no labels in
+the data to supervise the learning. The algorithm will instead have to figure
+out how to group the customers based on the similarity of the profiles or
+purchasing behaviors. When you serve data to
+this type of learning, the data will only contain
+features without any labels. So now that we've covered these three
+types of machine learning systems, let's take a look at the phases of
+the machine learning project lifecycle framework that Andrew proposed. You'll find this framework helpful for
+many machine learning projects, and we'll be focusing on where you can
+provide value as a data engineer. The first phase is scoping,
+where the machine learning engineer, or data scientist,
+has to define the project and decide exactly what business problems
+they want to apply machine learning to. Then the second phase is all about data. The machine learning engineer will work
+with you to determine what features and labels you need to collect for
+training the machine learning algorithms. This is the phase that you will be most
+involved with as a data engineer and includes defining the data and
+establishing a baseline, and also labeling and organizing the data. The third phase involves selecting and
+training the algorithm and performing error analysis. The machine learning engineer
+takes the data, you serve them, maybe processes it further, then uses it
+to train machine learning algorithms. They typically split the data into
+a training set and a test set. Then they use the training set data to
+train several machine learning algorithms with different configurations. They can choose from classical machine
+learning algorithms such as linear regression, logistic regression, decision
+trees, random forest, and boosted trees. These classical algorithms are generally
+easy to implement and train, and they expect data to be in a tabular form. However, as the size
+of the data increases, the performance of these classical machine
+learning algorithms will reach a plateau. This is where more complex
+machine learning algorithms, such as deep neural networks, can help. These complex algorithms not
+only work with tabular data, but they can also work with image data using
+convolutional neural networks, time series data using recurrent neural networks, and
+text data using large language models. After the machine learning team train
+several machine learning algorithms, they select the best one in
+a process called cross-validation. Finally, they evaluate the selected
+model using the data from the test set to analyze the model's performance. They might discover that they need to
+fix something in the collected data, add more features, or
+simply collect more data. So the team might ask you to serve
+an updated set of data to continue with the algorithm development phase. This iterative process can continue until
+the team is happy with the performance of the machine learning system. The final phase is deployment, before the
+machine learning engineer takes the system to deployment, they'll carry out a final
+check to make sure that the system's performance is good enough and that it's
+sufficiently reliable for the application. Then they will write the software to
+put the system into production, monitor the system, track the data that continues
+to come in, and maintain the system. During the deployment phase,
+you might be responsible for preparing and serving the data that needs to
+be fed to the deployed model. You might also help with maintaining
+the machine learning system by serving an updated set of data that's used to
+retrain and update the model as needed. So in the machine learning project
+lifecycle, you might not be involved with the details of the algorithm development
+and analysis, but you'll be responsible for setting up the pipeline to serve
+data that supports these phases. In the next video, we'll start with
+the classical machine learning algorithms, focusing on how you can prepare data that
+meets their data structure requirements. I'll see you there.

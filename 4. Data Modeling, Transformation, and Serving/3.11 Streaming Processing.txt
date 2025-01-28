@@ -1,0 +1,73 @@
+Back in Course 3,
+we discussed how you can apply queries
+to streaming data, and you practice writing
+those queries using flank. Those streaming queries
+can help your stakeholders perform real time analytics
+on streaming data, but you can also use
+those queries to apply transformations
+to your streaming data. Streaming transformations
+aim to prepare data for downstream consumption
+by converting a stream of events into another stream
+by enriching it with additional information or
+joining it with another stream. For instance, you might have an incoming stream carrying
+events from an IOT source. These IOT events carry a
+device ID and event data, and you might want to dynamically enrich
+these events with the device metadata stored
+in a separate database. You can use a stream
+processing engine to query the separate database
+containing this metadata. Then you can generate a
+new stream of events by adding this metadata to
+the existing IOT events. In fact, you already have
+some experience with this. In one of the previous labs, you applied a streaming ETL
+to transform a stream of user session events by enriching each event
+with a timestamp, representing the
+processing time and some additional metrics that you computed from the data
+of each user session. As another example of
+streaming transformation, you can use window queries to
+dynamically compute roll up statistics on windows and then send the output to
+a target stream. In terms of joining two streams,
+you could, for example, use streaming
+transformation to combine a stream containing
+website click stream data with another stream containing IOT data to get a unified
+view of the user activities. All of these examples, events are typically
+streamed to you by a streaming platform such as Kanesa Data Streams or Kafka, and then you can process these events using
+a stream processor. Similar to batch processing. There are distributed stream processing tools
+like Spark streaming and Flink that you can use
+when you have large datasets. Both of these tools are open source and allow you to write Python code or SQL queries to process
+large streams of data. When choosing a streaming
+processing tool, it's important to
+understand your use case, the latency requirements, and the performance capabilities of the framework in question. Some of these tools
+like Spark streaming, process your data in
+a microbatch way, providing near real
+time performance. It accumulates small batches of input data anywhere from
+two minutes to seconds. Then processes each
+batch in parallel using a distributed
+collection of tasks similar to the execution
+of a batch job in Spark. On the other hand, true
+streaming systems, such as Flink are designed to process one event at a time. Each node in the system is continuously listening
+to messages from other nodes and outputting new updates to its
+dependent nodes. True streaming systems can
+deliver the process events at a lower latency than the microbatch
+processing systems. However this comes with
+significant overhead. Depending on your use case
+and the acceptable latency, you may choose one
+over the other. If you're collecting
+sales metrics published every few minutes, micro batches are
+probably just fine as long as you set an appropriate
+microbatch frequency. On the other hand, if your
+ops team is computing metrics every millisecond to
+detect malicious attacks, you might need true streaming. To learn more about the
+underlying differences between Spark
+streaming and Flink, I included some
+optional materials that compare the
+architectures of both tools along with code examples showing you
+how to use Spark Streaming. Then after that, you'll complete the final
+lab of this week, or you'll practice performing streaming transformations
+by implementing a streaming change data
+capture or CDC pipeline. You'll use diabesium
+as a tool to capture the changes from
+your source database, then push those changes to a CFI stream and process
+the changes using Flink. To get an overview of this lab, you can check out the
+lab walk through, or you can jump
+straight into the lab. After that, join me for a summary of this
+week's materials.

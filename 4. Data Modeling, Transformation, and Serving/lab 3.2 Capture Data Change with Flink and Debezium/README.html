@@ -1,0 +1,207 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="README_data/style.css">
+</head><body><h1>Week 3 Lab:<br>Capture Data Change with Flink and Debezium</h1>
+<p>In this lab, you will implement a streaming pipeline with the 
+intention of capturing data changes from a source system and delivering 
+those changes in real time to a target system. </p>
+<ul>
+<li><a href="#1">1 - Introduction</a></li>
+<li><a href="#2">2 - CDC Infrastructure</a></li>
+<li><a href="#3">3 - Lab and CDC Architecture Setup</a><ul>
+<li><a href="#3.1">3.1 - Lab Setup</a></li>
+<li><a href="#3.2">3.2 - Zeppelin Interpreters</a></li>
+<li><a href="#3.3">3.3 - Debezium Configuration</a></li>
+</ul>
+</li>
+<li><a href="#4">4 - CDC Pipeline and Flink UI</a></li>
+<li><a href="#5">5 - Lab Submission</a></li>
+</ul>
+<hr>
+<div id="1">
+<h2>1 - Introduction</h2>
+<p>Change data capture (CDC) refers to a software process or design 
+pattern that can detect changes to a source system (such as a database 
+or data warehouse), as you can keep track of changes in near real-time, 
+you can implement processes that achieve data consistency in data 
+sources down the line of the source. </p>
+<p>A requirement has come through for your team to implement a CDC 
+system from a source MySQL database to a target RDS database running 
+Postgres. The rest of the team has set up a prototype of the 
+architecture in an EC2 instance, the missing configuration and Flink 
+pipeline have been left for you to develop and finally test the 
+architecture.</p>
+<div id="2">
+<h2>2 - CDC Infrastructure</h2>
+<p><img src="README_data/architecture.png" alt="Architecture"></p>
+<p>The prototype has mostly been set up using a multi-container approach
+ inside an EC2 instance, you can connect with the EC2 instance using an 
+SSH tunnel. Here is a brief description of the components:</p>
+<ul>
+<li>
+<p><strong>Source Database:</strong> You already interacted with the 
+source database in previous labs. For the prototype, the team set up a 
+MySQL database inside a Docker container with the <code>classicmodels</code> database.</p>
+</li>
+<li>
+<p><strong>Debezium:</strong> Distributed platform for CDC, it connects 
+to the source system and captures the changes based on the configuration
+ one setup. The UI has been provisioned with the <code>8080</code> port of the EC2 instance.</p>
+</li>
+<li>
+<p><strong>Apache Kafka:</strong> The event streaming platform, has 
+already been configured to connect with Debezium, based on your 
+configuration in Debezium topics are created for each table that 
+contains messages with each change. </p>
+</li>
+<li>
+<p><strong>Apache Zookeeper:</strong> Service that stores configuration information and allows the coordination of cloud applications. </p>
+</li>
+<li>
+<p><strong>Apache Zeppelin:</strong> Web-based notebook environment, it 
+allows us to run Flink in a notebook alongside other possible 
+interpreters. You can access the UI by connecting to the <code>8085</code> port of the EC2 instance, you can also see the Flink UI with the <code>8086</code> port.</p>
+</li>
+<li>
+<p><strong>Apache Flink:</strong> Distributed processing engine for data
+ streams, you will use it to connect to the Kafka topics and update the 
+target database accordingly.</p>
+</li>
+<li>
+<p><strong>Target Database:</strong> For the prototype, the team set up a Postgres database in an RDS instance with the target schema <code>classicmodels_star_schema</code>.</p>
+</li>
+</ul>
+<div id="3">
+<h2>3 - Lab and CDC Architecture Setup</h2>
+<div id="3.1">
+<h3>3.1 - Lab Setup</h3>
+<p><em>Notes</em>: </p>
+<ul>
+<li>For the lab, it is better to use a laptop or desktop computer instead of a tablet.</li>
+<li>The lab uses Amazon Web Services (AWS) which takes some time to spin up. You may need to wait a few minutes for the lab to open.</li>
+</ul>
+<p>3.1.1. Click on <img src="README_data/ButtonStartLab.png" alt=""> button (upper right of the screen) to begin the lab. Wait until the <img src="README_data/ButtonAWS.png" alt=""> link (top left of the screen) will have a green sign next to it. </p>
+<p><em>Note:</em> On the first start of the lab, the lab environment 
+should load in a few seconds, but subsequent attempts may take up to 12 
+minutes.</p>
+<p>3.1.2. When the lab environment is ready, the AWS link will change to green: <img src="README_data/ButtonAWS.png" alt="">
+ (top left of the screen). Click on the AWS link, it will open AWS 
+Management Console in a new tab. Then you can return to this tab to find
+ the remaining instructions.<br></p>
+<p><em>Note:</em> If you see the window like in the following printscreen, click on <strong>logout</strong> link, close the window and click on <img src="README_data/ButtonAWS.png" alt=""> link again.</p>
+<p><img src="README_data/AWSLogout.png" alt="image alt &gt;&lt;"></p>
+<p>3.1.3. Navigate to the <strong>CloudFormation</strong> section in the AWS console, click on the alphanumeric ID of the deployed stack and search for the <strong>Outputs</strong> tab. Through the lab, you will need the values corresponding to the keys <code>ZeppelinUI</code>, <code>DebeziumUI</code>, <code>FlinkUI</code>, and <code>PostgresEndpoint</code>. </p>
+<div id="3.2">
+<h3>3.2 - Zeppelin Interpreters</h3>
+<p>Configure the interpreters to access the source and target database. 
+In Apache Zeppelin, an interpreter is a plug-in that allows Zeppelin to 
+run code in different languages, in your 
+case it will allow us to run queries in Flink SQL, MySQL and Postgres.</p>
+<p>3.2.1. Open a new tab and paste the <code>ZeppelinUI</code> URL to open the Zeppelin UI, it should look like this.</p>
+<p><img src="README_data/zeppelin_ui.png" alt="Zeppelin UI &gt;&lt;"></p>
+<p><em>Note:</em> If for any reason the <code>ZeppelinUI</code> or the <code>DebeziumUI</code> present any particular issue, you can restart the containers of the infrastructure by following these steps:</p>
+<ul>
+<li>
+<p>In the AWS Console, search for EC2. In the left panel, click on <strong>Instances</strong>.</p>
+</li>
+<li>
+<p>Search for the instance named <code>de-c4w3lab1-work-instance</code> and click on the Instance ID.</p>
+</li>
+</ul>
+<p><img src="README_data/instance_id.png" alt="instance_id &gt;&lt;"></p>
+<ul>
+<li>Click on <strong>Connect</strong>. Then in the <strong>EC2 Instance Connect</strong> tab, click on <strong>Connect</strong>.</li>
+</ul>
+<p><img src="README_data/instance_connect.png" alt="instance_connect &gt;&lt;"></p>
+<p>Another browser tab will open; you will be logged inside the EC2 instance.</p>
+<ul>
+<li>
+<p>Go to the <code>/kafka_debezium</code> folder with the following command:</p>
+<pre><code class="language-bash">  cd /kafka_debezium</code></pre>
+</li>
+<li>
+<p>Execute the commands:</p>
+<pre><code class="language-bash">  sudo docker compose -f docker-compose-flink.yml down
+  sudo docker compose -f docker-compose-flink.yml up -d</code></pre>
+</li>
+<li>
+<p>Wait for around 1 to 2 minutes and then, execute the following command:</p>
+<pre><code class="language-bash">  curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @conf/mysql_conf.json</code></pre>
+</li>
+<li>
+<p>To check that the Debezium connection is ready, you can go to the <code>DebeziumUI</code> or run the command:</p>
+<pre><code class="language-bash">  sudo docker compose -f docker-compose-flink.yml exec kafka kafka-topics --bootstrap-server kafka:9092 --list</code></pre>
+</li>
+</ul>
+<p>You should see a list of Kafka topics as output, like in the following image:</p>
+<p><img src="README_data/kafka_topics.png" alt="kafka_topics &gt;&lt;"></p>
+<p>3.2.2. Download locally lab notebook following the link: <a href="https://dlai-data-engineering.s3.amazonaws.com/labs/c4w3lab1-952866/C4_W3_Lab_1_CDC.zpln">C4_W3_Lab_1_CDC.zpln</a>. Then in the Zeppelin UI, click on <strong>Import note</strong>. In the pop-up window, click on <strong>Select JSON file/IPYNB file</strong> and search for the file you just downloaded, which is named <code>C4_W3_Lab_1_CDC.zpln</code>.</p>
+<p><img src="README_data/zeppelin_import.png" alt="Zeppelin Import &gt;&lt;"></p>
+<p>3.2.3. Once you have imported the notebook, you will be able to see it in the Zeppelin UI. Open it by clicking on it's name.</p>
+<p><img src="README_data/zeppelin_notebook.png" alt="Zeppelin notebook &gt;&lt;"></p>
+<p>3.2.4. Go to the <strong>anonymous</strong> dropdown menu in the top right corner, click the menu and select the <strong>Interpreter</strong> link. You will be guided to the Interpreters page. Create on <strong>Create</strong> button on the top right of the new page, a form should appear like this one:</p>
+<p><img src="README_data/mysql_name.png" alt="MySQL Name &gt;&lt;"></p>
+<p>Fill in the new Interpreter name as <code>mysql</code> and select <code>jdbc</code> in the Interpreter group dropdown menu. Then in the properties, put the following values in the fields:</p>
+<ul>
+<li><strong>default.url:</strong> <code>jdbc:mysql://mysql:3306/</code></li>
+<li><strong>default.user:</strong> <code>root</code></li>
+<li><strong>default.password:</strong> <code>debezium</code></li>
+<li><strong>default.driver:</strong> <code>com.mysql.jdbc.Driver</code></li>
+</ul>
+<p><img src="README_data/mysql_conf.png" alt="MySQL Conf &gt;&lt;"></p>
+<p>Scroll down and in the <strong>Dependencies</strong> section, fill the first artifact field with the value <code>mysql:mysql-connector-java:8.0.28</code>, this will tell Zeppelin that it needs this JAR (package file for Java) to run 
+the interpreter.</p>
+<p><img src="README_data/mysql_driver.png" alt="MySQL Driver &gt;&lt;"></p>
+<p>Click on <strong>Save</strong> button.</p>
+<p>3.2.5. Add the Interpreter to connect to the target Postgres 
+database. Click the Create button on the Interpreter's page again, the 
+Interpreter name will be <code>psql</code> and the group <code>jdbc</code>.</p>
+<p>Then in the properties, put the following values in the fields, replacing the placeholder <code>&lt;POSTGRES_ENDPOINT&gt;</code> with the value of the <code>PostgresEndpoint</code> output (make sure that you replace the whole placeholder, including the brackets <code>&lt;&gt;</code>):</p>
+<ul>
+<li><strong>default.url:</strong> <code>jdbc:postgresql://&lt;POSTGRES_ENDPOINT&gt;:5432/postgres</code></li>
+<li><strong>default.user:</strong> <code>postgresuser</code></li>
+<li><strong>default.password:</strong> <code>adminpwrd</code></li>
+<li><strong>default.driver:</strong> <code>org.postgresql.Driver</code></li>
+</ul>
+<p>Finally, add the artifact <code>org.postgresql:postgresql:42.7.3</code> in the dependencies section. Finish by clicking on <strong>Save</strong> button.</p>
+<div id="3.3">
+<h3>3.3 - Debezium Configuration</h3>
+<p>3.3.1. Open a new tab and paste the <code>DebeziumUI</code> URL from 
+the CloudFormation outputs. This should show you the Debezium interface,
+ where you can verify that the connection to the MySQL source database 
+exists. You should see the following: </p>
+<p><img src="README_data/debezium_ui.png" alt="Debezium UI &gt;&lt;"></p>
+<div id="4">
+<h2>4 - CDC Pipeline and Flink UI</h2>
+<p>For the CDC Pipeline, you will create a simple star schema architecture based around the <code>classicmodels</code> orders. The target database has a schema named <code>classicmodels_star_schema</code> and the corresponding tables:</p>
+<ul>
+<li><strong>fact_orders</strong>: A fact table based on the <code>orders</code> and <code>orderlines</code> tables. It contains information for each order item, the order itself, the product and the customer.</li>
+<li><strong>dim_customers</strong>: A dimensional table based on the information for each client, based on the <code>customers</code> table.</li>
+<li><strong>dim_products</strong>:A dimensional table based on the information for each product, based on the <code>products</code> and <code>productlines</code> tables.</li>
+</ul>
+<p><img src="README_data/erm.png" alt="ERM &gt;&lt;"></p>
+<p>4.1. Using Flink in the Zeppelin UI, you will implement the CDC 
+pipeline to create and maintain the star schema. You can open the 
+notebook by either clicking on <strong>Zeppelin</strong> icon in the top left corner or via the menu <strong>Notebook</strong>. Follow the instructions in the notebook <code>C4_W3_Lab_1_CDC.zpln</code>.</p>
+<p><em>Note:</em> The notebook contains some practice exercises. Please 
+follow the instructions to complete them. The solution file can be 
+downloaded following the link: <a href="https://dlai-data-engineering.s3.amazonaws.com/labs/c4w3lab1-952866-solution/C4_W3_Lab_1_CDC_Solution.zpln">C4_W3_Lab_1_CDC_Solution.zpln</a></p>
+<p>4.2 In order to access the Flink UI to see the running job, you can use the <code>FlinkUI</code>
+ value from the CloudFormation Outputs. Take into account that the Flink
+ UI won't be available until you execute any cell that starts with the 
+magic command <code>%flink.ssql</code>.</p>
+<p><img src="README_data/flink_ui.png" alt="Flink UI &gt;&lt;"></p>
+<p>In that UI, you will see that there are 4 available Task Slots. Each 
+task slot represents a fixed subset of resources of the Flink 
+TaskManager, so each time you execute a cell that requires processing a 
+streaming of data, such as the <code>INSERT</code> statement shown before, a Task Slot will be in use. Make sure to follow the instructions in the <code>C4_W3_Lab_1_CDC.zpln</code> notebook to stop the necessary cells in order to free the Task Slots during the lab when required.</p>
+<div id="5">
+<h2>5 - Lab Submission</h2>
+<p>5.1. Click on <img src="README_data/ButtonSubmit.png" alt=""> button to complete the lab.  If you want to verify whether the lab is successfully completed, click on <img src="README_data/ButtonGrades.png" alt=""> button.</p>
+<p><em>Note:</em> The AWS account, which was created for the lab, <strong>expires within 2 hours</strong>.
+ During this period you can close all of the console windows and come 
+back to your work later. After the expiration the current AWS account 
+will go through a cleanup procedure (which will take up to 25 minutes), 
+then the access to the new account will take longer (up to 15 minutes) 
+and your previous work will not be saved. <strong>Save the notebooks or any other files locally</strong> before the expiration (use export buttons <img src="README_data/Export.png" alt=""> in the Zeppelin UI to download the notebook in the <code>.zpln</code> or <code>.ipynb</code> format).</p>
+<p>5.2. Close all the windows of the AWS Management Console and go back to Coursera.</p><script defer="defer" src="vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;901e754d0bacd10c&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.1.0&quot;,&quot;token&quot;:&quot;a73834a4a1444e9ab89e8da06da41720&quot;}" crossorigin="anonymous"></script>
+</div></div></div></div></div></div></div></div></body></html>

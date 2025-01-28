@@ -1,0 +1,91 @@
+Over the years, engineers have developed
+many big data tools to handle the growing amounts of data. Let's take a moment to understand
+the evolution of key tools and frameworks that have led
+to today's data ecosystem. In this video, we'll be focusing on Apache
+Hadoop, one of the earliest frameworks for dealing with large datasets, and
+it's still surprisingly relevant today. With the explosion of
+data in the early 2000s, traditional monolithic databases and
+data warehouses of the 1990s. Were not able to handle the massive
+amounts of data in a cost effective, scalable, available, and reliable way. At the same time, commodity hardware
+such as servers, ram, disks, and flash drives also became cheap and
+ubiquitous. During this time several innovations led
+to the large scale distributed computing and storage on massive computing
+clusters that you see today. In 2003, Google published a paper
+on the Google file system, or GFS, which provided a fault tolerant and distributed file system across many
+clusters of commodity hardware servers. Shortly after that, in 2004,
+Google published a paper on MapReduce, a new parallel programming paradigm for large scale processing of
+data distributed over GFS. Google's publications constituted
+a big bang for data technologies and the cultural roots of data engineering. The Google papers inspired engineers at
+Yahoo to develop the open source framework Apache Hadoop in 2006. Google's GFS paper provided a blueprint
+for the Hadoop distributed file system, or HDFS, and
+MapReduce became part of the framework. Although Hadoop is not considered
+a bleeding edge technology today. I still think it's important for you to
+understand the concepts behind Hadoop, because MapReduce still influences
+many distributed systems that data engineers use today. And HDFS is still a key ingredient of many
+current big data engines such as Amazon, EMR, and Spark. The Hadoop distributed file system
+is similar to object storage, but with a key difference. Hadoop combines compute and
+storage on the same nodes, whereas object storage typically has limited compute
+support for internal processing. Hadoop breaks large files into blocks, each block holding a chunk of data less
+than a few hundred megabytes in size. The file system is managed by
+what's called the name node, which maintains directories,
+file metadata, and a detailed catalog describing the location
+of the file blocks in the cluster. In a typical configuration, you would replicate each block of data
+to three nodes, called data nodes. This increases both the durability and
+availability of data. If a disk or node fails, and
+the replication factor for some file blocks fall below three. The name node will instruct other data
+nodes to replicate these file blocks so that they again reach
+the correct replication factor. By combining compute resources with
+storage nodes Hadoop allows in place data processing. This was originally achieved using
+the MapReduce programming model. In the MapReduce programming model, you
+send computation code to the nodes that contain the data favoring locality, rather
+than bring your data to your application. The computation code consists of
+a collection of map tasks that read individual data blocks and
+produce a set of key value pairs. These map tasks are followed by
+a shuffle that redistributes results across the cluster so that values with the same key
+are collected together in the same node. And finally a reduce step that
+aggregates data on each node. For example, suppose that you wanted to
+run the SQL query that selects the user_id and count star, meaning the count of
+all records from the user_events table, and you'll group by the user_id. So the result will be all the user
+ids along with the number of records associated with that user_id. With HDFS, the data in the user events
+table is broken down into data blocks and spread across many nodes. Let's zoom in on one data node that
+contains these three data blocks. The MapReduce job generates
+one map task per block. Each map task essentially runs a query on
+the respective block and generates key value pairs, where the key represents
+a user id that appears in the block. And the value is the corresponding count
+of records associated with that user id within that block. So, for example, in this first block there
+are six records associated with user2 and ten records associated with user1,
+and so on. While the table might
+contain petabytes of data, each block might only contain
+hundreds of megabytes. So it's much faster to run the query on a
+single block than it is on the full table. You then redistribute the results by key,
+which is the user Id in this example, so that each key ends up on one and
+only one node. So here all the user1 key value
+pairs end up in one data node and the user2 key value pairs
+end up in another data node. This is the shuffle step, which is often executed using
+a hashing algorithm on keys. Once the map results have been shuffled,
+you sum the results for each key. The key,
+along with its computed total count, can be written to the local disk on
+the node where they're computed. Then finally you collect the results
+stored across nodes to view the full query results. This model is extremely powerful,
+but it has some shortcomings. It utilizes numerous short lived MapReduce
+tasks that read data from disk and write intermediate computations to disk. In particular, no intermediate state
+is preserved in memory, and all data is transferred between tasks by storing it
+on disk or pushing it over the network. This simplifies state and
+workflow management and minimizes memory consumption, but it can also drive high disk bandwidth
+utilization and increase processing time. So engineers developed other data
+processing frameworks that still include some elements of map,
+shuffle and reduce but relax the constraints of Mapreduce
+to allow for in memory caching. And since RAM is much faster than SSD and
+HDD's in transfer speed and seek time, persisting even a tiny
+amount of chosen data in memory can dramatically speed up specific
+data processing tasks. For example, Spark,
+which we'll discuss in the next video, was designed around in memory processing. With Spark, you treat data as
+a distributed set that resides in memory, and treat disk as a second class
+data storage layer for processing. Which you only use if your data
+overflows from the available memory. Nowadays, Hadoop is no longer
+a hot bleeding edge technology, and MapReduce is not widely
+used by data engineers. And I think that advancements
+in leveraging memory for data transformations will continue to
+yield gains for the foreseeable future. Join me in the next video to
+learn more about Apache Spark, a distributed in memory processing
+framework that we use in the upcoming lab.

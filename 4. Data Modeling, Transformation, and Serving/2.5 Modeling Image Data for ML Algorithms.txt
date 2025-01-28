@@ -1,0 +1,88 @@
+Aside from predicting sales and segmenting customers
+based on tabular data, you can also use machine
+learning algorithms to identify patterns and images. Some applications of this
+include image classification like identifying the type of plant from an object,
+object detection, such as recognizing a pedestrian in a photo of an intersection, and pixel segmentation, such as detecting cancerous
+regions in an x-ray image. When in preparing images to be trained by a machine
+learning algorithm, what you'll do will depend on the type of
+algorithm being used. Let's take a look at
+these different cases. As we discussed in
+the previous lesson, traditional machine
+learning algorithms or even regular neural networks expect data to be
+in tabular form. Consider, for
+example, the set of gray scale images with these pixel representations
+of each image. Let's say the machine learning
+team wants to use a set of images to train a traditional
+machine learning algorithm. Then you would need to
+flatten each image into a long vector of pixel
+values and then concatenate the vectors from all images into a tabular form like this that can be used by the
+machine learning algorithm. Each row in this
+table corresponds to the flatten pixel
+values of one image. However, this approach
+has limitations. When you flatten an image, you ignore the spatial structure of the image, and with that, you lose a special information
+that can be extracted from how one pixel is located with respect
+to other pixels. Moreover, this
+approach can create a high dimensional vector
+of features for each image. For instance, if each
+image is of Size, 1,000 pixels by 1,000 pixels, then by flattening each image, you obtain a vector
+size one million, which would require a lot of compute and memory resources if trained on a regular
+neural network. Without going into too much
+of the technical details, this can also affect
+the performance of the machine
+learning algorithm, especially if the
+dataset contains way fewer than one
+million images. I include the link to Andrew's deep learning
+specialization in the resource section, so feel free to check that
+out for more details. The alternative approach is a train and more advanced
+deep learning algorithm known as a convolutional
+neural network or CNN on these images. A convolutional neural
+network can work directly on images without
+having to first flatten them. These types of
+networks consist of several layers where
+each layer tries to identify more and
+more features in an image that can help with
+the machine learning task. The first layer learns
+generic features that could be applied
+to any images, things like lines, horizontal
+and vertical edges, and simple textures. Later layers learn features such as more complex
+patterns and textures, features that are more
+specific to the task at hand. This is why you'll find that many machine learning teams use pre trained convolutional
+neural network algorithms that were trained on a
+large set of images, and then fine tune these models for their
+specific tasks by training the deeper layers using their own
+specific set of images. You might be responsible
+for providing the machine learning team with the set of specific images that they'll use to fine tune a convolutional neural network or even to train these
+networks from scratch. In any case, you
+would still need to prepare the images for
+the training algorithm. For instance, you would need
+to resize the images into a shape that is expected by
+the neural network algorithm, or you would need to scale
+the values of the pixels so that they are in
+the range of values expected by the algorithm. Another pre processing
+technique that you might apply is
+data augmentation. Augmenting images is a technique that you
+can use to create new versions of existing images by applying geometric
+transformations, such as flipping and rotating
+or other techniques, such as cropping or adjusting the brightness of the images. Data augmentation
+can help increase the size and variety
+of the training data, which in general, can help with the performance of the
+machine learning algorithm. You can apply these
+pre processing steps using open source
+tools like TensorFlow, which is a framework
+that's used to build and deploy deep
+learning models. TensorFlow provides pre
+processing functions that you can apply
+directly to your images. I included an optional code example in the
+reading item after this video that
+shows how you can use TensorFlow to resize, scale, and augment
+a set of images. That was a brief overview
+of the techniques you can use to pre
+process images. Aside from pre
+processing image files, you might also need to pre process a PDF file that contains a scan document that you need to extract textual data
+or tables from. Also techniques that can
+help you with this task. For more information, I included a link to a short course on pre processing
+unstructured data for large language
+model applications that shows you examples
+of these techniques. In the next video, we'll
+continue discussing how you can pre process unstructured data for machine learning algorithms, but now we'll focus
+on textual data.

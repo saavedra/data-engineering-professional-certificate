@@ -1,0 +1,80 @@
+To transform your
+data using PySpark, you saw that you can issue
+SQL queries with Spark SQL or operate directly on Spark
+DataFrames using Python. When choosing between using SQL versus Python on
+Spark DataFrames, you should consider things like the transformation
+complexity, code reusability
+and testability, and the skills and technical
+background of your team. When you're working
+with PySpark, performing simple
+transformations, such as filtering, grouping, and aggregation, directly on a Spark DataFrame using Python, or coding these transformations
+as SQL queries, generally results in
+comparable performance. This is because both Python and SQL approaches are
+ultimately translated into the same execution plan and executed by the same underlying
+Spark computing engine. However, if the transformation
+is more complex, you might not be able
+to implement it in SQL or at least not in
+a straightforward way. For instance, if
+you want to apply the transpose operation to swap the rows and
+columns of a table, you can simply call.T
+the DataFrame. But transposing is not
+supported by Spark SQL. Or as another example, you can normalize columns and clean columns with
+missing values in SQL, but that might require
+more code than working with Python
+on Spark DataFrames. Moreover, working
+with DataFrames would help you write
+more testable, maintainable, and modular
+or reusable code. While reusable
+libraries are easy to create in Spark and PySpark, the SQL doesn't have
+a good notion of reusability for more
+complex query components. You also want to
+consider the skills and technical background
+of your team. You might find writing SQL
+queries to be simpler and easier than working with
+Python on Spark DataFrames. Depending on your
+transformation use case, you might find one of these approaches more suitable
+than the other. You can even try to combine both the Spark DataFrames
+and Spark SQL approaches to realize the best
+of both worlds. Now that we've covered the
+considerations for using Spark SQL versus using
+Python on Spark DataFrames, let's take a moment to discuss when you'll
+want to consider using a distributed framework
+like Spark to begin with. Like you saw last week, instead of using
+Spark DataFrames, you could just use Pandas
+DataFrames to process the data. However, Pandas is not a
+distributed framework, it'll load the entire
+data into the memory of the machine on which your
+Python code is running. If your dataset is not very
+large, and by that I mean, you can fit your entire
+data into memory, then you can use Pandas
+instead of Spark. In fact, using Spark on a small dataset
+can be overkilled, since you need to manage
+the cluster of nodes. On the other hand,
+if your data is so large that it doesn't fit
+entirely in the memory, or if you want to leverage
+distributed computations to enhance processing
+performance, then you should
+go with Spark and maybe run it on the cluster
+running in the Cloud. In any case, whether
+you're working on a single machine or
+a cluster of nodes, the best practice would be to extract only the data you
+need from the source. The less data you
+have to process, the less resource heavy and more performant your code will be. You might need to
+apply transformations, such as joining, grouping, and filtering inside
+the database before ingesting the data to reduce
+the size of the data. Choosing the right
+coding approach for batch transformation
+is about balancing the simplicity of
+coding with SQL with the flexibility
+and modularity of coding with non declarative
+languages such as Python. Choosing the right tool
+for batch transformation depends on the size
+of the data you want to transform and the specification
+of the hardware on which you're
+running your code. Make sure to
+understand the trade off between these
+different approaches. Now that we've talked about
+batch transformations, join me in the next
+lesson to learn about streaming
+transformation and how a streaming processing tool can affect the latency
+of your system.

@@ -1,0 +1,81 @@
+In the previous video, I connected to a
+Postgres database, and now we're ready to create the SQL queries for the tables. Under the models subfolder, I'll first remove the
+example subdirectory that was automatically
+generated. I'll then create a
+subdirectory that I'll label as star schema models. Starting with the
+dim stores table, I'll create a SQL
+file dim stores.sql. DBT will use this
+file name to assign it to the table that will
+be created in the database. In this file, I'll type the SQL query for the
+dim stores table. In front of the table
+name, I'll type staging, which is the name of the
+schema under which I created the stores table
+inside the Postgres database. In the same subdirectory, you can also create a
+YAML file to configure your schema for documentation
+and testing purposes. Here, I'll create
+a schema.yml file. To document the information
+about the model, I have to specify
+the key models. Then I'll specify the name of the table and then the
+name of the columns. You can add a description
+about the table. For each column, you can
+also add a description and specify any of the generic
+tests provided by DBT. Here, for the store key column,
+I'll add a description, saying that the store key is the primary key for
+the dim stores table. I'll also add two
+tests to verify that the values of store key
+are unique and not null. There are two other
+generic tests. You can use accepted values to check if a column
+takes in values from a list of accepted values and relationships to verify how two columns are
+related to each other. You can also create
+your own custom tests. I'll create the SQL files
+for each of the dim items, dim date and fact orders tables, and then type the corresponding SQL query inside each file. In the schema file, I'll add a description
+for each table, and for each primary key, I'll add a description
+in the same tests. Make sure to pay attention to the indentation when
+working in a YAML file. Before we run DBT to
+create the tables, let's update the default
+configuration for the models in the DBT
+project YAML file. Here, I'll remove
+the configuration for the example and replace it with the name of
+the subdirectory we created under the
+models directory, which is star schema models. Then I'll specify table as a value for the
+materialized key. This ensures that all the tables are actually created
+in the database. We can also specify
+the schema key. For example, if I specify
+analytics for the schema, the schema value
+will be appended to the default schema name
+in the profiles.yml file. This way, the tables
+will be stored under star schema analytics. In this example, I'll remove the schema key to ensure that the tables will be created
+under the schema star schema. Note that you can also specify these configurations under
+the models directory, which will override the
+default configuration of the DBT project file. Now that we've defined the
+tables for the star schema, let's run DBT to
+create the tables. In the terminal, I'll make sure that I'm in
+the project folder, and then run the
+DBT run command. If you have more than
+one subdirectory under the models directory, you can select which
+models you want to execute using the -S or --select options and then specify the name
+of the subdirectory. For example, I can execute
+star schema models by typing DBT run -S star schema models. But here, since I only
+have one subdirectory, I can remove this option. To verify that all tables have been created
+from the terminal, I'll establish a connection
+to my database server. I'll choose the
+database, and then I'll check the schemas
+in the database. Then I'll check the tables
+inside the star schema. You can see that all four
+tables have been created. Let's check the rows
+in the fact tables. Now I'll exit the
+connection and perform one last DBT command to
+test and validate the data. You can see that all tests
+were completed successfully. DBT has other features, which you'll use in this lab. For example, instead of using the MD5 hash function to
+generate surrogate keys, you'll use a utility function to create your own
+surrogate keys. You'll also use a DBT
+date package to generate a complete date dimension table that has all of these fields. Now it's your turn
+to try out the lab where you're going to
+implement another star schema. Before you jump into the lab, make sure to complete the next practice quiz to
+familiarize yourself with the normalized tables
+you'll see in the lab and how you'll transform them
+into a star schema model. You'll also create
+the SQL statements for the fact and
+dimension tables. Then you'll be
+ready to implement the SQL statements in
+the lab using DBT.

@@ -1,0 +1,43 @@
+Last week, you performed
+simple transformations on a small tabular
+customer churn dataset using Pandas DataFrames. With Spark DataFrames, you can work with much
+larger tabular datasets that are distributed across Spark
+executors behind the scenes. But Spark abstracts
+these details for you, so you can view
+and interact with your data as if it
+were a single table. Spark DataFrames are
+actually built on top of a low-level data structure called Resilient
+Distributed Dataset, or RDD, which represents the actual partition
+collection of records that can be
+operated on in parallel. To work directly with RDDs, you would need to manually
+define and optimize all the operations you want
+to perform on your data. But with Spark DataFrames, you can interact
+with the data using simpler and more expressive
+high-level operations, such as filtering, selecting,
+counting, aggregating, and grouping, and
+Spark will compile these operations down to the
+RDD level behind the scenes. Spark DataFrames and
+the underlying RDD are both considered to be
+immutable data structures, which is what makes
+them resilient, in other words, fault-tolerant. You can classify the operations
+on distributed data into two types, transformations
+and actions. Transformations, such as
+filtering, selecting, joining, and grouping, create
+new data frames from existing ones without
+modifying the original data. This is why data frames and their underlying RDDs are
+considered immutable. Actions, such as count, show, and save, trigger the execution
+of these transformations. In fact, all Spark transformations
+are evaluated lazily, meaning that they are not
+executed immediately. Instead, they're
+recorded as a lineage and only executed when
+an action is invoked. This lazy evaluation
+allows Spark to optimize the execution plan
+by rearranging transformation operations
+for efficiency. Moreover, the lineage and
+immutability properties ensure fault tolerance, because these
+properties allow you to reproduce an original state
+in the event of failures. In the next video, I'll
+give you a quick demo of PySpark DataFrames
+and show you some of the common data frame
+operations you can perform when working with data in Apache Spark. I'll
+see you there.

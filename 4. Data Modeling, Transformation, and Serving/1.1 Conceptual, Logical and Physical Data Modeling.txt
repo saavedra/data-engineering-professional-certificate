@@ -1,0 +1,66 @@
+As a data engineer, you can add value by building
+and maintaining a data model that
+promotes communication and shared understanding
+across your organization. But where should you start? Well, my suggestion
+is to start with a high level
+conceptual data model that describes the
+business entities. Then you can fill out more of the details to create
+a logical data model. Finally, you'll create what's known as a physical data model, where you'll decide
+on the database or other storage systems
+that you'll use to store and serve the data, as well as outline the
+implementation details, meaning the actual
+tools you'll use to implement the storage systems
+in your data pipeline. Zooming in on the
+conceptual model. It should focus on the high
+level business entities, the relationships between them and the attributes
+of each entity. It should also reflect the
+business logic and rules. For example, for tabular data, this description could
+include the tables, relationships between the
+tables, and column names. When you create a
+conceptual model, you can visualize it with an entity relationship
+or ER diagram, which is a standard
+tool for visualizing the relationships among
+different aspects of your data, like customers,
+products or events. Here's part of the ER diagram of the classic models data set
+you worked within Course 1. As you can see, it
+contains data about products and order
+details for each order. It encodes a connection between product data and order
+details using these symbols. This symbol stands
+for one and only one, meaning that each order
+details record can be associated with one
+and only one product. It's common to call
+this relationship from order details to product a
+one to one relationship. This symbol over here
+stands for zero or many, meaning that a product
+can be associated with zero order details if no
+one purchased that product, or it can be associated with many order details if it
+was purchased many times. This relationship from
+products to order details is a zero or one to
+many relationship, or more commonly known as simply a one to
+many relationship, meaning that one product can be associated with
+many order details. Notice that the relationship
+changes depending on the direction you take when
+viewing the relationship. This ER diagram also shows
+that the relationship from order details to
+orders is one to one, meaning that one
+order details can only be associated
+with one order. The relationship from orders to order details is one to many, meaning that one order can be associated with
+many order details. For example, if a customer brought a bunch of products
+within the same order, then there would be
+many order details, one for each product purchased. Each of these order
+details would be associated with only one order, but the order would be associated with
+many order details. The next level after the conceptual model
+is the logical model, where you add more details about how you'll implement
+the conceptual model. For example, you would add information on the
+types of columns for each table and map out the
+primary and foreign keys. Then finally, you create the physical model
+where you choose the specific DBMS and define how you'll implement the logical model
+in that system. This physical model
+should define the configuration details
+describing how data is stored, such as on disc or RAM or
+using a hybrid approach, and how processes like partitioning and replication
+are implemented. When you model your data, you'll move along
+this continuum from abstract modeling concepts
+to concrete implementation. Next up, let's sit into the
+details of data modeling, starting with an in depth
+look at normalization.

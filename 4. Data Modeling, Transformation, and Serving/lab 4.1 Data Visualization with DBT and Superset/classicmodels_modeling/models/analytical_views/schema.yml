@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: annual_sells_per_office_view
+    description: "Annual sells per office view"
+    columns:
+      - name: office_code        
+      - name: city
+      - name: state
+      - name: country
+      - name: territory
+      - name: total_quantity
+      - name: total_price
+      - name: year
+
+  - name: avg_sells_per_product_line_view
+    description: "Average sells per product lind view"
+    columns:
+      - name: product_line        
+      - name: avg_quantity
+      - name: avg_price
+      - name: month
+      - name: year
+
+  - name: avg_sells_per_product_line_mv
+    description: "Average sells per product line materialized view"
+    columns:
+      - name: product_line        
+      - name: avg_quantity
+      - name: avg_price
+      - name: month
+      - name: year

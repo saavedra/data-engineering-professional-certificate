@@ -1,0 +1,89 @@
+Hi there. My name is [inaudible] I'm a Senior
+Solution Architect, specialized in analytics
+AI and machine learning. In the development
+of this course, I've been working
+behind the scene with Joe and the team at
+DeepLearning.AI, to put together all
+the lab exercises you have been working through. First of all, I
+would like to say congratulations to making it all the way to the final
+course in the program. You have really
+accomplished a lot, and the skill you have
+learned are going to serve you well in your
+work as a data engineer. In each of the labs so far, there have been some aspect of the data infrastructure
+that you have worked on directly or set up yourself and other aspects that we
+have provided for you. When it comes to
+batch ETL process specifically, in many cases, you have used AWS Glue, but for most of the
+part, the details have been abstracted from you. Here, I would like to
+pull back the curtain, so to speak, and show
+you the details, what's going under the
+hood and how to set up those jobs you have been running to ingest
+and transform data. Behind the scene,
+AWS Glue leverages Apache Spark to
+process the data. Now you have learned
+about Apache Spark. I would like to show
+you how you can create PySpark script to run your ETL processes using
+Apache Spark on AWS Glue. But before we get
+into the details, let's learn a bit more about
+AWS Glue as a service. As you know, when
+you're setting up the data pipeline for
+analytics machine learning, or really whatever end use case, you will often be
+ingesting data from multiple data sources,
+light databases, object stores such as Amazon S3, logs, APIs, data from
+streaming platform or others. First and foremost, AWS Glue is a data integration
+service that help you bring all this data together from different
+data sources, perform the transformation
+you need on the data, and then load the data into some downstream complain
+of your system, which could be a database, a data lake, a data warehouse,
+or other destination. When you create an
+ETL pipeline to accomplish all these
+tasks using AWS Glue, we call that Glue job. There are three
+options when it comes to creating and
+running Glue job. The first option is to
+use AWS Glue DataBrew, which is no code or
+low code informant. With AWS DataBrew, you can visually see
+how the data looks as you perform all transformation
+and data manipulation. It's like working on
+an Excel spreadsheet, but power of Spark. With the DataBrew, you don't
+need to be proficient in Spark or do any coding at
+all to get the job done. The next option is authoring
+Glue job in a Glue Studio. This is slightly for more
+advanced ETL user who have a fair understanding of building ETL pipeline and are ready
+to write some Spark codes. In the Glue Studio
+user interface, you can drag and drop
+different data sources, transformations, and
+target destinations. Your third option is to create Glue job in
+a Jupyter notebook, where you will need to write your own Spark
+code from scratch, and then run it using AWS Glue, or you can use help from Amazon Q Developer or Amazon
+Q chatbot to get started. You can then perform ETL
+operation using Glue ETL and extract your ETL pipeline using Glue triggers,
+blueprints, and workflow. Another key feature you
+have seen in a lab in the previous courses is AWS Glue centralized data
+catalog and data governance, which are essential for building data lakes and lake house. In the lab, you have
+used AWS Glue Crawler to crawl over the data from
+different data sources, extracting the metadata, and storing this information
+in your Glue Data Catalog. This allow you to see
+things like definition, structures, data
+type, and partition, information from your data. AWS Glue is a
+serverless in nature, so you don't have to worry about provisioning and
+managing any resources. You can easily scale
+up your ETL jobs. You can start with a few data
+processing unit or a DPU, which is basic unit
+that Glue uses to process data and then
+scale up as needed. You have also seen how
+AWS Glue Data Catalogs support integration
+with other AWS too. You can integrate AWS
+Glue Data Catalog with Amazon Athena to run SQL query against your
+data with a QuickSight to build BI dashboards and
+a SageMaker to build, train, and deploy your
+machine learning model, and with many other services. In the first lab of
+this specialization, way back in the first course, you have spun up a data
+pipeline that looked like this, where you were ingesting normalized data from Amazon
+RDS database instance, performing some
+transformation to the model the data
+into star schema, and then loading the data into Amazon S3 bucket to serve a
+data analytics and use case. You perform the
+extract, transform, and load or ETL portion of
+this pipeline by running Terraform script to spin up
+Glue and run a Glue ETL jobs. The Python script called Glue_jobs.py was provided
+to you in the lab. In the next video, I walk you through exactly
+how you can generate the code for that Glue ETL job yourself. I will see you there.

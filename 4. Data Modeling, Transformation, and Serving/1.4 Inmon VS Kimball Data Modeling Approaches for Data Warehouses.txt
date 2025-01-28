@@ -1,0 +1,70 @@
+Back in course three, we discussed data
+warehouses as a storage system that you can use to separate transactional systems
+from analytical systems, but we didn't discuss how the data is actually modeled
+within the data warehouse to support this. There are many approaches to
+modeling data for data warehouses. And the big ones you will likely
+encounter in your work as a data engineer are the Kimball, Inmon, and
+data vault modeling approaches. In this video, we'll go through
+the Inmon and Kimball approaches, and then later this week we'll look at data
+vault and other data modeling techniques. My good friend Bill Inmon, who is widely
+known as the father of the data warehouse, created his approach to data modeling for
+data warehouses in 1989. With the goal of separating the source
+system from the analytical system. As you've seen in course three, Inman
+defines a data warehouse as a subject oriented, integrated, non volatile, and time variant collection of data in
+support of management's decisions. Here's a continuation of the definition, the data warehouse contains
+granular corporate data. Data in the data warehouse is able to
+be used for many different purposes, including sitting and waiting for future
+requirements, which are unknown today. The subject oriented and granularity
+aspects of this definition mean that an Inmin model organizes data into the
+major subject areas of the business and includes all the details
+related to those subjects. For instance, in an e commerce company,
+you can have subjects such as products, orders, customers, shipments, and so on. And for each subject, the data
+model must contain all the details, such as business keys,
+relationships, and attributes. So with the Inman data modeling approach, you need to consolidate data from various
+data sources and model the data into a highly normalized form that is
+then stored in a data warehouse. You can then serve the data for
+downstream reports and analysis via department
+specific data marts. With this approach, the data warehouse
+represents a single source of truth that supports many data use cases, even if the current analytical
+requirements are not yet defined. This strict normalization requirement
+in the data warehouse reduces data duplication, leading to fewer downstream
+analytical errors, better data integrity, and consistency. Here's an example of how you can
+apply the Inmon modeling approach to e-commerce data. Let's say that the business stores
+information about orders, inventory, and marketing in separate source systems. You can ingest the data
+from these sources and store it in the data warehouse in
+a highly normalized third normal form. To meet department-specific data needs,
+you can then take this data from the data warehouse, model it into various
+star schemas or other appropriate models. And place them in downstream data marts
+for sales, marketing, and purchasing, with each department having its own
+data structure that's unique and optimized to its specific needs. This way, data users from each
+department can easily query the data for their use cases. Unlike the Inmon modeling approach that
+uses a data warehouse to store data across a business that's been modeled
+into a normalized form and then serves department specific
+analytics through data marts. The Kimball modeling approach
+focuses more on modeling and serving department-specific analytics
+directly in the data warehouse without first normalizing the data. Created by Ralph Kimball in the early
+1990s, this approach effectively allows you to serve data that's
+structured as star schemas or similar variants directly from
+the data warehouse itself. Incorporating data marts into
+the overall warehouse architecture. Here's an example of how a Kimbell data
+warehouse can be used for e-commerce. After you ingest the data from the orders,
+inventory, and marketing source systems, you model the data into multiple star
+schemas to address the different facts of the business and then store them
+directly in the data warehouse. Kimball's approach enables faster
+modeling, hence quicker iterations, than Inmon's approach. But with a trade off of potential data
+integrity issues because you're storing star schemas that have
+more data redundancy and duplications directly
+in the data warehouse. So if your organization prioritizes quick,
+practical insights into specific business processes and is looking for rapid
+implementation and iteration of their data warehouse, then I suggest you adopt
+Kimball's approach to data modeling. On the other hand, if data quality
+is your highest priority, or if the analysis requirements are not yet
+defined, then I suggest you choose Inman's data modeling approach that treats a data
+warehouse as a single source of truth. All data marts are then built on
+top of the highly normalized data warehouse to ensure data consistency and
+integrity. Depending on the organization,
+you might need to apply both the Inmon and Kimball modeling approaches when modeling
+data for different data warehouses. So it's important that you understand how
+to handle data that it's highly normalized and data that's in a star schema. And so, before we discuss another
+approach to data modeling, join me in the next video to learn how you
+can convert a normalized data model that's in third normal form into a star schema.

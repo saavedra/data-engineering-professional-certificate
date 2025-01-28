@@ -1,0 +1,179 @@
+As I said in the previous video, I would like to show you now how to use Glue Studio to
+generate the Glue job. Here, we will generate
+the code in that glue_job.py script that you have run in the first
+lab for this program. In that lab, your architecture
+looked like this, and it's this Glue ETL job here that we have been
+looking at in the details. Remember, the purpose
+of Glue job was to ingest normalized data from
+an Amazon RDS instance, apply transformation to model
+the data into star schema, and then load the data
+into Amazon S3 bucket. Let's see how that works. First off, recall that schema of the normalized data in the
+database looked like this, where you have tables
+from customers, product, productline, orders, orderdetails,
+payment, employees, and offices, and you transform the data
+into star schema, consisting of a
+central fact table containing some measurement
+related to the orders, and then surrounding
+dimensions table provided more context
+on those order, including information
+about customers, products, and location
+associated with each order. Now let's take a
+closer look at the glue_job.py file that you have used to
+accomplish this task. There are several
+section in the script, and I will just quickly walk you through each
+of these sections, so you are clear on
+what's going on here. To start, of course, this is a PySpark script. We start with some imports. As you can see here, we are importing some
+packages from awsglue, and then also from
+pysparks, because, of course, when you
+run this script, you will be using Spark
+behind the scene. Next, there is the
+functions' definitions. This one is called sparkSqlQuery to run SQL queries
+on data frame. After that, you are using getResolvedOptions
+method from the awsglue to pass command line argument, such as JOB_NAME, glue_connections,
+glue_databases, and target S3 path. Following that, this is
+the sum context setup, where you've been creating a SparkContext and
+a glueContext, as well as initializing a Glue job using the
+provided JOB_NAME. Then comes the
+actual ETL portion. Without getting too much into the details here,
+with this section, you are setting up the
+database connection and extracting data
+from source tables. Next, you are applying transformation to the data
+to build star schema. You can see you
+are accomplishing that running a series
+of SQL statement. Finally, you are loading the
+transformed data into S3. Now, of course, you
+could sit down and write a script line
+by line, but instead, the way we generated
+this script for you in the first lab was
+using Glue Studio. I'm going to show you
+how to do that now. Here, I'm in AWS console, and I have an RDS database
+instance up and running. I also have an S3 bucket here where I want to
+send the transform data. Now I'm going to head
+over here and open up the Glue Visual ETL
+tool in a Glue Studio, and you can see that I have blank Canvas to start
+creating my Glue job. When I click this "+"
+button on the left, I get a list of choices for the various element I can
+add to the glue jobs. Here you can see there
+are tabs for sources, transform, and target. You can select from this to add different
+extract, transform, and load component to
+your data pipeline, and we're going to do that here. Since the first thing
+we need to do is extract data from
+RDS, at this source, I'm going to choose MySQL data source node and add it here, and I will name this
+node customer_source to indicate this will represent the ingestion data
+from customer tables. I will add a database
+connection here, choosing the connections from the RDS database that
+I've been running now. You can see this here, this will set up as
+a JDBC connection. Here, I will indicate the table name that we will
+be ingesting data from. Then I need to indicate
+an IAM role for a Glue job to assume when
+running this step of the job. You would first need to
+set up this IAM role, but I have already set up this role called
+Cloud9-de-c1w2-glue-role, and I will choose that here, and that will give Glue the appropriate permission
+to read the data from RDS, as well as to eventually
+write data to S3. Now I can see a
+preview of the data that will be extracted here
+from the customer table. The next step will be
+to add a transform to create the customer dimension
+table for the star schema. I can go back to
+the + button here, and then in the Transform tab, you can see there are many different transforms
+I can choose. But in this case, I'm
+going to choose SQL Query, and notice, I have the customer_source
+node selected here. When I choose SQL Query, I will add that here below
+the customer_source. Since this will be
+transformation, apply to the customers data. Now, over here, I need to write a SQL code to perform here. I'm going to cheat a
+little bit because I already have a SQL I
+need over here in the final glue_job.py script that
+we were looking at earlier. I will just copy that and then paste it over here
+to save some time. If you don't already have
+your SQL code written, of course, you could
+just type it in here, and I will name this
+query dim_customers, because what we are
+doing here is creating the customer dimension
+table of the star scheme. You can see here it's already
+connected with the source. Then here under SQL aliases, I will write customers, and then that is what the source will be
+referred in the query. Down here, where we are saying from customer
+in the query, the reference will be
+customer_source, which, of course, is reading from
+the customer table in RDS. With the rest of the query here, you can see that from
+the customer_source, we are extracting
+this fields and creating that
+dim_customer table. The other source and transform step will
+be quite similar. I will just step
+through them quickly, and I will add product_source
+as next MySQL source, and I will add RDS connection
+and specify the table name. If we look again, the
+glue_job.py script, you have seen that for the
+product dimension table, we actually need to
+extract from two sources, product and productline,
+and join them. I will just copy
+this SQL code from next step where we add
+the SQL Query transform. But first, I will add
+another MySQL source here, use the same setting and specify that this one will read from
+the productsline table. Now I'm ready to add that
+SQL Query transformation, and I will call this
+one dim_products, and then I'm going to
+choose two sources, both the product_source
+and productline_source. Then I will page the SQL code in here that will
+be performed on the data from this sources to
+create dim_product tables. Then I need to add the
+appropriate alias here. Now we need to create
+one more dimensions, and that's a dim_location table. Again, looking at the SQL code here from the glue_job.py, you can see that this is also drawn on the data from
+the customer table, and so I will add
+another SQL query here, and I will call it
+dim_location and choose customer_source
+as a parent node. I will set up customer
+[inaudible] in alias, and then I will
+grab the SQL code to define the transformation. Those are the three dimensions, and now we just need to
+create the fact table. Now just peeking over here at the SQL code for
+the fact table, you can see we need to
+do a bunch of joints. We need to join the order
+table with the ordersdetail, product, customers,
+and locations table. I will just copy this code. I will just quickly create
+two new MySQL sources, one for the orders and
+one for the orderdetails, and then I will add other
+SQL Query transformations, and then I will call
+this one fact_order. Then for the parent source node, I will choose customer, products, order, orderdetails, and the dim_location table. Then I will paste the
+SQL code in here. Then I need to add the
+appropriate alias here. That's it for the extract and transform step
+for the pipeline. Now we just need to specify the target destination
+to low the data into. The target destination is
+going to be Amazon S3 bucket, and I already have bucket setup, and I have created this folder just to keep things organized. I have a processed_data folder, and then inside there, I have one folder for each of the fact and dimension table. These are all empty right
+now, as you can see. But when we run the Glue job, we should be able to see this have been populated
+with the transformed data. Now I'm going to come back over here and add a target node, and I will choose Amazon S3, and I'm going to set up a separate target node for each of the fact
+and dimension table. I will call the first
+one dim_customer_target, and then I will choose
+dim_customer as the parent node. I will choose Parquet
+as the format, and then for now, you don't need to worry about the
+rest of the settings. I will just accept the defaults. Then I can click here to
+browse S3 to identify the dim_customer folder
+where I want this to go. Then I'm just going to do
+the same for other's tables. I will add S3 targets and
+set them to pull from the appropriate parent nodes and deliver to the
+appropriate folder on S3. Now we have everything
+for the Glue job defined here in the
+Visual ETL interface. Then if I click over here
+on the "Script" tab, you can see that script for this job has now been written. To run this Glue job, I can first click over
+here on the "Job details". This is where you can
+define number of workers. I'm just going to
+set this to two, and the job timeout, which I will set
+to three minutes, since this shouldn't
+take too long. I can verify here that job has her
+appropriate role assigned. Then I will hit "Save" up here. Next, I can click over the
+"Run" tab and select Run job. After a couple of minute, I can see that job was
+completed successfully, and I can head over to S3 and verify that transform table
+now exist in my S3 bucket, and they are ready to be
+queried by the analyst. Just to summarize
+what we did here. I started with an RDS
+database instance, an S3 bucket, an IAM role all ready to go. I then use Glue Studio Visual
+ETL tool to define source, transformation, and target
+for my ETL pipeline. With all these things defined, I could have a look at the script that was
+generated for the Glue jobs. Then with a few more
+parameters set, I saved the whole
+jobs and ran it. Now, as I mentioned, this is just one way to create
+and run a Glue job. You could have
+choose the low-code, no-code data proof approach, or you could go more manual
+Jupyter Notebook approach. That's it. I hope
+you have enjoyed this little demo and
+are feeling much more confident now
+in your ability to set up and run
+Glue job of your own. Good luck. Thank you.

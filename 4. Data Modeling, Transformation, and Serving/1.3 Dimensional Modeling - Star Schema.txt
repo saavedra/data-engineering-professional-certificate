@@ -1,0 +1,118 @@
+While normalized models focus on connecting data
+entities and modeling the relationships to reduce data redundancy,
+the star schema, also known as a
+dimensional data model, focuses on structuring the
+data in a way that facilitates faster analytical
+queries and delivers data that is more understandable
+to business users. A star schema collects
+business measures in a table called the fact
+table and surrounds this table with the necessary contextual information stored in dimension tables in a way that resembles a
+star-like structure, hence the name star schema. Let's zoom in on the fact and dimension tables to see how they can better support
+analytical queries. The fact table contains quantitative business
+measurements that result from a business
+event or process. For example, when you
+order a ride share, this event generates measures
+such as the trip duration, trip price, tip paid, trip delays, and so on. These business measures
+are what we call facts, so each row in the fact table corresponds to the facts of
+a particular business event. When designing a
+star schema model, you also need to decide on
+what's called the grain, meaning the level of
+detail you want to show in each row
+of the fact table. In the rideshare example, each row in the fact
+table can represent all the rides completed by all customers within
+a single day, all the rides of a
+single customer in a day or a single ride completed by a single customer, and so on. While various grain
+levels are possible, I suggest you go with what's
+called the atomic grain, which refers to the
+most detailed level at which data is captured by a given business process and so for the ride
+share example, ideally, each row of
+the fact table would correspond to one completed
+ride by a single customer. Since facts relate
+to events and you can't change an event after
+it's already happened, the data in the fact
+table is immutable. In other words, fact tables
+don't change and are append-only and so
+you'll find that most fact tables are
+typically narrow and long, meaning that they won't
+have a lot of columns, but can have a lot of rows
+that represent events. A fact table is always
+accompanied by dimension tables, which provide the reference
+data, attributes, and relational contexts for the events stored
+in the fact table. They describe the
+what, who, where, and when of each event
+in the fact table, and they often
+have many columns. In contrast to the narrow
+and long fact tables, dimension tables are
+typically wide and short, meaning that they
+will have lots of descriptive columns,
+but fewer rows. In the rideshare example, you can have
+dimension tables that contain information
+about the customers, drivers, and trip locations. In a star schema, you have the fact
+table in the center that contains the facts
+about the business event, surrounded by dimension
+tables that provide additional context,
+and in some cases, you may even connect
+a dimension table to more than one fact table
+from various star schemas. A dimension that
+is reused across multiple-star schemas is
+called a conformed dimension. The fact tables are connected to the dimension tables
+through foreign keys. Each dimension is defined
+by a primary key, and the fact table has
+its own primary key, which could be the
+natural primary key from the production tables but the best practice is to create a substitute
+for the natural key, also known as the surrogate key. This way, you can combine data from different
+source systems that have natural primary keys written in different formats, and you can decouple
+the primary keys of your star schema from the primary keys of
+the source database, which can be subject to change. Here's an example of a
+star scheme you worked with in the first
+lab of course 1. Each row in the fact table
+corresponds to a product placed within an order and
+contains business measures, such as the quantity ordered, price each, by price, and so on. This fact table is connected to three dimension
+tables that provide further features
+related to customers, products, and the locations from which an order was placed. You can see that
+the fact table has a primary composite
+key consisting of the order number and
+the order line number, and the table contains
+three foreign keys to connect each of the
+three dimension tables. How exactly does the star schema help with analytical queries? Well, you can start
+with a fact table by applying aggregate queries
+to find, for example, the sum, average, or maximum value of a particular fact measure
+in the fact table. You can then use the
+dimension tables to filter or group the facts. For example, let's say
+you're interested in finding the total sales amount for each product line
+within the USA, so you need to sum up the order amount column
+in the fact table. To do this using SQL, you can select the sum of the order amount
+from the fact table, and let's call this sum
+of the total sales. Then you'll need to use
+the product line column from the products dimension
+table to group the sales, so you can join the
+fact table with the products dimension table
+based on the product code. You also need to specify the product line in
+the select clause, and then you can
+group the results by their product lines. You'll then have to
+use a country column from the locations
+dimension table to filter the results so that only the sales that occurred
+in the USA are computed. You can join the locations table based on the postal code, then filter the results where
+the country equals USA. In the end, you'll have a SQL
+query that looks like this. Say you wanted to find
+the same information, the total sales amount for each product line
+within the USA, but using the
+normalized version of the data set, how
+would that query look? Well, you would first need to locate the business measures
+you're looking for, meaning the total sales amount. You can get this by
+multiplying the price each column with the quantity ordered column and the
+order details table. Then you'll have to
+join the order details table with the products table, then the products table to the product lines table to
+group by the product line. Finally, you'll have to join
+the customers orders and orders details table to filter
+the results by country. While the two models contain
+the same information, star schema organizes
+the data in a way that's easier for business users
+to understand and navigate. It also results in
+simpler queries with fewer joints which speeds
+up the query performance. Normalized forms
+and star schemas both have their own use cases. While normalized forms ensure data integrity and
+avoid data redundancy, star schemas facilitate
+analytical workloads. In the next video,
+we'll discuss how these two forms are used in data warehouses.
+I'll see you there.

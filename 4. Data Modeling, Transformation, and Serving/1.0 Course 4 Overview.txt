@@ -1,0 +1,105 @@
+In Courses 2 and 3, you learned how to ingest
+data into your data pipeline and explore various storage solutions for hosting your data. Now, before you serve the
+data to your end users, you need to transform
+and model it in a form that supports
+its intended use cases. In this course, we'll start
+with data modeling and then look more closely
+at transformation in the second half
+of this course. Modeling your data involves
+deliberately choosing a coherent data structure that aligns with the business
+goals and logic. What is a data model?
+Here's my definition. A data model organizes and
+standardizes data into a precise structured
+representation to enable and guide human
+and machine behavior, inform decision making
+and facilitate actions. The first part of the definition implies that when
+you model your data, you define the structure, relationships, and
+meaning of the data. For example, when you
+model tabular data, you need to think
+about the tables that make up the model, how to label the tables, how the tables relate
+to one another, and what columns to
+choose for each table. You should structure the data in a way that connects back to the organization and this is what the second part of
+the definition implies. For the data to
+serve its purpose, you'll need to make the data understandable and
+valuable to humans, if you're modeling the data for analytical use cases such as creating reports
+or dashboards. If the data is going to be used for machine
+learning use cases, you need to model the data into a form that is meaningful
+to a computer. A well constructed data
+model should reflect the business goals and
+logic while incorporating business rules like requiring invalid payment method
+before processing in order to ensure
+compliance with operational standards
+and legal requirements. A good data model should also outline the relationships
+between business processes. For instance, linking
+sales data with product inventory
+data to ensure that the sales process is
+directly informed by current inventory levels,
+preventing overselling. Beyond that, a robust data model serves as a powerful
+communication tool, creating a shared language
+among stakeholders like engineers, analysts,
+and executives, by standardizing
+business vocabulary such as clearly defining what
+constitutes an active user, is that someone who
+has logged into their account in
+the last 30 days, someone who has made a purchase in the previous six months, or something else entirely. Carefully defining
+business terms can have a massive impact on downstream reports that describe customer behavior and things like projecting customer churn. To ensure successful
+data modeling, recall the framework for thinking like a
+data engineer from Course 1 and always start with talking to
+your stakeholders. Understanding the business
+definitions, rules, and goals is the first step to modeling the data and providing the business with
+quality data for actionable insights and
+intelligent automation. On the other hand,
+poor data models that are created haphazardly and don't reflect how the business operates can create more
+problems than they solve. Instead of promoting
+communication and shared understanding, poor data models might provide stakeholders with
+inaccurate information and create confusion. Another professional
+oversight that I often see is when data teams ignore data modeling entirely because they see it as a slow, tedious, and irrelevant process that's only
+reserved for big companies. They jump directly into
+building data systems without a plan for how they will organize their data to make
+it useful for the business. Well, that is a huge mistake. Data modeling has
+been a practice for decades and
+was traditionally used to structure data stored in data warehouses and
+relational databases. With the rise of Data Lake 1.0, NoSQL and big data systems, engineers started ignoring
+traditional data modeling, sometimes for legitimate
+performance gains. However, the lack of rigorous data modeling
+created data swamps, along with lots of redundant, mismatched, or simply
+inaccurate data. Nowadays, the growing popularity of data management,
+in particular, data governance and data quality is pushing the need for
+coherent business logic. I see data modeling as a
+critical practice that enhances your understanding of the data throughout
+its life cycle. As a data engineer, data modeling helps you
+improve data quality and integration and
+encourages the adoption of data throughout
+the organization. No matter the size of the
+business you're a part of, you should take a
+targeted approach to data modeling by focusing on
+specific business domains. For instance, you could create a data model to help
+the marketing team better understand
+customer behavior and campaign effectiveness. Or you can model the company's financial
+transactions so that the finance team can analyze spending patterns and identify
+cost saving opportunities. Targeted data modeling
+efforts can provide valuable insights to drive better decision making
+and impactful AI models, even within highly
+complex businesses. In the first week
+of this course, I'll mainly focus on discussing batch data modeling since that's where most data modeling
+techniques come from. We'll start by taking
+a quick look at the three traditional
+levels of data modeling; conceptual, logical,
+and physical, each differing in the degree
+of detail they provide. Then we'll go over
+two basic schemas, the normalized schema
+and the star schema, which you'll implement
+in the labs this week. Finally, we'll dive into some popular modeling
+techniques for analytical use cases such as the Inmon and Kimball
+modeling approaches, as well as other techniques like data vault and one big table. In Week 2 of this course, we'll discuss data modeling and transformation techniques for
+machine learning use cases. Then in Week 3, we'll dive deeper into transformations
+and discuss the various technical
+considerations for choosing data
+processing frameworks. Finally, we'll bring
+everything you learned in this program together
+in the fourth week of this course where
+you'll get a chance to build an end to end data pipeline that encompass all the stages of the
+data entering life cycle, as well as the key
+undercurrents. Join me in the next
+video to take a look at the different levels
+of data modeling.

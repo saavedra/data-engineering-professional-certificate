@@ -1,0 +1,54 @@
+The modeling approaches we've looked at so
+far this week, in particular, Kimball and Inmon were developed when data warehouses
+were expensive on premises and heavily resource constrained with
+tightly coupled compute and storage. While batch data modeling has
+traditionally been associated with one of these strict approaches, more relaxed
+approaches such as what's known as one big table, or obt for short,
+are becoming more common. With one big table, you throw all
+your data into a single wide table, which is exactly what it sounds like, a very wide collection of many columns
+typically created in a columnar database. A wide table can potentially
+have thousands of columns, whereas tables in relational databases
+typically have maybe a dozen or so columns, and a column may be a single
+value or contain nested data. So y tables with one big table
+are highly denormalized and flexible. Here's an example of a wide table, which is the denormalized table
+you saw in an earlier video. This is just a small example, and the wide
+tables you'll encounter with one big table can have way more columns,
+and as you can see, this table combines various data types and
+each row represents a customer order. You can think of one big table as
+the denormalize extension to Kimball's approach, where you have facts and
+dimensions represented in the same table. By doing so, you can free the data analyst
+from performing any complex joins, or any joins for that matter. Moreover, you can run the same analytical
+queries faster on wide tables than on highly normalized data, or
+even on data modeled as a star schema, where you might still need to join
+dimension tables with the fact table. The wide table simply contains all of
+the data you would otherwise need to join together in a more rigorous
+modeling approach, which can have a huge
+impact on scan performance. This one big table approach is becoming
+more common because of the low cost of cloud storage. Also, many organizations are choosing to
+design flexible schemas in their source and analytical systems
+by using nested data. And with one big table, you can store this
+nested data all together in one table without having to worry about the optimum
+weight represented in storage. Wide tables are usually sparse, meaning the vast majority of entries
+in any given field may be null values. So it's extremely expensive for you to
+store and read a white table with a bunch of null values and a traditional row
+oriented relational database, because the database allocates a fixed amount of
+space for each entry, and the database must read the contents of each row in its
+entirety when reading from the database. But with the emergence of columnar
+databases, you can read only the columns selected in a query and
+so reading nulls is essentially free. So columnar storage helps optimize
+the storage and processing of wide tables. The biggest criticism towards the one
+big table approach is that as you blend your data, you lose
+the business logic in your analytics. Another downside is that you need complex
+data structures like arrays to store nested data. These structures have poor performance
+when it comes to updates and aggregation of elements. And so I suggest using a wide table when
+you have a lot of data that needs more flexibility than a traditional data
+modeling approach might provide. When it comes to modeling your data,
+there's no one size fits all solution, so make sure you understand the trade offs
+between the possible approaches when it comes to flexibility, data integrity, and
+ease of use by downstream stakeholders to choose the best approach for
+your use case. In the next lab,
+you'll practice taking normalized data and modeling it into a star schema and
+one big table, which is a common task you'll
+have to do as a data engineer. But before you head to that lab, I have
+included a demo on dbt and an exercise for you to practice writing the SQL queries
+that you will use in the lab to model your data. I'll see you in the demo.

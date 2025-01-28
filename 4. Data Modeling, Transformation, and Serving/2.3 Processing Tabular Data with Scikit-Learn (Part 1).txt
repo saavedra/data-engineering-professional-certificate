@@ -1,0 +1,74 @@
+>> Let's apply some of the preprocessing
+steps you saw in the last video on an example data set. I'm going to use the open source
+machine learning library scikit learn. This library includes several modules
+that you can use to define and develop supervised and
+unsupervised machine learning systems. It also provides tools for
+preprocessing data. I've included a link to the scikit learn
+user guide in the resource section at the end of this week. And I encourage you to check
+it out to learn more about the various preprocessing tools available. In our example, I'll use two preprocessing
+methods, standardization for the numerical columns and one hot
+encoding for the categorical columns. For this demo, I have downloaded
+a customer churn dataset from the data science platform called Kaggle. If you'd like to follow along with me,
+you can find this notebook file and the dataset CSV file,
+under the resource section of this video. Let's quickly explore this
+dataset using pandas. I'll import pandas and
+then read the CSV file, that I sort locally into
+a panda's data frame called data. Checking the shape of the data, I see that it consists of around
+440,000 rows and 11 columns. You can use the head method to examine
+the first few rows of this data. Each row corresponds to a customer and
+contains a set of features, including the customer's age, their usage
+frequency, the number of support calls they made to the service provider,
+their subscription type, and so on. And it also contains the column churn,
+which consists of the target label for each customer. A value of one indicates that
+the customer has churned, and the value of zero indicates
+that they have not churned. You can also use the describe method to
+quickly explore the summary statistics for the numerical columns. So you can see that the mean age
+of the customers is almost 40, the number of support calls range from 0
+to 10, and the median total spend is $661. You can also see that the count for each
+feature is one less than the total number of rows, indicating that there's one null
+value in each of these numerical columns. You can verify this by
+using the isnull method. From these outputs, you can see that the table contains
+one entire row of missing entries. Since it's just one row and all the
+columns for this one customer are nulls, I'll drop it from the dataset,
+using the dropna method. You can verify that there are no null
+values anymore, in any of the columns. To quickly explore the categorical
+columns, which are subscription type and contract length, I'll use the value counts
+method on each column, which will return the unique categories and the percentage
+of rows that belong to each category. You can see that each categorical
+column has three unique values. Since the number of unique values is
+small, you can use one hot encoding to convert these categorical
+columns into numerical columns. But first, since most of the machine
+learning models expect the features and labels to be stored separately,
+I'll create a variable called features and assign it all the columns
+from our data set, that represents the customer features. Then I'll create a variable
+called labels and assign it the single column
+that represents the labels. You can take a look at the first
+few rows of the features and labels to make sure they're
+separated properly. Now assume you met with
+the machine learning team and you're asked to prepare this data,
+for training a machine learning model. For that you're asked to split
+the data into 80% for training, and 20% for testing. In each set you'll need to preserve the
+customer id standardized numerical columns that consists of age,
+tenure, usage frequency, support calls, payment delay,
+total spend and less interaction, and perform one hot encoding
+on the categorical columns. The training and test data sets, should be
+stored in tabular format as parquet files. Given these requirements, here are the
+steps I'll follow to prepare the data for training. 1.First I'll split the data
+into training and testing sets. 2.Then I'll focus on processing
+the training data first, I'll extract the numerical
+columns of the training set and then standardize each numerical column. Ill extract the categorical
+columns of the training set and encode them using one hot encoding. Then ill combine the process
+numerical columns and the encoded categorical columns, with
+a Customer ID into a Pandas data frame. Before converting this pandas data frame
+into a parquet file, concatenating the process columns into a Pandas data
+frame, brings together the metadata, meaning the row and column labels and
+the values into a single object. This makes it easier to store
+the data as a parquet file. 3.After that, I'll repeat the same
+processing steps on the test set. When evaluating or
+testing a machine learning system, you should apply the same
+preprocessing steps, with the same computed statistics used
+on the training set to the test set. This is a good practice because, the test
+set is used to evaluate the machine learning algorithm on data
+that it hasn't seen before. So to transform the test set, you should use any statistics used
+to transform the training set with. So with this plan in mind, let's move on to the next video to see how
+to carry out these steps in scikit learn.

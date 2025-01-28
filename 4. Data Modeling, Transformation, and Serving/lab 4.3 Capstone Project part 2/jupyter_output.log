@@ -1,0 +1,74 @@
+nohup: ignoring input
+[I 2025-01-16 14:59:48.285 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2025-01-16 14:59:48.290 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2025-01-16 14:59:48.296 ServerApp] jupyterlab | extension was successfully linked.
+[I 2025-01-16 14:59:48.297 ServerApp] Writing Jupyter server cookie secret to /config/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2025-01-16 14:59:48.582 ServerApp] notebook_shim | extension was successfully linked.
+[I 2025-01-16 14:59:48.600 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2025-01-16 14:59:48.603 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2025-01-16 14:59:48.604 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2025-01-16 14:59:48.605 LabApp] JupyterLab extension loaded from /config/workspace/jupyterlab-venv/lib/python3.10/site-packages/jupyterlab
+[I 2025-01-16 14:59:48.606 LabApp] JupyterLab application directory is /config/workspace/jupyterlab-venv/share/jupyter/lab
+[I 2025-01-16 14:59:48.606 LabApp] Extension Manager is 'pypi'.
+[I 2025-01-16 14:59:48.611 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2025-01-16 14:59:48.611 ServerApp] Serving notebooks from local directory: /config/workspace
+[I 2025-01-16 14:59:48.612 ServerApp] Jupyter Server 2.15.0 is running at:
+[I 2025-01-16 14:59:48.612 ServerApp] http://d21305fe280a:8888/lab?token=2f1a962394777ddd9375f69cb33a14cd16911d590a23105e
+[I 2025-01-16 14:59:48.612 ServerApp]     http://127.0.0.1:8888/lab?token=2f1a962394777ddd9375f69cb33a14cd16911d590a23105e
+[I 2025-01-16 14:59:48.612 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2025-01-16 14:59:48.616 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///config/.local/share/jupyter/runtime/jpserver-12440-open.html
+    Or copy and paste one of these URLs:
+        http://d21305fe280a:8888/lab?token=2f1a962394777ddd9375f69cb33a14cd16911d590a23105e
+        http://127.0.0.1:8888/lab?token=2f1a962394777ddd9375f69cb33a14cd16911d590a23105e
+[I 2025-01-16 14:59:48.640 ServerApp] Skipped non-installed server(s): bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[W 2025-01-16 15:00:23.646 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2025-01-16 15:00:42.166 ServerApp] Writing notebook-signing key to /config/.local/share/jupyter/notebook_secret
+[W 2025-01-16 15:00:42.172 ServerApp] Notebook C4_W4_Assignment_2.ipynb is not trusted
+[I 2025-01-16 15:00:43.436 ServerApp] Kernel started: 6747f241-ee1c-46f9-8e12-ad0a29faa7b2
+[I 2025-01-16 15:00:44.141 ServerApp] Connecting to kernel 6747f241-ee1c-46f9-8e12-ad0a29faa7b2.
+[I 2025-01-16 15:00:44.329 ServerApp] Connecting to kernel 6747f241-ee1c-46f9-8e12-ad0a29faa7b2.
+[I 2025-01-16 15:00:44.504 ServerApp] Connecting to kernel 6747f241-ee1c-46f9-8e12-ad0a29faa7b2.
+[I 2025-01-16 15:06:19.081 ServerApp] Saving file at /terraform/modules/extract_job/glue.tf
+[I 2025-01-16 15:06:44.206 ServerApp] Saving file at /terraform/modules/extract_job/glue.tf
+[I 2025-01-16 15:07:26.304 ServerApp] Saving file at /terraform/modules/transform_job/glue.tf
+[W 2025-01-16 15:23:14.331 ServerApp] WebSocket ping timeout after 119910 ms.
+[I 2025-01-16 15:23:19.335 ServerApp] Starting buffering for 6747f241-ee1c-46f9-8e12-ad0a29faa7b2:59f089dd-6402-46f0-96a3-3aff0cf4f90a
+[I 2025-01-16 15:27:09.544 ServerApp] Connecting to kernel 6747f241-ee1c-46f9-8e12-ad0a29faa7b2.
+[I 2025-01-16 15:27:09.544 ServerApp] Restoring connection for 6747f241-ee1c-46f9-8e12-ad0a29faa7b2:59f089dd-6402-46f0-96a3-3aff0cf4f90a
+[I 2025-01-16 15:31:38.178 ServerApp] Saving file at /C4_W4_Assignment_2.ipynb
+[I 2025-01-16 15:33:38.628 ServerApp] Saving file at /C4_W4_Assignment_2.ipynb
+[I 2025-01-16 15:35:38.849 ServerApp] Saving file at /C4_W4_Assignment_2.ipynb
+[I 2025-01-16 15:40:48.742 ServerApp] Saving file at /terraform/modules/data_quality/glue.tf
+[I 2025-01-16 15:42:48.953 ServerApp] Saving file at /terraform/modules/data_quality/glue.tf
+[I 2025-01-16 15:42:58.827 ServerApp] Saving file at /terraform/modules/data_quality/glue.tf
+[I 2025-01-16 15:44:00.581 ServerApp] Creating new directory in /dbt_modeling/models
+[I 2025-01-16 15:44:11.818 ServerApp] Creating new file in /dbt_modeling/models
+[I 2025-01-16 15:44:34.765 ServerApp] Saving file at /dbt_modeling/models/bi_views/schema.yml
+[I 2025-01-16 15:45:31.092 ServerApp] Creating new file in /dbt_modeling/models/bi_views
+[I 2025-01-16 15:45:39.988 ServerApp] Saving file at /dbt_modeling/models/bi_views/sales_per_artist_vw.sql
+[I 2025-01-16 15:45:50.769 ServerApp] Starting buffering for 6747f241-ee1c-46f9-8e12-ad0a29faa7b2:59f089dd-6402-46f0-96a3-3aff0cf4f90a
+[W 2025-01-16 15:45:57.500 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2025-01-16 15:45:57.690 ServerApp] Connecting to kernel 6747f241-ee1c-46f9-8e12-ad0a29faa7b2.
+[I 2025-01-16 15:45:57.951 ServerApp] Starting buffering for 6747f241-ee1c-46f9-8e12-ad0a29faa7b2:b3fa0249-ae77-4c65-8caa-45a921d6aa81
+[I 2025-01-16 15:45:58.822 ServerApp] Connecting to kernel 6747f241-ee1c-46f9-8e12-ad0a29faa7b2.
+[I 2025-01-16 15:46:20.249 ServerApp] Creating new file in /dbt_modeling/models/bi_views
+[I 2025-01-16 15:46:28.525 ServerApp] Saving file at /dbt_modeling/models/bi_views/sales_per_country_vw.sql
+[I 2025-01-16 15:47:55.227 ServerApp] Saving file at /dbt_modeling/dbt_project.yml
+[I 2025-01-16 15:54:47.164 ServerApp] Saving file at /dags/deftunes_songs_pipeline.py
+[I 2025-01-16 15:56:47.387 ServerApp] Saving file at /dags/deftunes_songs_pipeline.py
+[I 2025-01-16 15:58:09.180 ServerApp] Saving file at /dags/deftunes_songs_pipeline.py
+[I 2025-01-16 16:00:32.766 LabApp] 302 GET /lab (@89.87.79.214) 0.60ms
+[I 2025-01-16 16:00:43.107 ServerApp] Saving file at /dags/deftunes_songs_pipeline.py
+[I 2025-01-16 16:22:02.603 ServerApp] Saving file at /C4_W4_Assignment_2.ipynb
+[I 2025-01-16 16:30:02.601 ServerApp] Saving file at /dags/deftunes_api_pipeline.py
+[I 2025-01-16 16:31:29.402 ServerApp] Saving file at /dags/deftunes_api_pipeline.py
+[I 2025-01-16 16:31:49.273 ServerApp] Saving file at /dags/deftunes_api_pipeline.py
+[I 2025-01-16 16:32:47.730 ServerApp] Saving file at /dags/deftunes_songs_pipeline.py
+[I 2025-01-16 16:42:06.970 ServerApp] Saving file at /C4_W4_Assignment_2.ipynb
+[I 2025-01-16 16:42:30.062 ServerApp] Starting buffering for 6747f241-ee1c-46f9-8e12-ad0a29faa7b2:7b7ac2af-2d60-4555-a703-9ce8283d14f1
+[I 2025-01-16 17:02:24.202 ServerApp] 302 GET / (@135.148.10.174) 0.56ms
+[I 2025-01-16 17:10:09.566 LabApp] 302 GET /lab? (@51.81.215.75) 1.44ms
+[I 2025-01-16 17:18:36.579 LabApp] 302 GET /lab? (@135.148.8.106) 0.93ms

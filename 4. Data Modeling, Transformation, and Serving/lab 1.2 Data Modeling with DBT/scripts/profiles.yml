@@ -1,0 +1,12 @@
+classicmodels_modeling:
+  target: dev  
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: <DATABASE_ENDPOINT>
+      port: 5432  # optional
+      dbname: postgres
+      schema: classicmodels
+      user: postgresuser
+      password: adminpwrd    

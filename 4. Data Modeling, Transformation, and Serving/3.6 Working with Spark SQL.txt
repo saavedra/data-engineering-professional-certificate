@@ -1,0 +1,62 @@
+In the previous video,
+you saw how you can use spark data frames to explore and process your data
+using Python code. In this video, you'll
+learn how you can also write SQL code to
+interact the same data. When working with PySpark, you can choose to
+manipulate your data, using SQL code, Python
+code or a mix of both. Both types of code will run on the same computation engine and will compile to the
+same low level code. Here we have the same
+Jupyter notebook that you saw in the
+previous video, and here's the transactions
+data frame we ended up with. To issue SQL queries to
+interact with this data, you need to create a temporary
+view from this data frame. A temporary view is a virtual table that doesn't
+actually hold the data. It persists as long
+as the spark session is running and provides an interface for
+you to work with the table data using SQL code. Here, I'll call the
+createOrReplaceTempView method on the transaction data frame to create a temporary
+view called orders. Now you can issue SQL queries on this temporary orders table. Using the Spark session object, you can call the SQL
+method and specify the SQL query as a string
+inside the brackets. This method will
+return a data frame representing the
+results of the query. For example, let's
+say you want to find the total amount
+spent on each order. I'll select the ID and the
+sum of the amount column, which I'll rename as total from the orders table and
+group by the ID. Then I'll order the results
+in descending order. Here's the return data frame. You can see the total amount
+spent in descending order. You can also define your own function and use
+it inside the SQL query. When working with data frames, you saw that you need to either
+wrap your function inside a UDF object or use
+the UDF decorator. With SQL queries, you need
+to register your function. As an example, let's write
+a function called two lower that transforms a word
+into lowercase letters. To register this function, I'll call the register method using the Spark session object. Then for the first argument, I'll specify a name
+for the function, which I'm calling udf_to_lower, and then I'll pass
+in the function itself as a second argument. Now, using the name
+of this function, you can use it inside
+the SQL query. For example, you can select
+the distinct countries from the orders table and apply this UDF to lower function
+on the country column. You can also create
+more than one view, meaning more than
+one virtual table, and join them in a SQL query. For example, let's first create
+another data frame called product_category_df
+that contains the code and the category
+of three products. Then using this data frame, I'll create another
+temporary view called items. Then in the SQL query, I'll join the orders
+table from before with this new items table to find the average amount
+for each category. I'll select the category and the average amount
+from the items table, left joined with
+the orders table based on the item ID from the items table and the stock
+code from the orders table. Then I'll group by the category, so I can find the average
+order amount per category. That's a quick overview
+of how you can issue SQL quarries to interact
+with data using PySpark, but now it's your
+turn to practice. In the next lab, you'll use PySpark to transform
+your data into a star schema using the same data you saw from the first week
+of this course, but before that,
+in the next video, Morgan will share more
+details on Amazon EMR, which you'll use to run
+PySpark in the lab. After you finish the
+lab, we'll dive into the technical considerations
+for transforming your data.

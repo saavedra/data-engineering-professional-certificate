@@ -1,0 +1,86 @@
+There's more than one way to serve data to your end users. Sharing data as files is one common and straightforward
+way to serve data. A data scientist might need a text file of customer reviews to perform sentiment analysis. An analyst might need
+numerical data in a CSV file of invoices to perform
+some statistical analysis. Or a machine learning
+engineer might use images of products to develop a
+product classification system. Well, of course, you
+could serve text or numerical or image data using a database
+or object storage. In some cases, you might
+just share a file directly, say through an email. It's difficult to manage the versioning of
+files this way. Using a data sharing
+platform helps you ensure a coherent and
+consistent version of the files you share
+with your end users. Serving single
+files one at a time might be sufficient for
+certain ad hoc requests, but this practice is
+very hard to scale. If you want to share large files of semi structured or
+unstructured data, then you would need
+to share your data through object storage
+or a data lake. To scale beyond
+sharing single files, you might choose to
+serve data directly from your OLAP database
+or data warehouse. In this case, an analyst
+or data scientists can query the storage system using SQL or another query language, and then export those results to a downstream application or analyze the results
+in a notebook. Serving data from a
+database has its benefits. A database imposes order and structure on the data
+by enforcing a schema. Databases give you fine grain permission
+controls at the table, column and row level, allowing you to craft complex access policies
+for various roles. Modern OLAP databases and
+query engines can offer high performance for complex, computationally
+intensive queries. If you're working
+with streaming data, serving data and files may be
+impractical or impossible, and databases on their own might not have the
+functionality you need. In that case, you'll
+need to work with streaming systems that
+serve data in real time. For example, operational
+analytics databases are becoming increasingly
+popular because they allow your end users to perform analytical quarries
+with low latency across a large range of historical data and up to
+the second current data. When you serve data
+from these databases, you are effectively
+combining the features of an OLAP database with a
+stream processing system. When it comes to
+data management, you need to ensure
+that stakeholders trust the data you serve them and that they
+can interpret it correctly and use it in
+a consistent manner. So you want to
+ensure that the data encompasses proper data
+definitions and logic. Data definition refers
+to the meaning of data as it's understood
+throughout the organization. For example, the definition of a term like a customer
+should be documented and made available
+to everyone who uses the data Data logic consists of formulas for driving
+metrics from data, say gross sales or
+customer lifetime value. Proper data logic depends on proper data definitions and contains details of
+statistical calculations. So, for example, to compute
+customer churn metrics, you would need to
+understand what the word customer
+means to the end user. Then you can write a SQL query to define this metric once, and it can be reused
+across the organization. This helps avoid a messy and unmaintainable
+sprawl of SQL code. So formally, declaring
+data definitions within your organization goes a long way to ensuring
+data correctness, consistency, and
+trustworthiness. While you can model
+the data to help capture data
+definitions and logic, you can also build
+a semantic layer on top of your data
+model to translate the underlying data elements
+and structures into business terms that are more intuitive and useful
+for your end users. The semantic layer ensures a single consistent
+definition for each business term and helps your end users more easily navigate the data to
+find what they need. The semantic layer can
+live in a BI tool, or you can create this layer
+using something like DBT. With DBT, you can define your standard business metrics using YAML file and SQL queries. Once your end users
+receive the data, they might use a
+visualization tool or business
+intelligence platform, such as Amazon QuickSite, Apache Superset, or Looker to create an
+analytics dashboard, or a data scientist might use notebooks to
+explore the data, engineer features,
+or train a model. You might also be responsible for helping set up and manage the Cloud platforms
+that are designed to handle Cloud data
+science workloads, such as Amazon Sagemaker, Google Cloud Vertex AI, and Microsoft Azure
+Machine Learning. Those are several
+ways you can serve data for analytics
+and machine learning. In the next video,
+we'll dive into the approach for serving
+data from a database, focusing specifically on using views and materialized views.

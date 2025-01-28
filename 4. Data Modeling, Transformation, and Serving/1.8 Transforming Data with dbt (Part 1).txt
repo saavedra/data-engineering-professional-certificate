@@ -1,0 +1,128 @@
+In this video, we'll
+use dbt to model some normalized data you've seen previously into a star schema. This is something
+you'll do in the lab. Behind the scenes, I've set up a local postgres database
+with five tables, order items, orders,
+customers, items, and stores. I created these tables under a schema labeled staging schema. I also inserted a few
+rows into each table, now I'll use dbt to create a new schema that I'll
+label as star schema. Under which I'll create the fact order items
+table and the dim stores, dim items, and dim
+date dimension tables. An earlier video, we
+already discussed the SQL statements
+you can use to create each table
+in the star schema. Dbt provides an easy way to create these
+tables by wrapping each SQL statement with another SQL statement that will create the tables
+under the new schema. Dbt also helps you document and validate your data within your database or data warehouse. Let's first install dbt and
+set up the environment. Dbt provides two types of
+environments, dbt core, which is an open source
+command line tool that you can install locally in your own environment
+and communicate with your databases through adapters. Dbt Cloud, which
+runs dbt core in a hosted environment with
+a browser based interface. In this video we'll go
+with the dbt core option, which is what you'll
+use in the lab. Here in the terminal,
+I'll create a new virtual environment
+and then I'll activate it. Then I'll install dbt core
+and the dbt-postgres adapter. Dbt core will use this adapter to connect the
+postgres database. Depending on the
+type of database or data warehouse you're using, you can choose other adapters. You can find the
+list of adapters in the dbt documentation. After dbt core and dbt
+postgres have been installed. I'll create the dbt
+project folder that will contain the files used
+to define the new tables. I'll run the dbt init command. Specifying the name of the
+project to be dbt tutorial. Then dbt will ask you to
+specify the type of database. Since I've only
+installed dbt-postgres, I just have one option,
+so I'll type one. Then dbt will ask you to enter the database
+information to automatically create
+the file that contains the connection
+details to the database. For now, I'll stop this
+process by typing control C. I'll show you how to manually
+create this file later. After you run dbt innate, a folder labeled dbt tutorial will be created in your
+working directory. I'll open an IDE to go
+through the files in this folder and run
+the dbt commands. Here are the folders
+and files created in the dbt tutorial
+project folder. The model sub folder is the main directory where you'll
+spend most of your time. In this directory,
+for each table you want to create
+in your star schema, you'll create a.SQL
+file that contains a SQL statement that defines
+the corresponding table. In the same directory, you can add a Yaml
+file to define some model configurations and some other testing and
+documentation information. When you initialize
+your project, some example files will be generated under the
+models directory. Feel free to take
+a look at them, but we won't use
+them in this video, so I'll delete them when I create the files for
+our star schema. You can use the
+analyses sub folder to include any SQL statements that are not part of
+your models directory and that could be a part
+of your own exploration. When you run dbt, only the SQL
+statements that are in the models sub folder
+will be executed. In the Macros sub folder, you can store pieces of
+SQL code that you want to reuse multiple times in
+your models directory. In the seed sub folder, you can have some CSV files
+that you want to load into your data warehouse
+or database using dbt. In the snapshots sub folder, you can record the changes
+in your tables over time. Finally, in the test sub folder, you can create SQL statements to perform some specific
+tests on your data. In this video in lab, we'll just work with the models sub folder. In addition to
+these sub folders, there's also this dbt_project Yaml file that's also automatically generated
+by dbt innate. This is an important file that contains the configurations
+of your project, so let's take a
+look at the file. In this file you
+specify the name and version of your dbt project. Next, you select the
+profile for your project. The profile should contain the details for connecting
+to the database, and you need to define
+the profile within a Yaml file called
+profiles.Yaml. Here, dbt automatically labeled profile with the project name. I'll leave it as
+it is, but you can definitely choose another
+name for the profile. Next, you'll define the directory
+configurations that tells dbt were defined the sub
+folders of your dbt project. With clean targets,
+you can specify the directories to be removed
+when you run dbt clean. The target directory contains the compiled SQL files of your models that will be
+created after you run dbt, and the dbt packages is
+a directory that you can create to store
+third party packages if your project depends on them. Finally you can specify the default configurations
+for your models, this includes whether
+you want to create the models as tables or
+views in your database. Views mean that you only save the SQL statements without
+creating the actual tables. You can specify this information using the materialized key. You have defined
+multiple sub directories inside of the models directory, you can organize the model configured by the
+sub directories. In this example, we're
+telling dbt to create all models defined under the example sub
+directory as views. Later, I'll delete this
+configuration and replace it with the configurations for the actual tables of
+the star schema. Now let's create the
+profiles file to specify the connection to
+my local postgres database. Inside the dbt tutorial project, I'll create profiles.Yaml. You can specify in this file, more than one profile and each can correspond to
+one data warehouse. Here, I'll create one profile
+labeled as dbt tutorial. Make sure that the name
+of the project matches the names you specify in the
+project configuration file. The profile can consist of
+multiple targets where you can specify different connection details under each category. For example, you might need
+to create two targets, one for development and
+another for production. List these targets
+under the outputs key, I'll specify one target
+that I'll call Dev. To populate this target, I'll specify the database type. Which is postgres in this case, then I will specify the
+database credentials. For a postgres target, I'll specify the hosts, user name, password, port
+number, and database name. In the dbt dbt documentation, you can find a sample profile for each possible target type. Finally, I'll specify that this dbt project will
+run on one thread, and that the default
+schema is a star schema. To wrap up the dbt
+tutorial profile, I need to specify
+the default target. Which is Dev, because that's the only target I
+have right now. To verify the connection
+to the database, I'll go to the terminal. I'll make sure that I'm in
+the dbt project directory, and I'll type dbt debug. If there's no issue
+with the credentials, you should see that the
+connection is okay. Since the profiles at Yaml can contain sensitive
+credentials, you can move this file
+to the hidden.dbt file. That's created by dbt
+inside your home directory. If dbt does not find the profiles in your
+project directory, it will automatically
+check the.dbt folder. Let's move the profiles files to the.dbt folder and then
+verify the connection. At this point, I created
+a profiles file and successfully connected to
+a local postgres database. Join me in the next
+video to create the SQL files used to
+create the tables.

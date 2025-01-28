@@ -1,0 +1,5 @@
+DBHOST=<RDS-ENDPOINT>
+DBUSER = admin
+DBPASSWORD = adminpwrd
+DBPORT = 3306
+DBNAME = classicmodels

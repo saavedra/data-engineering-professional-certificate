@@ -1,0 +1,97 @@
+Back in course 2 when we discussed
+relational databases as source systems, you learned how normalization can
+reduce the duplication of data and improve data integrity. In this video, we'll revisit this topic and discuss
+the various forms of normalization. So normalization is a data modeling
+practice that's typically applied to relational databases to remove the
+redundancy of data within the database and ensure referential integrity
+between data tables. It was first introduced by relational
+database pioneer Edgar Codd in 1970, and here are some of the normalization
+objectives that Codd outlined at that time. To free the collection of relations
+from undesirable insertion, update, and deletion dependencies. As well as to reduce the need for restructuring the collection of relations
+as new types of data are introduced. And thus increase the lifespan
+of application programs. To better understand Codd's normalization
+objectives, let's take a look at this example where our sales order data
+is represented in two different ways. The first model represents the data
+in one giant sales order table, and the second model represents the same data
+but spreads it across multiple tables. The first model is less
+normalized than the second one, meaning that the large sales order
+table contains more redundant data than the smaller tables
+in the second model. So, for example, if you want to update
+the address of a customer, let's say for Joe Reis here, you would need to update
+every single row that corresponds to Joe Reis in this first table. In the second model, on the other hand, the customer data is stored
+in a different table. So whenever you want to update
+the address of a customer, you only need to change a single
+row in the customers table. Now, let's say you want to add
+the orders shipment information. In the less normalized model, you would
+need to change the structure of the table by adding new columns for
+the shipment information. But in the more normalized model,
+you can simply create a new table for the shipment data,
+then use the order id as the foreign key to link this new table through
+the existing orders table. And this way you won't have to
+make changes to any other tables. The first model that is less normalized
+is called the first normal form, and the more normalized model here
+is called the third normal form. On the spectrum of normalization, there's
+also something called the denormalized form and second normal form as well. Each form contains a different
+level of redundancy and incorporates the conditions
+of prior forms. Using the same sales order example,
+let's start with a denormalized form and transform it step by step to
+turn it into third normal form. So here's a denormalized table that
+contains the details of each order placed by a customer. It contains six columns with
+the order Id as the primary key. A denormalized form can contain not only
+redundant data but also nested data. In this example, the order items column
+contains nested objects where each object contains information such as the items
+sku, number, price, quantity, and name. To convert this denormalized
+table to first normal form, which I'll denote here as 1NF, you need to
+make sure that each column is unique and has a single value,
+meaning no nested data. And the table must have
+a unique primary key. So let's unnest the order items column and
+replace it with four columns. In this case, the item sku, price,
+quantity, and name are the new columns. Now, each row represents
+an item in a given order, and because an order can
+contain several items, the order Id is no longer a unique
+primary key for this table. To create a unique primary key, let's number the items in each order
+by adding a column named itemnumber. So now the composite key
+consisting of orderid and itemnumber together represents
+a unique primary key for this table. But this form still contains redundant
+data and can be further normalized by converting it into the second normal form,
+which I'll denote here as two nf. For the second normal form, the
+requirements of first normal form must be met and any partial
+dependencies should be removed. A partial dependency occurs when there is
+a subset of non key columns that depend on some columns in the composite key. So, for example, the customer Id,
+customer name, customer address, and order date are non key columns
+that all depend on the order id. Meaning that if you know the order id, you can uniquely identify the information
+in these last four columns. And so you can split the sales
+order table into two tables, an order items table and an orders table. The composite key
+consisting of order id and the item number is now a unique
+primary key for the order items table, while order id is a primary key for
+the orders table. So now there are no more partial
+dependencies in these tables, but they have another form of dependency
+called a transitive dependency. A transitive dependency occurs when a non
+key column depends on another non key column. So, for example,
+in the order items table, the price and the name of an item depends on its SKU,
+and in the orders table, the customer name and
+the address depend on the customer id. While this type of dependency can exist
+in a table thats in second normal form. A table in third normal form needs to meet
+all the requirements of second normal form and have no transitive dependencies. So to convert these tables from second
+normal form to third normal form, you can remove the transitive dependencies
+from the order items table by creating another table called Items. That contains a name, price,
+and SKU for each item. The SKU is now a unique primary key for
+the items table. Let's also remove the transitive
+dependencies from the orders table by creating another table
+containing the customer name and customer address of each customer. The customer id is now a unique
+primary key for the customers table. A database is usually considered
+normalized if it's in third normal form, and that's what we'll be using
+as a convention in this course. As a data engineer, you might ingest data
+from source databases that are normalized, especially if they represent
+a transactional system. Or you might work with a data warehouse
+that contains normalized data. When you model your data, the degree of
+normalization that you should apply to your data depends on your use case. There's no one size fits all solution,
+and you might encounter cases where denormalization actually
+has performance advantages. Because it doesn't require you to perform
+any join operations between tables. In other cases, you might prefer the
+normalized form to ensure efficient read and write operations and
+better data integrity. In the first lab this week, you'll get
+a chance to practice creating a normalized data model similar to the exercise
+we just did together in this video. You'll be given a denormalized table and have to apply several normalization steps
+to convert it to third normal form. I'll see you after that to continue
+our discussion on data modeling.

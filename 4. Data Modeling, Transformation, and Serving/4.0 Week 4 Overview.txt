@@ -1,0 +1,37 @@
+Congratulations on reaching the last week of this program. Throughout this course,
+you've learned how to model your data for analytics and
+machine learning use cases, and what tools and
+technical considerations you should take into account
+when transforming your data. In this final week, we
+will take a look at serving data for various analytics and machine
+learning use cases. For example, with a business
+analytics use case, you might be serving data from a data warehouse or a data lake. Then your end users can use that data to create
+dashboards or reports, or perform ad hoc analysis. You could also serve data
+for operational analytics, where your end users monitor immediate trends in the data
+to inform immediate action. With operational analytics,
+you need to make sure that you serve data
+within the required latency. Finally, you could serve
+data for embedded analytics, where your end users feed
+the data to a client facing, data product, or dashboard. When it comes to serving data for machine learning
+applications which are becoming widely adopted in all
+types of companies, you will likely work with a data scientist or machine
+learning engineer to acquire, transform, and deliver
+the data necessary for model training in a format suitable for the
+target application. Earlier in the
+course, we looked at some examples of serving data to build a customer churn model, as well as a
+recommendation system. Additionally, you
+could incorporate business definitions
+and data logic through a semantic layer that you build after you
+model your data. In this semantic layer, you
+can document definitions, such as the meaning
+of an active user, and derive business
+metrics, such as revenue, to create a common language
+for the data you serve. You can also serve
+your data as a table, a view, or a materialized view. We'll go through all these
+concepts later in the week, and you'll get a lot of practice creating views using
+dbt in the first lab. After we go through the
+details of serving data, I'll give you a summary of the data engineering concepts you learned in this program, revisiting the framework of how to think like
+a data engineer, as well as all the stages and undercurrents of the data
+engineering life cycle. Finally, you'll see how all these concepts come
+together in the capstone lab. Join me in the next video to go through the
+different ways of serving data for analytics and machine learning use cases.

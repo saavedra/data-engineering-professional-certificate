@@ -1,0 +1,101 @@
+Now that we've covered the common
+preprocessing steps for textual data in the previous video, let's go over how you would turn your
+preprocessed text data into vectors. The traditional techniques to vectorize
+text consists of methods like bag of words and term-frequency inverse
+document frequency, or TF-IDF. These methods assign a number to each
+word in a text based on its frequency of occurrence. Here's the example you saw
+in the previous video. I'll refer to each customer
+review as a document, and the three reviews collectively make
+up what is known as the corpus. In a real example, the corpus would
+include all the customer reviews and will be much larger. Let's first extract
+the vocabulary of the corpus, meaning the list of unique words
+that make up this collection. Then you can convert each document,
+meaning each customer review, into a vector that has the same
+length as this list of vocabulary in the bag of words method. Each entry in the vector reflects the
+number of times that corresponding word appeared in the document. So in the first review, the words
+this wonderful price amount you and get all appeared once, and all the other words in
+the vocabulary appeared zero times. You can use scikit learn to quickly
+vectorize your text using the bag of words method. Feel free to check out the specific
+code in the reading item that follows this video. However, the bag of words method only
+takes into account how frequently each word in the vocabulary
+appears within each document. In a large text corpus, some words might appear very
+frequently across all documents, but carry very little meaningful information
+about the actual contents of the document. For example, if you're looking at
+a large dataset of product reviews, the words purchase and buy might appear
+many times across many documents. If you were to feed this frequency count
+data directly to a document classifier that performs sentiment
+analysis on the reviews. These high frequency but low meaning words
+might overshadow the frequencies of more rare but more significant words
+like break or exceptional. With the TF-IDF method,
+you can account for the weight and rarity of each word or
+term when vectorizing the documents. For each word,
+you will consider its term frequency, which represents the number of times
+a term occurred in a document divided by the total number of
+words in that document. And you will also consider
+the inverse document frequency, which indicates how common or
+rare that word is in the entire corpus. The closer this number is to zero,
+the more common it is, and the closer it is to one,
+the more rare it is. In practice, you would use scikit learn or another library to help you vectorize
+your text using the TF IDF method. So I won't go into details of the
+calculation here, but if you're curious about these details, feel free to check
+out the reading item after this video. So here's the TF-IDF vectorization of
+these text reviews the traditional way of vectorizing a text is considered a simple,
+easy to understand. And interpretable method
+of vectorizing texts, and you might choose to use these methods for
+quick experimentation. These simple vectorization methods are
+useful when you have a smaller data set, and they can perform very well
+on document classification. Where the presence of specific key
+terms strongly indicate the class of the document. However, it gives no attention
+to the meaning of the words or the sentences in the document, and you can end up with a high dimensional
+vector with very sparse values. If you want to better capture
+the semantic meaning of a word, you can replace the word by
+a vector called a word embedding. These vectors are generated in such a way
+that if two words have similar meaning, they're mapped to vectors that
+are geometrically closer to each other. So, for example, the embedding vector
+of the word useful should be closer to the embedding vector of the word
+helpful than that of the word tree. You can generate embedding vectors using
+popular word embedding algorithms such as word2vec and glove. Which have been trained to learn
+the embeddings of words from their co-occurrences and
+very large collections of text. The idea is that if two words
+frequently appear together, they should share similar contexts and
+those have similar meaning. Let's go back to our text reviews, here
+you want to represent each review, and not just each word, by one vector. You could just compute the word
+embeddings for each word in the sentence, then add a bullet of vectors to get
+a vector that represents the sentence. But this method doesn't take into account
+the position of the words in the sentence. For example, a man ate a snake has a
+different meaning than a snake ate a man. But if you add the word embeddings
+of each word in these two sentences, you'll get the same vector. This is where sentence
+embeddings can be helpful. A sentence embedding is a vector that
+reflects the semantic meaning of the entire sentence. It takes into account the position
+of the words in a sentence and the meaning of each word. Similar to word embeddings. If two sentences have similar meaning, their embedding vectors would
+be close to each other. Moreover, a sentence embedding
+is a vector that has a lower dimension than the dimension of
+the vector generated by a TF-IDF. You can obtain these sentence
+embeddings using NLP models that are pre trained on large datasets. Several open source and
+closed source embedding models exist, but these state of the art models
+are based on large language models. For example, sentence transformers is
+a Python framework that enables you to access open source embedding models. On the other hand, LLM research
+companies such as OpenAI, Anthropic, and Google offer closed
+source API embeddings. Let's apply sentence embeddings
+to the text reviews. Here, I'm using the sentence
+transformers Python package. First, I need to instantiate an instance
+of the sentence transformer and specify an open source LLM model. In the documentation page you can find
+a list of open source models that you can use with sentence transformer. I'm going to use a model
+called all-MiniLM-L6- v2, which you'll see again in
+the lab exercise later on. Then I'll take the text reviews that
+I've cleaned and normalized and pass it to the embedding model. For each review, the model returns
+an embedding vector that has 384 entries. Let's see how similar these
+vectors are to each other. I'm choosing to use the cosine
+similarity metric here, but you can choose other
+distance metrics as well. The cosine similarity between the first
+review and the second review is 0.51, and the cosine similarity between the
+first review and the third review is 0.14. Meaning that the first review is closer in
+meaning to the second review than it is to the third. This makes sense since both the first and second reviews are about the amount
+of product the customer received. Now, what can you do
+with these embeddings? These embeddings can serve as features to
+train a machine learning algorithm for product recommendation, or
+they can be used for clustering or performing similarity search. In the second lab of this week, you'll be provided with the text review
+data set you saw in the previous course. You'll apply embeddings
+to this dataset and process the tabular metadata using similar
+techniques that you used in the first lab, and after that join me for
+a summary of this week.

@@ -1,0 +1,108 @@
+Let's take a look at some basic operations
+you can use to create spark dataframes, manipulate existing dataframes,
+clean data, aggregate data, and define your own functions for
+working with dataframes. For this demo, I'll use this pip install
+command to install Pyspark locally. In the lab you'll be provided with a Spark
+cluster running inside a docker container. And I've included links in the additional
+resource section at the end of this week to show you how you can download
+the full version of Spark. Next, let's install another
+library called Findspark, which will automatically add Pyspark
+to the system's path during runtime so that your system knows
+where to find Spark. I'll import both the Pyspark and
+Findspark packages, and then I'll initialize findspark. Before you can create a Spark dataframe,
+you need to create a Spark session, which works as the entry point for
+working with Spark dataframes. So from pyspark.sql,
+let's import the SparkSession class. Then I'll create a spark session with
+the name example by calling this get or create method. This method will get an existing spark
+session with the name example if it exists, or it will create a new one. Here are the details of the session. You can see the version number
+of the spark session and that its name is indeed example. Now let's create a dataframe. You can do this manually, or you can
+import data from external data sources. Let's say you want to manually create
+a dataframe that holds the data from this order details table. I'll create a dataframe called orders_df
+by specifying the spark session object that I created from before and then
+calling the CreateDataFrame method on it. This method expects two arguments. The first argument is the data,
+which I'll provide as a list of tuples, each consisting of the data from one row. The second argument is the schema,
+so I'll specify the name and the type of each column. You can use the show method to
+view the rows of this dataframe. Let's say instead you want to create
+a dataframe by reading data from a CSV file that contains transaction
+data of an online retail store. Let's create another dataframe
+called transactions_df that uses the same spark session object as before. But this time it calls the read.csv
+method, specifying the name of the CSV file and indicating that
+the data contains a header. You can view the first five rows of this
+data by calling the show method with n=5. Now let's say you only care about some
+of the columns in this data frame. You can first use the columns command
+to view all the column names, and then select only the columns you
+want by using the select method. So here I'll select only the price,
+quantity and country columns, and then I'll use the show method to view the
+first five rows of these three columns. If you want to quickly explore
+the contents of these columns. You can use the describe method to
+compute basic summary statistics for each column, including the value, count,
+mean, standard deviation, min, and max of each column like you see here. Next, let's take a look at how you can
+manipulate data frames such as adding, updating, renaming, or removing
+a column from an existing data frame. Say you want to create a new column
+that represents the amount paid for each product. You can call the withColumn method, then specify the name of this new
+column which I'll call amount. And the values for this new column which
+I'll get by multiplying the price and quantity columns from
+the existing dataframe. Spark checks if the amount column already
+exists in the dataframe, and if it does, then it will replace this
+column with the new values. And if this column does not exist, then it will create a new
+column with these values. Remember that spark
+dataframes are immutable, so this method actually returns
+a new dataframe, but I can assign this new dataframe back
+to the same transactions _df variable. You can verify that this new column was
+indeed added by calling the show method. Next, let's rename
+the invoice column to id. For that we'll call the withColumnRenamed
+method and specify that the name of the existing column is invoice and
+that the new column name should be id. And finally,
+let's remove the description column. I'll call the drop method and specify the
+name of the column that I want to remove. In terms of cleaning your data in a
+dataframe, you can easily remove the rows that contain null values by
+calling the dropna method. You can also call the filter method to
+remove rows based on Boolean conditions. For example, lets say that the quantity
+column contains some negative values and you only want to consider the rows
+that contain positive values. You can call the filter method and provide it with a condition where the
+quantity column must be greater than zero. That way you'll only get the rows
+that don't contain null values and contain positive quantity values. Next, lets take a look at some
+aggregation operations on dataframes. For example, suppose you want to find
+the total amount spent on each order. First ill use the groupby method to
+group the rows via the order id. Next, I'll sum up the amount column to
+get the total amount for each order id, I'll call the show method
+to view the results. As another example, let's count the total
+number of rows for each country and order the count in descending order. Again, I'll call the groupby method
+to group the rows by country, and then I'll call the count
+method to sort the results. I'll call the order by method to order
+by the count and specify false for sending so that the results
+are sorted in descending order. While spark provides lots of built in
+functionalities that you can find in the documentation, it also supports
+user-defined functions, or UDF. For example, let's say you want to convert
+all the country names to uppercase. You can define a function called
+toUpper that takes in a string and returns a string in uppercase. Then you need to wrap this
+function in a UDF object. To do so, let's import the UDF
+class from pyspark SQL functions. Then I'll instantiate a UDF
+object called UDFtoUpper specifying the function that I just
+defined along with this return type. Now I'll select the ID column and
+the country column and apply the UDF to upper object
+to the country column. You can see that all entries in the
+country column have now been transformed to uppercase strings. Alternatively, instead of wrapping the
+function you defined inside a UDF object, you can add this decorator with
+the return type inside the brackets. You can then directly apply the toupper
+function to the country column. Again, remember that spark
+dataframes are immutable. So with the UDF you actually created a new
+data frame that has a country column in uppercase. Let's replace the country column in
+the transactions data frame with a column containing the values in uppercase. I'll call the with column method and
+specify that I want to replace the values in the country column with
+their uppercase values. And here's the new transactions dataframe. Now that you've seen how Python UDFs work, you should be careful when
+working with these functions. This is because Spark is native in Scala,
+and each executor in the worker node is a Java virtual machine, or JVM
+process that hosts a partition of data. When you use Python UDFs,
+Spark starts a separate python process inside the worker node and
+requires data transfer from the JVM. For the data to be processed by Python
+Spark serializes it to a format that Python can understand. The Python process then executes
+the function row by row on that data, and finally returns a result of
+the row operations to the JVM. This process is not efficient since the
+JVM and Python processes will compete for memory resources and is expensive to
+serialize and deserialize the data. For better performance, you should
+consider rewriting Python UDFs in Scala or Java because these functions will
+run directly within the JVM. And the good news is that after
+you register these UDFs in Spark, you can still use them in Python. So that was a quick overview of the basic
+operations you can do with Spark data frames. Join me in the next video to see how you
+can issue SQL queries with Spark SQL.
